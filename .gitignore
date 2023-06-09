@@ -1,0 +1,19 @@
+# Exclude SWA specific libraries for data handling
+data.py
+carbon_converter.py
+conn.py
+
+# Do not store any data online
+*.feather
+*.csv
+*.png
+*.ods
+
+# Exclude virtual environments
+venv/*
+data/*
+
+# We remove caches
+__pycache__/*
+.~*
+.git
