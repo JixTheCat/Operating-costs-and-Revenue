@@ -1,0 +1,45 @@
+\begin{thebibliography}{3}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Abbal et~al.(2016)Abbal, Sablayrolles, {Matzner-Lober}, Boursiquot,
+  Baudrit and Carbonneau}]{abbalDecisionSupportSystem2016}
+\bibinfo{author}{Abbal, P.}, \bibinfo{author}{Sablayrolles, J.M.},
+  \bibinfo{author}{{Matzner-Lober}, {\'E}.}, \bibinfo{author}{Boursiquot,
+  J.M.}, \bibinfo{author}{Baudrit, C.}, \bibinfo{author}{Carbonneau, A.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Decision {{Support System}} for {{Vine Growers
+  Based}} on a {{Bayesian Network}}}.
+\newblock \bibinfo{journal}{Journal of agricultural, biological, and
+  environmental statistics} \bibinfo{volume}{21}, \bibinfo{pages}{131--151}.
+\newblock \DOIprefix\doi{10.1007/s13253-015-0233-2}.
+%Type = Article
+\bibitem[{Agosta et~al.(2012)Agosta, Canziani and
+  Cavagnaro}]{agostaRegionalClimateVariability2012}
+\bibinfo{author}{Agosta, E.}, \bibinfo{author}{Canziani, P.},
+  \bibinfo{author}{Cavagnaro, M.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Regional climate variability impacts on the annual
+  grape yield in {{Mendoza}}, {{Argentina}}}.
+\newblock \bibinfo{journal}{Journal of Applied Meteorology and Climatology}
+  \bibinfo{volume}{51}, \bibinfo{pages}{993--1009}.
+%Type = Article
+\bibitem[{Fraga et~al.(2017)Fraga, Costa and
+  Santos}]{fragaMultivariateClusteringViticultural2017}
+\bibinfo{author}{Fraga, H.}, \bibinfo{author}{Costa, R.},
+  \bibinfo{author}{Santos, J.A.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Multivariate clustering of viticultural terroirs in
+  the {{Douro}} winemaking region}.
+\newblock \bibinfo{journal}{Ci\^encia T\'ec. Vitiv.} \bibinfo{volume}{32},
+  \bibinfo{pages}{142--153}.
+
+\end{thebibliography}
