@@ -1,0 +1,210 @@
+
+\documentclass[review,12pt,authoryear]{elsarticle}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+\usepackage{lineno}
+
+% for adjusting table width automatically
+\usepackage{adjustbox}
+\usepackage{tabulary, ragged2e}
+\usepackage{booktabs}
+
+% Below is Elseviers requirements - they are similar to most articles and a good point of reference when writting scientific articles or analyses in general.
+%1.Full Length Article A full-length article should be a substantial and in-depth research study regarding a particular state of issue through several techniques or approaches. 
+% The main text should be approximately 6,000 words in length, but it should not exceed 8,000 words (excluding abstract, references, tables, figures, and appendices).
+%A maximum of 250 words abstract and up to 10 displayed items (figures and tables) is allowed. A full-length article should include an Introduction,
+%Materials and methods, Results, Discussion, Conclusions, and References, which can be accompanied by Supplementary material.
+
+\begin{document}
+\begin{linenumbers}
+\begin{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              Start Matter            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \affiliation for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+
+%% \title{Title\tnoteref{label1}}
+\title{Grape Quality and its Link to Regional Differences in the Australian Winegrowing Industry}
+% Regional differences in Australian winegrowing (Quality)?
+
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \affiliation{organization={},
+%%            addressline={}, 
+%%            city={},
+%%            postcode={}, 
+%%            state={},
+%%            country={}}
+%% \fntext[label3]{}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \affiliation[label1]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%%
+%% \affiliation[label2]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%\affiliation[label1]{organization={QUT},
+%  addressline={},
+%  city={},
+%  postcode={},
+%  state={QLD},
+%  country={}}
+%\affiliation[label2]{organization={AWRI},
+%  addressline={},
+%  city={},
+%  postcode={},
+%  state={SA},
+%  country={}}
+%\affiliation[label3]{organization={Food Agility CRC},
+%  addressline={},
+%  city={},
+%  postcode={},
+%  state={Vic},
+%  country={}}
+\author[label1,label2,label3]{Author}
+\date{02/08/2023}
+
+\begin{abstract}
+\end{abstract}
+%%Graphical abstract`
+%\begin{graphicalabstract}
+ % \includegraphics{graphical_abstract.jpeg}
+%\end{graphicalabstract}'
+
+%\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+%Keyword one \sep{} keyword two
+%% PACS codes here, in the form: \PACS code \sep code
+%\PACS{} 0000 \sep{} 1111
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+%\MSC{} 0000 \sep{} 1111
+%\end{keyword}
+%%Research highlights
+\begin{highlights}
+  \item Comparative analysis of resource use, quality and quantity in Australian winegrowing.
+  \item Regional comparison of outcomes and resource use in Australian winegrowing regions.
+  \item Baseline models for comparing wine crops.
+  \item Analysis of national, decade long data source.
+\end{highlights}
+\end{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                main text             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+The Australian wine-growing industry is a rich and diverse landscape that is separated into multiple regions that help to describe the unique varietals and qualities that are produced there. While a great deal has been done regarding regional properties and traits, there has been little statistical insight into how regions differ due to a lack of cross-regional and in-depth data sources (Keith Jones, 2002; Knight et al., 2019). In this study we use Classification Trees to compare regional differences and how they relate to sustainable practices and grape quality.
+The site of a vineyard predetermines several physical parameters such as climate, geology and soil, making location a widely considered key determinant of grape quality \citep{abbalDecisionSupportSystem2016,agostaRegionalClimateVariability2012,fragaMultivariateClusteringViticultural2017}. This analysis addresses the knowledge gap regarding the effectiveness of regional level strategies employed in the wine industry and their relation to grape quality. Through the use of classification trees this study aims to highlight the key differences in sustainable practices at a regional level and how these practices relate to the different grades of grape quality.
+  
+\subsubsection{A figure sub-subsection}
+
+\if{false}
+\begin{figure}
+    \includegraphics{violinplot.pdf}
+    \caption{Violin plots of GI Region and Year coefficients for each model.}\label{fig:violin}
+    \end{figure}
+  %
+\fi{}
+
+\section{Methods}
+
+\subsection{Data}
+The Australian wine industry is divided into 65 regions, known as a Geographical Indicator Regions (GI Region). Each GI Region is used to describe different unique localised traits of vineyards across Australia; with each having its own mixture of climatic and geophysical properties (Halliday, 2009; Oliver et al., 2013; SOAR et al., 2008). Each region is explicitly defined under the Wine Australia Corporation Act of 1980 (Attorney-General's Department, 2010). The climatic properties of a GI Region are summarised by Sustainable Winegrowing Australia (2021), where regions of similar climates are amalgamated together into superset regions. The climatic regions were utilised to illustrate similar trends and explain differences between sets of regions.
+The data used in this analysis comes from Sustainable Winegrowing Australia and covers the period 2015 to 2022. The dataset contained 3342 samples across 52 GI Regions and 1072 individual vineyards.
+
+\subsection{Classification Trees}
+
+Classification Trees were developed to discern the different practices within regions and climates,  comparing these relationships to those linked to grape quality. This was done using the rparts and caret packages (Kuhn, 2008; Terry Therneau and Beth Atkinson, 2022) in the R statistical programming language (R Core Team, 2021). Three classifications were undertaken for region, climate and grape quality. Climate was further classified into two subcategories of rainfall and temperature, resulting in a total of 5 classification trees being created.
+Classification trees were validated using K-fold cross validation. Each model was validated using 10 folds, utilising a random selection of different samples ten separate times to validate each of the  classification trees. A summary confusion matrix was then constructed to show the class bias and overall accuracy of each tree.
+
+\section{Results}
+
+\subsection{Model 1 GI Regions}
+The first Model was used to classify GI regions and resulted in an accuracy of 36.48\% across 52 classes. The most prominent features used to classify regions were the types of water resources available (see Figure 1). Two regions, the Riverland and Coonawarra, were the most accurate classes being 92.74\% and 96.97\% respectively. These regions differ greatly in practice and geophysical properties, with the Riverland being a dry warm inland region and Coonawarra being a cooler, wet coastal region. However, they are both similar in operational scales, with vineyards being relatively large compared with other regions. The differences in resources and practices between these regions are also significant, such as the Riverland utilising the river Murray as a water source. Many of the regions had significantly lower reporting rates, resulting much poorer classification performance. The regions with the most samples performed the best (see Table 1). Notably bordering regions were routinely grouped together and misclassified as the same region, for example the two closest regions to Coonawarra, Padthaway and Wrattonbulley, were misclassified as Coonawarra even though they had 147 and 137 samples respectively. The same case was found for the Murray Darling, with 143 samples, it was misclassified as the Riverland. These misclassifications are likely due to the incredibly similar regional properties and close proximity these regions have with one another. Other misclassifications were most likely due to lower reporting rates with many regions being under represented.
+
+\begin{table}[]
+    \caption{Classification accuracy of the most prominent GI Regions.}
+    \label{tab:accuracy}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{@{}llll@{}}
+            \toprule
+            \textbf{} & \textbf{Accuracy} & \textbf{Predicted} & \textbf{Actual} \\ \midrule
+            \textbf{Adelaide Hills} & 30.45\% & 95 & 312 \\
+            \textbf{Barossa Valley} & 51.00\% & 205 & 402 \\
+            \textbf{Coonawarra} & 96.97\% & 192 & 198 \\
+            \textbf{Langhorne Creek} & 22.84\% & 53 & 232 \\
+            \textbf{Margaret River} & 78.82\% & 201 & 255 \\
+            \textbf{McLaren Vale} & 52.89\% & 128 & 242 \\
+            \textbf{Riverland} & 92.74\% & 345 &
+        \end{tabular}
+    }
+\end{table}
+
+\subsection{Climate}
+Classifying the SWA climatic categorisation of the given regions had better performance than the GI Regions, with ~41.66\% being classified correctly. These categories were divided into 12 climatic classifications with 3 and 4 separate subsets for rainfall and temperature respectively. The decision tree behaved similarly and over classified climates with higher response rates. The results posed an interesting similarity with grape quality classifier, being influenced predominantly by water and area. The use of fungicide to separate regions that were 'Very dry' and 'Damp' can be considered as indicative of the different practices required due to climatic pressure; fungicides being more prominent in cooler regions with greater rainfall due to the higher risk of disease pressure (Reynolds, 2010). This could also potentially explain the use of contractor tractor use to discern differences in grape quality, where the lack of contractor use to prevent disease could have led to lowered quality of grapes.
+
+\subsubsection{Rainfall}
+The rainfall decision tree showed a greater use of fungicides sprays to discern between damp and very Dry as shown in Figure 4; with the accuracy improving to 62\% but was unable to effectively discern between dry and very dry regions (see Table 3).
+
+\subsubsection{Temperature}
+The classification of GI Regions by their temperatures (see Figure 5) showed similarities to the other trees, with a heavy reliance on the types of water resources used as dominant predictors. The use of contractors was again used to differentiate between warm and cool regions, likely being due to disease pressure. The temperature classification tree was only a minor improvement over the regional classification tree, with an accuracy of 49.26\% as shown in the confusion matrix (see Table 4).
+
+\subsection{Model 3 Grape Quality}
+The classification of grape quality through its grade had an accuracy of 55.72\% across 5 separate grades. There was a notable issue with the classification of B grade grapes when compared to A and C (see Table 2). The classification tree itself shows similarities to that of classifying regions in Model 1, with the type of water resource used being a prominent determiner. Although not surprising the number of contractor tractor passes is new deciding factor due disease and pests reducing the potential quality of a crop. The prevalence of contractor use is greater in regions such as the Barossa Valley and the McLaren Vale, this could be due to the difference in operational scales, with larger sites being more likely to have ownership of their own equipment for weeding and spraying due to the cost benefit.
+
+\section{Discussion}
+The difference between grape quality is most notable between warm inland regions and coastal regions such as the Riverland and Coonawarra, respectively. Grape quality is only described by a singular variable within this study, however in reality it is driven by market demand and subject to  complex forces such as international market pressure, fire, pests and disease (Wine Australia, 2022, 2021, 2020, 2019; Winemakers’ Federation of Australia, 2018, 2017, 2016, 2015, 2014, 2013, 2012).
+The decision trees were able to offer some insights into the factors that influence grape quality and regional contrasts that contribute to different qualities. The most prominent being what readily available resources of each region were, particular the types of water available. Heavy water consumption is often linked to the mass production of grapes, where lower quality grapes are targeted in a quantity over quality strategy. These types of business decisions are unfortunately obfuscated by lack of in-depth data regarding vineyard business plans. Notably the literature shows that there are many complex decisions to be made on the ground depending on many compounding factors that influence both quality and yield ((Abad et al., 2021; Cortez et al., 2009; Hall et al., 2011; I. Goodwin, et al., 2009; Kasimati et al., 2022; Oliver et al., 2013; Srivastava and Sadistap, 2018)). There are also further differences when comparing winegrowers to other agricultural industries as they are vertically integrated within the wine industry, tying them to secondary and tertiary industries, such as wine production, packaging, transport and sales. This results in unique issues, where on-the-ground choices are influenced by other wine industry’s decisions, such as the use of sustainable practices in vineyards to sell in overseas markets; notably these interactions are further complicated by some winegrowers being totally integrated into wine companies, while others are not (Knight et al., 2019). It is incredibly difficult to attribute external business decisions to produced grape quality but it is important to acknowledge that some growers are contracted to produce grapes of a particular grade; it is difficult to know whether another consumer may have graded the grape quality differently paying more or less for the same grapes given the opportunity to purchase them. It is difficult to untangle the contributing factors to the success of winegrowers and the quality of grapes produced without further specifics of choices made through out a season (Leilei He et al., 2022).
+
+\section{Conclusion}
+
+The type and availability of water resources were a major contributing factor when classifying grape quality and region. This was seen in the two most accurately classified regions, Coonawarra and the Riverland, with the Riverland predominantly utilising river water. Furthermore, the study highlighted the influence of water use, fungicide application, and contractor use in differentiating grape quality, climate and region respectively. These models provide insight into the complex dynamics between regional characteristics, sustainable practices, and grape quality in the Australian winegrowing industry. It is important to acknowledge that grape quality is subject to external influences such as market demands and prior established business arrangements. Further in-depth data and understanding are necessary to fully grasp the nuances of decision-making and the interplay of factors impacting grape quality.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              End Matter              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliography{references} % This points to the references.bib file - the file extention is automatically added.
+\bibliographystyle{elsarticle-harv}
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+ \appendix
+
+\end{linenumbers}
+  \end{document}
+  
+\endinput
