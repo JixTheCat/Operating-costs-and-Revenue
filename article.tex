@@ -164,14 +164,33 @@ Through the use of classification trees this study aims to highlight the key dif
 
 \section{Methods}
 
+% As with the previous paper, put the models up front it is very unclear what you have created - and less clear to understand it if there is no way to reference to it.
+
 \subsection{Data}
-The Australian wine industry is divided into 65 regions, known as a Geographical Indicator Regions (GI Region). Each GI Region is used to describe different unique localised traits of vineyards across Australia; with each having its own mixture of climatic and geophysical properties (Halliday, 2009; Oliver et al., 2013; SOAR et al., 2008). Each region is explicitly defined under the Wine Australia Corporation Act of 1980 (Attorney-General's Department, 2010). The climatic properties of a GI Region are summarised by Sustainable Winegrowing Australia (2021), where regions of similar climates are amalgamated together into superset regions. The climatic regions were utilised to illustrate similar trends and explain differences between sets of regions.
+The Australian wine industry is divided into 65 regions, known as a Geographical Indicator Regions (GI Region). Each GI Region is used to describe different unique localised traits of vineyards across Australia; with each having its own mixture of climatic and geophysical properties \autocite{hallidayAustralianWineEncyclopedia2009,oliverReviewSoilPhysical2013,soarClimateDriversRed2008}. Each region is explicitly defined under the Wine Australia Corporation Act of 1980 \autocite{attorney-generalsdepartmentWineAustraliaCorporation2010}. The climatic properties of a GI Region are summarised by Sustainable Winegrowing Australia (2021), where regions of similar climates are amalgamated together into superset regions. The climatic regions were utilised to illustrate similar trends and explain differences between sets of regions.
 The data used in this analysis comes from Sustainable Winegrowing Australia and covers the period 2015 to 2022. The dataset contained 3342 samples across 52 GI Regions and 1072 individual vineyards.
+
+% how was it collected
 
 \subsection{Classification Trees}
 
-Classification Trees were developed to discern the different practices within regions and climates,  comparing these relationships to those linked to grape quality. This was done using the rparts and caret packages (Kuhn, 2008; Terry Therneau and Beth Atkinson, 2022) in the R statistical programming language (R Core Team, 2021). Three classifications were undertaken for region, climate and grape quality. Climate was further classified into two subcategories of rainfall and temperature, resulting in a total of 5 classification trees being created.
-Classification trees were validated using K-fold cross validation. Each model was validated using 10 folds, utilising a random selection of different samples ten separate times to validate each of the  classification trees. A summary confusion matrix was then constructed to show the class bias and overall accuracy of each tree.
+Classification Trees were developed to discern the different practices within regions and climates, 
+% Were they? Or was it to discern regional differences and then compare them?
+comparing these relationships to those linked to grape quality. This was done using the rparts and caret packages \autocite{kuhnBuildingPredictiveModels2008,terrytherneauRpartRecursivePartitioning2022} in the R statistical programming language (R Core Team, 2021). 
+\newline
+Three classifications were undertaken for region, climate and grape quality.
+% Is this three classifications for each of these, being 9 in total? Or three overall, one for each?
+Climate was further classified into two subcategories of rainfall and temperature,
+% Why was this done?
+resulting in a total of 5 classification trees being created. % You say this too late!
+Classification trees were validated using K-fold cross validation.% This could be its own section!
+ Each model was validated using 10 folds, utilising a random selection of different samples ten separate times to validate each of the  classification trees. A summary confusion matrix was then constructed to show the class bias and overall accuracy of each tree.
+ % To what end? Why do we want them to be accurate?? What does this analysis achieve?
+
+% Was the analysis validated?
+% How where the carts compared??
+% I still do not know what the models really where
+
 
 \section{Results}
 
