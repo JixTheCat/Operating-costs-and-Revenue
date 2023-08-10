@@ -84,7 +84,9 @@ df_o = df.select_dtypes("O")
 df_int = df.select_dtypes(int)
 df_floats = df_floats.apply(np.log)
 df_floats = df_floats.replace({np.inf: np.nan, -np.inf: np.nan})
-df_floats = centre_scale(df_floats)
+
+# We do not want to scale and centre things as we are using classification techniques. In particular these are partition techniques, and so the raw data is important.
+#df_floats = centre_scale(df_floats)
 
 # original df
 pd.concat([df_floats, df_o, df_int], axis=1).to_csv("df.csv")
@@ -114,7 +116,7 @@ df_floats["herbicide_spraying_number_of_times_passes_per_year"] = df["herbicide_
 df_floats["insecticide_spraying_number_of_times_passes_per_year"] = df["insecticide_spraying_number_of_times_passes_per_year"]
 
 for col in cols_to_transform:
-    df_floats[col] = df[col].div(df["area_harvested"], axis=0)*1000
+    df_floats[col] = df[col].div(df["area_harvested"], axis=0)*10000
 
 pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfp.csv")
 
@@ -164,7 +166,7 @@ prop_cols = [
     , 'vineyard_area_red_grapes'
 ]
 for col in prop_cols:
-    df_floats[col] = df[col].div(df["vineyard_area"], axis=0)*1000
+    df_floats[col] = df[col].div(df["vineyard_area"], axis=0)*10000
 
 # These are a kind of proportion 2 passes is 200%
 df_floats["total_tractor_passes"] = df["total_tractor_passes"]
