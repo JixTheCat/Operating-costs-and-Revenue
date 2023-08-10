@@ -82,7 +82,7 @@ dfcsv.to_csv("dft.csv")
 df_floats = df.select_dtypes(float)
 df_o = df.select_dtypes("O")
 df_int = df.select_dtypes(int)
-df_floats = df_floats.apply(np.log)
+#df_floats = df_floats.apply(np.log)
 df_floats = df_floats.replace({np.inf: np.nan, -np.inf: np.nan})
 
 # We do not want to scale and centre things as we are using classification techniques. In particular these are partition techniques, and so the raw data is important.
