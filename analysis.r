@@ -8,7 +8,7 @@ trControl <- trainControl(
     , repeats=10
     , verboseIter=TRUE
 )
-    
+
 df <- read.csv("no_trans.csv")
 df$profitable <- factor(df$profitable)
 
@@ -100,22 +100,3 @@ rf <- train(
     , na.action = na.omit
     , tuneLength=10
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
