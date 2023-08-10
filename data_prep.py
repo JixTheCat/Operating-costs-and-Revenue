@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 
 df = pd.read_feather("df.feather")
+
 # we get the indices of those that made profit
 indices = df[
     (df["total_operating_costs"]>0) & (df["total_operating_costs"]>0)].index
@@ -11,7 +12,7 @@ df["profit"] = np.nan
 # calculate profit
 df.loc[indices, "profit"] = df.loc[
     indices, "total_grape_revenue"] - df.loc[indices, "total_operating_costs"]
-df["area_harvested"] = df["area_harvested"]*1000
+df["area_harvested"] = df["area_harvested"]*10000
 # We create a binary classification of those that made a profit
 # as oppose to a loss
 df["profitable"] = np.nan
@@ -53,10 +54,10 @@ for i, row in df.iterrows():
         df.at[i, "prev_avg"] = np.nan
 df["prev_avg"] = df["prev_avg"].replace({0: np.nan})
 
-dfcsv = pd.read_csv("no_trans.csv")
-dfcsv["profit"] = df["profit"].copy()
-dfcsv["profitable"] = df["profitable"].copy()
-dfcsv["prev_avg"] = df["prev_avg"]
+#dfcsv = pd.read_csv("no_trans.csv")
+#dfcsv["profit"] = df["profit"].copy()
+#dfcsv["profitable"] = df["profitable"].copy()
+#dfcsv["prev_avg"] = df["prev_avg"]
 
 # We add the wine australia survey data:
 df["average_per_tonne"] = df["average_per_tonne"].replace({0: np.nan})
@@ -77,7 +78,7 @@ df.loc[(1500<=df["average_per_tonne"])&(df["average_per_tonne"]<2000), "grade"] 
 df.loc[(2000<=df["average_per_tonne"]), "grade"] = "A"
 
 # no transformation
-dfcsv.to_csv("dft.csv")
+#dfcsv.to_csv("dft.csv")
 
 df_floats = df.select_dtypes(float)
 df_o = df.select_dtypes("O")
