@@ -1,4 +1,4 @@
 pandas
-sqlalchemy
-pyarrow
-IPython
+xgboost
+sklearn
+matplotlib
