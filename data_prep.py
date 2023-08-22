@@ -12,7 +12,7 @@ df["profit"] = np.nan
 # calculate profit
 df.loc[indices, "profit"] = df.loc[
     indices, "total_grape_revenue"] - df.loc[indices, "total_operating_costs"]
-df["area_harvested"] = df["area_harvested"]*10000
+# df["area_harvested"] = df["area_harvested"]*10000
 # We create a binary classification of those that made a profit
 # as oppose to a loss
 df["profitable"] = np.nan
@@ -77,6 +77,12 @@ df.loc[(600<=df["average_per_tonne"])&(df["average_per_tonne"]<1500), "grade"] =
 df.loc[(1500<=df["average_per_tonne"])&(df["average_per_tonne"]<2000), "grade"] = "B"
 df.loc[(2000<=df["average_per_tonne"]), "grade"] = "A"
 
+df["total_fertiliser"] =  (df['synthetic_nitrogen_applied']
+    + df['organic_nitrogen_applied']
+    + df['synthetic_fertiliser_applied']
+    + df['organic_fertiliser_applied']
+)
+
 # no transformation
 #dfcsv.to_csv("dft.csv")
 
@@ -116,8 +122,8 @@ df_floats["fungicide_spraying_number_of_times_passes_per_year"] = df["fungicide_
 df_floats["herbicide_spraying_number_of_times_passes_per_year"] = df["herbicide_spraying_number_of_times_passes_per_year"]
 df_floats["insecticide_spraying_number_of_times_passes_per_year"] = df["insecticide_spraying_number_of_times_passes_per_year"]
 
-for col in cols_to_transform:
-    df_floats[col] = df[col].div(df["area_harvested"], axis=0)*10000
+# for col in cols_to_transform:
+#     df_floats[col] = df[col].div(df["area_harvested"], axis=0)*10000
 
 pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfp.csv")
 
@@ -125,11 +131,11 @@ pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfp.csv")
 for col in cols_to_transform:
     df_floats[col] = bin_col(df[col])
 
-df_floats["total_tractor_passes"] = bin_col(df["total_tractor_passes"])
-df_floats["slashing_number_of_times_passes_per_year"] = bin_col(df["slashing_number_of_times_passes_per_year"])
-df_floats["fungicide_spraying_number_of_times_passes_per_year"] = bin_col(df["fungicide_spraying_number_of_times_passes_per_year"])
-df_floats["herbicide_spraying_number_of_times_passes_per_year"] = bin_col(df["herbicide_spraying_number_of_times_passes_per_year"])
-df_floats["insecticide_spraying_number_of_times_passes_per_year"] = bin_col(df["insecticide_spraying_number_of_times_passes_per_year"])
+# df_floats["total_tractor_passes"] = bin_col(df["total_tractor_passes"])
+# df_floats["slashing_number_of_times_passes_per_year"] = bin_col(df["slashing_number_of_times_passes_per_year"])
+# df_floats["fungicide_spraying_number_of_times_passes_per_year"] = bin_col(df["fungicide_spraying_number_of_times_passes_per_year"])
+# df_floats["herbicide_spraying_number_of_times_passes_per_year"] = bin_col(df["herbicide_spraying_number_of_times_passes_per_year"])
+# df_floats["insecticide_spraying_number_of_times_passes_per_year"] = bin_col(df["insecticide_spraying_number_of_times_passes_per_year"])
 
 pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfb.csv")
 
