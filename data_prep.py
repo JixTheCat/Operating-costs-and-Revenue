@@ -114,6 +114,15 @@ cols_to_transform = [
     , "irrigation_type_non_irrigated"
     , "irrigation_type_overhead_sprinkler"
     , "irrigation_type_undervine_sprinkler"
+    , 'river_water'
+    , 'groundwater'
+    , 'surface_water_dam'
+    , 'recycled_water_from_other_source'
+    , 'mains_water'
+    , 'other_water'
+    , 'water_applied_for_frost_control'
+    , "nh_frost"
+    , "nh_disease"
 ]
 
 df_floats["total_tractor_passes"] = df["total_tractor_passes"]
@@ -162,6 +171,8 @@ bin_cols = [
     , 'mains_water'
     , 'other_water'
     , 'water_applied_for_frost_control'
+    , "nh_frost"
+    , "nh_disease"
 ]
 
 for col in bin_cols:
