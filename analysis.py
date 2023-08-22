@@ -19,17 +19,11 @@ df = pd.read_csv("dfb.csv")
 
 df["nh_disease"] = bin_col(df["nh_disease"].replace({np.nan: 0})**2)
 
-df["fertiliser"] =  (df['synthetic_nitrogen_applied']
-    + df['organic_nitrogen_applied']
-    + df['synthetic_fertiliser_applied']
-    + df['organic_fertiliser_applied']
-)
-
 cols = ['tonnes_grapes_harvested'
     , 'area_harvested'
     , 'water_used'
     , 'total_tractor_passes'
-    , "fertiliser"
+    , "total_fertiliser"
     #, 'total_vineyard_fuel'
     #, 'total_vineyard_electricity'
     #, 'total_irrigation_area'
