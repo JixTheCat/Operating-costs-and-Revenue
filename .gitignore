@@ -8,6 +8,7 @@ conn.py
 *.csv
 *.png
 *.ods
+*.json
 
 # Exclude virtual environments
 venv/*
