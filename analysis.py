@@ -1,3 +1,4 @@
+from numpy import savetxt
 import pandas as pd
 import xgboost as xgb
 from sklearn.model_selection import train_test_split, cross_val_score, RepeatedKFold
@@ -206,7 +207,9 @@ def train_model_b(df: pd.DataFrame, y_name: str):
     model.save_model("{}.json".format(y_name))
 
     validation = kfold_val(model, X, y, X_val, y_val)
-    validation["accuracy"].tofile("{}_accuracy".format(y_name))
+    f = open("{}_accuracy.csv".format(y_name), "w")
+    f.write("{}".format(validation["accuracy"]))
+    f.close()
     validation["val"].to_csv("{}_val.csv".format(y_name))
     validation["all"].to_csv("{}_all.csv".format(y_name))
 
@@ -264,7 +267,9 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
     model.save_model("{}.json".format(y_name))
 
     validation = kfold_val(model, X, y, X_val, y_val)
-    validation["accuracy"].tofile("{}_accuracy".format(y_name))
+    f = open("{}_accuracy.csv".format(y_name), "w")
+    f.write("{}".format(validation["accuracy"]))
+    f.close()
     validation["val"].to_csv("{}_val.csv".format(y_name))
     validation["all"].to_csv("{}_all.csv".format(y_name))
 
