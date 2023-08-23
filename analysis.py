@@ -140,7 +140,7 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
         , importance_type="gain"
         , learning_rate=0.00025
         , objective="reg:squarederror"
-        , eval_metric=r2_score
+        , eval_metric="rmse"
     )
 
     model.fit(X_train
@@ -160,7 +160,7 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
     feature_loss = pd.DataFrame()
     feature_loss["loss"] = model.feature_importances_
     feature_loss.index = model.feature_names_in_
-    feature_loss.tocsv("{}_loss.csv".format(y_name))
+    feature_loss.to_csv("{}_loss.csv".format(y_name))
 
     model.save_model("{}.json".format(y_name))
     pd.DataFrame(scores).to_csv("{}_scores.csv".format(y_name))
@@ -201,7 +201,7 @@ def train_model_b(df: pd.DataFrame, y_name: str):
     feature_loss = pd.DataFrame()
     feature_loss["loss"] = model.feature_importances_
     feature_loss.index = model.feature_names_in_
-    feature_loss.tocsv("{}_loss.csv".format(y_name))
+    feature_loss.to_csv("{}_loss.csv".format(y_name))
 
     model.save_model("{}.json".format(y_name))
 
@@ -259,7 +259,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
     feature_loss = pd.DataFrame()
     feature_loss["loss"] = model.feature_importances_
     feature_loss.index = model.feature_names_in_
-    feature_loss.tocsv("{}_loss.csv".format(y_name))
+    feature_loss.to_csv("{}_loss.csv".format(y_name))
 
     model.save_model("{}.json".format(y_name))
 
