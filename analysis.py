@@ -34,8 +34,8 @@ def kfold_val(model: xgb.sklearn.XGBClassifier
 
     accuracy = accuracy_score(y_val, predictions)
 
-    print("validation data prediction:")
-    print("Accuracy: {0:.2%}".format(accuracy))
+    # print("validation data prediction:")
+    # print("Accuracy: {0:.2%}".format(accuracy))
 
     # conf with val data
     predictions = [round(value) for value in y_pred]
@@ -43,8 +43,9 @@ def kfold_val(model: xgb.sklearn.XGBClassifier
     conf = pd.DataFrame({"actual": y_val.values, "predicted": predictions})
     conf["actual"] = conf["actual"].apply(int)
 
-    print("confusion matrix for validation set")
-    print(conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0))
+    # print("confusion matrix for validation set")
+    # print(conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0))
+    val = conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0)
 
     # confusion matrix
     y_pred = model.predict(X)
@@ -53,8 +54,11 @@ def kfold_val(model: xgb.sklearn.XGBClassifier
     conf = pd.DataFrame({"actual": y.values, "predicted": predictions})
     conf["actual"] = conf["actual"].apply(int)
 
-    print("confusion matrix for all data")
-    print(conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0))
+    # print("confusion matrix for all data")
+    # print(conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0))
+    all = conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0)
+
+    return {"accuracy": accuracy, "all": all, "val": val}
 
 # Feature importance
 # feature_importances = rf_gridsearch.best_estimator_.feature_importances_
@@ -154,7 +158,10 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
     feature_loss["loss"] = model.feature_importances_
     feature_loss.index = model.feature_names_in_
 
-    return model, scores
+    model.save_model("{}.json".format(y_name))
+    pd.DataFrame(scores).to_csv("{}.csv".format(y_name))
+
+    return
 
 # binary class
 def train_model_b(df: pd.DataFrame, y_name: str):
@@ -187,9 +194,17 @@ def train_model_b(df: pd.DataFrame, y_name: str):
         , verbose = True
     )
 
-    kfold_val(model, X, y, X_val, y_val)
+    validation = kfold_val(model, X, y, X_val, y_val)
 
-    return model
+
+    model.save_model("{}.json".format(y_name))
+
+    with open(y_name, 'w') as f:
+        f.writelines(validation["accuracy"])
+    validation["val"].to_csv("{}_val.csv".format(y_name))
+    validation["all"].to_csv("{}_all.csv".format(y_name))
+
+    return
 
 #################
 #   Multiclass  #
@@ -235,9 +250,16 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
         , verbose = True
     )
 
-    kfold_val(model, X, y, X_val, y_val)
+    validation = kfold_val(model, X, y, X_val, y_val)
 
-    return model, lookup_table
+    model.save_model("{}.json".format(y_name))
+
+    with open(y_name, 'w') as f:
+        f.writelines(validation["accuracy"])
+    validation["val"].to_csv("{}_val.csv".format(y_name))
+    validation["all"].to_csv("{}_all.csv".format(y_name))
+
+    return lookup_table
 
 
 
