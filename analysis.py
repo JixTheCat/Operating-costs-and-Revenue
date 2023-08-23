@@ -82,76 +82,28 @@ cat_cols = [ # These are binary
     , "giregion"
 ]
 
-
+# We need to declare each column that is categorical
+# as a categorical column!
+#
+# later these need to be one hot encoded.
 for column in cat_cols:
     df[column] = pd.Categorical(df[column])
 
-y_name = "bare_soil"
-categoric = True
+for y_name in cols:
+    model, scores = train_model(
+        df[cols]
+        , y_name
+        , df[cols].dtypes.loc[y_name] == "category"
+        , val_size=.1/.9)
+    
 
-model = train_model(df[cols], y_name, categoric)
 
-def train_model(df: pd.DataFrame, y_name: str, categoric: bool, test_size=0.1, val_size=0):
-    """Trains an XGBoosted Tree given a y variable and dataframe. """
-    # X, y setup
-    # Currently giregion is in both the predicted and predictors! You gotta fix that
-    X = df.drop([y_name], axis=1)
-    X = pd.get_dummies(X)
-    # Make sure that the y variable is not in the X variable or you will have a lot of trouble!!
 
-    # we add a random number for baselining importance
-
-    #X["random"] = np.random.normal(0, 1, len(X))
-    # i = 0
-    # giregion_lookup = {}
-    # for giregion in df["giregion"].unique():
-    #     giregion_lookup[giregion] = i
-    #     i += 1
-    # df["giregion"] = df["giregion"].replace(giregion_lookup)
-
-    # split into train test val
-    y = df[y_name]
-    X_train, X_test, y_train, y_test \
-        = train_test_split(X, y, test_size=test_size, random_state=1)
-
-    if val_size != 0:
-        X_train, X_val, y_train, y_val \
-            = train_test_split(X_train, y_train, test_size=val_size, random_state=1) 
-    else:
-        y_val = 0
-        X_val = 0
-
-    dtrain = xgb.DMatrix(X_train, label=y_train.apply(int), enable_categorical=categoric)
-    dtest = xgb.DMatrix(X_test, label=y_test, enable_categorical=categoric)
-    if val_size != 0:
-        dval = xgb.DMatrix(X_val, label=y_val, enable_categorical=categoric)
-
-    # setup model
-
-    param = {"colsample_bytree": 0.3, "learning_rate": 0.00025, "objective": "binary:logistic"}
-
-    param["eval_metric"] = "auc"
-
-    evallist = [(dtrain, "train"), (dtest, "eval")]
-
-    num_round = 100
-
-    model = xgb.XGBClassifier(
-        learning_rate=0.005
-        , n_estimators=400
-        , scale_pos_weight=45
-        , importance_type="gain")
-
-    model.fit(X_train
-        , y_train
-        #, params = param
-        #, num_boost_round = num_round
-        #, nfold = 5
-        , eval_set=[(X_test, y_test)]
-        , verbose = True
-    )
-
-    return model, X_val, y_val
+    # we want the validation
+    # # we want the loss
+    # feature_loss = pd.DataFrame()
+    # feature_loss["loss"] = model.feature_importances_
+    # feature_loss.index = model.feature_names_in_
 
 # kfold results
 
@@ -161,33 +113,38 @@ def train_model(df: pd.DataFrame, y_name: str, categoric: bool, test_size=0.1, v
 # print("Accuracy: {0:.2%} ({1:.2%})".format(results.mean(), results.std()))
 
 # validation results
+def kfold_val(model: xgb.sklearn.XGBClassifier
+              , X
+              , y
+              , X_val: pd.DataFrame
+              , y_val: pd.DataFrame):
+    """Kfold validation of xgboost model given its data."""
+    y_pred = model.predict(X_val)
+    predictions = [round(value) for value in y_pred]
 
-y_pred = model.predict(X_val)
-predictions = [round(value) for value in y_pred]
+    accuracy = accuracy_score(y_val, predictions)
 
-accuracy = accuracy_score(y_val, predictions)
+    print("validation data prediction:")
+    print("Accuracy: {0:.2%}".format(accuracy))
 
-print("validation data prediction:")
-print("Accuracy: {0:.2%}".format(accuracy))
+    # conf with val data
+    predictions = [round(value) for value in y_pred]
 
-# conf with val data
-predictions = [round(value) for value in y_pred]
+    conf = pd.DataFrame({"actual": y_val.values, "predicted": predictions})
+    conf["actual"] = conf["actual"].apply(int)
 
-conf = pd.DataFrame({"actual": y_val.values, "predicted": predictions})
-conf["actual"] = conf["actual"].apply(int)
+    print("confusion matrix for validation set")
+    print(conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0))
 
-print("confusion matrix for validation set")
-print(conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0))
+    # confusion matrix
+    y_pred = model.predict(X)
+    predictions = [round(value) for value in y_pred]
 
-# confusion matrix
-y_pred = model.predict(X)
-predictions = [round(value) for value in y_pred]
+    conf = pd.DataFrame({"actual": y.values, "predicted": predictions})
+    conf["actual"] = conf["actual"].apply(int)
 
-conf = pd.DataFrame({"actual": y.values, "predicted": predictions})
-conf["actual"] = conf["actual"].apply(int)
-
-print("confusion matrix for all data")
-print(conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0))
+    print("confusion matrix for all data")
+    print(conf.groupby(["actual", "predicted"]).size().unstack(fill_value=0))
 
 # Feature importance
 # feature_importances = rf_gridsearch.best_estimator_.feature_importances_
@@ -242,4 +199,144 @@ stds = grid_result.cv_results_["std_test_score"]
 params = grid_result.cv_results_["params"]
 for mean, stdev, param in zip(means, stds, params):
     print("%f (%f) with: %r" % (mean, stdev, param))
+
+
+
+
+
+###################
+# Traning scripts #
+###################
+
+# Regressor
+def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
+    """Trains an XGBoosted Regression Tree given a y variable and dataframe. """
+    # X, y setup
+    # Currently giregion is in both the predicted and predictors! You gotta fix that
+    X = df.drop([y_name], axis=1)
+    X = pd.get_dummies(X)
     
+    y = df[y_name]
+
+    X_train, X_test, y_train, y_test \
+        = train_test_split(X, y, test_size=test_size, random_state=1)
+
+    model = xgb.XGBRegressor(
+         n_estimators=10
+        , scale_pos_weight=45
+        , importance_type="gain"
+        , learning_rate=0.00025
+        , objective="reg:squarederror"
+        , eval_metric=r2_score
+    )
+
+    model.fit(X_train
+        , y_train
+        #, num_boost_round = num_round
+        #, nfold = 5
+        , eval_set=[(X_test, y_test)]
+        , verbose = True
+    )
+
+    cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
+    scores = cross_val_score(model, X, y, scoring='r2', cv=cv, n_jobs=-1)
+    # scores = cross_val_score(model, X.drop("tonnes_grapes_harvested", axis=1), y, scoring='r2', cv=cv, n_jobs=-1)
+    print(scores)
+    # we want the validation
+    # we want the loss
+    feature_loss = pd.DataFrame()
+    feature_loss["loss"] = model.feature_importances_
+    feature_loss.index = model.feature_names_in_
+
+    return model, scores
+
+# binary class
+def train_model_b(df: pd.DataFrame, y_name: str):
+    """Trains an XGBoosted Tree given a y variable and dataframe. """
+    X = df.drop([y_name], axis=1)
+    X = pd.get_dummies(X)
+
+    y = df[y_name]
+
+    X_train, X_test, y_train, y_test \
+        = train_test_split(X, y, test_size=0.1)
+
+    X_train, X_val, y_train, y_val \
+        = train_test_split(X_train, y_train, test_size=0.1/0.9) 
+
+    dtrain = xgb.DMatrix(X_train, label=y_train.apply(int), enable_categorical=True)
+    dtest = xgb.DMatrix(X_test, label=y_test, enable_categorical=True)
+
+    # We define the measure of objective for the different types of variables.
+
+    model = xgb.XGBClassifier(
+         n_estimators=10
+        , scale_pos_weight=45
+        , importance_type="gain"
+        , objective="binary:logistic"
+        , learning_rate=0.00025
+        , eval_metric="auc"
+        )
+
+    model.fit(X_train
+        , y_train
+        , eval_set=[(X_test, y_test)]
+        , verbose = True
+    )
+
+    kfold_val(model, X, y, X_val, y_val)
+
+    return model
+
+#################
+#   Multiclass  #
+#################
+
+def train_model_multi(df: pd.DataFrame, y_name: str):
+    """Trains an XGBoosted Tree given a y variable and dataframe. """
+    
+    # We need at least 3 entries into a region for it to be able to be classified.
+
+    X = df[df.groupby(y_name)[y_name].transform('count')>2].copy() 
+
+    y = X[y_name]
+    y = y.cat.remove_categories(list(set(y.unique().categories) - set(y.unique())))
+    X = X.drop([y_name], axis=1)
+    X = pd.get_dummies(X)
+
+
+    i = 0
+    lookup_table = {}
+    for element in y.unique():
+        lookup_table[element] = i
+        i += 1
+    y = y.replace(lookup_table)
+
+    X_train, X_test, y_train, y_test \
+        = train_test_split(X, y, test_size=0.1, stratify=y)
+
+    model = xgb.XGBClassifier(
+            n_estimators=10
+        , importance_type="gain"
+        , objective="multi:softmax"
+        , learning_rate=0.00025
+        )
+
+    # Currently there is no eval metric for multi_class classifiers
+    # So it trains off the soft max.
+    model.fit(X_train
+        , y_train
+        , eval_set=[(X_test, y_test)]
+        , verbose = True
+    )
+
+    kfold_val(model, X, y, X_val, y_val)
+
+    return model, lookup_table
+
+
+
+
+
+
+
