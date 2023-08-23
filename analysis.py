@@ -1,104 +1,13 @@
 import pandas as pd
-import numpy as np
 import xgboost as xgb
-from xgboost import cv
-from sklearn.model_selection import train_test_split, KFold, cross_val_score
-from sklearn.metrics import mean_squared_error
-import matplotlib.pyplot as plt
-from data import bin_col
+from sklearn.model_selection import train_test_split, cross_val_score, RepeatedKFold
+from sklearn.metrics import r2_score
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import accuracy_score
 
 import random
 
 random.seed(100)
-
-################################################################################
-# Setup
-df = pd.read_csv("dfb.csv")
-
-cols = ["tonnes_grapes_harvested"
-    , "area_harvested"
-    , "water_used"
-    , "total_tractor_passes"
-    , "total_fertiliser"
-    , "synthetic_nitrogen_applied"
-    , "organic_nitrogen_applied"
-    , "synthetic_fertiliser_applied"
-    , "organic_fertiliser_applied"
-    , "giregion"
-    , "data_year_id"
-    , "river_water"
-    , "groundwater"
-    , "surface_water_dam"
-    , "recycled_water_from_other_source"
-    , "mains_water"
-    , "other_water"
-    , "water_applied_for_frost_control"
-    , "bare_soil"
-    , "annual_cover_crop"
-    , "permanent_cover_crop_native"
-    , "permanent_cover_crop_non_native"
-    , "permanent_cover_crop_volunteer_sward"
-    , "diesel_vineyard"
-    , "electricity_vineyard"
-    , "petrol_vineyard"
-    , "vineyard_solar"
-    , "vineyard_wind"
-    , "lpg_vineyard"
-    , "biodiesel_vineyard"
-    , "slashing_number_of_times_passes_per_year"
-    , "fungicide_spraying_number_of_times_passes_per_year"
-    , "herbicide_spraying_number_of_times_passes_per_year"
-    , "insecticide_spraying_number_of_times_passes_per_year"
-]
-
-
-cat_cols = [ # These are binary
-    "bare_soil"
-    , "annual_cover_crop"
-    , "permanent_cover_crop_native"
-    , "permanent_cover_crop_non_native"
-    , "permanent_cover_crop_volunteer_sward"
-    , "irrigation_energy_diesel"
-    , "irrigation_energy_electricity"
-    , "irrigation_energy_pressure"
-    , "irrigation_energy_solar"
-    , "irrigation_type_dripper"
-    , "irrigation_type_flood"
-    , "irrigation_type_non_irrigated"
-    , "irrigation_type_overhead_sprinkler"
-    , "irrigation_type_undervine_sprinkler"
-    , 'river_water'
-    , 'groundwater'
-    , 'surface_water_dam'
-    , 'recycled_water_from_other_source'
-    , 'mains_water'
-    , 'other_water'
-    , 'water_applied_for_frost_control'
-    , "nh_frost"
-    , "nh_disease"
-    , "data_year_id" # These are one hot encoded
-    , "giregion"
-]
-
-# We need to declare each column that is categorical
-# as a categorical column!
-#
-# later these need to be one hot encoded.
-for column in cat_cols:
-    df[column] = pd.Categorical(df[column])
-
-for y_name in cols:
-    model, scores = train_model(
-        df[cols]
-        , y_name
-        , df[cols].dtypes.loc[y_name] == "category"
-        , val_size=.1/.9)
-    
-
-
-
     # we want the validation
     # # we want the loss
     # feature_loss = pd.DataFrame()
@@ -113,6 +22,7 @@ for y_name in cols:
 # print("Accuracy: {0:.2%} ({1:.2%})".format(results.mean(), results.std()))
 
 # validation results
+
 def kfold_val(model: xgb.sklearn.XGBClassifier
               , X
               , y
@@ -148,8 +58,8 @@ def kfold_val(model: xgb.sklearn.XGBClassifier
 
 # Feature importance
 # feature_importances = rf_gridsearch.best_estimator_.feature_importances_
-xgb.plot_importance(model)
-plt.show()
+# xgb.plot_importance(model)
+# plt.show()
 
 # Feature importance!!!
 # thIS PERMUTATION IS ONLY FOR MODELS YOU WANT TO USE SUCH AS PROFIT AND OPERATIONAL COSTS.
@@ -176,36 +86,32 @@ plt.show()
 # Fixing for different classification levels
 
 
-from numpy import mean
-from sklearn.datasets import make_classification
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import RepeatedStratifiedKFold
-from xgboost import XGBClassifier
-model = XGBClassifier()
-# define grid
-weights = [1, 10, 25, 50, 75, 99, 100, 1000]
-param_grid = dict(scale_pos_weight=weights)
-# define evaluation procedure
-cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
-# define grid search
-grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1, cv=cv, scoring="roc_auc")
-# execute the grid search
-grid_result = grid.fit(X, y)
-# report the best configuration
-print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
-# report all configurations
-means = grid_result.cv_results_["mean_test_score"]
-stds = grid_result.cv_results_["std_test_score"]
-params = grid_result.cv_results_["params"]
-for mean, stdev, param in zip(means, stds, params):
-    print("%f (%f) with: %r" % (mean, stdev, param))
-
-
-
-
+# from numpy import mean
+# from sklearn.datasets import make_classification
+# from sklearn.model_selection import GridSearchCV
+# from sklearn.model_selection import RepeatedStratifiedKFold
+# from xgboost import XGBClassifier
+# model = XGBClassifier()
+# # define grid
+# weights = [1, 10, 25, 50, 75, 99, 100, 1000]
+# param_grid = dict(scale_pos_weight=weights)
+# # define evaluation procedure
+# cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
+# # define grid search
+# grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1, cv=cv, scoring="roc_auc")
+# # execute the grid search
+# grid_result = grid.fit(X, y)
+# # report the best configuration
+# print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
+# # report all configurations
+# means = grid_result.cv_results_["mean_test_score"]
+# stds = grid_result.cv_results_["std_test_score"]
+# params = grid_result.cv_results_["params"]
+# for mean, stdev, param in zip(means, stds, params):
+#     print("%f (%f) with: %r" % (mean, stdev, param))
 
 ###################
-# Traning scripts #
+# Training scripts #
 ###################
 
 # Regressor
@@ -264,9 +170,6 @@ def train_model_b(df: pd.DataFrame, y_name: str):
     X_train, X_val, y_train, y_val \
         = train_test_split(X_train, y_train, test_size=0.1/0.9) 
 
-    dtrain = xgb.DMatrix(X_train, label=y_train.apply(int), enable_categorical=True)
-    dtest = xgb.DMatrix(X_test, label=y_test, enable_categorical=True)
-
     # We define the measure of objective for the different types of variables.
 
     model = xgb.XGBClassifier(
@@ -297,13 +200,12 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
     
     # We need at least 3 entries into a region for it to be able to be classified.
 
-    X = df[df.groupby(y_name)[y_name].transform('count')>2].copy() 
+    X = df[df.groupby(y_name)[y_name].transform('count')>6].copy() 
 
     y = X[y_name]
     y = y.cat.remove_categories(list(set(y.unique().categories) - set(y.unique())))
     X = X.drop([y_name], axis=1)
     X = pd.get_dummies(X)
-
 
     i = 0
     lookup_table = {}
@@ -314,6 +216,9 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
 
     X_train, X_test, y_train, y_test \
         = train_test_split(X, y, test_size=0.1, stratify=y)
+
+    X_train, X_val, y_train, y_val \
+        = train_test_split(X_train, y_train, test_size=0.1/0.9, stratify=y_train) 
 
     model = xgb.XGBClassifier(
             n_estimators=10
@@ -337,6 +242,95 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
 
 
 
+
+################################################################################
+# Setup
+df = pd.read_csv("dfb.csv")
+
+cols = ["tonnes_grapes_harvested"
+    , "area_harvested"
+    , "water_used"
+    , "total_tractor_passes"
+    , "total_fertiliser"
+    , "synthetic_nitrogen_applied"
+    , "organic_nitrogen_applied"
+    , "synthetic_fertiliser_applied"
+    , "organic_fertiliser_applied"
+    , "giregion"
+    , "data_year_id"
+    , "river_water"
+    , "groundwater"
+    , "surface_water_dam"
+    , "recycled_water_from_other_source"
+    , "mains_water"
+    , "other_water"
+    , "water_applied_for_frost_control"
+    , "bare_soil"
+    , "annual_cover_crop"
+    , "permanent_cover_crop_native"
+    , "permanent_cover_crop_non_native"
+    , "permanent_cover_crop_volunteer_sward"
+    , "diesel_vineyard"
+    , "electricity_vineyard"
+    , "petrol_vineyard"
+    , "vineyard_solar"
+    , "vineyard_wind"
+    , "lpg_vineyard"
+    , "biodiesel_vineyard"
+    , "slashing_number_of_times_passes_per_year"
+    , "fungicide_spraying_number_of_times_passes_per_year"
+    , "herbicide_spraying_number_of_times_passes_per_year"
+    , "insecticide_spraying_number_of_times_passes_per_year"
+]
+
+# These are the columns that will be classes!
+
+cat_cols = [ # These are binary
+    "bare_soil"
+    , "annual_cover_crop"
+    , "permanent_cover_crop_native"
+    , "permanent_cover_crop_non_native"
+    , "permanent_cover_crop_volunteer_sward"
+    , "irrigation_energy_diesel"
+    , "irrigation_energy_electricity"
+    , "irrigation_energy_pressure"
+    , "irrigation_energy_solar"
+    , "irrigation_type_dripper"
+    , "irrigation_type_flood"
+    , "irrigation_type_non_irrigated"
+    , "irrigation_type_overhead_sprinkler"
+    , "irrigation_type_undervine_sprinkler"
+    , 'river_water'
+    , 'groundwater'
+    , 'surface_water_dam'
+    , 'recycled_water_from_other_source'
+    , 'mains_water'
+    , 'other_water'
+    , 'water_applied_for_frost_control'
+    , "nh_frost"
+    , "nh_disease"
+    , "data_year_id" # These are one hot encoded
+    , "giregion"
+]
+
+# We need to declare each column that is categorical
+# as a categorical column!
+#
+# later these need to be one hot encoded.
+for column in cat_cols:
+    df[column] = pd.Categorical(df[column])
+
+for y_name in cols:
+    if y_name in cat_cols:
+        if y_name in ["data_year_id", "giregion"]:
+            train_model_multi(df[cols]
+                , y_name)
+        else:
+            train_model_b(df[cols]
+                , y_name)
+    else:
+        train_model_reg(df[cols]
+                , y_name)
 
 
 
