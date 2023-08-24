@@ -153,7 +153,7 @@ We can link these contributing factors back to the baselines - at least anecdota
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The Australian wine-growing industry is a rich and diverse landscape that is separated into multiple Geographical Indicator Regions. Each region describing unique reputations, qualities and varietals of wine produced there. While a great deal has been done regarding individual regional properties and traits, there has been little statistical insight into broader regional comparisons; due to a lack of cross-regional and in-depth data sources \autocite{keithjonesAustralianWineIndustry2002,knightFirmResourcesDevelopment2019}. In this study we use Classification Trees to compare regional differences and how these differences relate to sustainable practices. 
+The Australian wine-growing industry is a rich and diverse landscape that is separated into multiple Geographical Indicator Regions. Each region describing unique reputations, qualities and varietals of wine produced there. While a great deal has been done regarding individual regional properties and traits, there has been little statistical insight into broader regional comparisons; due to a lack of cross-regional and in-depth data sources \citep{keithjonesAustralianWineIndustry2002,knightFirmResourcesDevelopment2019}. In this study we use Classification Trees to compare regional differences and how these differences relate to sustainable practices. 
 \newline
 A vineyard's region predetermines several physical parameters, such as: climate, geology and soil; making location a widely considered key determinant of grape yield and quality \citep{abbalDecisionSupportSystem2016,agostaRegionalClimateVariability2012,fragaMultivariateClusteringViticultural2017}. 
 %
@@ -168,8 +168,6 @@ Through the use of classification trees this study aims to highlight the key dif
 % What is interesting - what will be discussed in the article with regard to these results? What makes me want to read the article?
 % And what is the take away point of the article? If I cant be bothered to read this article, what piece of knowledge can you leave mewiwth that I could recommend the article to someone else with?
 
-\subsubsection{A figure sub-subsection}
-
 \if{false}
 \begin{figure}
     \includegraphics{violinplot.pdf}
@@ -183,16 +181,59 @@ Through the use of classification trees this study aims to highlight the key dif
 % As with the previous paper, put the models up front it is very unclear what you have created - and less clear to understand it if there is no way to reference to it.
 
 \subsection{Data}
-The Australian wine industry is divided into 65 regions, known as a Geographical Indicator Regions (GI Region). Each GI Region is used to describe different unique localised traits of vineyards across Australia; with each having its own mixture of climatic and geophysical properties \autocite{hallidayAustralianWineEncyclopedia2009,oliverReviewSoilPhysical2013,soarClimateDriversRed2008}. Each region is explicitly defined under the Wine Australia Corporation Act of 1980 \autocite{attorney-generalsdepartmentWineAustraliaCorporation2010}. The climatic properties of a GI Region are summarised by Sustainable Winegrowing Australia (2021), where regions of similar climates are amalgamated together into superset regions. The climatic regions were utilised to illustrate similar trends and explain differences between sets of regions.
+The Australian wine industry is divided into 65 regions, known as a Geographical Indicator Regions (GI Region). Each GI Region is used to describe different unique localised traits of vineyards across Australia; with each having its own mixture of climatic and geophysical properties \citep{hallidayAustralianWineEncyclopedia2009,oliverReviewSoilPhysical2013,soarClimateDriversRed2008}. Each region is explicitly defined under the Wine Australia Corporation Act of 1980 \citep{attorney-generalsdepartmentWineAustraliaCorporation2010}. The climatic properties of a GI Region are summarised by Sustainable Winegrowing Australia (2021), where regions of similar climates are amalgamated together into superset regions. The climatic regions were utilised to illustrate similar trends and explain differences between sets of regions.
 The data used in this analysis comes from Sustainable Winegrowing Australia and covers the period 2015 to 2022. The dataset contained 3342 samples across 52 GI Regions and 1072 individual vineyards.
 
 % how was it collected
+
+\subsection{XGBoosted Trees}
+XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. They were chosen for this analysis as they provide a both high predictive performance and ability to effectively capture complex relationships. A separate XGBoosted tree was used to predict each variable. As variables were both continuous, binary and multiclass, separate functions were created to handle the three types of variables.
+
+%
+With judicious choices for , we may express a variety of tasks, such as regression, classification, and ranking. The task of training the model amounts to finding the best parameters that best fit the training data and labels
+
+. In order to train the model, we need to define the objective function to measure how well the model fit the training data.
+
+A salient characteristic of objective functions is that they consist of two parts: training loss and regularization term:
+$obj(\theta)=L(\theta)+\Omega(\theta)$
+
+where $L$ is the training loss function, and $\Omega$ is the regularization term. The training loss measures how predictive our model is with respect to the training data. A common choice of $L$ is the mean squared error, which is given by
+
+$L(\theta)=\sum_i (y_i - \hat{y_i})^2$
+
+Another commonly used loss function is logistic loss, to be used for logistic regression:
+
+The regularization term is what people usually forget to add. The regularization term controls the complexity of the model, which helps us to avoid overfitting. This sounds a bit abstract, so let us consider the following problem in the following picture. You are asked to fit visually a step function given the input data points on the upper left corner of the image. Which solution among the three do you think is the best fit?
+
+% For a given data set with n examples and m features
+% D = {(xi, yi)} (|D| = n, xi ∈ Rm, yi ∈ R), a tree ensem-
+% ble model (shown in Fig. 1) uses K additive functions to
+% predict the output.
+
+\[ \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{K}(x_{i})}, f_{K}\in \mathcal{F} \]
+
+%
+
+
+XGBoosted Regression trees were used to predict continuous variables. With data being split into 80\% training data and 20\% testing data.
+
+
+
+XGBoosted classification trees were used to classify the binary and multiclass variables. Data was split into 80\% training, 10\% testing and 10\% validation data. 
+
+
+
+
+The modelled relationships are able to be scrutinised by using techniques such as feature importance analysis. The use of the XGBoost library also incorporates regularisation techniques built into the software to mitigate over-fitting and enhance model generalisation. The further use of cross validated grid search functions allowed for the selection of better performing hyper-parameters when selecting the final model.
+
+
+
 
 \subsection{Classification Trees}
 
 Classification Trees were developed to discern the different practices within regions and climates, 
 % Were they? Or was it to discern regional differences and then compare them?
-comparing these relationships to those linked to grape quality. This was done using the rparts and caret packages \autocite{kuhnBuildingPredictiveModels2008,terrytherneauRpartRecursivePartitioning2022} in the R statistical programming language (R Core Team, 2021). 
+comparing these relationships to those linked to grape quality. This was done using the rparts and caret packages \citep{kuhnBuildingPredictiveModels2008,terrytherneauRpartRecursivePartitioning2022} in the R statistical programming language (R Core Team, 2021). 
 \newline
 Three classifications were undertaken for region, climate and grape quality.
 % Is this three classifications for each of these, being 9 in total? Or three overall, one for each?
@@ -248,7 +289,7 @@ These misclassifications are likely due to the incredibly similar regional prope
 \end{table}
 
 \subsection{Climate}
-Classifying the SWA climatic categorisation of the given regions had better performance than the GI Regions, with ~41.66\% being classified correctly. These categories were divided into 12 climatic classifications with 3 and 4 separate subsets for rainfall and temperature respectively. The decision tree behaved similarly and over classified climates with higher response rates. The results posed an interesting similarity with grape quality classifier, being influenced predominantly by water and area. The use of fungicide to separate regions that were 'Very dry' and 'Damp' can be considered as indicative of the different practices required due to climatic pressure; fungicides being more prominent in cooler regions with greater rainfall due to the higher risk of disease pressure \autocite{reynoldsManagingWineQuality2010}. % interesting although not really appropriate for the results section.
+Classifying the SWA climatic categorisation of the given regions had better performance than the GI Regions, with ~41.66\% being classified correctly. These categories were divided into 12 climatic classifications with 3 and 4 separate subsets for rainfall and temperature respectively. The decision tree behaved similarly and over classified climates with higher response rates. The results posed an interesting similarity with grape quality classifier, being influenced predominantly by water and area. The use of fungicide to separate regions that were 'Very dry' and 'Damp' can be considered as indicative of the different practices required due to climatic pressure; fungicides being more prominent in cooler regions with greater rainfall due to the higher risk of disease pressure \citep{reynoldsManagingWineQuality2010}. % interesting although not really appropriate for the results section.
  This could also potentially explain the use of contractor tractor use to discern differences in grape quality, where the lack of contractor use to prevent disease could have led to lowered quality of grapes.
 
 % You really need to show every decision tree.
@@ -266,12 +307,12 @@ had an accuracy of 55.72\% across 5 separate grades. There was a notable issue w
  The classification tree itself shows similarities to that of classifying regions in Model 1, with the type of water resource used being a prominent determiner. Although not surprising the number of contractor tractor passes is new deciding factor due disease and pests reducing the potential quality of a crop. The prevalence of contractor use is greater in regions such as the Barossa Valley and the McLaren Vale, this could be due to the difference in operational scales, with larger sites being more likely to have ownership of their own equipment for weeding and spraying due to the cost benefit.
 
 \section{Discussion}
-The difference between grape quality is most notable between warm inland regions and coastal regions such as the Riverland and Coonawarra, respectively. Grape quality is only described by a singular variable within this study, however in reality it is driven by market demand and subject to  complex forces such as international market pressure, fire, pests and disease \autocite{wineaustraliaNationalVintageReport2019,wineaustraliaNationalVintageReport2020,wineaustraliaNationalVintageReport2021,wineaustraliaNationalVintageReport2022,winemakersfederationofaustraliaNationalVintageReport2015,winemakersfederationofaustraliaNationalVintageReport2016,winemakersfederationofaustraliaNationalVintageReport2017,winemakersfederationofaustraliaNationalVintageReport2018} % The original citation included years prior to this dataset just be casreful with this. It is a bit unclear what you are really trying to cite and its relevance. I think it important to chop this up.
+The difference between grape quality is most notable between warm inland regions and coastal regions such as the Riverland and Coonawarra, respectively. Grape quality is only described by a singular variable within this study, however in reality it is driven by market demand and subject to  complex forces such as international market pressure, fire, pests and disease \citep{wineaustraliaNationalVintageReport2019,wineaustraliaNationalVintageReport2020,wineaustraliaNationalVintageReport2021,wineaustraliaNationalVintageReport2022,winemakersfederationofaustraliaNationalVintageReport2015,winemakersfederationofaustraliaNationalVintageReport2016,winemakersfederationofaustraliaNationalVintageReport2017,winemakersfederationofaustraliaNationalVintageReport2018} % The original citation included years prior to this dataset just be casreful with this. It is a bit unclear what you are really trying to cite and its relevance. I think it important to chop this up.
 The decision trees were able to offer some insights into the factors that influence grape quality and regional contrasts that contribute to different qualities. The most prominent being what readily available resources of each region were, particular the types of water available. % A citation or reference to a study looking at the disparity in wine regions and their resources - or use the data more to describe these regional differences. Is water availability apparent? Do some regions have access to more sohpisticated water sources such as pressurised water etc.
  Heavy water consumption is often linked to the mass production of grapes, % Really? proce it? Where in the results is this really found?? This sounds like a link to your previous paper but you cannot really show this and you do not really produce evidence to support this claim.
  where lower quality grapes are targeted in a quantity over quality strategy. These types of business decisions are unfortunately obfuscated by lack of in-depth data regarding vineyard business plans. 
  % This point is incredibly important but it, itself, is obfuscated by you odd claims that are not supported by facts. Better to talk about how this could improve and the weaknesses than to start spouting unsupported claims.
- Notably the literature shows that there are many complex decisions to be made on the ground depending on many compounding factors that influence both quality and yield \autocite{abadCoverCropsViticulture2021,cortezUsingDataMining2009,hallWithinseasonTemporalVariation2011,i.goodwinManagingSoilWater2009,kasimatiPredictingGrapeSugar2022,oliverReviewSoilPhysical2013,srivastavaNondestructiveSensingMethods2018}
+ Notably the literature shows that there are many complex decisions to be made on the ground depending on many compounding factors that influence both quality and yield \citep{abadCoverCropsViticulture2021,cortezUsingDataMining2009,hallWithinseasonTemporalVariation2011,i.goodwinManagingSoilWater2009,kasimatiPredictingGrapeSugar2022,oliverReviewSoilPhysical2013,srivastavaNondestructiveSensingMethods2018}
  % Woah woah woah
 %
  % what are these decisions??? Slow down speed gonzales!! This is really interseteing and important. Discuss it, its the discussion! God damn I want to know and I wrote this!.
@@ -286,7 +327,7 @@ The decision trees were able to offer some insights into the factors that influe
 % This is an interesting point. However it would be better to include other industries, such as the ones you touch on in your previous chapter. If industries such as Sake are similar - how do their decisions effect the outcomes of rice quality and Sake? A point of comparison and difference would be great here! 
  It is incredibly difficult to attribute external business decisions to produced grape quality but it is important to acknowledge that some growers are contracted to produce grapes of a particular grade; it is difficult to know whether another consumer may have graded the grape quality differently paying more or less for the same grapes given the opportunity to purchase them.
 % What are these business decisions? Can you give some examples?
- It is difficult to untangle the contributing factors to the success of winegrowers and the quality of grapes produced without further specifics of choices made through out a season \autocite{leileiheFruitYieldPrediction2022}.
+ It is difficult to untangle the contributing factors to the success of winegrowers and the quality of grapes produced without further specifics of choices made through out a season \citep{leileiheFruitYieldPrediction2022}.
 % It is difficult yes, but please at least try! Highlight some of these affects, some of these different contributing factors! What did we really learn by doing this? What can someone take away from this and say thank you for? (like Josh said)
 
 \section{Conclusion}

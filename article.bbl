@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{29}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -11,6 +11,18 @@
 \providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Abad et~al.(2021)Abad, {Hermoso de Mendoza}, Mar{\'i}n, Orcaray and
+  Santesteban}]{abadCoverCropsViticulture2021}
+\bibinfo{author}{Abad, J.}, \bibinfo{author}{{Hermoso de Mendoza}, I.},
+  \bibinfo{author}{Mar{\'i}n, D.}, \bibinfo{author}{Orcaray, L.},
+  \bibinfo{author}{Santesteban, L.G.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Cover crops in viticulture. {{A}} systematic review
+  (1): {$<$}br{$>$}{{Implications}} on soil characteristics and biodiversity in
+  vineyard}.
+\newblock \bibinfo{journal}{OENO One} \bibinfo{volume}{55},
+  \bibinfo{pages}{295--312}.
+\newblock \DOIprefix\doi{10.20870/oeno-one.2021.55.1.3599}.
 %Type = Article
 \bibitem[{Abbal et~al.(2016)Abbal, Sablayrolles, {Matzner-Lober}, Boursiquot,
   Baudrit and Carbonneau}]{abbalDecisionSupportSystem2016}
@@ -32,6 +44,32 @@
   grape yield in {{Mendoza}}, {{Argentina}}}.
 \newblock \bibinfo{journal}{Journal of Applied Meteorology and Climatology}
   \bibinfo{volume}{51}, \bibinfo{pages}{993--1009}.
+%Type = Misc
+\bibitem[{{Attorney-General's
+  Department}(2010)}]{attorney-generalsdepartmentWineAustraliaCorporation2010}
+\bibinfo{author}{{Attorney-General's Department}}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Wine {{Australia Corporation Act}} 1980}.
+%Type = Inproceedings
+\bibitem[{Chen and Guestrin(2016)}]{chenXGBoostScalableTree2016}
+\bibinfo{author}{Chen, T.}, \bibinfo{author}{Guestrin, C.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{{{XGBoost}}: {{A Scalable Tree Boosting System}}},
+  in: \bibinfo{booktitle}{Proceedings of the 22nd {{ACM SIGKDD International
+  Conference}} on {{Knowledge Discovery}} and {{Data Mining}}},
+  \bibinfo{publisher}{{ACM}}, \bibinfo{address}{{New York, NY, USA}}. pp.
+  \bibinfo{pages}{785--794}.
+\newblock \DOIprefix\doi{10.1145/2939672.2939785}.
+%Type = Inproceedings
+\bibitem[{Cortez et~al.(2009)Cortez, Teixeira, Cerdeira, Almeida, Matos and
+  Reis}]{cortezUsingDataMining2009}
+\bibinfo{author}{Cortez, P.}, \bibinfo{author}{Teixeira, J.},
+  \bibinfo{author}{Cerdeira, A.}, \bibinfo{author}{Almeida, F.},
+  \bibinfo{author}{Matos, T.}, \bibinfo{author}{Reis, J.},
+  \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Using data mining for wine quality assessment}, in:
+  \bibinfo{booktitle}{Discovery {{Science}}: 12th {{International Conference}},
+  {{DS}} 2009, {{Porto}}, {{Portugal}}, {{October}} 3-5, 2009 12},
+  \bibinfo{publisher}{{Springer}}. pp. \bibinfo{pages}{66--79}.
 %Type = Article
 \bibitem[{Fraga et~al.(2017)Fraga, Costa and
   Santos}]{fragaMultivariateClusteringViticultural2017}
@@ -41,5 +79,164 @@
   the {{Douro}} winemaking region}.
 \newblock \bibinfo{journal}{Ci\^encia T\'ec. Vitiv.} \bibinfo{volume}{32},
   \bibinfo{pages}{142--153}.
+%Type = Misc
+\bibitem[{{G. van Rossum}(1995)}]{g.vanrossumPythonTutorialTechnical1995}
+\bibinfo{author}{{G. van Rossum}}, \bibinfo{year}{1995}.
+\newblock \bibinfo{title}{Python tutorial, {{Technical Report CS-R9526}}}.
+\newblock \bibinfo{howpublished}{Centrum voor Wiskunde en Informatica (CWI),}.
+%Type = Article
+\bibitem[{Hall et~al.(2011)Hall, Lamb, Holzapfel and
+  Louis}]{hallWithinseasonTemporalVariation2011}
+\bibinfo{author}{Hall, A.}, \bibinfo{author}{Lamb, D.W.},
+  \bibinfo{author}{Holzapfel, B.P.}, \bibinfo{author}{Louis, J.P.},
+  \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Within-season temporal variation in correlations
+  between vineyard canopy and winegrape composition and yield}.
+\newblock \bibinfo{journal}{Precision Agriculture} \bibinfo{volume}{12},
+  \bibinfo{pages}{103--117}.
+%Type = Book
+\bibitem[{Halliday(2009)}]{hallidayAustralianWineEncyclopedia2009}
+\bibinfo{author}{Halliday, J.C.J.C.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Australian {{Wine Encyclopedia}}.}
+\newblock \bibinfo{publisher}{{Hardie Grant Books}}, \bibinfo{address}{{VIC}}.
+%Type = Misc
+\bibitem[{{I. Goodwin,} et~al.(2009){I. Goodwin,}, {L. McClymont,}, {D.
+  Lanyon}, {A. Zerihun}, {J. Hornbuckle}, {M. Gibberd}, {D. Mowat}, {D. Smith},
+  {M. Barnes} and {R. Correll}}]{i.goodwinManagingSoilWater2009}
+\bibinfo{author}{{I. Goodwin,}}, \bibinfo{author}{{L. McClymont,}},
+  \bibinfo{author}{{D. Lanyon}}, \bibinfo{author}{{A. Zerihun}},
+  \bibinfo{author}{{J. Hornbuckle}}, \bibinfo{author}{{M. Gibberd}},
+  \bibinfo{author}{{D. Mowat}}, \bibinfo{author}{{D. Smith}},
+  \bibinfo{author}{{M. Barnes}}, \bibinfo{author}{{R. Correll}},
+  \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Managing soil and water to target quality and reduce
+  environmental impact.}
+%Type = Article
+\bibitem[{Kasimati et~al.(2022)Kasimati, {Espejo-Garc{\'i}a}, Darra and
+  Fountas}]{kasimatiPredictingGrapeSugar2022}
+\bibinfo{author}{Kasimati, A.}, \bibinfo{author}{{Espejo-Garc{\'i}a}, B.},
+  \bibinfo{author}{Darra, N.}, \bibinfo{author}{Fountas, S.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Predicting {{Grape Sugar Content}} under {{Quality
+  Attributes Using Normalized Difference Vegetation Index Data}} and
+  {{Automated Machine Learning}}}.
+\newblock \bibinfo{journal}{Sensors} \bibinfo{volume}{22}.
+\newblock \DOIprefix\doi{10.3390/s22093249}.
+%Type = Misc
+\bibitem[{{Keith Jones}(2002)}]{keithjonesAustralianWineIndustry2002}
+\bibinfo{author}{{Keith Jones}}, \bibinfo{year}{2002}.
+\newblock \bibinfo{title}{Australian {{Wine Industry Environment Strategy}}}.
+%Type = Article
+\bibitem[{Knight et~al.(2019)Knight, Megicks, Agarwal and
+  Leenders}]{knightFirmResourcesDevelopment2019}
+\bibinfo{author}{Knight, H.}, \bibinfo{author}{Megicks, P.},
+  \bibinfo{author}{Agarwal, S.}, \bibinfo{author}{Leenders, M.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Firm resources and the development of environmental
+  sustainability among small and medium-sized enterprises: {{Evidence}} from
+  the {{Australian}} wine industry}.
+\newblock \bibinfo{journal}{Business Strategy and the Environment}
+  \bibinfo{volume}{28}, \bibinfo{pages}{25--39}.
+\newblock \DOIprefix\doi{10.1002/bse.2178}.
+%Type = Article
+\bibitem[{Kuhn(2008)}]{kuhnBuildingPredictiveModels2008}
+\bibinfo{author}{Kuhn, M.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Building {{Predictive Models}} in {{R Using}} the
+  caret {{Package}}}.
+\newblock \bibinfo{journal}{Journal of Statistical Software, Articles}
+  \bibinfo{volume}{28}, \bibinfo{pages}{1--26}.
+\newblock \DOIprefix\doi{10.18637/jss.v028.i05}.
+%Type = Article
+\bibitem[{{Leilei He} et~al.(2022){Leilei He}, {Wentai Fang}, {Guanao Zhao},
+  {Zhenchao Wu}, {Longsheng Fu}, {Rui Li}, {Yaqoob Majeed} and {Jaspreet
+  Dhupia}}]{leileiheFruitYieldPrediction2022}
+\bibinfo{author}{{Leilei He}}, \bibinfo{author}{{Wentai Fang}},
+  \bibinfo{author}{{Guanao Zhao}}, \bibinfo{author}{{Zhenchao Wu}},
+  \bibinfo{author}{{Longsheng Fu}}, \bibinfo{author}{{Rui Li}},
+  \bibinfo{author}{{Yaqoob Majeed}}, \bibinfo{author}{{Jaspreet Dhupia}},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Fruit yield prediction and estimation in orchards:
+  {{A}} state-of-the-art comprehensive review for both direct and indirect
+  methods} \bibinfo{volume}{195}.
+%Type = Article
+\bibitem[{Oliver et~al.(2013)Oliver, Bramley, Riches, Porter and
+  Edwards}]{oliverReviewSoilPhysical2013}
+\bibinfo{author}{Oliver, D.}, \bibinfo{author}{Bramley, R.},
+  \bibinfo{author}{Riches, D.}, \bibinfo{author}{Porter, I.},
+  \bibinfo{author}{Edwards, J.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Review: Soil physical and chemical properties as
+  indicators of soil quality in {{Australian}} viticulture}.
+\newblock \bibinfo{journal}{Australian Journal of Grape and Wine Research}
+  \bibinfo{volume}{19}, \bibinfo{pages}{129--139}.
+\newblock \DOIprefix\doi{10.1111/ajgw.12016}.
+%Type = Book
+\bibitem[{Reynolds(2010)}]{reynoldsManagingWineQuality2010}
+\bibinfo{author}{Reynolds, A.G.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Managing {{Wine Quality}} : {{Viticulture}} and
+  {{Wine Quality}}.}
+\newblock Woodhead {{Publishing Series}} in {{Food Science}}, {{Technology}}
+  and {{Nutrition}} ; v.1., \bibinfo{publisher}{{Elsevier Science}},
+  \bibinfo{address}{{Cambridge}}.
+%Type = Article
+\bibitem[{SOAR et~al.(2008)SOAR, SADRAS and PETRIE}]{soarClimateDriversRed2008}
+\bibinfo{author}{SOAR, C.}, \bibinfo{author}{SADRAS, V.},
+  \bibinfo{author}{PETRIE, P.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Climate drivers of red wine quality in four
+  contrasting {{Australian}} wine regions}.
+\newblock \bibinfo{journal}{Australian journal of grape and wine research}
+  \bibinfo{volume}{14}, \bibinfo{pages}{78--90}.
+\newblock \DOIprefix\doi{10.1111/j.1755-0238.2008.00011.x}.
+%Type = Article
+\bibitem[{Srivastava and
+  Sadistap(2018)}]{srivastavaNondestructiveSensingMethods2018}
+\bibinfo{author}{Srivastava, S.}, \bibinfo{author}{Sadistap, S.},
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Non-destructive sensing methods for quality
+  assessment of on-tree fruits: A review}.
+\newblock \bibinfo{journal}{Journal of Food Measurement and Characterization}
+  \bibinfo{volume}{12}, \bibinfo{pages}{497--526}.
+%Type = Misc
+\bibitem[{{Terry Therneau} and {Beth
+  Atkinson}(2022)}]{terrytherneauRpartRecursivePartitioning2022}
+\bibinfo{author}{{Terry Therneau}}, \bibinfo{author}{{Beth Atkinson}},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Rpart: {{Recursive Partitioning}} and {{Regression
+  Trees}}}.
+%Type = Article
+\bibitem[{{Wine Australia}(2019)}]{wineaustraliaNationalVintageReport2019}
+\bibinfo{author}{{Wine Australia}}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{National {{Vintage Report}} 2019} .
+%Type = Article
+\bibitem[{{Wine Australia}(2020)}]{wineaustraliaNationalVintageReport2020}
+\bibinfo{author}{{Wine Australia}}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{National {{Vintage Report}} 2020} .
+%Type = Article
+\bibitem[{{Wine Australia}(2021)}]{wineaustraliaNationalVintageReport2021}
+\bibinfo{author}{{Wine Australia}}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{National {{Vintage Report}} 2021} .
+%Type = Article
+\bibitem[{{Wine Australia}(2022)}]{wineaustraliaNationalVintageReport2022}
+\bibinfo{author}{{Wine Australia}}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{National {{Vintage Report}} 2022} .
+%Type = Article
+\bibitem[{{Winemakers' Federation of
+  Australia}(2015)}]{winemakersfederationofaustraliaNationalVintageReport2015}
+\bibinfo{author}{{Winemakers' Federation of Australia}}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{National {{Vintage Report}} 2015} .
+%Type = Article
+\bibitem[{{Winemakers' Federation of
+  Australia}(2016)}]{winemakersfederationofaustraliaNationalVintageReport2016}
+\bibinfo{author}{{Winemakers' Federation of Australia}}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{National {{Vintage Report}} 2016} .
+%Type = Article
+\bibitem[{{Winemakers' Federation of
+  Australia}(2017)}]{winemakersfederationofaustraliaNationalVintageReport2017}
+\bibinfo{author}{{Winemakers' Federation of Australia}}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{National {{Vintage Report}} 2017} .
+%Type = Article
+\bibitem[{{Winemakers' Federation of
+  Australia}(2018)}]{winemakersfederationofaustraliaNationalVintageReport2018}
+\bibinfo{author}{{Winemakers' Federation of Australia}}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{National {{Vintage Report}} 2018} .
 
 \end{thebibliography}
