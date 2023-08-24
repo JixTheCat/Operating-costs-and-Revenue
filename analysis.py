@@ -1,4 +1,6 @@
 from numpy import savetxt
+from os import listdir
+from os.path import isfile, join
 import pandas as pd
 import xgboost as xgb
 from sklearn.model_selection import train_test_split, cross_val_score, RepeatedKFold
@@ -6,6 +8,7 @@ from sklearn.metrics import r2_score
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import accuracy_score
 
+import re
 import random
 
 random.seed(100)
@@ -367,7 +370,13 @@ cat_cols = [ # These are binary
 for column in cat_cols:
     df[column] = pd.Categorical(df[column])
 
-for y_name in cols:
+files = [f for f in listdir("./") if isfile(join("./", f))]
+r = re.compile(".*json")
+files = list(filter(r.match, files))
+files = [file[:-5] for file in files]
+files = list(set(cols) - set(files))
+
+for y_name in files:
     if y_name in cat_cols:
         if y_name in ["data_year_id", "giregion"]:
             train_model_multi(df[cols]
