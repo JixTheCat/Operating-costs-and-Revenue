@@ -166,7 +166,7 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
     feature_loss.index = model.feature_names_in_
     feature_loss.to_csv("{}_loss.csv".format(y_name))
 
-    model.save_model("{}.json".format(y_name))
+    # model.save_model("{}.json".format(y_name))
     pd.DataFrame(scores).to_csv("{}_scores.csv".format(y_name))
 
     return
@@ -207,7 +207,7 @@ def train_model_b(df: pd.DataFrame, y_name: str):
     feature_loss.index = model.feature_names_in_
     feature_loss.to_csv("{}_loss.csv".format(y_name))
 
-    model.save_model("{}.json".format(y_name))
+    # model.save_model("{}.json".format(y_name))
 
     validation = kfold_val(model, X, y, X_val, y_val)
     f = open("{}_accuracy.csv".format(y_name), "w")
@@ -267,7 +267,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
     feature_loss.index = model.feature_names_in_
     feature_loss.to_csv("{}_loss.csv".format(y_name))
 
-    model.save_model("{}.json".format(y_name))
+    # model.save_model("{}.json".format(y_name))
 
     validation = kfold_val(model, X, y, X_val, y_val)
     f = open("{}_accuracy.csv".format(y_name), "w")
@@ -371,9 +371,9 @@ for column in cat_cols:
     df[column] = pd.Categorical(df[column])
 
 files = [f for f in listdir("./") if isfile(join("./", f))]
-r = re.compile(".*json")
+r = re.compile(".*_loss.csv")
 files = list(filter(r.match, files))
-files = [file[:-5] for file in files]
+files = [file[:-9] for file in files]
 files = list(set(cols) - set(files))
 
 for y_name in files:
