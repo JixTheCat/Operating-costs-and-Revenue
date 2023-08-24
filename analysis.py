@@ -152,7 +152,7 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
         , verbose = True
     )
 
-    cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
+    cv = RepeatedKFold(n_splits=10, n_repeats=10, random_state=1)
     scores = cross_val_score(model, X, y, scoring='r2', cv=cv, n_jobs=-1)
     # scores = cross_val_score(model, X.drop("tonnes_grapes_harvested", axis=1), y, scoring='r2', cv=cv, n_jobs=-1)
     print(scores)
