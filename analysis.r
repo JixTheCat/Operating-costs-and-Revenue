@@ -48,8 +48,8 @@ selected_cols <- c("giregion"
 
 trControl <- trainControl(
     method = "repeatedcv"
-    , number = 2
-    , repeats = 2
+    , number = 10
+    , repeats = 10
     , verboseIter = TRUE
 )
 
