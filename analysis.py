@@ -136,7 +136,7 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
         = train_test_split(X, y, test_size=test_size, random_state=1)
 
     model = xgb.XGBRegressor(
-         n_estimators=10
+         n_estimators=10000
         , scale_pos_weight=45
         , importance_type="gain"
         , learning_rate=0.00025
@@ -185,7 +185,7 @@ def train_model_b(df: pd.DataFrame, y_name: str):
     # We define the measure of objective for the different types of variables.
 
     model = xgb.XGBClassifier(
-         n_estimators=10
+         n_estimators=10000
         , scale_pos_weight=45
         , importance_type="gain"
         , objective="binary:logistic"
@@ -245,7 +245,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
         = train_test_split(X_train, y_train, test_size=0.1/0.9, stratify=y_train) 
 
     model = xgb.XGBClassifier(
-            n_estimators=10
+            n_estimators=10000
         , importance_type="gain"
         , objective="multi:softmax"
         , learning_rate=0.00025
