@@ -317,6 +317,17 @@ cols = ["tonnes_grapes_harvested"
     , "fungicide_spraying_number_of_times_passes_per_year"
     , "herbicide_spraying_number_of_times_passes_per_year"
     , "insecticide_spraying_number_of_times_passes_per_year"
+    , "irrigation_energy_diesel"
+    , "irrigation_energy_electricity"
+    , "irrigation_energy_pressure"
+    , "irrigation_energy_solar"
+    , "irrigation_type_dripper"
+    , "irrigation_type_flood"
+    , "irrigation_type_non_irrigated"
+    , "irrigation_type_overhead_sprinkler"
+    , "irrigation_type_undervine_sprinkler"
+    , "nh_disease"
+    , "nh_frost"
 ]
 
 # These are the columns that will be classes!
