@@ -3,7 +3,7 @@ from os import listdir
 from os.path import isfile, join
 import pandas as pd
 import xgboost as xgb
-from sklearn.model_selection import train_test_split, cross_val_score, RepeatedKFold
+from sklearn.model_selection import train_test_split, cross_val_score, RepeatedKFold, GridSearchCV
 from sklearn.metrics import r2_score
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import accuracy_score
@@ -132,22 +132,35 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
     # Currently giregion is in both the predicted and predictors! You gotta fix that
     X = df.drop([y_name], axis=1)
     X = pd.get_dummies(X)
-    
+
     y = df[y_name]
 
     X_train, X_test, y_train, y_test \
         = train_test_split(X, y, test_size=test_size, random_state=1)
 
     model = xgb.XGBRegressor(
-         n_estimators=10000
-        , scale_pos_weight=45
-        , importance_type="gain"
-        , learning_rate=0.00025
+        scale_pos_weight=45
+        , importance_type="weight"
         , objective="reg:squarederror"
         , eval_metric="rmse"
     )
 
-    model.fit(X_train
+    parameters = {
+        'max_depth': range (2, 10, 1),
+        'n_estimators': range(60, 220, 40),
+        'learning_rate': [0.1, 0.01, 0.05]
+    }
+
+    grid_search = GridSearchCV(
+        estimator=model,
+        param_grid=parameters,
+        scoring = 'roc_auc',
+        n_jobs = 10,
+        cv = 10,
+        verbose=True
+    )
+
+    grid_search.fit(X_train
         , y_train
         #, num_boost_round = num_round
         #, nfold = 5
@@ -156,15 +169,16 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
     )
 
     cv = RepeatedKFold(n_splits=10, n_repeats=10, random_state=1)
-    scores = cross_val_score(model, X, y, scoring='r2', cv=cv, n_jobs=-1)
+    scores = cross_val_score(grid_search.best_estimator_, X, y, scoring='r2', cv=cv, n_jobs=-1)
     # scores = cross_val_score(model, X.drop("tonnes_grapes_harvested", axis=1), y, scoring='r2', cv=cv, n_jobs=-1)
     print(scores)
     # we want the validation
     # we want the loss
-    feature_loss = pd.DataFrame()
-    feature_loss["loss"] = model.feature_importances_
-    feature_loss.index = model.feature_names_in_
-    feature_loss.to_csv("{}_loss.csv".format(y_name))
+    grid_search.best_estimator_.get_booster().get_score(importance_type="weight").values()
+    importance = pd.DataFrame()
+    importance["values"] = grid_search.best_estimator_.get_booster().get_score(importance_type="weight").values()
+    importance.index = grid_search.best_estimator_.get_booster().get_score(importance_type="weight").keys()
+    importance.to_csv("{}_imp.csv".format(y_name))
 
     # model.save_model("{}.json".format(y_name))
     pd.DataFrame(scores).to_csv("{}_scores.csv".format(y_name))
@@ -188,7 +202,7 @@ def train_model_b(df: pd.DataFrame, y_name: str):
     # We define the measure of objective for the different types of variables.
 
     model = xgb.XGBClassifier(
-         n_estimators=10000
+         n_estimators=4
         , scale_pos_weight=45
         , importance_type="gain"
         , objective="binary:logistic"
@@ -248,7 +262,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
         = train_test_split(X_train, y_train, test_size=0.1/0.9, stratify=y_train) 
 
     model = xgb.XGBClassifier(
-            n_estimators=10000
+            n_estimators=4
         , importance_type="gain"
         , objective="multi:softmax"
         , learning_rate=0.00025
