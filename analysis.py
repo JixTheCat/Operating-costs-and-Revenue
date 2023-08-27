@@ -481,15 +481,6 @@ cat_cols = [ # These are binary
     , "giregion"
 ]
 
-def train_model_b(df, y_name):
-    print(y_name)
-
-def train_model_multi(df, y_name):
-    print(y_name)
-
-def train_model_reg(df, y_name):
-    print(y_name)
-
 for y_name in files:
     if y_name in cat_cols:
         if y_name in ["nh_disease"]:
