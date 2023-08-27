@@ -162,8 +162,6 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
 
     grid_search.fit(X_train
         , y_train
-        #, num_boost_round = num_round
-        #, nfold = 5
         , eval_set=[(X_test, y_test)]
         , verbose = True
     )
@@ -174,7 +172,7 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
     print(scores)
     # we want the validation
     # we want the loss
-    grid_search.best_estimator_.get_booster().get_score(importance_type="weight").values()
+
     importance = pd.DataFrame()
     importance["values"] = grid_search.best_estimator_.get_booster().get_score(importance_type="weight").values()
     importance.index = grid_search.best_estimator_.get_booster().get_score(importance_type="weight").keys()
@@ -202,28 +200,41 @@ def train_model_b(df: pd.DataFrame, y_name: str):
     # We define the measure of objective for the different types of variables.
 
     model = xgb.XGBClassifier(
-         n_estimators=4
-        , scale_pos_weight=45
-        , importance_type="gain"
+         scale_pos_weight=45
+        , importance_type="weight"
         , objective="binary:logistic"
-        , learning_rate=0.00025
         , eval_metric="auc"
         )
 
-    model.fit(X_train
+    parameters = {
+        'max_depth': range (2, 10, 1),
+        'n_estimators': range(60, 220, 40),
+        'learning_rate': [0.1, 0.01, 0.05]
+    }
+
+    grid_search = GridSearchCV(
+        estimator=model,
+        param_grid=parameters,
+        scoring = 'roc_auc',
+        n_jobs = 10,
+        cv = 10,
+        verbose=True
+    )
+
+    grid_search.fit(X_train
         , y_train
         , eval_set=[(X_test, y_test)]
         , verbose = True
     )
 
-    feature_loss = pd.DataFrame()
-    feature_loss["loss"] = model.feature_importances_
-    feature_loss.index = model.feature_names_in_
-    feature_loss.to_csv("{}_loss.csv".format(y_name))
+    importance = pd.DataFrame()
+    importance["values"] = grid_search.best_estimator_.get_booster().get_score(importance_type="weight").values()
+    importance.index = grid_search.best_estimator_.get_booster().get_score(importance_type="weight").keys()
+    importance.to_csv("{}_imp.csv".format(y_name))
 
     # model.save_model("{}.json".format(y_name))
 
-    validation = kfold_val(model, X, y, X_val, y_val)
+    validation = kfold_val(grid_search.best_estimator_, X, y, X_val, y_val)
     f = open("{}_accuracy.csv".format(y_name), "w")
     f.write("{}".format(validation["accuracy"]))
     f.close()
@@ -262,28 +273,41 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
         = train_test_split(X_train, y_train, test_size=0.1/0.9, stratify=y_train) 
 
     model = xgb.XGBClassifier(
-            n_estimators=4
-        , importance_type="gain"
+        importance_type="weight"
         , objective="multi:softmax"
-        , learning_rate=0.00025
         )
+
+    parameters = {
+        'max_depth': range (2, 10, 1),
+        'n_estimators': range(60, 220, 40),
+        'learning_rate': [0.1, 0.01, 0.05]
+    }
+
+    grid_search = GridSearchCV(
+        estimator=model,
+        param_grid=parameters,
+        scoring = 'roc_auc',
+        n_jobs = 10,
+        cv = 10,
+        verbose=True
+    )
 
     # Currently there is no eval metric for multi_class classifiers
     # So it trains off the soft max.
-    model.fit(X_train
+    grid_search.model.fit(X_train
         , y_train
         , eval_set=[(X_test, y_test)]
         , verbose = True
     )
 
-    feature_loss = pd.DataFrame()
-    feature_loss["loss"] = model.feature_importances_
-    feature_loss.index = model.feature_names_in_
-    feature_loss.to_csv("{}_loss.csv".format(y_name))
+    importance = pd.DataFrame()
+    importance["values"] = grid_search.best_estimator_.get_booster().get_score(importance_type="weight").values()
+    importance.index = grid_search.best_estimator_.get_booster().get_score(importance_type="weight").keys()
+    importance.to_csv("{}_imp.csv".format(y_name))
 
     # model.save_model("{}.json".format(y_name))
 
-    validation = kfold_val(model, X, y, X_val, y_val)
+    validation = kfold_val(grid_search.best_estimator_, X, y, X_val, y_val)
     f = open("{}_accuracy.csv".format(y_name), "w")
     f.write("{}".format(validation["accuracy"]))
     f.close()
@@ -291,10 +315,6 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
     validation["all"].to_csv("{}_all.csv".format(y_name))
 
     return lookup_table
-
-
-
-
 
 ################################################################################
 # Setup
@@ -344,7 +364,6 @@ cols = ["tonnes_grapes_harvested"
     , "irrigation_type_overhead_sprinkler"
     , "irrigation_type_undervine_sprinkler"
     , "nh_disease"
-    , "nh_frost"
 ]
 
 # These are the columns that will be classes!
@@ -384,23 +403,112 @@ cat_cols = [ # These are binary
 for column in cat_cols:
     df[column] = pd.Categorical(df[column])
 
+# We are going to change some binary columns into
+# multiclass columns!
+
+irrigation_type = [
+    "irrigation_type_dripper"
+    , "irrigation_type_flood"
+    , "irrigation_type_non_irrigated"
+    , "irrigation_type_overhead_sprinkler"
+    , "irrigation_type_undervine_sprinkler"
+]
+
+for col in irrigation_type:
+    df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[16:])}).copy()
+df["irrigation_type"] = df[irrigation_type].astype(str).sum(axis=1)
+cols = list(set(cols) - set(irrigation_type))
+
+####################
+
+irrigation_energy = [
+    "irrigation_energy_diesel"
+    , "irrigation_energy_electricity"
+    , "irrigation_energy_pressure"
+    , "irrigation_energy_solar"
+]
+
+for col in irrigation_energy:
+    df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[18:])}).copy()
+df["irrigation_energy"] = df[irrigation_energy].astype(str).sum(axis=1)
+cols = list(set(cols) - set(irrigation_energy))
+
+####################
+
+cover_crops = [
+    "bare_soil"
+    , "annual_cover_crop"
+    , "permanent_cover_crop_native"
+    , "permanent_cover_crop_non_native"
+    , "permanent_cover_crop_volunteer_sward"]
+
+for col in cover_crops:
+    df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[12:])}).copy()
+df["cover_crops"] = df[cover_crops].astype(str).sum(axis=1)
+cols = list(set(cols) - set(cover_crops))
+
+####################
+
+water_type = [
+    'river_water'
+    , 'groundwater'
+    , 'surface_water_dam'
+    , 'recycled_water_from_other_source'
+    , 'mains_water'
+    , 'other_water'
+    , 'water_applied_for_frost_control']
+
+for col in water_type:
+    df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[11:])}).copy()
+df["water_type"] = df[water_type].astype(str).sum(axis=1)
+cols = list(set(cols) - set(water_type))
+
+####################
+
 files = [f for f in listdir("./") if isfile(join("./", f))]
 r = re.compile(".*_loss.csv")
 files = list(filter(r.match, files))
 files = [file[:-9] for file in files]
 files = list(set(cols) - set(files))
 
+cat_cols = [ # These are binary
+    "water_type"
+    , "cover_crop"
+    , "irrigation_type"
+    , "irrigation_energy"
+    , "nh_disease"
+    , "data_year_id" # These are one hot encoded
+    , "giregion"
+]
+
+def train_model_b(df, y_name):
+    print(y_name)
+
+def train_model_multi(df, y_name):
+    print(y_name)
+
+def train_model_reg(df, y_name):
+    print(y_name)
+
 for y_name in files:
     if y_name in cat_cols:
-        if y_name in ["data_year_id", "giregion"]:
-            train_model_multi(df[cols]
+        if y_name in ["nh_disease"]:
+            train_model_b(df[cols]
                 , y_name)
         else:
-            train_model_b(df[cols]
+            train_model_multi(df[cols]
                 , y_name)
     else:
         train_model_reg(df[cols]
                 , y_name)
 
+# We also do the predicted variables!
 
+train_model_b(df[cols + ["profitable"]]
+                , "profitable")
 
+train_model_reg(df[cols+["profit"]]
+        , "profit")
+
+train_model_reg(df[cols+["total_operating_costs"]]
+                , "total_operating_costs")
