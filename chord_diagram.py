@@ -34,7 +34,7 @@ cat_cols = [ # These are binary
 
 files = [f for f in listdir("./") if isfile(join("./", f))]
 
-r = re.compile(".*loss")
+r = re.compile(".*imp")
 files = list(filter(r.match, files))
 
 df = pd.read_csv(files[0], index_col=0, names=[files[0][:-9]], header=0)

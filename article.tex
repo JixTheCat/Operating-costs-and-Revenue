@@ -187,10 +187,44 @@ The data used in this analysis comes from Sustainable Winegrowing Australia and 
 % how was it collected
 
 \subsection{XGBoosted Trees}
-XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. They were chosen for this analysis as they provide a both high predictive performance and ability to effectively capture complex relationships. A separate XGBoosted tree was used to predict each variable. As variables were both continuous, binary and multiclass, separate functions were created to handle the three types of variables.
+XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. They were chosen for this analysis as they provide a both high predictive performance and ability to effectively capture complex relationships. Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees use a given set of data, to predict $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. 
 
-%
-With judicious choices for , we may express a variety of tasks, such as regression, classification, and ranking. The task of training the model amounts to finding the best parameters that best fit the training data and labels
+\begin{equation} \label{eqn:objective}
+  \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{K}(x_{i})}, f_{K}\in \mathcal{F}
+\end{equation}
+
+Each function $f_K$ is a classification or regression tree, such that all functions are in defined in the set $\mathcal{F}$ of trees given by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where, $f_K$ corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given  by $\omega$. The set of functions used by the tree is determined by minimising the regularised objective function, given by:
+
+\begin{equation}
+ \mathcal{L}(\phi)=\sum_i l(\hat{y_i}, y_i^{t-1} + f_t(x_i)) + \sum_k \Omega (f_K)
+\end{equation}
+
+The difference between the prediction and actual variable is a convex loss function $l$. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration. The function $f_t$ is selected according to which value minimises \ref{eqn:objective}. The model complexity is penalised by the function $\Omega$, this acts to smooth weights in an attempt to prevent over fitting. As predictions are made using additive tree functions, it can be used for both classification and regression. For this analysis both classification and regression trees were used. The major difference between the types of trees created was the objective function. As variables were both continuous, binary and multiclass, three different objective functions were used, root mean squared error, binary:logistic and the soft max functions respectively.
+
+\par
+Chen and Guestrin \citep{chenXGBoostScalableTree2016} further illustrate, using Taylor expansions how, for a fixed structure $q(x)$ the the optimal weight $\omega^*_j$ for a leaf $j$ can be derived. Furthermore they show how to successfully enumarate tree structures using left $I_L$ and right $I_R$ instance sets of nodes and letting $I = I_L \union I_R$. The loss reduction after the split is given by the function:
+
+\begin{equation}
+\mathcal{L}_{split} = {{1}\over{2}} \left[ 
+  {{(\sum_{i\in I_L}g_i)^{2}}\over{\sum_{i\in I_L} h_i + \lambda}} +
+  {{(\sum_{i\in I_R}g_i)^{2}}\over{\sum_{i\in I_R} h_i + \lambda}} -
+  {{(\sum_{i\in I}{g_i})^{2}}\over{\sum_{i \in I} h_i + \lambda}} \right] - \gamma
+\end{equation}
+
+#
+# Connect variable frequency in trees to loss to the objective function.
+#
+
+This means we greedily add the ft that most improves our
+model according to Eq. (2). Second-order approximation
+can be used to quickly optimize the objective in the general
+setting [12].
+
+A common example is a linear model, where the prediction is given as $y_i = \Sigma_j \theta_j x_{ij}$, a linear combination of weighted input features. The prediction value can have different interpretations, depending on the task, i.e., regression or classification. For example, it can be logistic transformed to get the probability of positive class in logistic regression, and it can also be used as a ranking score when we want to rank the outputs.
+
+The parameters are the undetermined part that we need to learn from data. In linear regression problems, the parameters are the coefficients $\theta$. Usually we will use $\theta$ to denote the parameters (there are many parameters in a model, our definition here is sloppy).
+
+With judicious choices for $y_i$, we may express a variety of tasks, such as regression, classification, and ranking. The task of training the model amounts to finding the best parameters that best fit the training data and labels
 
 . In order to train the model, we need to define the objective function to measure how well the model fit the training data.
 
@@ -210,7 +244,6 @@ The regularization term is what people usually forget to add. The regularization
 % ble model (shown in Fig. 1) uses K additive functions to
 % predict the output.
 
-\[ \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{K}(x_{i})}, f_{K}\in \mathcal{F} \]
 
 %
 
