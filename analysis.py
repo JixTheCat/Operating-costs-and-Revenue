@@ -495,11 +495,11 @@ for y_name in files:
 
 # We also do the predicted variables!
 
-train_model_b(df[cols + ["profitable"]]
+train_model_b(df[df["profitable"].notnull()][cols + ["profitable"]]
                 , "profitable")
 
-train_model_reg(df[cols+["profit"]]
+train_model_reg(df[df["profit"].notnull()][cols+["profit"]]
         , "profit")
 
-train_model_reg(df[cols+["total_operating_costs"]]
+train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"]]
                 , "total_operating_costs")
