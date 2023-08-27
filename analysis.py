@@ -154,7 +154,7 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
     grid_search = GridSearchCV(
         estimator=model,
         param_grid=parameters,
-        scoring = 'roc_auc',
+        scoring = 'neg_root_mean_squared_error',
         n_jobs = 10,
         cv = 10,
         verbose=True
@@ -286,7 +286,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
     grid_search = GridSearchCV(
         estimator=model,
         param_grid=parameters,
-        scoring = 'roc_auc',
+        scoring = 'roc_auc_ovr',
         n_jobs = 10,
         cv = 10,
         verbose=True
