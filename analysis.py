@@ -294,7 +294,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
 
     # Currently there is no eval metric for multi_class classifiers
     # So it trains off the soft max.
-    grid_search.model.fit(X_train
+    grid_search.fit(X_train
         , y_train
         , eval_set=[(X_test, y_test)]
         , verbose = True
