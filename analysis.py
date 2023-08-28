@@ -255,7 +255,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
     
     # We need at least 3 entries into a region for it to be able to be classified.
 
-    X = df[df.groupby(y_name)[y_name].transform('count')>6].copy() 
+    X = df[df.groupby(y_name)[y_name].transform('count')>10].copy() 
 
     y = X[y_name]
     y = y.cat.remove_categories(list(set(y.unique().categories) - set(y.unique())))
@@ -326,7 +326,7 @@ df = pd.read_csv("dfb.csv")
 cols = ["tonnes_grapes_harvested"
     , "area_harvested"
     , "water_used"
-    , "total_tractor_passes"
+    # , "total_tractor_passes"
     , "total_fertiliser"
     # , "synthetic_nitrogen_applied"
     # , "organic_nitrogen_applied"
@@ -419,8 +419,9 @@ irrigation_type = [
 
 for col in irrigation_type:
     df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[16:])}).copy()
-df["irrigation_type"] = df[irrigation_type].astype(str).sum(axis=1)
+df["irrigation_type"] = pd.Categorical(df[irrigation_type].astype(str).sum(axis=1))
 cols = list(set(cols) - set(irrigation_type))
+cols.append("irrigation_type")
 
 ####################
 
@@ -433,8 +434,9 @@ irrigation_energy = [
 
 for col in irrigation_energy:
     df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[18:])}).copy()
-df["irrigation_energy"] = df[irrigation_energy].astype(str).sum(axis=1)
+df["irrigation_energy"] = pd.Categorical(df[irrigation_energy].astype(str).sum(axis=1))
 cols = list(set(cols) - set(irrigation_energy))
+cols.append("irrigation_energy")
 
 ####################
 
@@ -447,8 +449,9 @@ cover_crops = [
 
 for col in cover_crops:
     df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[12:])}).copy()
-df["cover_crops"] = df[cover_crops].astype(str).sum(axis=1)
+df["cover_crops"] = pd.Categorical(df[cover_crops].astype(str).sum(axis=1))
 cols = list(set(cols) - set(cover_crops))
+cols.append("cover_crops")
 
 ####################
 
@@ -463,8 +466,9 @@ water_type = [
 
 for col in water_type:
     df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[11:])}).copy()
-df["water_type"] = df[water_type].astype(str).sum(axis=1)
+df["water_type"] = pd.Categorical(df[water_type].astype(str).sum(axis=1))
 cols = list(set(cols) - set(water_type))
+cols.append("water_type")
 
 ####################
 
@@ -476,17 +480,19 @@ files = list(set(cols) - set(files))
 
 cat_cols = [ # These are binary
     "water_type"
-    , "cover_crop"
+    , "cover_crops"
     , "irrigation_type"
     , "irrigation_energy"
-    # , "nh_disease"
     , "data_year_id" # These are one hot encoded
     , "giregion"
 ]
 
-for y_name in cat_cols:
+# cols += cat_cols
+print(cols)
+for y_name in cols:
+    print(y_name)
     if y_name in cat_cols:
-        if y_name in ["nh_disease"]:
+        if y_name in ["nh_disease", "nh_frost"]:
             train_model_b(df[cols]
                 , y_name)
         else:
