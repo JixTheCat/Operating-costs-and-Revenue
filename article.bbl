@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{32}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -50,6 +50,22 @@
 \bibinfo{author}{{Attorney-General's Department}}, \bibinfo{year}{2010}.
 \newblock \bibinfo{title}{Wine {{Australia Corporation Act}} 1980}.
 %Type = Inproceedings
+\bibitem[{Buitinck et~al.(2013)Buitinck, Louppe, Blondel, Pedregosa, Mueller,
+  Grisel, Niculae, Prettenhofer, Gramfort, Grobler, Layton, VanderPlas, Joly,
+  Holt and Varoquaux}]{sklearn_api}
+\bibinfo{author}{Buitinck, L.}, \bibinfo{author}{Louppe, G.},
+  \bibinfo{author}{Blondel, M.}, \bibinfo{author}{Pedregosa, F.},
+  \bibinfo{author}{Mueller, A.}, \bibinfo{author}{Grisel, O.},
+  \bibinfo{author}{Niculae, V.}, \bibinfo{author}{Prettenhofer, P.},
+  \bibinfo{author}{Gramfort, A.}, \bibinfo{author}{Grobler, J.},
+  \bibinfo{author}{Layton, R.}, \bibinfo{author}{VanderPlas, J.},
+  \bibinfo{author}{Joly, A.}, \bibinfo{author}{Holt, B.},
+  \bibinfo{author}{Varoquaux, G.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{{API}} design for machine learning software:
+  Experiences from the scikit-learn project}, in: \bibinfo{booktitle}{{{ECML
+  PKDD}} Workshop: {{Languages}} for Data Mining and Machine Learning}, pp.
+  \bibinfo{pages}{108--122}.
+%Type = Inproceedings
 \bibitem[{Chen and Guestrin(2016)}]{chenXGBoostScalableTree2016}
 \bibinfo{author}{Chen, T.}, \bibinfo{author}{Guestrin, C.},
   \bibinfo{year}{2016}.
@@ -99,6 +115,14 @@
 \bibinfo{author}{Halliday, J.C.J.C.}, \bibinfo{year}{2009}.
 \newblock \bibinfo{title}{Australian {{Wine Encyclopedia}}.}
 \newblock \bibinfo{publisher}{{Hardie Grant Books}}, \bibinfo{address}{{VIC}}.
+%Type = Article
+\bibitem[{Hanley and McNeil(1982)}]{hanley1982meaning}
+\bibinfo{author}{Hanley, J.A.}, \bibinfo{author}{McNeil, B.J.},
+  \bibinfo{year}{1982}.
+\newblock \bibinfo{title}{The meaning and use of the area under a receiver
+  operating characteristic ({{ROC}}) curve.}
+\newblock \bibinfo{journal}{Radiology} \bibinfo{volume}{143},
+  \bibinfo{pages}{29--36}.
 %Type = Misc
 \bibitem[{{I. Goodwin,} et~al.(2009){I. Goodwin,}, {L. McClymont,}, {D.
   Lanyon}, {A. Zerihun}, {J. Hornbuckle}, {M. Gibberd}, {D. Mowat}, {D. Smith},
@@ -177,6 +201,31 @@
 \newblock Woodhead {{Publishing Series}} in {{Food Science}}, {{Technology}}
   and {{Nutrition}} ; v.1., \bibinfo{publisher}{{Elsevier Science}},
   \bibinfo{address}{{Cambridge}}.
+%Type = Misc
+\bibitem[{Rudiger et~al.(2020)Rudiger, Stevens, Bednar, Nijholt, {Andrew}, B,
+  Randelhoff, Mease, Tenner, {maxalbert}, Kaiser, {ea42gh}, Samuels,
+  {stonebig}, LB, Tolmie, Stephan, Lowe, Bampton, {henriqueribeiro}, Lustig,
+  Signell, Bois, Talirz, Barth, Liquet, Rachum, Langer, {arabidopsis} and
+  {kbowen}}]{philipp_rudiger_2020_3904606}
+\bibinfo{author}{Rudiger, P.}, \bibinfo{author}{Stevens, J.L.},
+  \bibinfo{author}{Bednar, J.A.}, \bibinfo{author}{Nijholt, B.},
+  \bibinfo{author}{{Andrew}}, \bibinfo{author}{B, C.},
+  \bibinfo{author}{Randelhoff, A.}, \bibinfo{author}{Mease, J.},
+  \bibinfo{author}{Tenner, V.}, \bibinfo{author}{{maxalbert}},
+  \bibinfo{author}{Kaiser, M.}, \bibinfo{author}{{ea42gh}},
+  \bibinfo{author}{Samuels, J.}, \bibinfo{author}{{stonebig}},
+  \bibinfo{author}{LB, F.}, \bibinfo{author}{Tolmie, A.},
+  \bibinfo{author}{Stephan, D.}, \bibinfo{author}{Lowe, S.},
+  \bibinfo{author}{Bampton, J.}, \bibinfo{author}{{henriqueribeiro}},
+  \bibinfo{author}{Lustig, I.}, \bibinfo{author}{Signell, J.},
+  \bibinfo{author}{Bois, J.}, \bibinfo{author}{Talirz, L.},
+  \bibinfo{author}{Barth, L.}, \bibinfo{author}{Liquet, M.},
+  \bibinfo{author}{Rachum, R.}, \bibinfo{author}{Langer, Y.},
+  \bibinfo{author}{{arabidopsis}}, \bibinfo{author}{{kbowen}},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Holoviz/holoviews: {{Version}} 1.13.3}.
+\newblock \bibinfo{howpublished}{Zenodo}.
+\newblock \DOIprefix\doi{10.5281/zenodo.3904606}.
 %Type = Article
 \bibitem[{SOAR et~al.(2008)SOAR, SADRAS and PETRIE}]{soarClimateDriversRed2008}
 \bibinfo{author}{SOAR, C.}, \bibinfo{author}{SADRAS, V.},

@@ -187,80 +187,41 @@ The data used in this analysis comes from Sustainable Winegrowing Australia and 
 % how was it collected
 
 \subsection{XGBoosted Trees}
-XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. They were chosen for this analysis as they provide both a high predictive performance and ability to effectively capture complex relationships. Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. 
-
-\begin{equation} \label{eqn:objective}
-  \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{K}(x_{i})}, f_{K}\in \mathcal{F}
-\end{equation}
-
-Each function $f_K$ is a classification or regression tree, such that all functions are in the set $\mathcal{F}$ of trees given by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where, $f_K$ corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given  by $\omega$. The set of functions used by the tree is determined by minimising the regularised objective function, given by:
-
-\begin{equation}
- \mathcal{L}(\phi)=\sum_i l(\hat{y_i}, y_i^{t-1} + f_t(x_i)) + \sum_k \Omega (f_K)
-\end{equation}
-
-The difference between the prediction and actual variable is a convex loss function $l$. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration. The function $f_t$ is selected according to which value minimises \ref{eqn:objective}. The model complexity is penalised by the function $\Omega$, this acts to smooth weights in an attempt to prevent over fitting. As predictions are made using additive tree functions, it can be used for both classification and regression. For this analysis both classification and regression trees were used. The major difference between the types of trees created was the objective function. As variables were both continuous, binary and multiclass, three different objective functions were used, root mean squared error, binary:logistic and the soft max functions respectively.
-
+XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. They were chosen for this analysis as they provide both a high predictive performance and ability to effectively capture complex relationships. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (profit and operating cost), which were only included once as predicted variables.
 \par
-Chen and Guestrin \citep{chenXGBoostScalableTree2016} further illustrate, using Taylor expansions how, for a fixed structure $q(x)$ the the optimal weight $\omega^*_j$ for a leaf $j$ can be derived. Furthermore they show how to successfully enumarate tree structures using left $I_L$ and right $I_R$ instance sets of nodes and letting $I = I_L \cup I_R$. The loss reduction after the split is given by the function:
+Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. 
 
 \begin{equation}
+  \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{K}(x_{i})}, f_{K}\in \mathcal{F},
+\end{equation}
+
+where each function $f_K$ is a classification or regression tree, such that all functions are in the set of all decision trees $\mathcal{F}$, defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where, $f_K$ corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given  by $\omega$. The set of functions used by the tree is determined by minimising the regularised objective function, given by:
+
+\begin{equation}\label{eqn:objective}
+ \mathcal{L}(\phi)=\sum_i l(\hat{y_i}, y_i^{t-1} + f_t(x_i)) + \sum_k \Omega (f_K).
+\end{equation}
+
+The difference between the prediction and actual variable is a convex loss function $l$. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration. The function $f_t$ is selected according to which value minimises (\ref{eqn:objective}). The model complexity is penalised by the function $\Omega$, this acts to smooth weights in an attempt to prevent over fitting.
+\par
+As predictions are made using additive tree functions, XGboosted trees can be used for classification and regression. Due to the mixture of continuous, binary and multiclass variables in this analysis, both classification and regression trees were created. The difference between the trees created for this analysis was the objective function used. XGBoosted regression trees were created for continuous variables, using the root-mean-square as the objective function. Binary class variables utilised the logistic loss function as the objective. And, Multiclass variable used the soft max function. All objective functions are defined within the SKlearn library \citep{sklearn_api}, linked via an API to the XGBoost library \citep{chenXGBoostScalableTree2016}.
+\par
+Chen and Guestrin \citep{chenXGBoostScalableTree2016} further illustrate, using Taylor expansions, that for a fixed structure $q(x)$ the optimal weight $\omega^*_j$ for a leaf $j$ can be derived. Furthermore, they show the loss reduction after the split is given by the function:
+
+\begin{equation} \label{eqn:enumerate}
 \mathcal{L}_{split} = {{1}\over{2}} \left[ 
   {{(\sum_{i\in I_L}g_i)^{2}}\over{\sum_{i\in I_L} h_i + \lambda}} +
   {{(\sum_{i\in I_R}g_i)^{2}}\over{\sum_{i\in I_R} h_i + \lambda}} -
-  {{(\sum_{i\in I}{g_i})^{2}}\over{\sum_{i \in I} h_i + \lambda}} \right] - \gamma
+  {{(\sum_{i\in I}{g_i})^{2}}\over{\sum_{i \in I} h_i + \lambda}} \right] - \gamma,
 \end{equation}
 
-%
-% Connect variable frequency in trees to loss to the objective function.
-%
-
-This means we greedily add the ft that most improves our
-model according to Eq. (2). Second-order approximation
-can be used to quickly optimize the objective in the general
-setting [12].
-
-A common example is a linear model, where the prediction is given as $y_i = \Sigma_j \theta_j x_{ij}$, a linear combination of weighted input features. The prediction value can have different interpretations, depending on the task, i.e., regression or classification. For example, it can be logistic transformed to get the probability of positive class in logistic regression, and it can also be used as a ranking score when we want to rank the outputs.
-
-The parameters are the undetermined part that we need to learn from data. In linear regression problems, the parameters are the coefficients $\theta$. Usually we will use $\theta$ to denote the parameters (there are many parameters in a model, our definition here is sloppy).
-
-With judicious choices for $y_i$, we may express a variety of tasks, such as regression, classification, and ranking. The task of training the model amounts to finding the best parameters that best fit the training data and labels
-
-. In order to train the model, we need to define the objective function to measure how well the model fit the training data.
-
-A salient characteristic of objective functions is that they consist of two parts: training loss and regularization term:
-$obj(\theta)=L(\theta)+\Omega(\theta)$
-
-where $L$ is the training loss function, and $\Omega$ is the regularization term. The training loss measures how predictive our model is with respect to the training data. A common choice of $L$ is the mean squared error, which is given by
-
-$L(\theta)=\sum_i (y_i - \hat{y_i})^2$
-
-Another commonly used loss function is logistic loss, to be used for logistic regression:
-
-The regularization term is what people usually forget to add. The regularization term controls the complexity of the model, which helps us to avoid overfitting. This sounds a bit abstract, so let us consider the following problem in the following picture. You are asked to fit visually a step function given the input data points on the upper left corner of the image. Which solution among the three do you think is the best fit?
-
-% For a given data set with n examples and m features
-% D = {(xi, yi)} (|D| = n, xi ∈ Rm, yi ∈ R), a tree ensem-
-% ble model (shown in Fig. 1) uses K additive functions to
-% predict the output.
-
-
-%
-
-
-XGBoosted Regression trees were used to predict continuous variables. With data being split into 80\% training data and 20\% testing data.
-
-
-
-XGBoosted classification trees were used to classify the binary and multiclass variables. Data was split into 80\% training, 10\% testing and 10\% validation data. 
-
-
-
-
-The modelled relationships are able to be scrutinised by using techniques such as feature importance analysis. The use of the XGBoost library also incorporates regularisation techniques built into the software to mitigate over-fitting and enhance model generalisation. The further use of cross validated grid search functions allowed for the selection of better performing hyper-parameters when selecting the final model.
-
-
-
+with the tree structure is defined using left $I_L$ and right $I_R$ instance sets of nodes, with $I = I_L \cup I_R$. Instead of enumerating all possible tree structures, a greedy algorithm iteratively adds branches to the tree minimising $ \mathcal{L}_{split} $ in (\ref{eqn:enumerate}). The frequency of a variable's occurrence within a tree is directly attributed to the minimisation of the objective function (or loss) through the minimisation of  $ \mathcal{L}_{split} $.
+\par
+The frequency of a variable appearing as a node within the ensemble was used as a measure of importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function, translating the value into a simple count metric. Creating XGBoosted trees for each variable allowed the use of importance to show how strongly variables were associated with each other. The importance of predictor variables to economic variables was illustrated through the use of Sankey diagrams constructed using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Other variable's interconnectedness was demonstrated through the use of a chord diagram also created using Holoviews.
+\par
+Each variable utilised 80\% of the data to train the XGBoost ensemble, with 20\% reserved for testing and validation. Testing was done through the iterative minimisation of the respective objective function for the variables type. For continuous variables 20\% was used as testing data, minimising the root-mean-square function. The final model was validated using repeated k-fold cross validation for 10 folds, repeated 10 times.
+ For  binary and multiclass variables data was split into 80\% training, 10\% testing and 10\% validation data. Due to class disparity in multiclass variables (most prominently in region) data was stratified into each subset at the same ratio of class occurrence. Validation was summarised through confusion matrices and their associated accuracy 
+\par
+The use of the XGBoost library incorporates regularisation techniques built into the software to mitigate over-fitting and enhance model generalisation. The further use of cross validated grid search functions allowed for the selection of better performing hyperparameters when selecting the final model. The performance measure for model selection was root-mean-square error for continuous variables. The receiver operator characteristic's area under the curve was used for category variables; with multiclass variables utilising the one verse the rest approach \citep{hanley1982meaning}.
 
 \subsection{Classification Trees}
 
