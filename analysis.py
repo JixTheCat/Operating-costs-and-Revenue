@@ -27,12 +27,12 @@ random.seed(100)
 
 # validation results
 
-def kfold_val(model: xgb.sklearn.XGBClassifier
+def class_val(model: xgb.sklearn.XGBClassifier
               , X
               , y
               , X_val: pd.DataFrame
               , y_val: pd.DataFrame):
-    """Kfold validation of xgboost model given its data."""
+    """Validation of classification model."""
     y_pred = model.predict(X_val)
     predictions = [round(value) for value in y_pred]
 
@@ -183,7 +183,10 @@ def train_model_reg(df: pd.DataFrame, y_name: str, test_size=0.2):
 
     return
 
-# binary class
+################
+# binary class #
+################
+
 def train_model_b(df: pd.DataFrame, y_name: str):
     """Trains an XGBoosted Tree given a y variable and dataframe. """
     X = df.drop([y_name], axis=1)
@@ -234,7 +237,7 @@ def train_model_b(df: pd.DataFrame, y_name: str):
 
     # model.save_model("{}.json".format(y_name))
 
-    validation = kfold_val(grid_search.best_estimator_, X, y, X_val, y_val)
+    validation = class_val(grid_search.best_estimator_, X, y, X_val, y_val)
     f = open("{}_accuracy.csv".format(y_name), "w")
     f.write("{}".format(validation["accuracy"]))
     f.close()
@@ -307,7 +310,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
 
     # model.save_model("{}.json".format(y_name))
 
-    validation = kfold_val(grid_search.best_estimator_, X, y, X_val, y_val)
+    validation = class_val(grid_search.best_estimator_, X, y, X_val, y_val)
     f = open("{}_accuracy.csv".format(y_name), "w")
     f.write("{}".format(validation["accuracy"]))
     f.close()
