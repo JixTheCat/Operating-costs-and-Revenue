@@ -488,8 +488,8 @@ cat_cols = [ # These are binary
 ]
 
 # cols += cat_cols
-print(cols)
-for y_name in cols:
+print(files)
+for y_name in files:
     print(y_name)
     if y_name in cat_cols:
         if y_name in ["nh_disease", "nh_frost"]:
