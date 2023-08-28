@@ -479,12 +479,12 @@ cat_cols = [ # These are binary
     , "cover_crop"
     , "irrigation_type"
     , "irrigation_energy"
-    , "nh_disease"
+    # , "nh_disease"
     , "data_year_id" # These are one hot encoded
     , "giregion"
 ]
 
-for y_name in files:
+for y_name in cat_cols:
     if y_name in cat_cols:
         if y_name in ["nh_disease"]:
             train_model_b(df[cols]
