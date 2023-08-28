@@ -223,25 +223,11 @@ Each variable utilised 80\% of the data to train the XGBoost ensemble, with 20\%
 \par
 The use of the XGBoost library incorporates regularisation techniques built into the software to mitigate over-fitting and enhance model generalisation. The further use of cross validated grid search functions allowed for the selection of better performing hyperparameters when selecting the final model. The performance measure for model selection was root-mean-square error for continuous variables. The receiver operator characteristic's area under the curve was used for category variables \citep{hanley1982meaning}. Multiclass variables utilised the one verse one approach to minimise sensitivity to class disparity \citep{ferriExperimentalComparisonPerformance2009,handSimpleGeneralisationArea2001}.
 
-\subsection{Classification Trees}
+\subsection{Classification and Regression Trees}
 
-Classification Trees were developed to discern the different practices within regions and climates, 
-% Were they? Or was it to discern regional differences and then compare them?
-comparing these relationships to those linked to grape quality. This was done using the rparts and caret packages \citep{kuhnBuildingPredictiveModels2008,terrytherneauRpartRecursivePartitioning2022} in the R statistical programming language (R Core Team, 2021). 
-\newline
-Three classifications were undertaken for region, climate and grape quality.
-% Is this three classifications for each of these, being 9 in total? Or three overall, one for each?
-Climate was further classified into two subcategories of rainfall and temperature,
-% Why was this done?
-resulting in a total of 5 classification trees being created. % You say this too late!
-Classification trees were validated using K-fold cross validation.% This could be its own section!
- Each model was validated using 10 folds, utilising a random selection of different samples ten separate times to validate each of the  classification trees. A summary confusion matrix was then constructed to show the class bias and overall accuracy of each tree.
- % To what end? Why do we want them to be accurate?? What does this analysis achieve?
-
-% Was the analysis validated?
-% How where the carts compared??
-% I still do not know what the models really where
-
+Classification and Regression Trees were created for region, year, profit and operating cost. These models describe the partitions that are useful in predicting these variables; giving insight into the trees that make up the ensembles created by XGBoost. These trees were created using the rparts and caret packages \citep{kuhnBuildingPredictiveModels2008,terrytherneauRpartRecursivePartitioning2022} in the R statistical programming language \citep{rcoreteamLanguageEnvironmentStatistical2021}.
+\par
+Classification trees were validated using K-fold cross validation. Each model was validated using 10 folds, utilising a random selection of different samples ten separate times to validate each of the  classification trees. A summary confusion matrix was then constructed to show the class bias and overall accuracy of each tree.
 
 \section{Results}
 
