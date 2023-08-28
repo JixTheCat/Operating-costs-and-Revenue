@@ -289,7 +289,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
     grid_search = GridSearchCV(
         estimator=model,
         param_grid=parameters,
-        scoring = 'roc_auc_ovr',
+        scoring = 'roc_auc_ovo',
         n_jobs = 10,
         cv = 10,
         verbose=True
