@@ -350,7 +350,7 @@ cols = ["tonnes_grapes_harvested"
     , "electricity_vineyard"
     , "petrol_vineyard"
     , "vineyard_solar"
-    , "vineyard_wind"
+    # , "vineyard_wind"
     , "lpg_vineyard"
     , "biodiesel_vineyard"
     , "slashing_number_of_times_passes_per_year"
@@ -367,6 +367,7 @@ cols = ["tonnes_grapes_harvested"
     , "irrigation_type_overhead_sprinkler"
     , "irrigation_type_undervine_sprinkler"
     , "nh_disease"
+    # , "nh_frost"
 ]
 
 # These are the columns that will be classes!
@@ -393,7 +394,6 @@ cat_cols = [ # These are binary
     , 'mains_water'
     , 'other_water'
     , 'water_applied_for_frost_control'
-    , "nh_frost"
     , "nh_disease"
     , "data_year_id" # These are one hot encoded
     , "giregion"
