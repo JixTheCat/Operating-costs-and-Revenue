@@ -6,22 +6,21 @@ library(rpart.plot)
 # The csv file used is the state of the dataframe used in
 #  the python analysis. After variables are made multiclass and the limit of 10 classes is used.
 df <- read.csv("dftree.csv")
-df$profitable <- factor(df$profitable)
-df$water_type <- factor(df$water_type)
-df$cover_crops <- factor(df$cover_crops)
-df$irrigation_type <- factor(df$irrigation_type)
-df$irrigation_energy <- factor(df$irrigation_energy)
-df$data_year_id <- factor(df$data_year_id)
-df$giregion <- factor(df$giregion)
-df$nh_disease <- factor(df$nh_disease)
-# df$nh_frost <- factor(df$nh_frost)
+df[, "Profitable"] <- factor(df[, "Profitable"])
+df[, "Water.Source"] <- factor(df[, "Water.Source"])
+df[, "Cover.Crop.Type"] <- factor(df[, "Cover.Crop.Type"])
+df[, "Irrigation.System.Type"] <- factor(df[, "Irrigation.System.Type"])
+df[, "Irrigation.Energy.Type"] <- factor(df[, "Irrigation.Energy.Type"])
+df[, "Year"] <- factor(df[, "Year"])
+df[, "Region"] <- factor(df[, "Region"])
+df[, "Disease.Presence"] <- factor(df[, "Disease.Presence"])
 
 # Training function
 
 trControl <- trainControl(
     method = "repeatedcv"
-    , number = 2
-    , repeats = 2
+    , number = 10
+    , repeats = 10
     , verboseIter = TRUE
 )
 
@@ -29,12 +28,12 @@ trControl <- trainControl(
 #       GI region         #
 ###########################
 
-giregion_tree <- train(giregion ~ .
+model_tree <- train(Region ~ .
     , data = df[, colnames(df)[
         !(colnames(df) %in% c(
-            "profit",
-            "profitable",
-            "total_operating_costs"))]]
+            "Profit",
+            "Profitable",
+            "Operating Costs"))]]
     , method = "rpart"
     , metric = "Accuracy"
     , trControl = trControl
@@ -42,22 +41,29 @@ giregion_tree <- train(giregion ~ .
     , tuneLength = 10
 )
 
-rpart.plot(giregion_tree$finalModel
+tree_plot <- rpart.plot(model_tree$finalModel
     , extra = 102
     , legend.x = -100
     , box.palette = "auto"
 )
 
+pdf("region.pdf")
+rpart.plot(tree_plot)
+dev.off()
+
+sink("region.txt")
+print(model_tree)
+sink()
 ###########################
 #       Year              #
 ###########################
 
-giregion_tree <- train(data_year_id ~ .
+model_tree <- train(Year ~ .
     , data = df[, colnames(df)[
         !(colnames(df) %in% c(
-            "profit",
-            "profitable",
-            "total_operating_costs"))]]
+            "Profit",
+            "Profitable",
+            "Operating Costs"))]]
     , method = "rpart"
     , metric = "Accuracy"
     , trControl = trControl
@@ -65,21 +71,29 @@ giregion_tree <- train(data_year_id ~ .
     , tuneLength = 10
 )
 
-rpart.plot(giregion_tree$finalModel
+tree_plot <- rpart.plot(model_tree$finalModel
     , extra = 102
     , legend.x = -100
     , box.palette = "auto"
 )
 
+pdf("year.pdf")
+rpart.plot(tree_plot)
+dev.off()
+
+
+sink("year.txt")
+print(model_tree)
+sink()
 #########################
 #       profitable      #
 #########################
 
-profitable_tree <- train(profitable ~ .
+model_tree <- train(Profitable ~ .
     , data = df[, colnames(df)[
         !(colnames(df) %in% c(
-            "profit",
-            "total_operating_costs"))]]
+            "Profit",
+            "Operating Costs"))]]
     , method = "rpart"
     , metric = "Accuracy"
     , trControl = trControl
@@ -87,21 +101,28 @@ profitable_tree <- train(profitable ~ .
     , tuneLength = 10
 )
 
-rpart.plot(profitable_tree$finalModel
+tree_plot <- rpart.plot(model_tree$finalModel
     , extra = 102
     , legend.x = -100
     , box.palette = "auto"
 )
 
+pdf("profitable.pdf")
+rpart.plot(tree_plot)
+dev.off()
+
+sink("profitable.txt")
+print(model_tree)
+sink()
 #####################
 #       profit      #
 #####################
 
-profit_tree <- train(profit ~ .
+model_tree <- train(Profit ~ .
     , data = df[, colnames(df)[
         !(colnames(df) %in% c(
-            "profitable",
-            "total_operating_costs"))]]
+            "Profitable",
+            "Operating Costs"))]]
     , method = "rpart"
     , trControl = trControl
     , na.action = na.omit
@@ -113,20 +134,27 @@ profit_tree <- train(profit ~ .
 # Note that each terminating node is a regression model
 # - the percentage of observations in the node
 
-rpart.plot(profit_tree$finalModel
+tree_plot <- rpart.plot(model_tree$finalModel
     , legend.x = -100
     , box.palette = "auto"
 )
 
+pdf("profit.pdf")
+rpart.plot(tree_plot)
+dev.off()
+
+sink("profit.txt")
+print(model_tree)
+sink()
 #############################
 #       operating costs     #
 #############################
 
-oc_tree <- train(total_operating_costs ~ .
+model_tree <- train(Operating.Costs ~ .
     , data = df[, colnames(df)[
         !(colnames(df) %in% c(
-            "profit",
-            "profitable"))]]
+            "Profit",
+            "Profitable"))]]
     , method = "rpart"
     , trControl = trControl
     , na.action = na.omit
@@ -138,9 +166,16 @@ oc_tree <- train(total_operating_costs ~ .
 # Note that each terminating node is a regression model
 # - the percentage of observations in the node
 
-rpart.plot(oc_tree$finalModel
+tree_plot <- rpart.plot(model_tree$finalModel
     , legend.x = -100
     , box.palette = "auto"
 )
 
+pdf("operating_costs.pdf")
+rpart.plot(tree_plot)
+dev.off()
+
+sink("operating_costs.txt")
+print(model_tree)
+sink()
 ########################
