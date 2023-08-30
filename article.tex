@@ -280,6 +280,13 @@ Classification trees were validated using K-fold cross validation. Each model wa
 
 \subsection{Region}
 
+Region classification performed at 36.10\% and 56.82\% accuracy, for the classification tree and XGBoosted ensemble respectively. The most prominent features used to classify regions with the classification tree was water sources (see Figure \ref{fig:region_tree}). This differed from the variables that illustrated the greatest importance for the XGBoosted ensemble (see Figure (\ref{fig:region_sankey}), with predictor variables being highly interrelated in importance. Area, water, fuel and yield were more determining factors when predicting region using XGBoost. Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
+\par
+It is reasonable that regions, being subjected to different rainfalls and temperatures, would require different amounts of water, and would have access to different water sources. The relation of area harvested and fuel (particularly petrol) is prominent with other predictors. Due to the wide variety of uses of petrol and diesel, it is likely that they are representative of other activities within the vineyard, such as pruning and harvesting. With predictors such as yield and area being highly interconnected as they likely operate as proxy variables to other factors, possibly other present variables.
+\par
+Many of the regions had significantly lower reporting rates, resulting much poorer classification performance. The regions with the most samples performed the best. Notably bordering regions were routinely grouped together and misclassified as the same region. Two areas taht suffered the most from this, specifically with the classification tree were the lime coast (cool coastal areas in South Australia) and the warmer inland regions along the Murray Darling. The classification tree likely had more difficulty discerning vineyards closer to the river using only water sources due to the greater access to river water in these areas.
+%, for example the two closest regions to Coonawarra, Padthaway and Wrattonbulley, were misclassified as Coonawarra even though they had 147 and 137 samples respectively. The same case was found for the Murray Darling, with 143 samples, it was misclassified as the Riverland. These misclassifications are likely due to the incredibly similar regional properties and close proximity these regions have with one another. Other misclassifications were most likely due to lower reporting rates with many regions being under represented.
+
 \begin{figure}
   \resizebox{\textwidth}{!}{
   \includegraphics{region.pdf}}
@@ -294,6 +301,10 @@ Classification trees were validated using K-fold cross validation. Each model wa
 
 \subsection{Year}
 
+The classification tree and XGBoosted ensemble performed similarly for classifying year with 41.15\% and 51.81\% respectively. Electricity and the type of irrigation were highly influential within the classification tree. Similarly, electricity was the most frequently occurring node in the XGBoost ensemble. However, other variables such as slashing passes, and fungicide and herbicide spraying were more prevalenct than in the classification tree. Weed and disease outbreaks are likely an influential factor when classifying different years, making the decisions to spray and slash unique factors that differ year to year. Climatic differences between years are likely tied to the influence of yield and water use.
+\par
+Over half of the interrelated importance of the predictor variables is dominated by area harvested, yield and slashing passes. Although all the predictor variables are highly connected, their relative importance is not as prominent as the three major variables. It is of particular note of the relative importance of slashing to area, fuel and yield; as these are not directly related activities. The connection between slashing and spraying is that those who do a set number of spraying or slashing passes tended to do that many passes for all slashing and spraying activities.
+
 \begin{figure}
   \resizebox{\textwidth}{!}{
   \includegraphics{year.pdf}}
@@ -307,6 +318,8 @@ Classification trees were validated using K-fold cross validation. Each model wa
 \end{figure}
 
 \subsection{Operating Costs}
+
+
 
 \begin{figure}
   \resizebox{\textwidth}{!}{
@@ -410,6 +423,10 @@ had an accuracy of 55.72\% across 5 separate grades. There was a notable issue w
  The classification tree itself shows similarities to that of classifying regions in Model 1, with the type of water resource used being a prominent determiner. Although not surprising the number of contractor tractor passes is new deciding factor due disease and pests reducing the potential quality of a crop. The prevalence of contractor use is greater in regions such as the Barossa Valley and the McLaren Vale, this could be due to the difference in operational scales, with larger sites being more likely to have ownership of their own equipment for weeding and spraying due to the cost benefit.
 
 \section{Discussion}
+
+% %Two regions, the Riverland and Coonawarra, were the most accurate classes being 92.74% and 96.97% respectively. 
+These regions differ greatly in practice and geophysical properties, with the Riverland being a dry warm inland region and Coonawarra being a cooler, wet coastal region. However, they are both similar in operational scales, with vineyards being relatively large compared with other regions. The differences in resources and practices between these regions are also significant, such as the Riverland utilising the river Murray as a water source. 
+
 The difference between grape quality is most notable between warm inland regions and coastal regions such as the Riverland and Coonawarra, respectively. Grape quality is only described by a singular variable within this study, however in reality it is driven by market demand and subject to  complex forces such as international market pressure, fire, pests and disease \citep{wineaustraliaNationalVintageReport2019,wineaustraliaNationalVintageReport2020,wineaustraliaNationalVintageReport2021,wineaustraliaNationalVintageReport2022,winemakersfederationofaustraliaNationalVintageReport2015,winemakersfederationofaustraliaNationalVintageReport2016,winemakersfederationofaustraliaNationalVintageReport2017,winemakersfederationofaustraliaNationalVintageReport2018} % The original citation included years prior to this dataset just be casreful with this. It is a bit unclear what you are really trying to cite and its relevance. I think it important to chop this up.
 The decision trees were able to offer some insights into the factors that influence grape quality and regional contrasts that contribute to different qualities. The most prominent being what readily available resources of each region were, particular the types of water available. % A citation or reference to a study looking at the disparity in wine regions and their resources - or use the data more to describe these regional differences. Is water availability apparent? Do some regions have access to more sohpisticated water sources such as pressurised water etc.
  Heavy water consumption is often linked to the mass production of grapes, % Really? proce it? Where in the results is this really found?? This sounds like a link to your previous paper but you cannot really show this and you do not really produce evidence to support this claim.
