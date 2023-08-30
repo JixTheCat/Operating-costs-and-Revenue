@@ -41,14 +41,13 @@ model_tree <- train(Region ~ .
     , tuneLength = 10
 )
 
-tree_plot <- rpart.plot(model_tree$finalModel
+pdf("region.pdf")
+rpart.plot(model_tree$finalModel
     , extra = 102
     , legend.x = -100
     , box.palette = "auto"
 )
 
-pdf("region.pdf")
-rpart.plot(tree_plot)
 dev.off()
 
 sink("region.txt")
@@ -71,14 +70,12 @@ model_tree <- train(Year ~ .
     , tuneLength = 10
 )
 
-tree_plot <- rpart.plot(model_tree$finalModel
+pdf("year.pdf")
+rpart.plot(model_tree$finalModel
     , extra = 102
     , legend.x = -100
     , box.palette = "auto"
 )
-
-pdf("year.pdf")
-rpart.plot(tree_plot)
 dev.off()
 
 
@@ -101,14 +98,12 @@ model_tree <- train(Profitable ~ .
     , tuneLength = 10
 )
 
-tree_plot <- rpart.plot(model_tree$finalModel
+pdf("profitable.pdf")
+rpart.plot(model_tree$finalModel
     , extra = 102
     , legend.x = -100
     , box.palette = "auto"
 )
-
-pdf("profitable.pdf")
-rpart.plot(tree_plot)
 dev.off()
 
 sink("profitable.txt")
@@ -134,13 +129,11 @@ model_tree <- train(Profit ~ .
 # Note that each terminating node is a regression model
 # - the percentage of observations in the node
 
-tree_plot <- rpart.plot(model_tree$finalModel
+pdf("profit.pdf")
+rpart.plot(model_tree$finalModel
     , legend.x = -100
     , box.palette = "auto"
 )
-
-pdf("profit.pdf")
-rpart.plot(tree_plot)
 dev.off()
 
 sink("profit.txt")
@@ -166,13 +159,11 @@ model_tree <- train(Operating.Costs ~ .
 # Note that each terminating node is a regression model
 # - the percentage of observations in the node
 
-tree_plot <- rpart.plot(model_tree$finalModel
+pdf("operating_costs.pdf")
+rpart.plot(model_tree$finalModel
     , legend.x = -100
     , box.palette = "auto"
 )
-
-pdf("operating_costs.pdf")
-rpart.plot(tree_plot)
 dev.off()
 
 sink("operating_costs.txt")
