@@ -1,0 +1,25 @@
+CART 
+
+6091 samples
+  21 predictor
+  10 classes: '2012/2013', '2013/2014', '2014/2015', '2015/2016', '2016/2017', '2017/2018', '2018/2019', '2019/2020', '2020/2021', '2021/2022' 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold, repeated 10 times) 
+Summary of sample sizes: 5482, 5482, 5485, 5481, 5482, 5482, ... 
+Resampling results across tuning parameters:
+
+  cp           Accuracy   Kappa     
+  0.002925117  0.4114783  0.33808213
+  0.003120125  0.4094746  0.33513300
+  0.003363885  0.4093108  0.33428633
+  0.004680187  0.4082933  0.33171976
+  0.005070203  0.4050594  0.32809069
+  0.007605304  0.4005425  0.32302232
+  0.011602964  0.3855547  0.30606464
+  0.029933697  0.3477285  0.26234522
+  0.095748830  0.2875729  0.19191957
+  0.104719189  0.1972417  0.06455165
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was cp = 0.002925117.

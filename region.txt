@@ -1,0 +1,25 @@
+CART 
+
+6091 samples
+  21 predictor
+  58 classes: '0', 'Adelaide Hills', 'Adelaide Plains', 'Alpine Valleys', 'Barossa Valley', 'Barossa Zone', 'Beechworth', 'Bendigo', 'Big Rivers Zone Other', 'Blackwood Valley', 'Canberra District', 'Clare Valley', 'Coonawarra', 'Cowra', 'Currency Creek', 'Eden Valley', 'Geelong', 'Geographe', 'Glenrowan', 'Goulburn Valley', 'Grampians', 'Great Southern', 'Gundagai', 'Heathcote', 'Henty', 'Hunter Valley', 'Kangaroo Island', 'King Valley', 'Langhorne Creek', 'Macedon Ranges', 'Margaret River', 'McLaren Vale', 'Mornington Peninsula', 'Mount Benson', 'Mount Gambier', 'Mudgee', 'Murray Darling', 'Orange', 'Other', 'Padthaway', 'Pemberton', 'Pyrenees', 'Riverina', 'Riverland', 'Robe', 'Rutherglen', 'Southern Fleurieu', 'Southern Flinders Ranges', 'Southern Highlands', 'Strathbogie Ranges', 'Sunbury', 'Swan District', 'Swan Hill', 'Tasmania', 'Tumbarumba', 'Upper Goulburn', 'Wrattonbully', 'Yarra Valley' 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold, repeated 10 times) 
+Summary of sample sizes: 5479, 5487, 5482, 5483, 5481, 5478, ... 
+Resampling results across tuning parameters:
+
+  cp           Accuracy   Kappa    
+  0.004596527  0.3609777  0.2679683
+  0.004800817  0.3566807  0.2615855
+  0.004902962  0.3556147  0.2599846
+  0.005720123  0.3421877  0.2430061
+  0.006741573  0.3367683  0.2359106
+  0.011542390  0.3318788  0.2296919
+  0.013687436  0.3260524  0.2218646
+  0.016956078  0.3033863  0.1933889
+  0.021859040  0.2861191  0.1725244
+  0.035001702  0.2468491  0.1031058
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was cp = 0.004596527.

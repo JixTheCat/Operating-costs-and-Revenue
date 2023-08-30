@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{36}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -87,6 +87,16 @@
   {{DS}} 2009, {{Porto}}, {{Portugal}}, {{October}} 3-5, 2009 12},
   \bibinfo{publisher}{{Springer}}. pp. \bibinfo{pages}{66--79}.
 %Type = Article
+\bibitem[{Ferri et~al.(2009)Ferri, {Hern{\'a}ndez-Orallo} and
+  Modroiu}]{ferriExperimentalComparisonPerformance2009}
+\bibinfo{author}{Ferri, C.}, \bibinfo{author}{{Hern{\'a}ndez-Orallo}, J.},
+  \bibinfo{author}{Modroiu, R.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{An experimental comparison of performance measures
+  for classification}.
+\newblock \bibinfo{journal}{Pattern Recognition Letters} \bibinfo{volume}{30},
+  \bibinfo{pages}{27--38}.
+\newblock \DOIprefix\doi{10.1016/j.patrec.2008.08.010}.
+%Type = Article
 \bibitem[{Fraga et~al.(2017)Fraga, Costa and
   Santos}]{fragaMultivariateClusteringViticultural2017}
 \bibinfo{author}{Fraga, H.}, \bibinfo{author}{Costa, R.},
@@ -115,6 +125,15 @@
 \bibinfo{author}{Halliday, J.C.J.C.}, \bibinfo{year}{2009}.
 \newblock \bibinfo{title}{Australian {{Wine Encyclopedia}}.}
 \newblock \bibinfo{publisher}{{Hardie Grant Books}}, \bibinfo{address}{{VIC}}.
+%Type = Article
+\bibitem[{Hand and Till(2001)}]{handSimpleGeneralisationArea2001}
+\bibinfo{author}{Hand, D.J.}, \bibinfo{author}{Till, R.J.},
+  \bibinfo{year}{2001}.
+\newblock \bibinfo{title}{A {{Simple Generalisation}} of the {{Area Under}} the
+  {{ROC Curve}} for {{Multiple Class Classification Problems}}}.
+\newblock \bibinfo{journal}{Machine Learning} \bibinfo{volume}{45},
+  \bibinfo{pages}{171--186}.
+\newblock \DOIprefix\doi{10.1023/A:1010920819831}.
 %Type = Article
 \bibitem[{Hanley and McNeil(1982)}]{hanley1982meaning}
 \bibinfo{author}{Hanley, J.A.}, \bibinfo{author}{McNeil, B.J.},
@@ -193,6 +212,12 @@
 \newblock \bibinfo{journal}{Australian Journal of Grape and Wine Research}
   \bibinfo{volume}{19}, \bibinfo{pages}{129--139}.
 \newblock \DOIprefix\doi{10.1111/ajgw.12016}.
+%Type = Misc
+\bibitem[{{R Core Team}(2021)}]{rcoreteamLanguageEnvironmentStatistical2021}
+\bibinfo{author}{{R Core Team}}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{R: {{A Language}} and {{Environment}} for
+  {{Statistical Computing}}}.
+\newblock \bibinfo{howpublished}{R Foundation for Statistical Computing}.
 %Type = Book
 \bibitem[{Reynolds(2010)}]{reynoldsManagingWineQuality2010}
 \bibinfo{author}{Reynolds, A.G.}, \bibinfo{year}{2010}.
@@ -244,6 +269,12 @@
   assessment of on-tree fruits: A review}.
 \newblock \bibinfo{journal}{Journal of Food Measurement and Characterization}
   \bibinfo{volume}{12}, \bibinfo{pages}{497--526}.
+%Type = Misc
+\bibitem[{SWA(2022)}]{swaSustainableWingrowingAustralia2022}
+\bibinfo{author}{SWA, S.W.A.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Sustainable {{Wingrowing Australia}}}.
+\newblock
+  \bibinfo{howpublished}{https://sustainablewinegrowing.com.au/case-studies/}.
 %Type = Misc
 \bibitem[{{Terry Therneau} and {Beth
   Atkinson}(2022)}]{terrytherneauRpartRecursivePartitioning2022}

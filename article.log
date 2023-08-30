@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.6.20)  28 AUG 2023 11:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.6.20)  30 AUG 2023 14:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -261,40 +261,90 @@ Overfull \hbox (2.61108pt too wide) has occurred while \output is active
 [1
 
 
-] [2] [3] [4]
-Overfull \hbox (2.96814pt too wide) in paragraph at lines 228--240
-[]\OT1/cmr/m/n/12 Classification Trees were de-vel-oped to dis-cern the dif-fer-ent prac-tices within
- []
-
-[5] [6]
+]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 267.
+               Default added (so using `tbp') on input line 194.
 
-[7] [8] [9] [10] (./article.bbl [11] [12] [13]
-Underfull \hbox (badness 4779) in paragraph at lines 167--176
+
+LaTeX Warning: Float too large for page by 68.20587pt on input line 224.
+
+[2] [3] [4] [5] [6]
+<region.pdf, id=41, 505.89pt x 505.89pt>
+File: region.pdf Graphic file (type pdf)
+<use region.pdf>
+Package pdftex.def Info: region.pdf  used on input line 285.
+(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
+<region.png, id=42, 1426.32875pt x 647.41875pt>
+File: region.png Graphic file (type png)
+<use region.png>
+Package pdftex.def Info: region.png  used on input line 291.
+(pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
+ [7] [8 <./region.pdf>]
+<year.pdf, id=57, 505.89pt x 505.89pt>
+File: year.pdf Graphic file (type pdf)
+<use year.pdf>
+Package pdftex.def Info: year.pdf  used on input line 299.
+(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
+<year.png, id=58, 1426.32875pt x 647.41875pt>
+File: year.png Graphic file (type png)
+<use year.png>
+Package pdftex.def Info: year.png  used on input line 305.
+(pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
+<operating_costs.pdf, id=59, 505.89pt x 505.89pt>
+File: operating_costs.pdf Graphic file (type pdf)
+<use operating_costs.pdf>
+Package pdftex.def Info: operating_costs.pdf  used on input line 313.
+(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
+<operating_costs.png, id=60, 1426.32875pt x 647.41875pt>
+File: operating_costs.png Graphic file (type png)
+<use operating_costs.png>
+Package pdftex.def Info: operating_costs.png  used on input line 319.
+(pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
+<profit.pdf, id=61, 505.89pt x 505.89pt>
+File: profit.pdf Graphic file (type pdf)
+<use profit.pdf>
+Package pdftex.def Info: profit.pdf  used on input line 327.
+(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
+<profit.png, id=62, 1426.32875pt x 647.41875pt>
+File: profit.png Graphic file (type png)
+<use profit.png>
+Package pdftex.def Info: profit.png  used on input line 333.
+(pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 339.
+
+[9 <./region.png>] [10 <./year.pdf>] [11 <./year.png>] [12 <./operating_costs.pdf>] [13 <./operating_costs.png>] [14 <./profit.pdf>] [15 <./profit.png>] [16] [17] [18] (./article.bbl [19] [20] [21]
+Underfull \hbox (badness 4779) in paragraph at lines 186--195
 []\OT1/cmr/m/n/12 Kuhn, M., 2008.  Build-ing Pre-dic-tive Mod-els in R Us-ing the
  []
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 167--176
+Underfull \hbox (badness 1237) in paragraph at lines 186--195
 \OT1/cmr/m/n/12 caret Pack-age.  Jour-nal of Sta-tis-ti-cal Soft-ware, Ar-ti-cles 28, 1--26.
  []
 
-[14]) [15] (./article.aux) ) 
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 274--280
+[]\OT1/cmr/m/n/12 SWA, S.W.A., 2022.  Sus-tain-able Wingrow-ing Aus-tralia.
+ []
+
+) [23] (./article.aux) ) 
 Here is how much of TeX's memory you used:
- 4728 strings out of 478287
- 77696 string characters out of 5849289
- 366095 words of memory out of 5000000
- 22864 multiletter control sequences out of 15000+600000
+ 4802 strings out of 478287
+ 79400 string characters out of 5849289
+ 370334 words of memory out of 5000000
+ 22934 multiletter control sequences out of 15000+600000
  475840 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,9n,76p,1150b,354s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,14n,76p,1174b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on article.pdf (16 pages, 211694 bytes).
+Output written on article.pdf (24 pages, 1473770 bytes).
 PDF statistics:
- 137 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 204 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -189,49 +189,49 @@ Through the use of classification trees this study aims to highlight the key dif
 % 853 with reported profits
 % 46 regions
 % reported since 2018
-Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program, which aims to facilitate grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by SWA is entered manually by winegrowers using a web based interface. A total of 6091 observations has been collected over 10 years. Each observation contained 23 variables see Table \ref{tab:vars}.
-
-\begin{table}[]
+Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program, which aims to facilitate grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by the SWA is entered manually by winegrowers using a web based interface tool. A total of 6091 observations were collected from 2012 to 2022. Each observation contained 23 variables reflecting a vineyards account for the given year (see Table \ref{tab:vars}).
+\par
+\begin{table}[] 
+  \label{tab:vars}
   \caption{Summary of variables used in the analysis. The recorded column indicate values that were either greater than zero or that were not missing.}\label{tab:summary}
-\begin{tabular}{@{}cccc@{}}
-  \toprule
-  \textbf{} & \textbf{Units} & \textbf{Recorded} & \textbf{\begin{tabular}[c]{@{}c@{}}Number of\\ Classes\end{tabular}} \\ \midrule
-  Water Used & Mega Litres & 5846 &  \\
-  Diesel & Litres & 5585 &  \\
-  Biodiesel & Litres & 25 &  \\
-  LPG & Litres & 958 &  \\
-  Herbicide Spray & Times per year & 2026 &  \\
-  Year & Class & 6091 & 10 \\
-  Disease & Class & 6091 & 2 \\
-  Region & Class & 6091 & 58 \\
-  Solar & Kilowatt Hours & 622 &  \\
-  Wind & Kilowatt Hours & 2 &  \\
-  Irrigation Type & Class & 6091 & 20 \\
-  Petrol & Litres & 4309 &  \\
-  Slashing & Times per year & 2290 &  \\
-  Yield & Tonnes & 5935 &  \\
-  Irrigation Energy & Class & 6091 & 16 \\
-  Area Harvested & Hectares & 6091 &  \\
-  Electricity & Kilowatt Hours & 1015 &  \\
-  Insecticide Spray & Times per year & 1092 &  \\
-  Fertiliser & \begin{tabular}[c]{@{}c@{}}Kilograms \\ of Nitrogen\end{tabular} & 795 &  \\
-  Fungicide Spray & Times per year & 2260 &  \\
-  Cover Crop & Class & 6091 & 32 \\
-  Water Type & Class & 6091 & 39 \\
-  Profit & AUD & 853 &  \\
-  Operating Costs & AUD & 853 &  \\ \bottomrule
-  \end{tabular}
+  \begin{tabular}{@{}ccccl@{}}
+    \toprule
+    \textbf{Variable} & \textbf{Units} & \textbf{Recorded} & \textbf{\begin{tabular}[c]{@{}c@{}}Number of\\ Classes\end{tabular}} &  \\ \midrule
+    Water Used & Mega Litres & 5846 &  &  \\
+    Diesel & Litres & 5585 &  &  \\
+    Biodiesel & Litres & 25 &  &  \\
+    LPG & Litres & 958 &  &  \\
+    Herbicide Spray & Times per year & 2026 &  &  \\
+    Year & Class & 6091 & 10 &  \\
+    Disease & Class & 6091 & 2 &  \\
+    Region & Class & 6091 & 58 &  \\
+    Solar & Kilowatt Hours & 622 &  &  \\
+    Irrigation Type & Class & 6091 & 20 &  \\
+    Petrol & Litres & 4309 &  &  \\
+    Slashing & Times per year & 2290 &  &  \\
+    Yield & Tonnes & 5935 &  &  \\
+    Irrigation Energy & Class & 6091 & 16 &  \\
+    Area Harvested & Hectares & 6091 &  &  \\
+    Electricity & Kilowatt Hours & 1015 &  &  \\
+    Insecticide Spray & Times per year & 1092 &  &  \\
+    Fertiliser & \begin{tabular}[c]{@{}c@{}}Kilograms \\ of Nitrogen\end{tabular} & 795 &  &  \\
+    Fungicide Spray & Times per year & 2260 &  &  \\
+    Cover Crop & Class & 6091 & 32 &  \\
+    Water Type & Class & 6091 & 39 &  \\
+    Profit & AUD & 853 &  &  \\
+    Operating Costs & AUD & 853 &  &  \\ \bottomrule
+    \end{tabular}
+\end{table}
 
- were collected
+The data originally contained only two multiclass variables: year and region. Variables that measured the same metric from different sources (such as water collected from rivers versus water from dams) were converted into multiclass variables representing the source. The total amount used from these variables was retained as a separate variable. Occurrences of multiple sources were defined as separate classes. As harvest does not run by calendar year, years are in financial years. Region represents one of the 65 Geographical Indicator Regions (GI Region) used to describe different unique localised traits of vineyards across Australia \citep{hallidayAustralianWineEncyclopedia2009,oliverReviewSoilPhysical2013,soarClimateDriversRed2008}. Each region is explicitly defined under the Wine Australia Corporation Act of 1980 \citep{attorney-generalsdepartmentWineAustraliaCorporation2010}. Profit was also used as a binary variable, depicting whether a vineyard was profitable or not.
+\par
+%
+% Mention one-hot-encoding.
+%
 
-The data collected pertains to both the physical and 
-
-
-The Australian wine industry is divided into 65 regions, known as a Geographical Indicator Regions (GI Region). Each GI Region is used to describe different unique localised traits of vineyards across Australia; with each having its own mixture of climatic and geophysical properties \citep{hallidayAustralianWineEncyclopedia2009,oliverReviewSoilPhysical2013,soarClimateDriversRed2008}. Each region is explicitly defined under the Wine Australia Corporation Act of 1980 \citep{attorney-generalsdepartmentWineAustraliaCorporation2010}. The climatic properties of a GI Region are summarised by Sustainable Winegrowing Australia (2021), where regions of similar climates are amalgamated together into superset regions. The climatic regions were utilised to illustrate similar trends and explain differences between sets of regions.
-The data used in this analysis comes from Sustainable Winegrowing Australia and covers the period 2015 to 2022. The dataset contained 3342 samples across 52 GI Regions and 1072 individual vineyards.
-
-% how was it collected
-
+%
+% How deep into the classes do we go?
+%
 \subsection{XGBoosted Trees}
 XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. They were chosen for this analysis as they provide both a high predictive performance and ability to effectively capture complex relationships. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (profit and operating cost), which were only included once as predicted variables.
 \par
@@ -260,7 +260,7 @@ Chen and Guestrin \citep{chenXGBoostScalableTree2016} further illustrate, using 
   {{(\sum_{i\in I}{g_i})^{2}}\over{\sum_{i \in I} h_i + \lambda}} \right] - \gamma,
 \end{equation}
 
-with the tree structure is defined using left $I_L$ and right $I_R$ instance sets of nodes, with $I = I_L \cup I_R$. Instead of enumerating all possible tree structures, a greedy algorithm iteratively adds branches to the tree minimising $ \mathcal{L}_{split} $ in (\ref{eqn:enumerate}). The frequency of a variable's occurrence within a tree is directly attributed to the minimisation of the objective function (or loss) through the minimisation of  $ \mathcal{L}_{split} $.
+with the tree structure defined using left $I_L$ and right $I_R$ instance sets of nodes, with $I = I_L \cup I_R$. Instead of enumerating all possible tree structures, a greedy algorithm iteratively adds branches to the tree minimising $ \mathcal{L}_{split} $ in (\ref{eqn:enumerate}). The frequency of a variable's occurrence within a tree is directly attributed to the minimisation of the objective function (or loss) through the minimisation of  $ \mathcal{L}_{split} $.
 \par
 The frequency of a variable appearing as a node within the ensemble was used as a measure of importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function, translating the value into a simple count metric. Creating XGBoosted trees for each variable allowed the use of importance to show how strongly variables were associated with each other. The importance of predictor variables to economic variables was illustrated through the use of Sankey diagrams constructed using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Other variable's interconnectedness was demonstrated through the use of a chord diagram also created using Holoviews.
 \par
@@ -277,7 +277,84 @@ Classification trees were validated using K-fold cross validation. Each model wa
 
 \section{Results}
 
+
+\subsection{Region}
+
+\begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{region.pdf}}
+  \caption{Decision tree predicting Region. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:region_tree}
+\end{figure}
+
+\begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{region.png}}
+  \caption{The left-hand side depicts the 10 most important variables in predicting Region using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:region_sankey}
+\end{figure}
+
+\subsection{Year}
+
+\begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{year.pdf}}
+  \caption{Decision tree predicting Year. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:year_tree}
+\end{figure}
+
+\begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{year.png}}
+  \caption{The left-hand side depicts the 10 most important variables in predicting Year using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:year_sankey}
+\end{figure}
+
+\subsection{Operating Costs}
+
+\begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{operating_costs.pdf}}
+  \caption{Decision tree predicting Operating Costs. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:operating_costs_tree}
+\end{figure}
+
+\begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{operating_costs.png}}
+  \caption{The left-hand side depicts the 10 most important variables in predicting Operating Costs using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:operating_costs_sankey}
+\end{figure}
+
+\subsection{Profit}
+
+\begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{profit.pdf}}
+  \caption{Decision tree predicting Profit. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:profit_tree}
+\end{figure}
+
+\begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{profit.png}}
+  \caption{The left-hand side depicts the 10 most important variables in predicting Profit using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:profit_sankey}
+\end{figure}
+
+\subsection{Validation}
+
+\begin{table}[]
+  \caption{Validation and training accuracies of each multiclass variable.}
+  \begin{tabular}{@{}ccc@{}}
+  \toprule
+  \textbf{Variable} & \textbf{Validation} & \textbf{Training} \\ \midrule
+  \textbf{cover crops} & 0.364086 & 0.396418 \\
+  \textbf{water type} & 0.742097 & 0.928905 \\
+  \textbf{profitable} & 0.705882 & 0.719737 \\
+  \textbf{irrigation type} & 0.841845 & 0.847554 \\
+  \textbf{giregion} & 0.505824 & 0.568242 \\
+  \textbf{irrigation energy} & 0.746293 & 0.836405 \\
+  \textbf{data year id} & 0.422003 & 0.518059 \\ \bottomrule
+  \end{tabular}
+  \end{table}
+
+
+
 \subsection{Model 1 GI Regions}
+
 The first Model was used to classify GI regions % Interestingly the firs I am hearing of this - each model needs to be more well summarised. A table would be good.
 and resulted in an accuracy of 36.48\% across 52 classes. The most prominent features used to classify regions were the types of water resources available (see Figure 1). Two regions, the Riverland and Coonawarra, were the most accurate classes being 92.74\% and 96.97\% respectively.
 % it might be worth only talking about the regions that were well classifified - and then talk about their determining traits.
@@ -296,23 +373,23 @@ Many of the regions had significantly lower reporting rates, resulting much poor
  % THis speaks highly to why regions were poorly classified.
 These misclassifications are likely due to the incredibly similar regional properties and close proximity these regions have with one another. Other misclassifications were most likely due to lower reporting rates with many regions being under represented.
 
-\begin{table}[]
-    \caption{Classification accuracy of the most prominent GI Regions.}
-    \label{tab:accuracy}
-    \resizebox{\textwidth}{!}{
-        \begin{tabular}{@{}llll@{}}
-            \toprule
-            \textbf{} & \textbf{Accuracy} & \textbf{Predicted} & \textbf{Actual} \\ \midrule
-            \textbf{Adelaide Hills} & 30.45\% & 95 & 312 \\
-            \textbf{Barossa Valley} & 51.00\% & 205 & 402 \\
-            \textbf{Coonawarra} & 96.97\% & 192 & 198 \\
-            \textbf{Langhorne Creek} & 22.84\% & 53 & 232 \\
-            \textbf{Margaret River} & 78.82\% & 201 & 255 \\
-            \textbf{McLaren Vale} & 52.89\% & 128 & 242 \\
-            \textbf{Riverland} & 92.74\% & 345 &
-        \end{tabular}
-    }
-\end{table}
+% \begin{table}[]
+%     \caption{Classification accuracy of the most prominent GI Regions.}
+%     \label{tab:accuracy}
+%     \resizebox{\textwidth}{!}{
+%         \begin{tabular}{@{}llll@{}}
+%             \toprule
+%             \textbf{} & \textbf{Accuracy} & \textbf{Predicted} & \textbf{Actual} \\ \midrule
+%             \textbf{Adelaide Hills} & 30.45\% & 95 & 312 \\
+%             \textbf{Barossa Valley} & 51.00\% & 205 & 402 \\
+%             \textbf{Coonawarra} & 96.97\% & 192 & 198 \\
+%             \textbf{Langhorne Creek} & 22.84\% & 53 & 232 \\
+%             \textbf{Margaret River} & 78.82\% & 201 & 255 \\
+%             \textbf{McLaren Vale} & 52.89\% & 128 & 242 \\
+%             \textbf{Riverland} & 92.74\% & 345 &
+%         \end{tabular}
+%     }
+% \end{table}
 
 \subsection{Climate}
 Classifying the SWA climatic categorisation of the given regions had better performance than the GI Regions, with ~41.66\% being classified correctly. These categories were divided into 12 climatic classifications with 3 and 4 separate subsets for rainfall and temperature respectively. The decision tree behaved similarly and over classified climates with higher response rates. The results posed an interesting similarity with grape quality classifier, being influenced predominantly by water and area. The use of fungicide to separate regions that were 'Very dry' and 'Damp' can be considered as indicative of the different practices required due to climatic pressure; fungicides being more prominent in cooler regions with greater rainfall due to the higher risk of disease pressure \citep{reynoldsManagingWineQuality2010}. % interesting although not really appropriate for the results section.
