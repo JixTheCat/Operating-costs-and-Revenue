@@ -47,7 +47,6 @@ rpart.plot(model_tree$finalModel
     , legend.x = -100
     , box.palette = "auto"
 )
-
 dev.off()
 
 sink("region.txt")
