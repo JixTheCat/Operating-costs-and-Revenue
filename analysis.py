@@ -448,7 +448,7 @@ cover_crops = [
     , "permanent_cover_crop_volunteer_sward"]
 
 for col in cover_crops:
-    df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[12:])}).copy()
+    df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col)}).copy()
 df["cover_crops"] = pd.Categorical(df[cover_crops].astype(str).sum(axis=1))
 cols = list(set(cols) - set(cover_crops))
 cols.append("cover_crops")
@@ -465,7 +465,7 @@ water_type = [
     , 'water_applied_for_frost_control']
 
 for col in water_type:
-    df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col[11:])}).copy()
+    df[col] = df[col].cat.rename_categories({0: "", 1: "{} ".format(col)}).copy()
 df["water_type"] = pd.Categorical(df[water_type].astype(str).sum(axis=1))
 cols = list(set(cols) - set(water_type))
 cols.append("water_type")
