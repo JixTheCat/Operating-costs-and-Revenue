@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.6.20)  31 AUG 2023 16:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.6.20)  31 AUG 2023 20:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -254,22 +254,9 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 121.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-
-Package natbib Warning: Citation `keithjonesAustralianWineIndustry2002' on page 1 undefined on input line 156.
-
-
-Package natbib Warning: Citation `knightFirmResourcesDevelopment2019' on page 1 undefined on input line 156.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
-
-
-Package natbib Warning: Citation `swaSustainableWingrowingAustralia2022' on page 1 undefined on input line 192.
-
-
-LaTeX Warning: Reference `tab:vars' on page 1 undefined on input line 192.
 
 
 Overfull \hbox (2.61108pt too wide) has occurred while \output is active
@@ -282,299 +269,78 @@ Overfull \hbox (2.61108pt too wide) has occurred while \output is active
 ]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 194.
+               Default added (so using `tbp') on input line 195.
 
 
-LaTeX Warning: Float too large for page by 68.20587pt on input line 224.
+LaTeX Warning: Float too large for page by 68.20587pt on input line 225.
 
-
-Package natbib Warning: Citation `hallidayAustralianWineEncyclopedia2009' on page 2 undefined on input line 226.
-
-
-Package natbib Warning: Citation `oliverReviewSoilPhysical2013' on page 2 undefined on input line 226.
-
-
-Package natbib Warning: Citation `soarClimateDriversRed2008' on page 2 undefined on input line 226.
-
-
-Package natbib Warning: Citation `attorney-generalsdepartmentWineAustraliaCorporation2010' on page 2 undefined on input line 226.
-
-
-Package natbib Warning: Citation `chenXGBoostScalableTree2016' on page 2 undefined on input line 236.
-
-
-Package natbib Warning: Citation `g.vanrossumPythonTutorialTechnical1995' on page 2 undefined on input line 236.
-
-
-Package natbib Warning: Citation `chenXGBoostScalableTree2016' on page 2 undefined on input line 238.
-
-[2] [3]
-
-LaTeX Warning: Reference `eqn:objective' on page 4 undefined on input line 250.
-
-
-Package natbib Warning: Citation `sklearn_api' on page 4 undefined on input line 252.
-
-
-Package natbib Warning: Citation `chenXGBoostScalableTree2016' on page 4 undefined on input line 252.
-
-[4]
-
-Package natbib Warning: Citation `chenXGBoostScalableTree2016' on page 5 undefined on input line 254.
-
-
-LaTeX Warning: Reference `eqn:enumerate' on page 5 undefined on input line 263.
-
-
-Package natbib Warning: Citation `philipp_rudiger_2020_3904606' on page 5 undefined on input line 265.
-
-[5]
-
-Package natbib Warning: Citation `hanley1982meaning' on page 6 undefined on input line 270.
-
-
-Package natbib Warning: Citation `ferriExperimentalComparisonPerformance2009' on page 6 undefined on input line 270.
-
-
-Package natbib Warning: Citation `handSimpleGeneralisationArea2001' on page 6 undefined on input line 270.
-
-
-Package natbib Warning: Citation `kuhnBuildingPredictiveModels2008' on page 6 undefined on input line 274.
-
-
-Package natbib Warning: Citation `terrytherneauRpartRecursivePartitioning2022' on page 6 undefined on input line 274.
-
-
-Package natbib Warning: Citation `rcoreteamLanguageEnvironmentStatistical2021' on page 6 undefined on input line 274.
-
-[6]
-
-LaTeX Warning: Reference `fig:region_tree' on page 7 undefined on input line 283.
-
-
-LaTeX Warning: Reference `fig:region_sankey' on page 7 undefined on input line 283.
-
-[7]
-<region.pdf, id=44, 505.89pt x 505.89pt>
+[2] [3] [4] [5] [6] [7] [8]
+<region.pdf, id=47, 505.89pt x 505.89pt>
 File: region.pdf Graphic file (type pdf)
 <use region.pdf>
-Package pdftex.def Info: region.pdf  used on input line 292.
+Package pdftex.def Info: region.pdf  used on input line 295.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
-<region.png, id=45, 1426.32875pt x 647.41875pt>
+<region.png, id=48, 1426.32875pt x 647.41875pt>
 File: region.png Graphic file (type png)
 <use region.png>
-Package pdftex.def Info: region.png  used on input line 298.
+Package pdftex.def Info: region.png  used on input line 301.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
- [8] [9 <./region.pdf>] [10 <./region.png>]
-<year.pdf, id=64, 505.89pt x 505.89pt>
+<year.pdf, id=50, 505.89pt x 505.89pt>
 File: year.pdf Graphic file (type pdf)
 <use year.pdf>
-Package pdftex.def Info: year.pdf  used on input line 312.
+Package pdftex.def Info: year.pdf  used on input line 313.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
-<year.png, id=65, 1426.32875pt x 647.41875pt>
+<year.png, id=51, 1426.32875pt x 647.41875pt>
 File: year.png Graphic file (type png)
 <use year.png>
-Package pdftex.def Info: year.png  used on input line 318.
+Package pdftex.def Info: year.png  used on input line 319.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
-
-
-LaTeX Warning: Reference `fig:operating_costs_sankey' on page 11 undefined on input line 326.
-
-
-LaTeX Warning: Reference `fig:year_sankey' on page 11 undefined on input line 326.
-
-<operating_costs.png, id=66, 1426.32875pt x 647.41875pt>
+ [9] [10 <./region.pdf>] [11 <./region.png>] [12 <./year.pdf>]
+<operating_costs.png, id=80, 1426.32875pt x 647.41875pt>
 File: operating_costs.png Graphic file (type png)
 <use operating_costs.png>
-Package pdftex.def Info: operating_costs.png  used on input line 339.
+Package pdftex.def Info: operating_costs.png  used on input line 340.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
-[11] [12 <./year.pdf>] [13 <./year.png> <./operating_costs.png>]
-
-LaTeX Warning: Reference `fig:profit_sankey' on page 14 undefined on input line 354.
-
-<profit.pdf, id=86, 505.89pt x 505.89pt>
+ [13 <./year.png>] [14 <./operating_costs.png>]
+<profit.pdf, id=89, 505.89pt x 505.89pt>
 File: profit.pdf Graphic file (type pdf)
 <use profit.pdf>
-Package pdftex.def Info: profit.pdf  used on input line 360.
+Package pdftex.def Info: profit.pdf  used on input line 359.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
-<profit.png, id=87, 1426.32875pt x 647.41875pt>
+<profit.png, id=90, 1426.32875pt x 647.41875pt>
 File: profit.png Graphic file (type png)
 <use profit.png>
-Package pdftex.def Info: profit.png  used on input line 366.
+Package pdftex.def Info: profit.png  used on input line 365.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 370.
-
-
-Package natbib Warning: Citation `abbalDecisionSupportSystem2016' on page 14 undefined on input line 392.
-
-
-Package natbib Warning: Citation `agostaRegionalClimateVariability2012' on page 14 undefined on input line 392.
-
-
-Package natbib Warning: Citation `fragaMultivariateClusteringViticultural2017' on page 14 undefined on input line 392.
-
-
-LaTeX Warning: Reference `fig:region_sankey' on page 14 undefined on input line 392.
-
-
-Package natbib Warning: Citation `willchancellorMeasuringAustralianBroadacre2019' on page 14 undefined on input line 392.
-
-[14] [15 <./profit.pdf>] [16 <./profit.png>]
-
-Package natbib Warning: Citation `willchancellorMeasuringAustralianBroadacre2019' on page 17 undefined on input line 394.
-
-
-Package natbib Warning: Citation `webbObservedTrendsWinegrape2011' on page 17 undefined on input line 394.
-
-
-Package natbib Warning: Citation `botting1996canopy' on page 17 undefined on input line 394.
-
-
-Package natbib Warning: Citation `campsGrapeHarvestYield2012' on page 17 undefined on input line 394.
-
-
-Package natbib Warning: Citation `bgcoombeGrapeBerryDevelopment2004' on page 17 undefined on input line 394.
-
-
-Package natbib Warning: Citation `goodwinijeriepRegulatedDeficitIrrigation1992' on page 17 undefined on input line 394.
-
-
-Package natbib Warning: Citation `mgmccarthyEffectCropLoad1986' on page 17 undefined on input line 394.
-
-
-LaTeX Warning: Reference `fig:profit_sankey' on page 17 undefined on input line 394.
-
-[17]
-
-LaTeX Warning: Reference `fig:region_tree' on page 18 undefined on input line 396.
-
-/home/bryce/repositories/Grape-Quality-and-its-Link-to-Regional-Differences-in-the-Australian-Winegrowing-Industry/article.tex:398: Undefined control sequence.
-l.398 ...ethod to alleviate these issues \autocite
-                                                  {delpuechAdaptingCoverCrop...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Package natbib Warning: Citation `wineaustraliaWineAustraliaOpenData2021' on page 18 undefined on input line 398.
-
-
-Package natbib Warning: Citation `capelloEffectsTractorPasses2019' on page 18 undefined on input line 400.
-
-
-Package natbib Warning: Citation `capelloPermanentCoverSoil2020' on page 18 undefined on input line 400.
-
-
-Package natbib Warning: Citation `delpuechAdaptingCoverCrop2018' on page 18 undefined on input line 400.
-
-
-Package natbib Warning: Citation `goslingLongtermChangesSoil2005' on page 18 undefined on input line 400.
-
-
-Package natbib Warning: Citation `monteiroInfluenceCoverCrop2007' on page 18 undefined on input line 400.
-
-[18] [19] [20] [21] [22] [23] [24]
-
-Package natbib Warning: Citation `wineaustraliaNationalVintageReport2019' on page 25 undefined on input line 450.
-
-
-Package natbib Warning: Citation `wineaustraliaNationalVintageReport2020' on page 25 undefined on input line 450.
-
-
-Package natbib Warning: Citation `wineaustraliaNationalVintageReport2021' on page 25 undefined on input line 450.
-
-
-Package natbib Warning: Citation `wineaustraliaNationalVintageReport2022' on page 25 undefined on input line 450.
-
-
-Package natbib Warning: Citation `winemakersfederationofaustraliaNationalVintageReport2015' on page 25 undefined on input line 450.
-
-
-Package natbib Warning: Citation `winemakersfederationofaustraliaNationalVintageReport2016' on page 25 undefined on input line 450.
-
-
-Package natbib Warning: Citation `winemakersfederationofaustraliaNationalVintageReport2017' on page 25 undefined on input line 450.
-
-
-Package natbib Warning: Citation `winemakersfederationofaustraliaNationalVintageReport2018' on page 25 undefined on input line 450.
-
-
-Package natbib Warning: Citation `abadCoverCropsViticulture2021' on page 25 undefined on input line 455.
-
-
-Package natbib Warning: Citation `cortezUsingDataMining2009' on page 25 undefined on input line 455.
-
-
-Package natbib Warning: Citation `hallWithinseasonTemporalVariation2011' on page 25 undefined on input line 455.
-
-
-Package natbib Warning: Citation `i.goodwinManagingSoilWater2009' on page 25 undefined on input line 455.
-
-
-Package natbib Warning: Citation `kasimatiPredictingGrapeSugar2022' on page 25 undefined on input line 455.
-
-
-Package natbib Warning: Citation `oliverReviewSoilPhysical2013' on page 25 undefined on input line 455.
-
-
-Package natbib Warning: Citation `srivastavaNondestructiveSensingMethods2018' on page 25 undefined on input line 455.
-
-
-Package natbib Warning: Citation `leileiheFruitYieldPrediction2022' on page 25 undefined on input line 470.
-
-[25] [26]
-
-Package natbib Warning: Citation `reynoldsManagingWineQuality2010' on page 27 undefined on input line 513.
-
-[27] [28] (./article.bbl [29] [30]
-Underfull \hbox (badness 4779) in paragraph at lines 186--195
+ [15] [16 <./profit.pdf>] [17 <./profit.png>] [18] [19] [20] (./article.bbl [21] [22] [23]
+Underfull \hbox (badness 4779) in paragraph at lines 204--212
 []\OT1/cmr/m/n/12 Kuhn, M., 2008.  Build-ing Pre-dic-tive Mod-els in R Us-ing the
  []
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 186--195
+Underfull \hbox (badness 1237) in paragraph at lines 204--212
 \OT1/cmr/m/n/12 caret Pack-age.  Jour-nal of Sta-tis-ti-cal Soft-ware, Ar-ti-cles 28, 1--26.
  []
 
-[31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 274--280
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 291--297
 []\OT1/cmr/m/n/12 SWA, S.W.A., 2022.  Sus-tain-able Wingrow-ing Aus-tralia.
  []
 
-)
-
-Package natbib Warning: There were undefined citations.
-
-[33] (./article.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[25]) [26] (./article.aux) ) 
 Here is how much of TeX's memory you used:
- 4796 strings out of 478287
- 79209 string characters out of 5849289
- 367793 words of memory out of 5000000
- 22928 multiletter control sequences out of 15000+600000
+ 4798 strings out of 478287
+ 78993 string characters out of 5849289
+ 370133 words of memory out of 5000000
+ 22930 multiletter control sequences out of 15000+600000
  475840 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,14n,76p,2236b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,14n,76p,2219b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on article.pdf (34 pages, 1470796 bytes).
+Output written on article.pdf (27 pages, 1453310 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
+ 206 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

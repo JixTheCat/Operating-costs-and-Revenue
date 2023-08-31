@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: article.aux
+The style file: elsarticle-harv.bst
+Database file #1: references.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--empty journal in botting1996canopy
+Warning--empty journal in capelloPermanentCoverSoil2020
+Warning--empty journal in mgmccarthyEffectCropLoad1986
+Warning--empty journal in wineaustraliaNationalVintageReport2020
+Warning--empty journal in wineaustraliaNationalVintageReport2021
+Warning--empty journal in wineaustraliaNationalVintageReport2022
+You've used 37 entries,
+            2990 wiz_defined-function locations,
+            896 strings with 15015 characters,
+and the built_in function-call counts, 24228 in all, are:
+= -- 1778
+> -- 1098
+< -- 24
++ -- 429
+- -- 384
+* -- 2663
+:= -- 3597
+add.period$ -- 114
+call.type$ -- 37
+change.case$ -- 312
+chr.to.int$ -- 37
+cite$ -- 43
+duplicate$ -- 1794
+empty$ -- 1676
+format.name$ -- 489
+if$ -- 4421
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 352
+newline$ -- 203
+num.names$ -- 148
+pop$ -- 698
+preamble$ -- 1
+purify$ -- 276
+quote$ -- 0
+skip$ -- 534
+stack$ -- 0
+substring$ -- 830
+swap$ -- 1277
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 327
+warning$ -- 6
+while$ -- 148
+width$ -- 0
+write$ -- 527
+(There were 6 warnings)
