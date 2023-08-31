@@ -155,7 +155,7 @@ We can link these contributing factors back to the baselines - at least anecdota
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The Australian wine-growing industry is a rich and diverse landscape that is separated into multiple Geographical Indicator Regions. Each region describing unique reputations, qualities and varietals of wine produced there. While a great deal has been done regarding individual regional properties and traits, there has been little statistical insight into broader regional comparisons; due to a lack of cross-regional and in-depth data sources \citep{keithjonesAustralianWineIndustry2002,knightFirmResourcesDevelopment2019}. In this study we use Classification Trees to compare regional differences and how these differences relate to sustainable practices. 
 \newline
-A vineyard's region predetermines several physical parameters, such as: climate, geology and soil; making location a widely considered key determinant of grape yield and quality \citep{abbalDecisionSupportSystem2016,agostaRegionalClimateVariability2012,fragaMultivariateClusteringViticultural2017}. 
+
 %
 %This analysis addresses the knowledge gap regarding the effectiveness of regional level strategies employed in the wine industry and their relation to grape quality.
 % What the hell is a regional strategy
@@ -280,7 +280,7 @@ Classification trees were validated using K-fold cross validation. Each model wa
 
 \subsection{Region}
 
-Region classification performed at 36.10\% and 56.82\% accuracy, for the classification tree and XGBoosted ensemble respectively. The most prominent features used to classify regions with the classification tree was water sources (see Figure \ref{fig:region_tree}). This differed from the variables that illustrated the greatest importance for the XGBoosted ensemble (see Figure (\ref{fig:region_sankey}), with predictor variables being highly interrelated in importance. Area, water, fuel and yield were more determining factors when predicting region using XGBoost. Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
+Region classification performed at 32.34\% (3.67\% standard deviation) and 56.82\% accuracy (50.58\% validation accuracy), for the classification tree and XGBoosted ensemble respectively. The most prominent features used to classify regions with the classification tree was water sources (see Figure \ref{fig:region_tree}). This differed from the variables that illustrated the greatest importance for the XGBoosted ensemble (see Figure (\ref{fig:region_sankey}), with predictor variables being highly interrelated in importance. Area, water, fuel and yield were more determining factors when predicting region using XGBoost. Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
 \par
 It is reasonable that regions, being subjected to different rainfalls and temperatures, would require different amounts of water, and would have access to different water sources. The relation of area harvested and fuel (particularly petrol) is prominent with other predictors. Due to the wide variety of uses of petrol and diesel, it is likely that they are representative of other activities within the vineyard, such as pruning and harvesting. With predictors such as yield and area being highly interconnected as they likely operate as proxy variables to other factors, possibly other present variables.
 \par
@@ -300,8 +300,10 @@ Many of the regions had significantly lower reporting rates, resulting much poor
 \end{figure}
 
 \subsection{Year}
+0.35196134
+0.0628483907157039
 
-The classification tree and XGBoosted ensemble performed similarly for classifying year with 41.15\% and 51.81\% respectively. Electricity and the type of irrigation were highly influential within the classification tree. Similarly, electricity was the most frequently occurring node in the XGBoost ensemble. However, other variables such as slashing passes, and fungicide and herbicide spraying were more prevalenct than in the classification tree. Weed and disease outbreaks are likely an influential factor when classifying different years, making the decisions to spray and slash unique factors that differ year to year. Climatic differences between years are likely tied to the influence of yield and water use.
+The classification tree and XGBoosted ensemble performed similarly for classifying year with 35.20\% (6.28\% standard deviation) and 51.81\% (42.20\% validation accuracy) respectively. Electricity and the type of irrigation were highly influential within the classification tree. Similarly, electricity was the most frequently occurring node in the XGBoost ensemble. However, other variables such as slashing passes, and fungicide and herbicide spraying were more prevalenct than in the classification tree. Weed and disease outbreaks are likely an influential factor when classifying different years, making the decisions to spray and slash unique factors that differ year to year. Climatic differences between years are likely tied to the influence of yield and water use.
 \par
 Over half of the interrelated importance of the predictor variables is dominated by area harvested, yield and slashing passes. Although all the predictor variables are highly connected, their relative importance is not as prominent as the three major variables. It is of particular note of the relative importance of slashing to area, fuel and yield; as these are not directly related activities. The connection between slashing and spraying is that those who do a set number of spraying or slashing passes tended to do that many passes for all slashing and spraying activities.
 
@@ -319,13 +321,18 @@ Over half of the interrelated importance of the predictor variables is dominated
 
 \subsection{Operating Costs}
 
+There was a pronounced difference in accuracy between the regression tree and the XGBoost model when predicting Operating costs. With the regression tree achieving an $R^2$ of 0.0931 (with a standard deviation of 0.0197) in its cross validation. The XGBoosted regression ensemble achieved an $R^2$ of 0.8025 (with a standard deviation of 0.1033).
+\par
+Within the XGBoost ensemble's nodes for operating costs (see figure \ref{fig:operating_costs_sankey}) fuel, water, area and yield occurred the most, similarly to region. Both diesel and petrol were of more relative importance (being ranked higher) in operating costs than water was compared with region. It is surprising that electricity, slashing and spraying was not more prominent in operating costs. However, Figure \ref{fig:year_sankey} shows that electricity, slashing and spraying are important variables in determining area and yield. Electricity in particular is used predominantly for irrigation and so is related largely to the size of vineyard. However, slashing and spraying are measured in discrete tractor passes and show a surprising connection to the overall size of a vineyard, as they are not scaled to any measure of size. This would mean that, although measured as the same increment, a slashing or spraying pass in a larger vineyard would consume more fuel and wages than in a smaller vineyard.
 
-
-\begin{figure}
-  \resizebox{\textwidth}{!}{
-  \includegraphics{operating_costs.pdf}}
-  \caption{Decision tree predicting Operating Costs. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:operating_costs_tree}
-\end{figure}
+%
+% Is there any point in including this if its so bad?
+%
+% \begin{figure}
+%   \resizebox{\textwidth}{!}{
+%   \includegraphics{operating_costs.pdf}}
+%   \caption{Decision tree predicting Operating Costs. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:operating_costs_tree}
+% \end{figure}
 
 \begin{figure}
   \resizebox{\textwidth}{!}{
@@ -334,6 +341,19 @@ Over half of the interrelated importance of the predictor variables is dominated
 \end{figure}
 
 \subsection{Profit}
+
+Predictions of profit performed poorly compared to operating costs with the regression tree having an $R^2$ of 0.1873 (with a standard deviation of 0.0522) and the XGBoosted ensemble achieving an $R^2$ of 0.2535 (with a standard deviation of 0.3126). The high standard deviation in the XGBoosted tree was a bias in more accurately predicting vineyards that made profit compared to those that lost money.With much higher $R^2$ values being achieved in k-folds containing only those that made profits (recording a maximum of 0.7634).
+% profit summary stats
+% max 3345000
+% min -3937878
+% std 396027.633119089
+% range 7282878
+\par
+There was a disparity of 66.63\% of vineyards recording a profit than those that did not. When predicting if a vineyard would be profitable or not the classification tree and XGBoosted ensemble did not perform considerably differently from this proportion. With the regression tree achieving an accuracy of 68.66\% (and a standard deviation of 0.01\%) and the XGBoost ensemble achieving 70.59\% accuracy (with a validation accuracy of 71.97\%).
+\par
+It was surprising that operating costs performed substantially better in $R^2$ compared to profit. Interestingly the important variables when attempting to determine profit were similar to those used to classify region (see Figure \ref{fig:profit_sankey}), with the exception water used. Both the regression tree and the XGBoosted ensemble used region, specifically the Hunter Valley. The regression tree also used Tasmania when determining profit. Both the Hunter valley and Tasmania are known for the production of high quality grapes used in export wines 
+% ref
+. A major difference between region and profit was the importance given to water use, with water use being a more important variable in predicting region than profit. 
 
 \begin{figure}
   \resizebox{\textwidth}{!}{
@@ -346,8 +366,6 @@ Over half of the interrelated importance of the predictor variables is dominated
   \includegraphics{profit.png}}
   \caption{The left-hand side depicts the 10 most important variables in predicting Profit using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:profit_sankey}
 \end{figure}
-
-\subsection{Validation}
 
 \begin{table}[]
   \caption{Validation and training accuracies of each multiclass variable.}
@@ -364,6 +382,93 @@ Over half of the interrelated importance of the predictor variables is dominated
   \end{tabular}
   \end{table}
 
+%%%%%%%%%%%%%%%%%%%%%
+% Points to address
+% 
+\section{Discussion}
+
+\subsection{Region}
+
+A vineyard's region predetermines several physical parameters, such as: climate, geology and soil; making location a widely considered key determinant of grape yield and quality \citep{abbalDecisionSupportSystem2016,agostaRegionalClimateVariability2012,fragaMultivariateClusteringViticultural2017}. The association between yield and region is demonstrated by its position as fourth most occurring variable within the nodes of the XGBoosted ensemble which determined region (see Figure \ref{fig:region_sankey}). The association with area and region is likely a connection to the change in land costs, with inland Australian areas (particularly of lower rainfall) being substantially cheaper to buy than coastal regions, allowing larger areas to be purchased \citep{willchancellorMeasuringAustralianBroadacre2019}.
+\par
+Regions with lower land costs are also warmer \citep{willchancellorMeasuringAustralianBroadacre2019}, which is known to be beneficial in hastening the ripening process of winegrapes \citep{webbObservedTrendsWinegrape2011}. Warmer regions are also associated with lower quality grapes, caused largely due to this hastened ripening \citep{botting1996canopy}. In general warmer regions have been associated with lower yields due to their generally lower rainfall, which can be mitigated through applying excess water \citep{campsGrapeHarvestYield2012}. It is likely that the combination of larger vineyards with higher water use is a determining factor in classifying regions which favour larger production of lower quality grapes; reflected through the variables' importance of water use in the XGBoost ensemble. The practice of utilising larger quantities of water for inland Australian wine crops is partly reflected in the prior use of flood style irrigation to saturate soil \citep{bgcoombeGrapeBerryDevelopment2004}. This classification can be contrasted with other warmer regions of higher rainfall that use the warmer climate to concentrate their grapes, increasing the flavour profile (and thus quality) \citep{goodwinijeriepRegulatedDeficitIrrigation1992,mgmccarthyEffectCropLoad1986}. This is possibly the connection between the presence of the Hunter Valley within the XGBoost ensemble that determined profit (see Figure \ref{fig:profit_sankey}). With this connection reflecting the restriction of possible strategies employable by winegrowers between different regions.
+\par
+In part some winegrowing strategies are restricted simply through access to water resources, being reflected through the region classification tree (see Figure \ref{fig:region_tree}). Regions are likely to have varying access to different water sources, such as those along the River Murray being able to utilise river water for crops compared with coastal regions. Similarly, the connection between region and fuel is likely an indicator of the level of infrastructure within the region. Where, the need to pressurise irrigation systems from river water or to generate power would require larger amount of diesel and petrol. 
+\par
+Although less important, the variables cover crops, fungicide spraying and slashing are likely linked to broad environmental properties of regions. Rainfall being related to fungal growth and disease, as well as weeds. With cover crops being an effective and sustainable method to alleviate these issues \autocite{delpuechAdaptingCoverCrop2018}. It is difficult to extrapolate findings to these methods and the reason for their use due to the broad and varying definition of the regions. Utilising the Geographical Indicator regions defined by Wine Australia \citep{wineaustraliaWineAustraliaOpenData2021} is a limitation, as it is too broad to fully capture a vineyards location and its influence on more granular variables. The reasoning for using approaches such as cover crops can be widely varying.
+
+A cover crop can help to increase soil water retention, reduce erosion, increase biodiversity and reduce weeds \citep{capelloEffectsTractorPasses2019,capelloPermanentCoverSoil2020,delpuechAdaptingCoverCrop2018}. However, cover crops can introduce competition with grapevines and may reduce yield depending upon the plants used and the density of the cover crop \citep{goslingLongtermChangesSoil2005,monteiroInfluenceCoverCrop2007}. A more granular definition of region may help to better discern the differences in practices, and the reason for employing them.
+
+\subsection{Year}
+
+This may be particularly important in rainfed areas, like in the study case, due to the lack of irrigation possibilities. The result would be a shortening of the ripening period, with harvest occurring during the period with high temperatures, which could have a negative impact on wine quality (Salazar Parra et al. 2010; Duchne and Schneider 2005; Jones and Davis 2000) and yield (Mira de Ordua 2010; Iglesias et al. 2010). Climate change in the future might move the north and south latitude boundaries of areas suitable for good quality wines (Schultz and Jones 2010), and could even lead to improvements in fruit production and quality in some areas (Olesen and Bindi 2002). However, other areas may be negatively affected by high temperatures and water stress due to a reduction in the amount of water available. 
+
+% %% Climate change
+
+There are several environmental concerns that affect viticulture, including loss of soil quality, lack of rain, hail, disease, fire, and frost; with climate change exacerbating these issues. In 2020, 40,000 tonnes of grapes were lost across 18 different wine regions due to bush fires and smoke taint; the predicted incidence of wildfires is expected to increase (Canadell et al., 2021). In comparison to countrywide pressures such as drought, this damage made up only 3% of the total amount of grapes for that year; although acknowledged as a considerable loss on an individual basis, it was deemed to be only a minor national concern by Wine Australia when compared to other environmental pressures such as drought (Wine Australia, 2020). 
+Soil is an important and ongoing consideration for vineyards and interacts with every other practice in various ways at different time scales. For example, cover crops have been shown to be detrimental for soil health in the short term, giving an initial reduction in soil potassium and phosphorus concentrations and no change in nitrogen levels (Gosling and Shepherd, 2005). Conversely, in longer time frames the presence of a cover crop can induce an increase in microorganisms, which can excrete phosphates and potassium, regenerating the soils chemical balance and helping to introduce further organic nitrogen (Coll et al., 2011). The studies that showed this were based in two different countries of similar climate but could have been subject to other underlying conditions not measured. 
+When implementing practices such as cover crops the extent of the practice, the compounding effects and potential alternatives need to also be considered. Alternative options are always available such the use of mulch and wood chips to increase soil health and water retention in place of more involved processes such as crop rotation (Rössert et al., 2022). Crop rotation offers greater benefits than other soil management plans (Brock et al., 2011), however this is often not a viable option for many vineyards although is common practice in some places (Russo et al., 2021). The need to look at the holistic outcomes and interactions of these practices is paramount, however with the existence of many different practices, the outcomes due to interactions are not always known; one such consideration is the use of fungicide and its potential to build up copper, causing a reduction of microorganisms in the soil. Linking copper build up to any particular cause is a difficult endeavour due to the need for multiple reliable soil samples which are equally effected by the same conditions, within soil (Wightwick et al., 2010). 
+
+
+% %% Pests Insects and weeds
+% %% Disease
+The winegrowing industry holds significant importance for Australia and its economy. There exists many challenges that the industry has to contend against, with disease from sources such as Mildew and Botrytis being a considerable one (Cole, 2010; Magarey et al., 1994). This analysis looks at the prediction of disease in crops across Australia, linking disease pressure and its potential mitigation through the use of sustainable practices. The dataset for this analysis includes multiple vineyard attributes such as water source types, cover crop extents, renewable energy use, and fuel and electricity use. A major consideration within these sustainable practices for this analysis was the use of cover cropping. Cover crops are an example of a sustainable practice in viticulture in which the area between vine rows is seeded with a crop such as grasses or native vegetation. The primary reason for employing cover crops is to increase water retention and reduce the presence of disease and weeds (Delpuech and Metay, 2018). 
+Prior studies have placed an emphasis on optimisations of fungicide sprays through the development of Bayesian models to forecast disease risk (Lu et al., 2020). This analysis investigates at the synergy between spray strategies as a proxy of fuel use to different types of water sources and sustainable strategies with an emphasis on the use of cover crops; allowing for the modelling of interactions between the use of multiple strategies. With the need to balance yield, quality, and combat adversities such as disease; the creation of tools to inform decisions and assist growers with warnings of disease risks is becoming crucial in ensuring sustainable and profitable wine production  (Abbal et al., 2016). 
+An interesting observation within the relative importance of variables computed through SHAP values and variable permutation importance, is the similarity between cover crops and the use of contractors to spray herbicide. The presence of a cover crop is known to help in reducing disease and weeds (Capello et al., 2019). Cover crops can further help to increase soil water retention, reducing erosion and water runoff in shallow soils (Capello et al., 2020), which could be the interaction between water and cover crop use in the SHAP variable interactions; where the interaction might be more indicative of how well established a cover crop is, as it would require greater water resources to maintain but potentially offer more protection in return (Capello et al., 2019; Delpuech and Metay, 2018; Gosling and Shepherd, 2005; Monteiro and Lopes, 2007). A further important consideration with this comparison is that diesel vineyard encompasses all vineyard operation aside from irrigation, being a proxy for actions such as weeding and spraying. The disparity between the importance of vineyards being sprayed by owners compared to the use of contractors warrants further investigation; as it would be reasonable to presume similar importance between diesel as a proxy for a vineyard’s management of its own disease prevention and the hired preventative strategies of a third party. There is a possibility that the use of contractors may be a vector for disease spread through lax bio-security practices, but would require a rigorous study to inform the matter. There is the potential that the types of herbicides used also have a long term effect on crops, reducing the presence of microorganisms and soil health, making the area more prone to disease in the long run, becoming dependent on these sprays (Coll et al., 2011; Gosling and Shepherd, 2005).
+
+
+\subsection{Operating Costs}
+
+% Reasons for operational costs (connect to disease and pests)
+% %% Electricity use and reasons for (connect to year)
+% %% Fuel use and what it is used for
+The reduction of tillage operations through optimising tractor efficiency is another practice that reduces energy use in vineyards, decreasing running costs, as well as reducing soil compaction (Capello et al., 2019). An increase in soil compaction has been shown to increase water runoff (Capello et al., 2020). Runoff is a significant factor as extreme rain events can cause large scale soil deposition, creating further erosion and removing topsoil. It is important that the interaction of events such as erosion have on other considerations such as soil health. 
+
+\subsection{Profit}
+
+% %% Address yield and how predictable it is
+% %% different sales markets and performance?
+% %% Reasons for profit?
+
+% %% Grape quality
+The difference between grape quality is most notable between warm inland regions and coastal regions such as the Riverland and Coonawarra, respectively. Grape quality is only described by a singular variable within this study, however in reality it is driven by market demand and subject to  complex forces such as international market pressure, fire, pests and disease (Wine Australia, 2022, 2021, 2020, 2019; Winemakers’ Federation of Australia, 2018, 2017, 2016, 2015, 2014, 2013, 2012).
+The decision trees were able to offer some insights into the factors that influence grape quality and regional contrasts that contribute to different qualities. The most prominent being what readily available resources of each region were, particular the types of water available. Heavy water consumption is often linked to the mass production of grapes, where lower quality grapes are targeted in a quantity over quality strategy. These types of business decisions are unfortunately obfuscated by lack of in-depth data regarding vineyard business plans. Notably the literature shows that there are many complex decisions to be made on the ground depending on many compounding factors that influence both quality and yield ((Abad et al., 2021; Cortez et al., 2009; Hall et al., 2011; I. Goodwin, et al., 2009; Kasimati et al., 2022; Oliver et al., 2013; Srivastava and Sadistap, 2018)). There are also further differences when comparing winegrowers to other agricultural industries as they are vertically integrated within the wine industry, tying them to secondary and tertiary industries, such as wine production, packaging, transport and sales. This results in unique issues, where on-the-ground choices are influenced by other wine industry’s decisions, such as the use of sustainable practices in vineyards to sell in overseas markets; notably these interactions are further complicated by some winegrowers being totally integrated into wine companies, while others are not (Knight et al., 2019). It is incredibly difficult to attribute external business decisions to produced grape quality but it is important to acknowledge that some growers are contracted to produce grapes of a particular grade; it is difficult to know whether another consumer may have graded the grape quality differently paying more or less for the same grapes given the opportunity to purchase them. It is difficult to untangle the contributing factors to the success of winegrowers and the quality of grapes produced without further specifics of choices made through out a season (Leilei He et al., 2022).
+
+% %% connection to watrer resource availability
+% What are the water resources in the hunter valley and tasmania?
+
+% economic pressures
+Historically strong demands for Australian wine have helped to create a thriving industry, however recently sharp reductions in exports to mainland China due to significant deposit tariffs have caused  a decline of 19% in Australian export value during the 2021-2022 financial year (see Figure 1) (Wine Australia, 2022). The pressure brought on by the drop in export value has been exacerbated by loss of tourism and labour due to the COVID-19 pandemic, global freight crisis, war in Europe and rising inflation (Wine Australia, 2021a, 2020). These pressures within the wine industry have trickled down to vineyards, where winemakers retain unwanted wine, creating an oversupply of grapes. Currently the proposed strategy to soften pressures proposed by Wine Australia includes initiatives focused on market diversification, and sustainability to build resilience in the coming years. 
+Figure 1:  The exports of Australian wine over time in Australian Dollars Free On Board, comparing exports between China and the rest of the world. This graphic is taken from the Wine Australia Annual Report of 2020-21(Wine Australia, 2022).
+
+%%%%%%%%%%%%%%%
+
+
+% %Two regions, the Riverland and Coonawarra, were the most accurate classes being 92.74% and 96.97% respectively. 
+These regions differ greatly in practice and geophysical properties, with the Riverland being a dry warm inland region and Coonawarra being a cooler, wet coastal region. However, they are both similar in operational scales, with vineyards being relatively large compared with other regions. The differences in resources and practices between these regions are also significant, such as the Riverland utilising the river Murray as a water source. 
+
+The difference between grape quality is most notable between warm inland regions and coastal regions such as the Riverland and Coonawarra, respectively. Grape quality is only described by a singular variable within this study, however in reality it is driven by market demand and subject to  complex forces such as international market pressure, fire, pests and disease \citep{wineaustraliaNationalVintageReport2019,wineaustraliaNationalVintageReport2020,wineaustraliaNationalVintageReport2021,wineaustraliaNationalVintageReport2022,winemakersfederationofaustraliaNationalVintageReport2015,winemakersfederationofaustraliaNationalVintageReport2016,winemakersfederationofaustraliaNationalVintageReport2017,winemakersfederationofaustraliaNationalVintageReport2018} % The original citation included years prior to this dataset just be casreful with this. It is a bit unclear what you are really trying to cite and its relevance. I think it important to chop this up.
+The decision trees were able to offer some insights into the factors that influence grape quality and regional contrasts that contribute to different qualities. The most prominent being what readily available resources of each region were, particular the types of water available. % A citation or reference to a study looking at the disparity in wine regions and their resources - or use the data more to describe these regional differences. Is water availability apparent? Do some regions have access to more sohpisticated water sources such as pressurised water etc.
+ Heavy water consumption is often linked to the mass production of grapes, % Really? proce it? Where in the results is this really found?? This sounds like a link to your previous paper but you cannot really show this and you do not really produce evidence to support this claim.
+ where lower quality grapes are targeted in a quantity over quality strategy. These types of business decisions are unfortunately obfuscated by lack of in-depth data regarding vineyard business plans. 
+ % This point is incredibly important but it, itself, is obfuscated by you odd claims that are not supported by facts. Better to talk about how this could improve and the weaknesses than to start spouting unsupported claims.
+ Notably the literature shows that there are many complex decisions to be made on the ground depending on many compounding factors that influence both quality and yield \citep{abadCoverCropsViticulture2021,cortezUsingDataMining2009,hallWithinseasonTemporalVariation2011,i.goodwinManagingSoilWater2009,kasimatiPredictingGrapeSugar2022,oliverReviewSoilPhysical2013,srivastavaNondestructiveSensingMethods2018}
+ % Woah woah woah
+%
+ % what are these decisions??? Slow down speed gonzales!! This is really interseteing and important. Discuss it, its the discussion! God damn I want to know and I wrote this!.
+ %
+%
+% This is not all one paragraph surely! There are so many ideas here that should be discussed!
+%
+% This leads heavily into the next paper and shows that natural progression. Especially in the sense of: if regions have so much influences, what determines ones use of water, fertiliser, etc. And, what determines the success financially, in quality or quantity? How are thes evariables interacting! The next paper is less about predicting and much more about what interacts with what? Where as this paper is about how things change over landscapes and what localised events helpe to determine decisions and their outcomes.
+%
+
+ . There are also further differences when comparing winegrowers to other agricultural industries as they are vertically integrated within the wine industry, tying them to secondary and tertiary industries, such as wine production, packaging, transport and sales. This results in unique issues, where on-the-ground choices are influenced by other wine industry's decisions, such as the use of sustainable practices in vineyards to sell in overseas markets; notably these interactions are further complicated by some winegrowers being totally integrated into wine companies, while others are not (Knight et al., 2019). 
+% This is an interesting point. However it would be better to include other industries, such as the ones you touch on in your previous chapter. If industries such as Sake are similar - how do their decisions effect the outcomes of rice quality and Sake? A point of comparison and difference would be great here! 
+ It is incredibly difficult to attribute external business decisions to produced grape quality but it is important to acknowledge that some growers are contracted to produce grapes of a particular grade; it is difficult to know whether another consumer may have graded the grape quality differently paying more or less for the same grapes given the opportunity to purchase them.
+% What are these business decisions? Can you give some examples?
+ It is difficult to untangle the contributing factors to the success of winegrowers and the quality of grapes produced without further specifics of choices made through out a season \citep{leileiheFruitYieldPrediction2022}.
+% It is difficult yes, but please at least try! Highlight some of these affects, some of these different contributing factors! What did we really learn by doing this? What can someone take away from this and say thank you for? (like Josh said)
 
 
 \subsection{Model 1 GI Regions}
@@ -383,7 +488,7 @@ The differences in resources and practices between these regions are also signif
 % What are the specific differences? This is a really critical part of this paper
 Many of the regions had significantly lower reporting rates, resulting much poorer classification performance. % This is almost its own paragraph. Why was this case? is it important? what are the similarities and differences of regions that were poorly classified?
  The regions with the most samples performed the best (see Table 1). Notably bordering regions were routinely grouped together and misclassified as the same region, for example the two closest regions to Coonawarra, Padthaway and Wrattonbulley, were misclassified as Coonawarra even though they had 147 and 137 samples respectively. The same case was found for the Murray Darling, with 143 samples, it was misclassified as the Riverland.
- % THis speaks highly to why regions were poorly classified.
+ % This speaks highly to why regions were poorly classified.
 These misclassifications are likely due to the incredibly similar regional properties and close proximity these regions have with one another. Other misclassifications were most likely due to lower reporting rates with many regions being under represented.
 
 % \begin{table}[]
@@ -413,42 +518,13 @@ Classifying the SWA climatic categorisation of the given regions had better perf
 \subsubsection{Rainfall}
 The rainfall decision tree showed a greater use of fungicides sprays to discern between damp and very Dry as shown in Figure 4; with the accuracy improving to 62\% but was unable to effectively discern between dry and very dry regions (see Table 3).
 
-\subsubsection{Temperature}
-The classification of GI Regions by their temperatures (see Figure 5) showed similarities to the other trees, with a heavy reliance on the types of water resources used as dominant predictors. The use of contractors % This is super important. Talk about this at lengthi nt the discussion. Find more literature on agriculture and the use of contractors as oppose to self managing issues such as weeds.
-was again used to differentiate between warm and cool regions, likely being due to disease pressure. The temperature classification tree was only a minor improvement over the regional classification tree, with an accuracy of 49.26\% as shown in the confusion matrix (see Table 4).
+was again used to differentiate between warm and cool regions, likely being due to disease pressure. The temperature classification tree
 
 \subsection{Model 3 Grape Quality}
 The classification of grape quality through its grade % It might even be worth considering this as pseudo grade - or better define it in some of the australian wine journals rose suggested.
 had an accuracy of 55.72\% across 5 separate grades. There was a notable issue with the classification of B grade grapes when compared to A and C (see Table 2). % This is actually really interesting.
  The classification tree itself shows similarities to that of classifying regions in Model 1, with the type of water resource used being a prominent determiner. Although not surprising the number of contractor tractor passes is new deciding factor due disease and pests reducing the potential quality of a crop. The prevalence of contractor use is greater in regions such as the Barossa Valley and the McLaren Vale, this could be due to the difference in operational scales, with larger sites being more likely to have ownership of their own equipment for weeding and spraying due to the cost benefit.
 
-\section{Discussion}
-
-% %Two regions, the Riverland and Coonawarra, were the most accurate classes being 92.74% and 96.97% respectively. 
-These regions differ greatly in practice and geophysical properties, with the Riverland being a dry warm inland region and Coonawarra being a cooler, wet coastal region. However, they are both similar in operational scales, with vineyards being relatively large compared with other regions. The differences in resources and practices between these regions are also significant, such as the Riverland utilising the river Murray as a water source. 
-
-The difference between grape quality is most notable between warm inland regions and coastal regions such as the Riverland and Coonawarra, respectively. Grape quality is only described by a singular variable within this study, however in reality it is driven by market demand and subject to  complex forces such as international market pressure, fire, pests and disease \citep{wineaustraliaNationalVintageReport2019,wineaustraliaNationalVintageReport2020,wineaustraliaNationalVintageReport2021,wineaustraliaNationalVintageReport2022,winemakersfederationofaustraliaNationalVintageReport2015,winemakersfederationofaustraliaNationalVintageReport2016,winemakersfederationofaustraliaNationalVintageReport2017,winemakersfederationofaustraliaNationalVintageReport2018} % The original citation included years prior to this dataset just be casreful with this. It is a bit unclear what you are really trying to cite and its relevance. I think it important to chop this up.
-The decision trees were able to offer some insights into the factors that influence grape quality and regional contrasts that contribute to different qualities. The most prominent being what readily available resources of each region were, particular the types of water available. % A citation or reference to a study looking at the disparity in wine regions and their resources - or use the data more to describe these regional differences. Is water availability apparent? Do some regions have access to more sohpisticated water sources such as pressurised water etc.
- Heavy water consumption is often linked to the mass production of grapes, % Really? proce it? Where in the results is this really found?? This sounds like a link to your previous paper but you cannot really show this and you do not really produce evidence to support this claim.
- where lower quality grapes are targeted in a quantity over quality strategy. These types of business decisions are unfortunately obfuscated by lack of in-depth data regarding vineyard business plans. 
- % This point is incredibly important but it, itself, is obfuscated by you odd claims that are not supported by facts. Better to talk about how this could improve and the weaknesses than to start spouting unsupported claims.
- Notably the literature shows that there are many complex decisions to be made on the ground depending on many compounding factors that influence both quality and yield \citep{abadCoverCropsViticulture2021,cortezUsingDataMining2009,hallWithinseasonTemporalVariation2011,i.goodwinManagingSoilWater2009,kasimatiPredictingGrapeSugar2022,oliverReviewSoilPhysical2013,srivastavaNondestructiveSensingMethods2018}
- % Woah woah woah
-%
- % what are these decisions??? Slow down speed gonzales!! This is really interseteing and important. Discuss it, its the discussion! God damn I want to know and I wrote this!.
- %
-%
-% This is not all one paragraph surely! There are so many ideas here that should be discussed!
-%
-% This leads heavily into the next paper and shows that natural progression. Especially in the sense of: if regions have so much influences, what determines ones use of water, fertiliser, etc. And, what determines the success financially, in quality or quantity? How are thes evariables interacting! The next paper is less about predicting and much more about what interacts with what? Where as this paper is about how things change over landscapes and what localised events helpe to determine decisions and their outcomes.
-%
-
- . There are also further differences when comparing winegrowers to other agricultural industries as they are vertically integrated within the wine industry, tying them to secondary and tertiary industries, such as wine production, packaging, transport and sales. This results in unique issues, where on-the-ground choices are influenced by other wine industry's decisions, such as the use of sustainable practices in vineyards to sell in overseas markets; notably these interactions are further complicated by some winegrowers being totally integrated into wine companies, while others are not (Knight et al., 2019). 
-% This is an interesting point. However it would be better to include other industries, such as the ones you touch on in your previous chapter. If industries such as Sake are similar - how do their decisions effect the outcomes of rice quality and Sake? A point of comparison and difference would be great here! 
- It is incredibly difficult to attribute external business decisions to produced grape quality but it is important to acknowledge that some growers are contracted to produce grapes of a particular grade; it is difficult to know whether another consumer may have graded the grape quality differently paying more or less for the same grapes given the opportunity to purchase them.
-% What are these business decisions? Can you give some examples?
- It is difficult to untangle the contributing factors to the success of winegrowers and the quality of grapes produced without further specifics of choices made through out a season \citep{leileiheFruitYieldPrediction2022}.
-% It is difficult yes, but please at least try! Highlight some of these affects, some of these different contributing factors! What did we really learn by doing this? What can someone take away from this and say thank you for? (like Josh said)
 
 \section{Conclusion}
 
