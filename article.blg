@@ -10,45 +10,45 @@ Warning--empty journal in mgmccarthyEffectCropLoad1986
 Warning--empty journal in wineaustraliaNationalVintageReport2020
 Warning--empty journal in wineaustraliaNationalVintageReport2021
 Warning--empty journal in wineaustraliaNationalVintageReport2022
-You've used 37 entries,
+You've used 39 entries,
             2990 wiz_defined-function locations,
-            896 strings with 15015 characters,
-and the built_in function-call counts, 24228 in all, are:
-= -- 1778
-> -- 1098
-< -- 24
-+ -- 429
-- -- 384
-* -- 2663
-:= -- 3597
-add.period$ -- 114
-call.type$ -- 37
-change.case$ -- 312
-chr.to.int$ -- 37
-cite$ -- 43
-duplicate$ -- 1794
-empty$ -- 1676
-format.name$ -- 489
-if$ -- 4421
-int.to.chr$ -- 1
+            906 strings with 15472 characters,
+and the built_in function-call counts, 25146 in all, are:
+= -- 1845
+> -- 1134
+< -- 25
++ -- 444
+- -- 396
+* -- 2749
+:= -- 3746
+add.period$ -- 120
+call.type$ -- 39
+change.case$ -- 326
+chr.to.int$ -- 38
+cite$ -- 45
+duplicate$ -- 1874
+empty$ -- 1742
+format.name$ -- 505
+if$ -- 4588
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 352
-newline$ -- 203
-num.names$ -- 148
-pop$ -- 698
+missing$ -- 365
+newline$ -- 213
+num.names$ -- 156
+pop$ -- 733
 preamble$ -- 1
-purify$ -- 276
+purify$ -- 288
 quote$ -- 0
-skip$ -- 534
+skip$ -- 558
 stack$ -- 0
-substring$ -- 830
-swap$ -- 1277
+substring$ -- 833
+swap$ -- 1320
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 327
+type$ -- 345
 warning$ -- 6
-while$ -- 148
+while$ -- 152
 width$ -- 0
-write$ -- 527
+write$ -- 554
 (There were 6 warnings)

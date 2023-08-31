@@ -1,4 +1,4 @@
-\begin{thebibliography}{37}
+\begin{thebibliography}{39}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -23,6 +23,10 @@
 \newblock \bibinfo{journal}{Journal of agricultural, biological, and
   environmental statistics} \bibinfo{volume}{21}, \bibinfo{pages}{131--151}.
 \newblock \DOIprefix\doi{10.1007/s13253-015-0233-2}.
+%Type = Misc
+\bibitem[{AGDEE(2021)}]{agdeeNationalGreenhouseAccounts2021}
+\bibinfo{author}{AGDEE, A.G.D.o.t.E.a.E.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{National {{Greenhouse Accounts Factors}}: 2021}.
 %Type = Article
 \bibitem[{Agosta et~al.(2012)Agosta, Canziani and
   Cavagnaro}]{agostaRegionalClimateVariability2012}
@@ -38,8 +42,13 @@
 \bibinfo{author}{{Attorney-General's Department}}, \bibinfo{year}{2010}.
 \newblock \bibinfo{title}{Wine {{Australia Corporation Act}} 1980}.
 %Type = Misc
-\bibitem[{Australia(2021)}]{wineaustraliaWineAustraliaOpenData2021}
-\bibinfo{author}{Australia, W.}, \bibinfo{year}{2021}.
+\bibitem[{Australia(2021a)}]{wineaustraliaAustralianWineProduction2021}
+\bibinfo{author}{Australia, W.}, \bibinfo{year}{2021}a.
+\newblock \bibinfo{title}{Australian {{Wine}}: {{Production}}, {{Sales}} and
+  {{Inventory}} 2019\textendash 20}.
+%Type = Misc
+\bibitem[{Australia(2021b)}]{wineaustraliaWineAustraliaOpenData2021}
+\bibinfo{author}{Australia, W.}, \bibinfo{year}{2021}b.
 \newblock \bibinfo{title}{Wine {{Australia-Open Data}}}.
 %Type = Book
 \bibitem[{{BG Coombe} and {P Iland}(2004)}]{bgcoombeGrapeBerryDevelopment2004}
@@ -183,22 +192,6 @@
   operating characteristic ({{ROC}}) curve.}
 \newblock \bibinfo{journal}{Radiology} \bibinfo{volume}{143},
   \bibinfo{pages}{29--36}.
-%Type = Misc
-\bibitem[{{Keith Jones}(2002)}]{keithjonesAustralianWineIndustry2002}
-\bibinfo{author}{{Keith Jones}}, \bibinfo{year}{2002}.
-\newblock \bibinfo{title}{Australian {{Wine Industry Environment Strategy}}}.
-%Type = Article
-\bibitem[{Knight et~al.(2019)Knight, Megicks, Agarwal and
-  Leenders}]{knightFirmResourcesDevelopment2019}
-\bibinfo{author}{Knight, H.}, \bibinfo{author}{Megicks, P.},
-  \bibinfo{author}{Agarwal, S.}, \bibinfo{author}{Leenders, M.},
-  \bibinfo{year}{2019}.
-\newblock \bibinfo{title}{Firm resources and the development of environmental
-  sustainability among small and medium-sized enterprises: {{Evidence}} from
-  the {{Australian}} wine industry}.
-\newblock \bibinfo{journal}{Business Strategy and the Environment}
-  \bibinfo{volume}{28}, \bibinfo{pages}{25--39}.
-\newblock \DOIprefix\doi{10.1002/bse.2178}.
 %Type = Article
 \bibitem[{Kuhn(2008)}]{kuhnBuildingPredictiveModels2008}
 \bibinfo{author}{Kuhn, M.}, \bibinfo{year}{2008}.
@@ -227,6 +220,18 @@
 \newblock \bibinfo{title}{The effect of crop load and vegetative growth control
   on wine quality.} .
 %Type = Article
+\bibitem[{{Montalvo-Falc{\'o}n} et~al.(2023){Montalvo-Falc{\'o}n},
+  {S{\'a}nchez-Garc{\'i}a}, {Marco-Lajara} and
+  {Mart{\'i}nez-Falc{\'o}}}]{montalvo-falconSustainabilityResearchWine2023}
+\bibinfo{author}{{Montalvo-Falc{\'o}n}, J.V.},
+  \bibinfo{author}{{S{\'a}nchez-Garc{\'i}a}, E.},
+  \bibinfo{author}{{Marco-Lajara}, B.},
+  \bibinfo{author}{{Mart{\'i}nez-Falc{\'o}}, J.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Sustainability {{Research}} in the {{Wine Industry}}:
+  {{A Bibliometric Approach}}}.
+\newblock \bibinfo{journal}{Agronomy} \bibinfo{volume}{13}.
+\newblock \DOIprefix\doi{10.3390/agronomy13030871}.
+%Type = Article
 \bibitem[{Monteiro and Lopes(2007)}]{monteiroInfluenceCoverCrop2007}
 \bibinfo{author}{Monteiro, A.}, \bibinfo{author}{Lopes, C.M.},
   \bibinfo{year}{2007}.
@@ -246,6 +251,15 @@
 \newblock \bibinfo{journal}{Australian Journal of Grape and Wine Research}
   \bibinfo{volume}{19}, \bibinfo{pages}{129--139}.
 \newblock \DOIprefix\doi{10.1111/ajgw.12016}.
+%Type = Article
+\bibitem[{Ouvrard et~al.(2020)Ouvrard, Jasimuddin and
+  Spiga}]{ouvrardDoesSustainabilityPush2020}
+\bibinfo{author}{Ouvrard, S.}, \bibinfo{author}{Jasimuddin, S.M.},
+  \bibinfo{author}{Spiga, A.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Does {{Sustainability Push}} to {{Reshape Business
+  Models}}? {{Evidence}} from the {{European Wine Industry}}}.
+\newblock \bibinfo{journal}{Sustainability} \bibinfo{volume}{12}.
+\newblock \DOIprefix\doi{10.3390/su12062561}.
 %Type = Misc
 \bibitem[{{R Core Team}(2021)}]{rcoreteamLanguageEnvironmentStatistical2021}
 \bibinfo{author}{{R Core Team}}, \bibinfo{year}{2021}.
