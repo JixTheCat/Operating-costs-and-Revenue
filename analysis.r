@@ -33,7 +33,7 @@ model_tree <- train(Region ~ .
         !(colnames(df) %in% c(
             "Profit",
             "Profitable",
-            "Operating Costs"))]]
+            "Operating.Costs"))]]
     , method = "rpart"
     , metric = "Accuracy"
     , trControl = trControl
@@ -62,7 +62,7 @@ model_tree <- train(Year ~ .
         !(colnames(df) %in% c(
             "Profit",
             "Profitable",
-            "Operating Costs"))]]
+            "Operating.Costs"))]]
     , method = "rpart"
     , metric = "Accuracy"
     , trControl = trControl
@@ -90,7 +90,7 @@ model_tree <- train(Profitable ~ .
     , data = df[, colnames(df)[
         !(colnames(df) %in% c(
             "Profit",
-            "Operating Costs"))]]
+            "Operating.Costs"))]]
     , method = "rpart"
     , metric = "Accuracy"
     , trControl = trControl
@@ -117,7 +117,7 @@ model_tree <- train(Profit ~ .
     , data = df[, colnames(df)[
         !(colnames(df) %in% c(
             "Profitable",
-            "Operating Costs"))]]
+            "Operating.Costs"))]]
     , method = "rpart"
     , trControl = trControl
     , na.action = na.omit
