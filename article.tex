@@ -44,7 +44,6 @@
 %% \title{Title\tnoteref{label1}}
 \title{An analysis of interrelations between economic and environmental variables in Australian Winegrowing.}
 
-% 
 % Variable importance in determining vineyard operational costs and region using statistical machine learning.
 % How are region and operational costs related?
 
@@ -131,6 +130,10 @@
 
 \section{Introduction}
 
+% TODO:
+% 
+% Below is the original comment. BUT you have since come up with more of a scheme that answers these questions (in the bayesian paper). Use this to extrapolate on the introduction.
+% 
 % You obviously have no leading question for this paper, and although you do a good job at creating accurate models; it is more important that the research is asking a good question. A cool question as Kate puts it.
 %
 % The questions I put forward to you are:
@@ -140,11 +143,30 @@
 %  How do regional differences affect winegrowing?
 %  What differences are important between winegrowing regions?
 %  
-%
+%% 
 
-In the past decade, the Australian winegrowing industry has undergone a variety of pressures, such as changing market demands, disease and drought \citep{wineaustraliaAustralianWineProduction2021}. Furthermore, natural resources are likely to decrease, as pressures from climate change increase, making it more important than ever to improve the efficiency and sustainability of crops \citep{agdeeNationalGreenhouseAccounts2021}. It has become crucial for those in the wine industry to address issues relating to environmental sustainability and economic viability, with a growing need for the industry to close the research gaps between sustainable practices and their real and perceived environmental and economic advantages \citep{montalvo-falconSustainabilityResearchWine2023,ouvrardDoesSustainabilityPush2020}. This paper aims to provide a comprehensive analysis of the intricate relationships between economic and environmental variables within the winegrowing sector. By employing statistical machine learning we show how interconnected vineyard variables are. Utilising a ten year data set that spans Australia we show the predominant elements in classifying region and year, as well as determining a vineyards potential operational costs and profit.
+% FIXME:
+% Whats been done? Whats the persistant gap? Why is a data-driven approach the answer?
+
+In the past decade, the Australian winegrowing industry has undergone a variety of pressures, such as changing market demands, disease and drought \citep{wineaustraliaAustralianWineProduction2021}. Furthermore, natural resources are likely to decrease, as pressures from climate change increase, making it more important than ever to improve the efficiency and sustainability of crops \citep{agdeeNationalGreenhouseAccounts2021}. It has become crucial for those in the wine industry to address issues relating to environmental sustainability and economic viability, with a growing need for the industry to close the research gaps between sustainable practices and their real and perceived environmental and economic advantages \citep{montalvo-falconSustainabilityResearchWine2023,ouvrardDoesSustainabilityPush2020}. This paper aims to provide a comprehensive analysis of the intricate relationships between economic and environmental variables within the winegrowing sector. By employing statistical machine learning we show how interconnected vineyard variables are. Utilising a ten year data set that spans Australia we show the predominant 
+elements in classifying region and year, % FIXME: A reader will ask: why would i want to predict region and year?
+ as well as determining a vineyards potential operational costs and profit.
 \par
-This analysis utilises XGBoosted trees to classify region and year; and to determine operating cost and profit of Australian vineyards. Classification and regression trees are utilised as surrogate models to shed insight into the key partitions used by the XGBoost ensembles. Variable importance is further used to illustrate the interconnectedness of the different predictor variables, and to show the similarity in variable importance between different response variables (particularly between region and operational cost). This study aims to assist in uncovering the complexity of variables that are affected by a variety of vineyard management decisions to illustrate complex interplay of variables. This study endeavours to gain insight into the similarity in predictor variable importance between year, region, operational costs and profit.
+This analysis utilises 
+XGBoosted trees % FIXME: Why XGBoosted trees?
+ to classify region and year; and to determine operating cost and profit of Australian vineyards. Classification and regression trees are 
+ utilised as surrogate models %FIXME: Why are we utilising surrogate models?
+to shed insight into the key partitions used by the XGBoost ensembles. Variable importance is further used to illustrate the 
+interconnectedness % FIXME: What kind of interconnectedness?
+of the different predictor variables, and to show the similarity in
+variable importance % FIXME: What does variable importance mean in this context?
+between different response variables (particularly between region and operational cost). This study aims to assist in uncovering 
+the complexity of variables %FIXME: This is too vague, what makes them complex? why are the complex? etc
+that are affected by a variety of vineyard management decisions to illustrate 
+complex interplay of variables. % FIXME: What do you mean by complex interplay? Like what? An example?
+This study endeavours to gain insight into the 
+similarity % FIXME: Why do we want to know the similarity?
+ in predictor variable importance between year, region, operational costs and profit.
 
 % Initiatives to improve the environmental impacts of the Australian Wine industry have been ongoing since the 1990s; with recommendations to implement strategies for national programs that would help educate industry members in sustainable practices (Keith Jones, 2002). The first legislative initiative to support national programs was the Environmental Management Guidelines for Vineyards in Western Australia during 2002 (Nind, 2002). The first national program was the Australian Wine Industry Stewardship, beginning shortly after, during 2004 (WFA, 2009). This program was replaced multiple times during the 2000s, first by the Australian Wine Environmental Stewardship, and then by EnviroWine, finally becoming EntWine in 2009. The period in the 2000s was further influenced by several key researchers and program leaders, where concurrently multiple regions developed approaches to sustainable management tied to sustainability programs (SWA, 2023). EntWine was eventually acquired by the Australian Wine Research Institute and Australian Grape & Wine during 2015; which would lead to its redevelopment into Sustainable Winegrowing Australia (SWA) during 2019/2020 (SWA, 2023).
 %             2.1.2. Previous Research and Motivation
@@ -191,7 +213,16 @@ This analysis utilises XGBoosted trees to classify region and year; and to deter
 
 \section{Methods}
 
+% FIXME:
+% While overall this methods section seems technically correct, more work is needed on justification, motivation, and context.
+% Through the methods, motivate each decision youve made with context from the particular problem/data/question. Why is the basic standard procedure not adequate? This helps to slow it down and help the reader understand complex methods.
+%
+% As kate put it in person you are currently writting like ||||| fact fact fact. You need to be more |...||...|| with context etc inbetween each fact so that people can digest it.
+
 % As with the previous paper, put the models up front it is very unclear what you have created - and less clear to understand it if there is no way to reference to it.
+
+% FIXME:
+% In this methods section, what is novel/innovative? Not currently clear, In particular - if I gave this data & these packages to a 3rd year class, which part here couldn't they do?
 
 \subsection{Data}
 
@@ -202,7 +233,9 @@ This analysis utilises XGBoosted trees to classify region and year; and to deter
 % 853 with reported profits
 % 46 regions
 % reported since 2018
-Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program, which aims to facilitate grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by the SWA is entered manually by winegrowers using a web based interface tool. A total of 6091 observations were collected from 2012/2013 to 2021/2022 financial years. 23 variables were used for each observation reflecting a vineyards account for the given year (see Table \ref{tab:vars}). The profit variable was additionally transformed and included as another separate variable, profitable; depicting whether a vineyard was profitable or not.
+Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program, which aims to facilitate grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by the SWA is entered manually by winegrowers using a web based interface tool. A total of 6091 observations were collected from 2012/2013 to 2021/2022 financial years. 23 variables were used for each observation reflecting a vineyards account for the given year (see Table \ref{tab:vars}). 
+The profit variable was transformed % FIXME: What was it before?
+and included as another separate variable, profitable; depicting whether a vineyard was profitable or not.
 \par
 
 \begin{table}[] 
@@ -249,15 +282,31 @@ The variable region represented one of the 65 Geographical Indicator Regions (GI
 % How deep into the classes do we go?
 %
 \subsection{XGBoosted Trees}
-XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. They were chosen for this analysis as they provide both a high predictive performance and ability to effectively capture complex relationships. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (profit and operating cost), which were only included once as response variables.
+% FIXME: What do boosted trees do?
+XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. They were chosen for this analysis as they provide both a 
+high predictive performance % FIXME: For what?
+and ability to effectively 
+capture complex relationships % FIXME: How?
+. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (profit and operating cost), which were only included once as response variables.
+% FIXME: what does this mean in terms of the method and outputs?
 \par
 Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. 
-
+% FIXME: All equations must be in the middle or end of sentances, not at the beginning.
 \begin{equation}
- \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{K}(x_{i})}, f_{K}\in \mathcal{F},
+ \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{K}(x_{i})}, \space f_{K}\in \mathcal{F},
 \end{equation}
 
-where each function $f_K$ is a classification or regression tree, such that all functions are in the set of all decision trees $\mathcal{F}$, defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where, $f_K$ corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given by $\omega$. The set of functions used by the tree is determined by minimising the regularised objective function, given by:
+% FIXME: The methods would benefit from some subsections (signposts)
+% FIXME: What does the equation do? Give intuition.
+
+where each function $f_K$ is a classification or regression tree, such that all functions are in the set of all decision trees $\mathcal{F}$, defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. 
+Where, $f_K$ corresponds to an independent tree structure $q$ of $\omega$ weights. % FIXME: Sentance fragment.
+Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. 
+The final prediction % FIXME: What is this?
+is determined by the sum of the score of the corresponding leaves, given by $\omega$. 
+The set of functions % FIXME: You haven't described the tree as having a set of functions?
+%  I believe when you refer to the set of functions F you might benefit from putting the F in brackets here or being more explicit where the functions are.
+used by the tree is determined by minimising the regularised objective function, given by:
 
 \begin{equation}\label{eqn:objective}
  \mathcal{L}(\phi)=\sum_i l(\hat{y_i}, y_i^{t-1} + f_t(x_i)) + \sum_k \Omega (f_K).
