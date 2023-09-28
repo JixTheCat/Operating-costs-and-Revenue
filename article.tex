@@ -128,6 +128,8 @@
 %%        main text       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% FIXME: Stop writing chronologically. Write by significance.
+
 \section{Introduction}
 
 % TODO:
@@ -210,7 +212,6 @@ similarity % FIXME: Why do we want to know the similarity?
 % What is interesting - what will be discussed in the article with regard to these results? What makes me want to read the article?
 % And what is the take away point of the article? If I cant be bothered to read this article, what piece of knowledge can you leave mewiwth that I could recommend the article to someone else with?
 
-
 \section{Methods}
 
 % FIXME:
@@ -223,6 +224,26 @@ similarity % FIXME: Why do we want to know the similarity?
 
 % FIXME:
 % In this methods section, what is novel/innovative? Not currently clear, In particular - if I gave this data & these packages to a 3rd year class, which part here couldn't they do?
+
+% FIXME: The methods needs to be restructured. Try the following order:
+%     - Why do it?
+%     - What does it do? (at a high level)
+%     - How did you do it?
+% 
+% You should also include subsections. I think subsections are a good crutch because they can always be removed if the flow is done well.
+% 
+% Avoid following a narrative. Do not do the who/what/when/where/how/why and the big reveal.
+% An aside comment might be that you can attempt to follow the narrative writing paradigm across the paper as a whole but limit your methods section to the why, what then how. And use the results as your reveal.
+% Or maybe dont do that - it might just be that you need to write it like a narrative as a first draft then butcher it into the necessary sections. That writing style is incredibly ingrained at this point.
+
+% FIXME: Adde a section for CV.
+
+% FIXME: Another section that needs to be added is one that describes what the sankey and chord diagrams are and what they represent. The reader needs to be prepped for this before the results. They need to be able to properly interpret them.
+
+% FIXME: Explain how some variables are one-hot-encoded and how this relates to variable importance. This is a significant resulti n the xgboost tree for the huntervalley
+
+% FIXME: the motivation is missing from methods.
+% FIXME: What is interrelated importance?
 
 \subsection{Data}
 
@@ -306,17 +327,34 @@ The final prediction % FIXME: What is this?
 is determined by the sum of the score of the corresponding leaves, given by $\omega$. 
 The set of functions % FIXME: You haven't described the tree as having a set of functions?
 %  I believe when you refer to the set of functions F you might benefit from putting the F in brackets here or being more explicit where the functions are.
-used by the tree is determined by minimising the regularised objective function, given by:
+used by the tree is determined by minimising the 
+regularised % What is the regularised objective?
+objective function, given by:
 
 \begin{equation}\label{eqn:objective}
  \mathcal{L}(\phi)=\sum_i l(\hat{y_i}, y_i^{t-1} + f_t(x_i)) + \sum_k \Omega (f_K).
 \end{equation}
 
-The difference between the prediction and actual variable is a convex loss function $l$. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration. The function $f_t$ is selected according to which value minimises (\ref{eqn:objective}). The model complexity is penalised by the function $\Omega$, this acts to smooth weights in an attempt to prevent over fitting.
+The difference between the 
+prediction and actual variable % FIXME: what are the predition and actual variables?
+% When you are talking broadly about elements of xgboost I believe it will help to refer to the equation, an example or something more specific. This would help to address the other comment regarding giving an intuition to the method.
+is a convex loss function $l$. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration. The function 
+$f_t$ % FIXME: Kate asked if this was $f_K$. This is not the case as $f_K$ is part of the penalty function, and I know this at first glance due to working with the equation regularly for this paper. If Kate is confused about this then your explanation sucks. It is to obtuse, like Kate has said you are hitting people with too many facts and not padding it enough to the context of this paper and its application or even its purpose. The function $f_t$ is incredibly important, especially because for the purposes of this study it changes depending on the variable and its nature. You are clearly not 
+is selected according to which value minimises (\ref{eqn:objective}). The model complexity is penalised by the function $\Omega$, this acts to smooth weights in an attempt to prevent over fitting.
 \par
-As predictions are made using additive tree functions, XGboosted trees can be used for classification and regression. Due to the mixture of continuous, binary and multiclass variables in this analysis, both classification and regression trees were created. The difference between the trees created for this analysis was the objective function used. XGBoosted regression trees were created for continuous variables, using the root-mean-square as the objective function. Binary class variables utilised the logistic loss function as the objective. And, Multiclass variable used the soft max function. All objective functions are defined within the SKlearn library \citep{sklearn_api}, linked via an API to the XGBoost library \citep{chenXGBoostScalableTree2016}.
+As predictions are made using additive tree functions, XGboosted trees can be used for classification and regression. Due to the mixture of continuous, binary and multiclass variables in this analysis, 
+both classification and regression trees were created. % FIXME: What were these created for?
+The difference between the trees created for this analysis was the objective function used. % FIXME: Kate marked this with a "?" clearly highlighting the issue with the previous comment regarding f_t (at some point was on line 321)
+XGBoosted regression trees were created for continuous variables, using the 
+
+% FIXME: The below section talks about the objective functions. Kate askes what they are and what they related to. You will need to go into the objective functions, how they are different and why different functions are required to be used.
+% Perhaps a reference that talks about the importance of objective functions.
+root-mean-square as the objective function. Binary class variables utilised the logistic loss function as the objective. And, Multiclass variable used the soft max function. All objective functions are defined within the SKlearn library \citep{sklearn_api}, linked via an API to the XGBoost library \citep{chenXGBoostScalableTree2016}.
 \par
-Chen and Guestrin \citep{chenXGBoostScalableTree2016} further illustrate, using Taylor expansions, that for a fixed structure $q(x)$ the optimal weight $\omega^*_j$ for a leaf $j$ can be derived. Furthermore, they show the loss reduction after the split is given by the function:
+% FIXME: Why are you doing this? give me reasons related to this work to keep reading.
+Chen and Guestrin \citep{chenXGBoostScalableTree2016} illustrate, using Taylor expansions, that for a fixed structure $q(x)$ the optimal weight $\omega^*_j$ for a leaf $j$ can be derived. Furthermore, they show the loss reduction after 
+the split % FIXME: What is the split?
+is given by the function:
 
 \begin{equation} \label{eqn:enumerate}
 \mathcal{L}_{split} = {{1}\over{2}} \left[ 
@@ -327,29 +365,48 @@ Chen and Guestrin \citep{chenXGBoostScalableTree2016} further illustrate, using 
 
 with the tree structure defined using left $I_L$ and right $I_R$ instance sets of nodes, with $I = I_L \cup I_R$. Instead of enumerating all possible tree structures, a greedy algorithm iteratively adds branches to the tree minimising $ \mathcal{L}_{split} $ in (\ref{eqn:enumerate}). The frequency of a variable's occurrence within a tree is directly attributed to the minimisation of the objective function (or loss) through the minimisation of $ \mathcal{L}_{split} $.
 \par
-The frequency of a variable appearing as a node within the ensemble was used as a measure of importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function, translating the value into a simple count metric. Creating XGBoosted trees for each variable allowed the use of importance to show how strongly variables were associated with each other. The importance of predictor variables to economic variables was illustrated through the use of Sankey diagrams constructed using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Other variable's interconnectedness was demonstrated through the use of a chord diagram also created using Holoviews.
+% FIXME: The below section needs to come sooner
+The frequency of a variable appearing as a node within the ensemble was used as a measure of importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function, translating the value into a 
+simple count metric. % FIXME: Variable importance might need to be in its own section to fully explain it and its motivation.
+% FIXME: The creation of xgboost trees for each variable needs to be earlier and more clear as well contextualised by its motivation.
+Creating XGBoosted trees for each variable allowed the use of importance to show how strongly variables were associated with each other. The importance of predictor variables to economic variables was illustrated through the use of 
+Sankey diagrams constructed % FIXME: More needs to be said on this. More needs to be talked about regarding the chord diagrams as well. There is no thorough explanation of how the diagrams work and what you have done with them to fully explain them!
+using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Other variable's interconnectedness was demonstrated through the use of a chord diagram also created using Holoviews. % FIXME: The above comment about sankey diagrams applies to chord diagrams. These need fuller descriptions.
 \par
+% FIXME: More info is needed regarding the validation and how it was performed. This section can be expaned on as different validation and scoring is used due to the differencein objective functions. This is a rather critical section and very little is said about it.
+% 
 Each variable utilised 80\% of the data to train the XGBoost ensemble, with 20\% reserved for testing and validation. Testing was done through the iterative minimisation of the respective objective function for the variables type. For continuous variables 20\% was used as testing data, minimising the root-mean-square function. The final model was validated using repeated k-fold cross validation for 10 folds, repeated 10 times. $R^2$ scores were used to determine the best regression models during validation.
-For binary and multiclass variables data was split into 80\% training, 10\% testing and 10\% validation data. Due to class disparity in multiclass variables (most prominently in region) data was stratified into each subset at the same ratio of class occurrence. Validation was summarised through the accuracy, the proportion of true negatives and positives.
+For binary and multiclass variables data was split into 80\% training, 10\% testing and 10\% validation data. 
+Due to class disparity in multiclass variables (most prominently in region) data was stratified % FIXME: What does it means to stratify the data and why is this done?
+into each subset at the same ratio of class occurrence. Validation was summarised through the accuracy, the proportion of true negatives and positives.
 \par
+% FIXME: rewrite the below paragraph in the active voice.
 The use of the XGBoost library incorporates regularisation techniques built into the software to mitigate over-fitting and enhance model generalisation. The further use of cross validated grid search functions allowed for the selection of better performing hyperparameters when selecting the final model. The performance measure for model selection was root-mean-square error for continuous variables. The receiver operator characteristic's area under the curve was used for category variables \citep{hanley1982meaning}. Multiclass variables utilised the one verse one approach to minimise sensitivity to class disparity \citep{ferriExperimentalComparisonPerformance2009,handSimpleGeneralisationArea2001}.
-
-\subsection{Classification and Regression Trees}
-
+% FIXME: What is the output?
+\subsection{Classification and Regression Trees} % FIXME: perhaps this should be renamed surrogate models
+% FIXME: It is not clear what you are trying to achieve with these models. No where do you give a definition of what a surrogate model is and why you are using it!
+% Be specific about the purpose of what these models are being used for! Justify why you have not simply shown one of the ensembles trees as well! The use of these algorithms means that the tree is more general than any one of the ensembles manifestations.
 Classification and Regression Trees were created for region, year, profit and operating cost. These models describe the partitions that are useful in predicting these variables; giving insight into the trees that make up the ensembles created by XGBoost. These trees were created using the rparts and caret packages \citep{kuhnBuildingPredictiveModels2008,terrytherneauRpartRecursivePartitioning2022} in the R statistical programming language \citep{rcoreteamLanguageEnvironmentStatistical2021}.
 \par
 Decision trees were validated using K-fold cross validation. Each model was validated using 10 folds, utilising a random selection of different samples ten separate times to validate each of the decision trees. The same measure of accuracy as the XGBoosted trees was used for comparison.
 
 \section{Results}
 
+% FIXME: The first result should be in the langauge of the question. In the original document the first result presented was region, implying that the question is: 'are regions different?' which is not the forefocus of the article. The results need to be rearranged to show grossmargin and operating costs as more significant variables as they are the curious factors that we do not understand.
+
+% FIXME: The irritating placement of the figures is due to the way latex uses the /ref function to determine where a figure should be. Have a google of this to overcome it as the figure placement is all over the shop.
 
 \subsection{Region}
+% FIXME: there are artifacts from the previous paper. Although the previous paper is pertinant to some of this (quite critically so) it is no longer the primary focus. On top of this some of these terms such as 'Region Classification' are not well defined. This is because previously a great deal of effort was put into defining them and describing the potential regions. However this has been removed.
+% FIXME: This section is much more of a: 'isn't it weird?' That region is not as significant in some areas but not others. That is can be used to predict things like yield but no profit etc. This phrasing shows why it goes after other sections. if you are writting by significance then it is not a significant find but it is something that is worth noting - unlike year which was just oh dear we dont know what is going on.
+Region classification performed % FIXME: what does this mean - see the above comment.
+% Note that it is not about the implications but getting in the definition of these terms. These things should be prepared for the reader well before the results. There should be no new terms here, we should just be refering to the outcomes that were established in the methods, and they should already have their motivations and contexts estabished (there is more that Kate has written if you are confused this is my translation after our meeting).
+at 32.34\% (3.67\% standard deviation) and 56.82\% accuracy (50.58\% validation accuracy), for the classification tree and XGBoosted ensemble respectively. The most prominent feature used to classify regions with the classification tree was water source (see Figure \ref{fig:region_tree}). This differed from the variables that illustrated the greatest importance for the XGBoosted ensemble (see Figure (\ref{fig:region_sankey}), with predictor variables being highly interrelated in importance. 
+Area, water, fuel and yield were more determining factors when predicting region using XGBoost. % FIXME: Is this perhaps your primary test? The fact that Kate was asking this means that the tools you are using do not have a well defined purpose in this analysis. I believe this stems from the lack of contextual motivation behind these tools. What is it that you are testing? Why are these important? This problem is throughout the paper and cannot simply be fixed here.
+Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
+\par
 
-Region classification performed at 32.34\% (3.67\% standard deviation) and 56.82\% accuracy (50.58\% validation accuracy), for the classification tree and XGBoosted ensemble respectively. The most prominent feature used to classify regions with the classification tree was water source (see Figure \ref{fig:region_tree}). This differed from the variables that illustrated the greatest importance for the XGBoosted ensemble (see Figure (\ref{fig:region_sankey}), with predictor variables being highly interrelated in importance. Area, water, fuel and yield were more determining factors when predicting region using XGBoost. Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
-\par
-It is reasonable that regions, being subjected to different rainfalls and temperatures, would require different amounts of water, and would have access to different water sources. The relation of area harvested and fuel (particularly petrol) is prominent with other predictors. Due to the wide variety of uses of petrol and diesel, it is likely that they are representative of other activities within the vineyard, such as pruning and harvesting. With predictors such as yield and area being highly interconnected as they likely operate as proxy variables to other factors, possibly other present variables.
-\par
-Many of the regions had significantly lower reporting rates, resulting in much poorer classification performance. The regions with the most samples performed the best. Notably bordering regions were routinely grouped together and misclassified as the same region. Two areas that suffered the most from this, specifically with the classification tree were the Limestone Coast (cool coastal areas in South Australia) and the warmer inland regions along the Murray Darling. The classification tree likely had more difficulty discerning vineyards closer to the river using only water sources due to the greater access to river water in these areas.
+Many of the regions had significantly lower reporting rates, resulting in much poorer classification performance. The regions with the most samples performed the best. Bordering regions were routinely grouped together and misclassified as the same region. Two areas that suffered the most from this, specifically with the classification tree were the Limestone Coast (cool coastal areas in South Australia) and the warmer inland regions along the Murray Darling. The classification tree likely had more difficulty discerning vineyards closer to the river using only water sources due to the greater access to river water in these areas.
 %, for example the two closest regions to Coonawarra, Padthaway and Wrattonbulley, were misclassified as Coonawarra even though they had 147 and 137 samples respectively. The same case was found for the Murray Darling, with 143 samples, it was misclassified as the Riverland. These misclassifications are likely due to the incredibly similar regional properties and close proximity these regions have with one another. Other misclassifications were most likely due to lower reporting rates with many regions being under represented.
 
 \begin{figure}
@@ -361,32 +418,22 @@ Many of the regions had significantly lower reporting rates, resulting in much p
 \begin{figure}
  \resizebox{\textwidth}{!}{
  \includegraphics{region.png}}
+% FIXME: What are the #'s? What do the sizes mean? What are the colours? What is interrelated importance?
+% FIXME: Mark one Panel A and the other B
  \caption{The left-hand side depicts the 10 most important variables in predicting Region using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:region_sankey}
-\end{figure}
-
-\subsection{Year}
-
-The classification tree and XGBoosted ensemble performed similarly for classifying year with 35.20\% (6.28\% standard deviation) and 51.81\% (42.20\% validation accuracy) respectively. Electricity and the type of irrigation were highly influential within the classification tree. Similarly, electricity was the most frequently occurring node in the XGBoost ensemble. However, other variables such as slashing passes, and fungicide and herbicide spraying were more prevalenct than in the classification tree. Weed and disease outbreaks are likely an influential factor when classifying different years, making the decisions to spray and slash unique factors that differ year to year. Climatic differences between years are likely tied to the influence of yield and water use.
-\par
-Over half of the interrelated importance of the predictor variables is dominated by area harvested, yield and slashing passes. Although all the predictor variables are highly connected, their relative importance is not as prominent as the three major variables. It is of particular note of the relative importance of slashing to area, fuel and yield; as these are not directly related activities. The connection between slashing and spraying is that those who do a set number of spraying or slashing passes tended to do that many passes for all slashing and spraying activities.
-
-\begin{figure}
- \resizebox{\textwidth}{!}{
- \includegraphics{year.pdf}}
- \caption{Decision tree predicting Year. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:year_tree}
-\end{figure}
-
-\begin{figure}
- \resizebox{\textwidth}{!}{
- \includegraphics{year.png}}
- \caption{The left-hand side depicts the 10 most important variables in predicting Year using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:year_sankey}
 \end{figure}
 
 \subsection{Operating Costs}
 
+% FIXME: Try to follow the same format for each of the section in the results. It will help to include a leading sentance about why the metrics are different everytime.
+
 There was a pronounced difference in accuracy between the regression tree and the XGBoost model when predicting Operating costs. With the regression tree achieving an $R^2$ of 0.0931 (with a standard deviation of 0.0197) in its cross validation. The XGBoosted regression ensemble achieved an $R^2$ of 0.8025 (with a standard deviation of 0.1033).
 \par
-Within the XGBoost ensemble's nodes for operating costs (see figure \ref{fig:operating_costs_sankey}) fuel, water, area and yield occurred the most, similarly to region. Both diesel and petrol were of more relative importance (being ranked higher) in operating costs than water was compared with region. It is surprising that electricity, slashing and spraying was not more prominent in operating costs. However, Figure \ref{fig:year_sankey} shows that electricity, slashing and spraying are important variables in determining area and yield. Electricity in particular is used predominantly for irrigation and so is related largely to the size of a vineyard. However, slashing and spraying are measured in discrete tractor passes and show a surprising connection to the overall size of a vineyard, despite not being scaled to any measure of size. This would mean that, although measured as the same increment, a slashing or spraying pass in a larger vineyard would consume more fuel and wages than in a smaller vineyard.
+Within the XGBoost ensemble's nodes for operating costs (see figure \ref{fig:operating_costs_sankey}) fuel, water, area and yield occurred the most, similarly to region. Both diesel and petrol were of more relative importance (being ranked higher) in operating costs than water was compared with region. It is surprising that electricity, slashing and spraying was not more prominent in operating costs. 
+% FIXME: Me and Kate talked about this. The diagrams, their context and justification go into the methods. How to interpret them needs to be better outlined here. You need to affirm peoples intition of them and the significance of more ribbons going out than in as well as why we are only using 10 variables.
+However, Figure \ref{fig:year_sankey} shows that electricity, slashing and spraying are important variables in determining area and yield.
+
+Electricity in particular is used predominantly for irrigation and so is related largely to the size of a vineyard. However, slashing and spraying are measured in discrete tractor passes and show a surprising connection to the overall size of a vineyard, despite not being scaled to any measure of size. This would mean that, although measured as the same increment, a slashing or spraying pass in a larger vineyard would consume more fuel and wages than in a smaller vineyard.
 
 %
 % Is there any point in including this if its so bad?
@@ -400,12 +447,18 @@ Within the XGBoost ensemble's nodes for operating costs (see figure \ref{fig:ope
 \begin{figure}
  \resizebox{\textwidth}{!}{
  \includegraphics{operating_costs.png}}
+ % FIXME: What are the #'s? What do the sizes mean? What are the colours? What is interrelated importance?
+ % FIXME: Mark one Panel A and the other B
  \caption{The left-hand side depicts the 10 most important variables in predicting Operating Costs using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:operating_costs_sankey}
 \end{figure}
 
 \subsection{Profit}
 
-Predictions of profit performed poorly compared to operating costs with the regression tree having an $R^2$ of 0.1873 (with a standard deviation of 0.0522) and the XGBoosted ensemble achieving an $R^2$ of 0.2535 (with a standard deviation of 0.3126). The high standard deviation in the XGBoosted tree was a bias in more accurately predicting vineyards that made profit compared to those that lost money.With much higher $R^2$ values being achieved in k-folds containing only those that made profits (recording a maximum of 0.7634).
+Predictions of profit performed poorly compared to operating costs with the regression tree having an $R^2$ of 0.1873 (with a standard deviation of 0.0522) and the XGBoosted ensemble achieving an $R^2$ of 0.2535 (with a standard deviation of 0.3126). The high standard deviation in the XGBoosted tree was a bias in more accurately predicting vineyards that made profit compared to those that lost money.
+% FIXME: Kate pointed out that it is unclear what this implies (the below sentance).
+% The following paragraph goes into it though, it would be better to meld these together. Talking more about the fact that it was easier to predict those who made a profit than those who did not.
+% FIXME: It is wise to run a model purely on gross margin as well. It might have better insights than just profit! And it might over come this disparity.
+With much higher $R^2$ values being achieved in k-folds containing only those that made profits (recording a maximum of 0.7634).
 % profit summary stats
 % max 3345000
 % min -3937878
@@ -414,7 +467,9 @@ Predictions of profit performed poorly compared to operating costs with the regr
 \par
 There was a disparity of 66.63\% of vineyards recording a profit than those that did not. When predicting if a vineyard would be profitable or not the classification tree and XGBoosted ensemble did not perform considerably differently from this proportion. With the regression tree achieving an accuracy of 68.66\% (and a standard deviation of 0.01\%) and the XGBoost ensemble achieving 71.97\% accuracy (with a validation accuracy of 70.59\%).
 \par
-It was surprising that operating costs performed substantially better in $R^2$ compared to profit. Interestingly the important variables when attempting to determine profit were similar to those used to classify region (see Figure \ref{fig:profit_sankey}), with the exception of water used. Both the regression tree and the XGBoosted ensemble used region, specifically the Hunter Valley. The regression tree also used Tasmania when determining profit. Both the Hunter valley and Tasmania are known for the production of high quality grapes used in export wines \citep{wineaustraliaNationalVintageReport2022}. A major difference between region and profit was the importance given to water use, with water use being a more important variable in predicting region than profit. 
+It was surprising that operating costs performed substantially better in $R^2$ compared to profit. % Is there a better way to phrase this? Look at the papers that use the same analysis techniques for phrases to use when soething is good, bad predictor.
+
+Interestingly the important variables when attempting to determine profit were similar to those used to classify region (see Figure \ref{fig:profit_sankey}), with the exception of water used. Both the regression tree and the XGBoosted ensemble used region, specifically the Hunter Valley. The regression tree also used Tasmania when determining profit. Both the Hunter valley and Tasmania are known for the production of high quality grapes used in export wines \citep{wineaustraliaNationalVintageReport2022}. A major difference between region and profit was the importance given to water use, with water use being a more important variable in predicting region than profit. 
 
 \begin{figure}
  \resizebox{\textwidth}{!}{
@@ -425,6 +480,8 @@ It was surprising that operating costs performed substantially better in $R^2$ c
 \begin{figure}
  \resizebox{\textwidth}{!}{
  \includegraphics{profit.png}}
+ % FIXME: What are the #'s? What do the sizes mean? What are the colours? What is interrelated importance?
+ % FIXME: Mark one Panel A and the other B
  \caption{The left-hand side depicts the 10 most important variables in predicting Profit using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:profit_sankey}
 \end{figure}
 
@@ -448,7 +505,13 @@ It was surprising that operating costs performed substantially better in $R^2$ c
 % 
 \section{Discussion}
 
-Several physical parameters such as climate, geology and soil are predetermined by a vineyard's location; making it a widely considered key determinant of grape yield and quality \citep{abbalDecisionSupportSystem2016,agostaRegionalClimateVariability2012,fragaMultivariateClusteringViticultural2017}. The association between yield and region is demonstrated by its position as fourth most occurring variable within the nodes of the XGBoosted ensemble which determined region (see Figure \ref{fig:region_sankey}). The association with area and region is likely a connection to the change in land costs, with inland Australian areas (particularly of lower rainfall) being substantially cheaper to buy than coastal regions, allowing larger areas to be purchased \citep{willchancellorMeasuringAustralianBroadacre2019}.
+% FIXME: Moved here from results. Find a place for this lost puppy!
+% It is reasonable that regions, being subjected to different rainfalls and temperatures, would require different amounts of water, and would have access to different water sources. The relation of area harvested and fuel (particularly petrol) is prominent with other predictors. Due to the wide variety of uses of petrol and diesel, it is likely that they are representative of other activities within the vineyard, such as pruning and harvesting. With predictors such as yield and area being highly interconnected as they likely operate as proxy variables to other factors, possibly other present variables.
+
+Several physical parameters such as climate, geology and soil are predetermined by a vineyard's location; making it a widely considered key determinant of grape yield and quality \citep{abbalDecisionSupportSystem2016,agostaRegionalClimateVariability2012,fragaMultivariateClusteringViticultural2017}. 
+The association between yield and region is demonstrated by its position as fourth most occurring variable within the nodes of the XGBoosted ensemble which determined region (see Figure \ref{fig:region_sankey}). % FIXME: Clunky phrasing
+
+The association with area and region is likely a connection to the change in land costs, with inland Australian areas (particularly of lower rainfall) being substantially cheaper to buy than coastal regions, allowing larger areas to be purchased \citep{willchancellorMeasuringAustralianBroadacre2019}.
 \par
 Regions with lower land costs are also warmer \citep{willchancellorMeasuringAustralianBroadacre2019}, which is known to be beneficial in hastening the ripening process of winegrapes \citep{webbObservedTrendsWinegrape2011}. Warmer regions are also associated with lower quality grapes, caused largely due to this hastened ripening \citep{botting1996canopy}. In general warmer regions have been associated with lower yields due to their generally lower rainfall, which can be mitigated through applying excess water \citep{campsGrapeHarvestYield2012}. It is likely that the combination of larger vineyards with higher water use is a determining factor in classifying regions which favour larger production of lower quality grapes; reflected through the variables' importance of water use in the XGBoost ensemble. The practice of utilising larger quantities of water for inland Australian wine crops is partly reflected in the prior use of flood style irrigation to saturate soil \citep{bgcoombeGrapeBerryDevelopment2004}. This classification can be contrasted with other warmer regions of higher rainfall that use the warmer climate to concentrate their grapes, increasing the flavour profile (and thus quality) \citep{goodwinijeriepRegulatedDeficitIrrigation1992,mgmccarthyEffectCropLoad1986}. This is possibly the connection between the presence of the Hunter Valley within the XGBoost ensemble that determined profit (see Figure \ref{fig:profit_sankey}). With this connection reflecting the restriction of possible strategies employable by winegrowers between different regions.
 \par
@@ -656,6 +719,26 @@ This study has provided valuable insights into the multifaceted dynamics governi
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
  \appendix
+
+
+ \subsection{Year}
+
+ The classification tree and XGBoosted ensemble performed similarly for classifying year with 35.20\% (6.28\% standard deviation) and 51.81\% (42.20\% validation accuracy) respectively. Electricity and the type of irrigation were highly influential within the classification tree. Similarly, electricity was the most frequently occurring node in the XGBoost ensemble. Other variables such as slashing passes, and fungicide and herbicide spraying were more prevalent than in the classification tree. Weed and disease outbreaks are likely an influential factor when classifying different years, making the decisions to spray and slash unique factors that differ year to year. Climatic differences between years are likely tied to the influence of yield and water use.
+ \par
+ Over half of the interrelated importance of the predictor variables is dominated by area harvested, yield and slashing passes. Although all the predictor variables are highly connected, their relative importance is not as prominent as the three major variables. It is of particular note of the relative importance of slashing to area, fuel and yield; as these are not directly related activities. The connection between slashing and spraying is that those who do a set number of spraying or slashing passes tended to do that many passes for all slashing and spraying activities.
+ 
+ \begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{year.pdf}}
+  \caption{Decision tree predicting Year. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:year_tree}
+ \end{figure}
+ 
+ \begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{year.png}}
+  \caption{The left-hand side depicts the 10 most important variables in predicting Year using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:year_sankey}
+ \end{figure}
+ 
 
 \end{linenumbers}
  \end{document}
