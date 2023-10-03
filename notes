@@ -1,0 +1,9 @@
+
+In [55]: plt.scatter(df_floats["total_grape_revenue"].apply(lambda x: math.sqrt(math.sqrt(x))), df_floats["total_operating_costs"])
+    ...: plt.show()
+
+In [56]: plt.scatter(df_floats["total_grape_revenue"].apply(lambda x: math.sqrt(math.sqrt(x))), df_floats["total_operating_costs"].apply(lambda x: math.sqrt(math.sqrt(x))))
+    ...: plt.show()
+
+In [57]: plt.scatter(df_floats["total_grape_revenue"].apply(lambda x: math.sqrt(math.sqrt(x))), df_floats["water_used"].apply(lambda x: np.log(x+1)))
+    ...: plt.show()
