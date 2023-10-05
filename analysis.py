@@ -504,11 +504,22 @@ for y_name in files:
 
 # We also do the predicted variables!
 
-train_model_b(df[df["profitable"].notnull()][cols + ["profitable"]]
-                , "profitable")
+# These are artefacts. As profit can be negative it is harder to predict! We know after some further mapping that both operational costs and gross margin have a cubic root relationships to the logarithm of other variables. An interesting relationship to have!
+# 
+# Importantly this cubic root relationship exists between operational costs and gross margin, which is worth noting. However we want to know what tips it either side of them being equal as that shows that a vineyard is profitable!!
+# 
+# train_model_b(df[df["profitable"].notnull()][cols + ["profitable"]]
+#                 , "profitable")
 
-train_model_reg(df[df["profit"].notnull()][cols+["profit"]]
-        , "profit")
+# train_model_reg(df[df["profit"].notnull()][cols+["profit"]]
+#         , "profit")
 
 train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"]]
                 , "total_operating_costs")
+train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"]]
+                , "total_operating_costs")
+
+train_model_reg(df[df["total_grape_revenue"]!=0][cols+["total_grape_revenue"]]
+                , "total_grape_revenue")
+train_model_reg(df[df["total_grape_revenue"]!=0][cols+["total_grape_revenue"]]
+                , "total_grape_revenue")
