@@ -153,6 +153,6 @@ pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfb.csv")
 # We also create a set of data that is a ratio to area:
 
 area = df_floats["area_harvested"]
-df_floats = df.div(df_floats["area_harvested"]*10000)/10000
+df_floats = df.div(df_floats["area_harvested"]*10000, axis=0)/10000
 df_floats["area_harvested"] = area
 pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfa.csv")
