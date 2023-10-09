@@ -518,8 +518,3 @@ train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"
                 , "total_operating_costs")
 train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"]]
                 , "total_operating_costs")
-
-train_model_reg(df[df["total_grape_revenue"]!=0][cols+["total_grape_revenue"]]
-                , "total_grape_revenue")
-train_model_reg(df[df["total_grape_revenue"]!=0][cols+["total_grape_revenue"]]
-                , "total_grape_revenue")
