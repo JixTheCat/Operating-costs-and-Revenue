@@ -487,20 +487,22 @@ cat_cols = [ # These are binary
     , "giregion"
 ]
 
+# We comment out these unless we really need to redo every single variable. As they are not compared to the target variables at the end!
+# 
 # cols += cat_cols
-print(files)
-for y_name in files:
-    print(y_name)
-    if y_name in cat_cols:
-        if y_name in ["nh_disease", "nh_frost"]:
-            train_model_b(df[cols]
-                , y_name)
-        else:
-            train_model_multi(df[cols]
-                , y_name)
-    else:
-        train_model_reg(df[cols]
-                , y_name)
+# print(files)
+# for y_name in files:
+#     print(y_name)
+#     if y_name in cat_cols:
+#         if y_name in ["nh_disease", "nh_frost"]:
+#             train_model_b(df[cols]
+#                 , y_name)
+#         else:
+#             train_model_multi(df[cols]
+#                 , y_name)
+#     else:
+#         train_model_reg(df[cols]
+#                 , y_name)
 
 # We also do the predicted variables!
 
