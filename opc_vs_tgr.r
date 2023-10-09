@@ -15,7 +15,7 @@ library(stringi)
 
 # In [57]: plt.scatter(df_floats["total_grape_revenue"].apply(lambda x: math.sqrt(math.sqrt(x))), df_floats["water_used"].apply(lambda x: np.log(x+1)))
 #     ...: plt.show()
-;z;l
+
 df <- read.csv("dfb.csv")
 df <- df[df$total_operating_costs != 0, ]
 df <- df[df$total_grape_revenue != 0, ]

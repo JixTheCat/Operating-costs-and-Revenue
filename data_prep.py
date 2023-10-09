@@ -7,8 +7,10 @@ df = pd.read_feather("df.feather")
 # we get the indices of those that made profit
 indices = df[
     (df["total_operating_costs"]>0) & (df["total_operating_costs"]>0)].index
+
 # we set them to nan as oppose to 0 because profit will take negative values
 df["profit"] = np.nan
+
 # calculate profit
 df.loc[indices, "profit"] = df.loc[
     indices, "total_grape_revenue"] - df.loc[indices, "total_operating_costs"]
@@ -148,59 +150,9 @@ for col in cols_to_transform:
 
 pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfb.csv")
 
-# a mixture!
-bin_cols = [
-    "bare_soil"
-    , "annual_cover_crop"
-    , "permanent_cover_crop_native"
-    , "permanent_cover_crop_non_native"
-    , "permanent_cover_crop_volunteer_sward"
-    , "irrigation_energy_diesel"
-    , "irrigation_energy_electricity"
-    , "irrigation_energy_pressure"
-    , "irrigation_energy_solar"
-    , "irrigation_type_dripper"
-    , "irrigation_type_flood"
-    , "irrigation_type_non_irrigated"
-    , "irrigation_type_overhead_sprinkler"
-    , "irrigation_type_undervine_sprinkler"
-    , 'river_water'
-    , 'groundwater'
-    , 'surface_water_dam'
-    , 'recycled_water_from_other_source'
-    , 'mains_water'
-    , 'other_water'
-    , 'water_applied_for_frost_control'
-    , "nh_frost"
-    , "nh_disease"
-]
+# We also create a set of data that is a ratio to area:
 
-for col in bin_cols:
-    df_floats[col] = bin_col(df[col])
-
-prop_cols = [
-    'vineyard_area_white_grapes'
-    , "area_not_harvested"
-    , 'vineyard_area_red_grapes'
-]
-for col in prop_cols:
-    df_floats[col] = df[col].div(df["vineyard_area"], axis=0)*10000
-
-# These are a kind of proportion 2 passes is 200%
-df_floats["total_tractor_passes"] = df["total_tractor_passes"]
-df_floats["slashing_number_of_times_passes_per_year"] = df["slashing_number_of_times_passes_per_year"]
-df_floats["fungicide_spraying_number_of_times_passes_per_year"] = df["fungicide_spraying_number_of_times_passes_per_year"]
-df_floats["herbicide_spraying_number_of_times_passes_per_year"] = df["herbicide_spraying_number_of_times_passes_per_year"]
-df_floats["insecticide_spraying_number_of_times_passes_per_year"] = df["insecticide_spraying_number_of_times_passes_per_year"]
-
-pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfm.csv")
-
-
-
-
-
-
-
-
-
-
+area = df_floats["area_harvested"]
+df_floats = df.div(df_floats["area_harvested"]*10000)/10000
+df_floats["area_harvested"] = area
+pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfa.csv")
