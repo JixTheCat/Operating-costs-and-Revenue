@@ -516,7 +516,8 @@ cat_cols = [ # These are binary
 # train_model_reg(df[df["profit"].notnull()][cols+["profit"]]
 #         , "profit")
 
-train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"]]
-                , "total_operating_costs")
-train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"]]
-                , "total_operating_costs")
+# train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"]]
+#                 , "total_operating_costs")
+
+train_model_reg(df[df["total_grape_revenue"]!=0][cols+["total_grape_revenue"]]
+                , "total_grape_revenue")
