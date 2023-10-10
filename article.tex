@@ -117,10 +117,10 @@
 %\end{keyword}
 %%Research highlights
 \begin{highlights}
- \item ???
- \item ???
- \item ????
- \item ????
+ \item Highlight 1
+ \item Highlight 2
+ \item Highlight 3
+ \item Highlight 4
 \end{highlights}
 \end{frontmatter}
 
@@ -128,18 +128,26 @@
 %%        main text       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% FIXME: Stop writing chronologically. Write by significance.
-% TODO: Should the models be redone as a factor of area? instead of including area? The ensemble should effectively pick this up I do not think it needs to be done.
-
 \section{Introduction}
 
-% TODO:
-% %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
 % Paper setup %
 %%%%%%%%%%%%%%%
 
-% What is your topic?
-Economic sustainability of vineyards.
+% Why is the question/issue/problem worth examining?
+There is a lot of economic pressure on Australian winegrowers and the wine and vine industry in general due to international market changes, tighter requirements for organic and sustainability credentials and a shrinking market.
+% FIXME: Get some references in here!
+
+
+
+ There is a need for increased understanding of different underlying conditions leading to improved performance in agricultural productivity and sustainability \citep{oecdInnovationProductivitySustainability2019}.
+
+ Specifically within the Australian Vine and Wine industry there is a need to further understand the driving relationships between resource use and economic output .
+ Environmentally sustainable
+ UC Davis in California has created a new green-tech winery, a sustainable entity and blueprint
+ on how to differentiate a brand. Growers need to determine better and efficient ways to make
+ wine, develop benchmarks with local growers and market this approach. \citep{lukemanciniUnderstandingAustralianWine2020}
+
 
 % What is the context for your reserach?
 An unprecedented amount of data regarding the Australian wine and vine industry has been collected through Sustainable Winegrowing Australia offering new insights into the driving economic forces of the Australian wine industry.
@@ -194,6 +202,16 @@ We explore the relationship between various operational and resource use variabl
 
 % Notes
 % Contributors to the JAE should note that, in choosing subjects for articles, the objects of the Society are ‘to promote the study and teaching of agricultural economics and relevant disciplines, and their application to issues in the agricultural, food and related industries, rural communities and the environment. The relevant disciplines include economics, statistics, marketing, business management, politics, history and sociology'. Preference will be given to articles which deal either with new developments in research and methods of analysis, or apply existing methods and techniques to new problems and situations which are likely to be of general interest to the Journal’s international readership. The Journal is not a suitable publication for articles of purely local interest.  Articles should be clearly and concisely written and should normally not exceed 7,000 words. Articles greatly in excess of this limit cannot be considered for publication.
+% 
+% A definition of agricultural economics from the encyclopedia britanica:
+% 
+% agricultural economics, study of the allocation, distribution, and utilization of the resources used, along with the commodities produced, by farming. Agricultural economics plays a role in the economics of development, for a continuous level of farm surplus is one of the wellsprings of technological and commercial growth.
+
+We study the economic outcomes of Australian vineyards and their statistical relationships to the utilisation of the resources used. This is done through analysing a new comprehensive nationwide data set using XGBoosted models. We further compare the relationships between different resources to address the extensive collinearity found within the data. XGBoosted models were used because they are able to overcome multicollinearity as well as highlight the level of importance that predictor variables have; with importance being able to be statistically defined through different measures. 
+
+applies existing techniques to a new data set 
+
+agricultural economics and relevant disciplines, and their application to issues in the agricultural, food and related industries, rural communities and the environment. The relevant disciplines include economics, statistics, marketing, business management, politics, history and sociology'. Preference will be given to articles which apply existing methods and techniques to new problems and situations which are likely to be of general interest to the Journal’s international readership. The Journal is not a suitable publication for articles of purely local interest.  Articles should be clearly and concisely written and should normally not exceed 7,000 words. Articles greatly in excess of this limit cannot be considered for publication.
 
 %%%%%%%%%%%%
 % Question %
@@ -203,7 +221,7 @@ We explore the relationship between various operational and resource use variabl
 %
 % Why is the knowledge important?
 A better understanding of driving economic factors within agricultural industries helps to drive sustainability through understanding relationships between factors better.
-%  FIXME: work on this^
+%  FIXME: work on this^ 
 
 % What is the significance?
 This broad dataset has not yet been analysed, showing new insights into the driving factors of the Australian winegrowing industries economy
@@ -235,11 +253,11 @@ What are the driving factors for operational cost and gross margin in Australian
 %
 % NB It is essential that your answer is framed as a direct question.  Your response must end with a question mark.
 
-% Why is the question/issue/problem worth examining?
-There is a lot of economic pressure on Australian winegrowers and the wine and vine industry in general due to international market changes, tighter requirements for organic and sustainability credentials and a shrinking market.
-% FIXME: Get some references in here!
 
-% Briefly outline the problem you are tackling and explain why the problem is important to knowledge in general.  “Nothing much is known” is not sufficient justification by itself.  You have to show why the gap in knowledge is important.  Expect to draw heavily on your reading of the literature in framing your answer but do not get into detail of  author and year.
+
+% Briefly outline the problem you are tackling and explain why the problem is important to knowledge in general.  “Nothing much is known” is not sufficient justification by itself.  You have to show why the gap in knowledge is important. Expect to draw heavily on your reading of the literature in framing your answer but do not get into detail of  author and year.
+% 
+% ^ is this almost boiler plate writing at this point. Considering that not much is known but we are applying it in a specific field, in this case to economics. We can use a general, nothing is known but further understanding this for economic reasons will help to improve the economic sustainability of these practices. and that these authors have postulated about these connections etc. We can start generic and funnel it into the reasoning of importance using the journals general frame work and objectives.
 
 %%%%%%%%%%
 % Answer %
@@ -299,8 +317,8 @@ A data driven approach can highlight the significance between different factors.
 % Large and Complex Datasets: When dealing with large volumes of data that are too complex to be analyzed using traditional methods, data-driven techniques such as machine learning algorithms, data mining, or big data analytics can help in uncovering meaningful insights that might not be apparent through conventional approaches.
 
 % TODO:
-%  From the code comments~ We might want to show this relationship! then we have an idea of how these two are related.
-% # These are artefacts. As profit can be negative it is harder to predict! We know after some further mapping that both operational costs and gross margin have a cubic root relationships to the logarithm of other variables. An interesting relationship to have!
+%  From the code comments~ We might want to show the relationship between revenue and operational cost! then we have an idea of how these two are related.
+% # These are artefacts of. As profit can be negative it is harder to predict! We know after some further mapping that both operational costs and gross margin have a cubic root relationships to the logarithm of other variables. An interesting relationship to have!
 % # 
 % # Importantly this cubic root relationship exists between operational costs and gross margin, which is worth noting. However we want to know what tips it either side of them being equal as that shows that a vineyard is profitable!!
 
