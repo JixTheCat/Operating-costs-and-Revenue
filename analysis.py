@@ -255,7 +255,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
     
     # We need at least 3 entries into a region for it to be able to be classified.
 
-    X = df[df.groupby(y_name)[y_name].transform('count')>10].copy() 
+    X = df[df.groupby(y_name)[y_name].transform('count')>10].copy()
 
     y = X[y_name]
     y = y.cat.remove_categories(list(set(y.unique().categories) - set(y.unique())))

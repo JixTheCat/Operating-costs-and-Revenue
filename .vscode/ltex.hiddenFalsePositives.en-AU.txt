@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_AU","sentence":"^\\QData recorded by SWA is entered manually by winegrowers using a web based interface tool.\\E$"}

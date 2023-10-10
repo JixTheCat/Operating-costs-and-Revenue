@@ -161,56 +161,15 @@ What we add is that agricultural economics maybe complex systems that are obfusc
 \section{Introduction}
 
 Historically strong demands for Australian wine have helped to create a thriving industry, however recent pressures brought on by a loss of tourism and labour due to the COVID-19 pandemic, the global freight crisis, war in Europe, tariffs and rising inflation has negatively effected the industry's outlook \citep{wineaustraliaNationalVintageReport2021,wineaustraliaAustralianWineProduction2021}. The 2021-2022 financial year alone saw a decline of 19\% in exports solely due to tariffs \citep{wineaustraliaNationalVintageReport2022}. A greater understanding of the different underlying conditions leading to improved performance in agricultural productivity and sustainability at scale are key to  introducing stronger policy and information to aid in increasing a nations agricultural sustainability \citep{oecdInnovationProductivitySustainability2019}. Specifically within the Australian Wine and vine industry there is a need to further understand the driving relationships between resource use and economic output. Where these relationships can lead to determining better and efficient methods and develop benchmarks with local growers. \citep{lukemanciniUnderstandingAustralianWine2020}
+\newline
+An unprecedented amount of data regarding the Australian winegrowing industry has been collected through Sustainable Winegrowing Australia, offering new insights into the driving economic forces of the Australian wine industry. This dataset allowed insights into the economic outcome of vineyards through the incorporation of operating costs and grape revenue within the data. We use this data to study these economic outcomes and their statistical relationships to vineyards' utilisation of the resources. Answering what the driving factors are behind vineyard economic outcomes, and linking these outcomes to predictor importance. This is done through analysing a new comprehensive nationwide data set using XGBoosted models. We further compare the relationships between different resources to address the extensive collinearity found within the data FIXME: This needs references||. XGBoosted models were used because they are able to overcome multicollinearity as well as highlight the level of importance that predictor variables have on response variables; with importance being able to be statistically defined through multiple methods.
 
-An unprecedented amount of data regarding the Australian winegrowing industry has been collected through Sustainable Winegrowing Australia, offering new insights into the driving economic forces of the Australian wine industry. We use this data to study the economic outcomes of Australian vineyards and their statistical relationships to vineyards' utilisation of the resources. Answering what the driving factors are behind vineyard economic outcomes, and linking these outcomes to predictor importance. This is done through analysing a new comprehensive nationwide data set using XGBoosted models. We further compare the relationships between different resources to address the extensive collinearity found within the data FIXME: This needs references||. XGBoosted models were used because they are able to overcome multicollinearity as well as highlight the level of importance that predictor variables have on response variables; with importance being able to be statistically defined through multiple methods.
-
-%%%%%%%%%%%%%%%
-% Future work %
-%%%%%%%%%%%%%%%
-
-% What remains unresolved?
-% 
-% You may or may not have a lot to say here.  Some of it may be useful in your discussion.
-The causal reasoning behind these variables behaviours. The untangling the multicollinearity of these variables.
-
+\section{Methods}
 % TODO:
 %  From the code comments~ We might want to show the relationship between revenue and operational cost! then we have an idea of how these two are related.
 % # These are artefacts of. As profit can be negative it is harder to predict! We know after some further mapping that both operational costs and gross margin have a cubic root relationships to the logarithm of other variables. An interesting relationship to have!
 % # 
 % # Importantly this cubic root relationship exists between operational costs and gross margin, which is worth noting. However we want to know what tips it either side of them being equal as that shows that a vineyard is profitable!!
-
-% \if{false}
-
-% We classify regions to find the most prominent and well-defined relationships to regions.
-% We examine the variables that are the most decisive in determining region.
-% We compare the similarities and differences of these regions
-% - within the analysis and
-% - within the literature (also in their definition and history)
-
-% We examine the similarity between these classifications and the variables that are significant in classifying profitable vs not.
-% How do regional changes affect that. What is similar and what is different.
-
-% We can link these contributing factors back to the baselines - at least anecdotally, or in an unpublished section. This will be good for the thesis.
-
-% \fi
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The Australian wine-growing industry is a rich and diverse landscape that is separated into multiple Geographical Indicator Regions. Each region describing unique reputations, qualities and varietals of wine produced there. While a great deal has been done regarding individual regional properties and traits, there has been little statistical insight into broader regional comparisons; due to a lack of cross-regional and in-depth data sources \citep{keithjonesAustralianWineIndustry2002,knightFirmResourcesDevelopment2019}. In this study we use Classification Trees to compare regional differences and how these differences relate to sustainable practices. 
-% \newline
-
-%
-%This analysis addresses the knowledge gap regarding the effectiveness of regional level strategies employed in the wine industry and their relation to grape quality.
-% What the hell is a regional strategy
-% And how do you define, or know what trategy each region is using?
-%
-% Through the use of classification trees this study aims to highlight the key differences in sustainable practices at a regional level and how these practices relate to the different grades of grape quality.
-
-% This does not really address what the methods are - aside from classisifcation trees in the most vague sense.
-% What are the results briefly? why should someone read this article?
-% What is interesting - what will be discussed in the article with regard to these results? What makes me want to read the article?
-% And what is the take away point of the article? If I cant be bothered to read this article, what piece of knowledge can you leave mewiwth that I could recommend the article to someone else with?
-
-\section{Methods}
 
 % FIXME:
 % While overall this methods section seems technically correct, more work is needed on justification, motivation, and context.
@@ -219,9 +178,6 @@ The causal reasoning behind these variables behaviours. The untangling the multi
 % As kate put it in person you are currently writting like ||||| fact fact fact. You need to be more |...||...|| with context etc inbetween each fact so that people can digest it.
 
 % As with the previous paper, put the models up front it is very unclear what you have created - and less clear to understand it if there is no way to reference to it.
-
-% FIXME:
-% In this methods section, what is novel/innovative? Not currently clear, In particular - if I gave this data & these packages to a 3rd year class, which part here couldn't they do?
 
 % FIXME: The methods needs to be restructured. Try the following order:
 %     - Why do it?
@@ -234,29 +190,18 @@ The causal reasoning behind these variables behaviours. The untangling the multi
 % An aside comment might be that you can attempt to follow the narrative writing paradigm across the paper as a whole but limit your methods section to the why, what then how. And use the results as your reveal.
 % Or maybe dont do that - it might just be that you need to write it like a narrative as a first draft then butcher it into the necessary sections. That writing style is incredibly ingrained at this point.
 
-% FIXME: Adde a section for CV.
-
-% FIXME: Another section that needs to be added is one that describes what the sankey and chord diagrams are and what they represent. The reader needs to be prepped for this before the results. They need to be able to properly interpret them.
-
-% FIXME: Explain how some variables are one-hot-encoded and how this relates to variable importance. This is a significant resulti n the xgboost tree for the huntervalley
-
 % FIXME: the motivation is missing from methods.
-% FIXME: What is interrelated importance?
 
 \subsection{Data}
-
 % 6091 samples - total
 % 58 regions
 % 10 years
-
+% 
 % 853 with reported profits
 % 46 regions
 % reported since 2018
-Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program. The program aims to facilitate grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by the SWA is entered manually by winegrowers using a web based interface tool. A total of 6091 observations were collected from 2012/2013 to 2021/2022 financial years. 23 variables were used for each observation reflecting a vineyards account for the given year (see Table \ref{tab:vars}). 
-The profit variable was transformed % FIXME: What was it before?
-and included as another separate variable, profitable; depicting whether a vineyard was profitable or not.
+Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program. The program aims to facilitate grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by SWA is entered manually by winegrowers using a web based interface tool. A total of 6091 observations were collected from 2012/2013 to 2021/2022 financial years. 23 variables were used for each observation reflecting a vineyards state for the given year (see Table \ref{tab:vars}). 
 \par
-
 \begin{table}[] 
  \label{tab:vars}
  \caption{Summary of variables used in the analysis. The recorded column indicate the number of values that were either greater than zero or that were not missing.}\label{tab:summary}
@@ -284,65 +229,39 @@ and included as another separate variable, profitable; depicting whether a viney
   Fungicide Spray & Times per year & 2260 & & \\
   Cover Crop & Class & 6091 & 32 & \\
   Water Type & Class & 6091 & 39 & \\
-  Profit & AUD & 853 & & \\
+  Grape Revenue & AUD & 853 & & \\
   Operating Costs & AUD & 853 & & \\ \bottomrule
   \end{tabular}
 \end{table}
 
-The data originally contained only two multiclass variables: year and region. Variables that measured the same metric from different sources (such as water collected from rivers versus water from dams) were converted into multiclass variables representing the source. The total amount used from these variables was retained as a separate variable. Occurrences of multiple sources were defined as separate classes. 
+The data originally contained only two multiclass variables: year and region. Variables that measured the same metric from different sources (such as water collected from rivers versus water from dams) were converted into multiclass variables representing the source through one-hot-encoding. Changing each variable class into a binary value, with one indicating the presence of the class and zero indicating its absence. Occurrences of multiple sources were defined as their own separate classes. Where a class variable had a recorded amount the total amount used from these variables was retained as a separate variable; for example water used (in Mega Litres ) was also included alongside water source.
 \par
 The variable region represented one of the 65 Geographical Indicator Regions (GI Region) used to describe different unique localised traits of vineyards across Australia \citep{hallidayAustralianWineEncyclopedia2009,oliverReviewSoilPhysical2013,soarClimateDriversRed2008}. Each region is explicitly defined under the Wine Australia Corporation Act of 1980 \citep{attorney-generalsdepartmentWineAustraliaCorporation2010}.
 \par
-%
-% Mention one-hot-encoding.
-%
 
-%
-% How deep into the classes do we go?
-%
 \subsection{XGBoosted Trees}
-% FIXME: What do boosted trees do?
-XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. They were chosen for this analysis as they provide both a 
-high predictive performance % FIXME: For what?
-and ability to effectively 
-capture complex relationships % FIXME: How?
-. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (profit and operating cost), which were only included once as response variables.
-% FIXME: what does this mean in terms of the method and outputs?
+XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. XGBoosted trees are a boosted tree ensemble method that can be used to classify classes, or predict continuous response variables. They were chosen for this analysis as the data contained a mixture of class and continuous variables. And, XGBoosted trees are unaffected by multicollinearity, as well as offer high predictive performance for a wide variety of purposes \citep{chenXGBoostScalableTree2016}. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (operating cost and revenue), which were only included once as response variables. This meant that every variable would have a measure of its importance to other variables, which was used to show the highly interrelated nature of variables within vineyards (see \ref{variableimp}).
 \par
-Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. 
-% FIXME: All equations must be in the middle or end of sentances, not at the beginning.
+Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. Each of $f_k$ functions is a classification or regression tree, such that all functions are in the set of all decision trees, given by $\mathcal{F}$, is defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where each function corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given by:
 \begin{equation}
- \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{K}(x_{i})}, \space f_{K}\in \mathcal{F},
+ \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{k}(x_{i})}, \space f_{K}\in \mathcal{F},
 \end{equation}
 
 % FIXME: The methods would benefit from some subsections (signposts)
-% FIXME: What does the equation do? Give intuition.
 
-where each function $f_K$ is a classification or regression tree, such that all functions are in the set of all decision trees $\mathcal{F}$, defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. 
-Where, $f_K$ corresponds to an independent tree structure $q$ of $\omega$ weights. % FIXME: Sentance fragment.
-Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. 
-The final prediction % FIXME: What is this?
-is determined by the sum of the score of the corresponding leaves, given by $\omega$. 
-The set of functions % FIXME: You haven't described the tree as having a set of functions?
-%  I believe when you refer to the set of functions F you might benefit from putting the F in brackets here or being more explicit where the functions are.
-used by the tree is determined by minimising the 
-regularised % What is the regularised objective?
-objective function, given by:
+The set of functions, $\mathcal{F}$, used by the tree is determined by minimising a regularised objective function, given by:
 
 \begin{equation}\label{eqn:objective}
  \mathcal{L}(\phi)=\sum_i l(\hat{y_i}, y_i^{t-1} + f_t(x_i)) + \sum_k \Omega (f_K).
 \end{equation}
 
-The difference between the 
-prediction and actual variable % FIXME: what are the predition and actual variables?
-% When you are talking broadly about elements of xgboost I believe it will help to refer to the equation, an example or something more specific. This would help to address the other comment regarding giving an intuition to the method.
-is a convex loss function $l$. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration. The function 
-$f_t$ % FIXME: Kate asked if this was $f_K$. This is not the case as $f_K$ is part of the penalty function, and I know this at first glance due to working with the equation regularly for this paper. If Kate is confused about this then your explanation sucks. It is to obtuse, like Kate has said you are hitting people with too many facts and not padding it enough to the context of this paper and its application or even its purpose. The function $f_t$ is incredibly important, especially because for the purposes of this study it changes depending on the variable and its nature. You are clearly not 
-is selected according to which value minimises (\ref{eqn:objective}). The model complexity is penalised by the function $\Omega$, this acts to smooth weights in an attempt to prevent over fitting.
+The difference between a prediction, $\phi(x_i)$, and actual variable, $f_{k}(x_i)$, is a differentiable convex loss function $l$. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration. 
+% \par
+% A function $f_t$ is selected according to which value minimises (\ref{eqn:objective}). The model complexity is penalised by the function $\Omega$, this acts to smooth weights in an attempt to prevent over fitting.
+% FIXME: Kate asked if this was $f_K$. This is not the case as $f_K$ is part of the penalty function, and I know this at first glance due to working with the equation regularly for this paper. If Kate is confused about this then your explanation sucks. It is to obtuse, like Kate has said you are hitting people with too many facts and not padding it enough to the context of this paper and its application or even its purpose. The function $f_t$ is incredibly important, especially because for the purposes of this study it changes depending on the variable and its nature. You are clearly not 
 \par
 As predictions are made using additive tree functions, XGboosted trees can be used for classification and regression. Due to the mixture of continuous, binary and multiclass variables in this analysis, 
-both classification and regression trees were created. % FIXME: What were these created for?
-The difference between the trees created for this analysis was the objective function used. % FIXME: Kate marked this with a "?" clearly highlighting the issue with the previous comment regarding f_t (at some point was on line 321)
+both classification and regression trees were created. The difference between the trees created for this analysis was the objective function used. % FIXME: Kate marked this with a "?" clearly highlighting the issue with the previous comment regarding f_t (at some point was on line 321)
 XGBoosted regression trees were created for continuous variables, using the 
 
 % FIXME: The below section talks about the objective functions. Kate askes what they are and what they related to. You will need to go into the objective functions, how they are different and why different functions are required to be used.
@@ -381,6 +300,12 @@ into each subset at the same ratio of class occurrence. Validation was summarise
 % FIXME: rewrite the below paragraph in the active voice.
 The use of the XGBoost library incorporates regularisation techniques built into the software to mitigate over-fitting and enhance model generalisation. The further use of cross validated grid search functions allowed for the selection of better performing hyperparameters when selecting the final model. The performance measure for model selection was root-mean-square error for continuous variables. The receiver operator characteristic's area under the curve was used for category variables \citep{hanley1982meaning}. Multiclass variables utilised the one verse one approach to minimise sensitivity to class disparity \citep{ferriExperimentalComparisonPerformance2009,handSimpleGeneralisationArea2001}.
 % FIXME: What is the output?
+
+
+% FIXME: What is interrelated importance? add a section for this!
+
+% FIXME: Explain how some variables are one-hot-encoded and how this relates to variable importance. This is a significant resulti n the xgboost tree for the huntervalley
+
 \subsection{Classification and Regression Trees} % FIXME: perhaps this should be renamed surrogate models
 % FIXME: It is not clear what you are trying to achieve with these models. No where do you give a definition of what a surrogate model is and why you are using it!
 % Be specific about the purpose of what these models are being used for! Justify why you have not simply shown one of the ensembles trees as well! The use of these algorithms means that the tree is more general than any one of the ensembles manifestations.
@@ -388,8 +313,15 @@ Classification and Regression Trees were created for region, year, profit and op
 \par
 Decision trees were validated using K-fold cross validation. Each model was validated using 10 folds, utilising a random selection of different samples ten separate times to validate each of the decision trees. The same measure of accuracy as the XGBoosted trees was used for comparison.
 
+% FIXME: Another section that needs to be added is one that describes what the sankey and chord diagrams are and what they represent. The reader needs to be prepped for this before the results. They need to be able to properly interpret them.
+
+% FIXME: Adde a section for CV.
+
 \section{Results}
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Australian wine-growing industry is a rich and diverse landscape that is separated into multiple Geographical Indicator Regions. Each region describing unique reputations, qualities and varietals of wine produced there. While a great deal has been done regarding individual regional properties and traits, there has been little statistical insight into broader regional comparisons; due to a lack of cross-regional and in-depth data sources \citep{keithjonesAustralianWineIndustry2002,knightFirmResourcesDevelopment2019}. In this study we use Classification Trees to compare regional differences and how these differences relate to sustainable practices. 
+% \newline
 % FIXME: The first result should be in the langauge of the question. In the original document the first result presented was region, implying that the question is: 'are regions different?' which is not the forefocus of the article. The results need to be rearranged to show grossmargin and operating costs as more significant variables as they are the curious factors that we do not understand.
 
 % FIXME: The irritating placement of the figures is due to the way latex uses the /ref function to determine where a figure should be. Have a google of this to overcome it as the figure placement is all over the shop.
@@ -712,6 +644,15 @@ The disparity in accuracy between profit and operational costs is reflective of 
 
 \section{Conclusion}
 
+
+%%%%%%%%%%%%%%%
+% Future work %
+%%%%%%%%%%%%%%%
+
+% What remains unresolved?
+% 
+% You may or may not have a lot to say here.  Some of it may be useful in your discussion.
+The causal reasoning behind these variables behaviours. The untangling the multicollinearity of these variables.
 
 It maybe better to pursue more causal models and create decision support systems than to model factors directly. It is difficult to untangle the predictive and correlative nature of the variable compared to the causal reasons.
 
