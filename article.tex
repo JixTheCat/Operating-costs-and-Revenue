@@ -240,83 +240,54 @@ The variable region represented one of the 65 Geographical Indicator Regions (GI
 \par
 
 \subsection{XGBoosted Trees}
-XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. XGBoosted trees are a boosted tree ensemble method that can be used to classify classes, or predict continuous response variables. They were chosen for this analysis as the data contained a mixture of class and continuous variables. And, XGBoosted trees are unaffected by multicollinearity, as well as offer high predictive performance for a wide variety of purposes \citep{chenXGBoostScalableTree2016}. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (operating cost and revenue), which were only included once as response variables. This meant that every variable would have a measure of its importance to other variables, which was used to show the highly interrelated nature of variables within vineyards (see \ref{variableimp}).
+XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. XGBoosted trees are a boosted tree ensemble method that can be used to classify classes, or predict continuous response variables. They were chosen for this analysis as the data contained a mixture of class and continuous variables. And, XGBoosted trees are unaffected by multicollinearity, as well as offer high predictive performance for a wide variety of purposes \citep{chenXGBoostScalableTree2016}. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (operating cost and revenue), which were only included within their own trees as response variables. This meant that every variable would have a measure of its importance to other variables (see Section \ref{sec:importance}), which was used to show the highly interrelated nature of variables within vineyards. The complicated interaction between bariables was illustrated using Sankey and Chord diagrams; with variable importance measures being used to show the strength of connection between any two variables (see section \ref{sec:importance}).
 \par
 Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. Each of $f_k$ functions is a classification or regression tree, such that all functions are in the set of all decision trees, given by $\mathcal{F}$, is defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where each function corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given by:
 \begin{equation}
  \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{k}(x_{i})}, \space f_{K}\in \mathcal{F},
 \end{equation}
 
-% FIXME: The methods would benefit from some subsections (signposts)
-
-The set of functions, $\mathcal{F}$, used by the tree is determined by minimising a regularised objective function, given by:
+The set of functions, $\mathcal{F}$, used by the tree is determined by minimising a regularised objective function, $\mathcal{L}$ given by:
 
 \begin{equation}\label{eqn:objective}
  \mathcal{L}(\phi)=\sum_i l(\hat{y_i}, y_i^{t-1} + f_t(x_i)) + \sum_k \Omega (f_K).
+\end{equation}, where
+\begin{equation}
+  \Omega(f) = \gamma T + {{1}\over{2}}\lambda ||\omega||^2
 \end{equation}
 
-The difference between a prediction, $\phi(x_i)$, and actual variable, $f_{k}(x_i)$, is a differentiable convex loss function $l$. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration. 
-% \par
-% A function $f_t$ is selected according to which value minimises (\ref{eqn:objective}). The model complexity is penalised by the function $\Omega$, this acts to smooth weights in an attempt to prevent over fitting.
-% FIXME: Kate asked if this was $f_K$. This is not the case as $f_K$ is part of the penalty function, and I know this at first glance due to working with the equation regularly for this paper. If Kate is confused about this then your explanation sucks. It is to obtuse, like Kate has said you are hitting people with too many facts and not padding it enough to the context of this paper and its application or even its purpose. The function $f_t$ is incredibly important, especially because for the purposes of this study it changes depending on the variable and its nature. You are clearly not 
-\par
-As predictions are made using additive tree functions, XGboosted trees can be used for classification and regression. Due to the mixture of continuous, binary and multiclass variables in this analysis, 
-both classification and regression trees were created. The difference between the trees created for this analysis was the objective function used. % FIXME: Kate marked this with a "?" clearly highlighting the issue with the previous comment regarding f_t (at some point was on line 321)
-XGBoosted regression trees were created for continuous variables, using the 
+As predictions are made using additive tree functions, XGboosted trees can be used for classification or regression. The difference between a prediction, $\phi(x_i)$, and actual variable, $f_{k}(x_i)$, is a differentiable convex loss function $l$. These properties of $l$ allow the function to be versatile in which objective we choose to optimise for, which is also important in being able to process both continuous and categorical variables. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration.
+\subsection{Loss functions}
 
-% FIXME: The below section talks about the objective functions. Kate askes what they are and what they related to. You will need to go into the objective functions, how they are different and why different functions are required to be used.
-% Perhaps a reference that talks about the importance of objective functions.
-root-mean-square as the objective function. Binary class variables utilised the logistic loss function as the objective. And, Multiclass variable used the soft max function. All objective functions are defined within the SKlearn library \citep{sklearn_api}, linked via an API to the XGBoost library \citep{chenXGBoostScalableTree2016}.
-\par
-% FIXME: Why are you doing this? give me reasons related to this work to keep reading.
-Chen and Guestrin \citep{chenXGBoostScalableTree2016} illustrate, using Taylor expansions, that for a fixed structure $q(x)$ the optimal weight $\omega^*_j$ for a leaf $j$ can be derived. Furthermore, they show the loss reduction after 
-the split % FIXME: What is the split?
-is given by the function:
+The functions included as parameters in equation \ref{eqn:objective} mean that traditional opimisation methods for Euclidean space cannot be used. Chen and Guestrin \citep{chenXGBoostScalableTree2016} illustrate, using Taylor expansions, that for a fixed structure $q(x)$ the optimal weight $\omega^*_j$ for a leaf $j$ can be derived. Importantly a loss function can be used to fit a model iteratively to data. For this analysis several loss functions were used, as variables took the form of continuous, binary and multi-call data. The loss function for making a split within the tree structure is given by:
 
 \begin{equation} \label{eqn:enumerate}
 \mathcal{L}_{split} = {{1}\over{2}} \left[ 
  {{(\sum_{i\in I_L}g_i)^{2}}\over{\sum_{i\in I_L} h_i + \lambda}} +
  {{(\sum_{i\in I_R}g_i)^{2}}\over{\sum_{i\in I_R} h_i + \lambda}} -
- {{(\sum_{i\in I}{g_i})^{2}}\over{\sum_{i \in I} h_i + \lambda}} \right] - \gamma,
+ {{(\sum_{i\in I}{g_i})^{2}}\over{\sum_{i \in I} h_i + \lambda}} \right] - \gamma.
 \end{equation}
 
-with the tree structure defined using left $I_L$ and right $I_R$ instance sets of nodes, with $I = I_L \cup I_R$. Instead of enumerating all possible tree structures, a greedy algorithm iteratively adds branches to the tree minimising $ \mathcal{L}_{split} $ in (\ref{eqn:enumerate}). The frequency of a variable's occurrence within a tree is directly attributed to the minimisation of the objective function (or loss) through the minimisation of $ \mathcal{L}_{split} $.
+The tree structure being defined using left $I_L$ and right $I_R$ instance sets of nodes, with $I = I_L \cup I_R$. Instead of enumerating all possible tree structures, a greedy algorithm iteratively adds branches to the tree minimising $ \mathcal{L}_{split} $ in (\ref{eqn:enumerate}). The frequency of a variable's occurrence within a tree is directly attributed to the minimisation of the loss function through the minimisation of $ \mathcal{L}_{split} $.
 \par
-% FIXME: The below section needs to come sooner
-The frequency of a variable appearing as a node within the ensemble was used as a measure of importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function, translating the value into a 
-simple count metric. % FIXME: Variable importance might need to be in its own section to fully explain it and its motivation.
-% FIXME: The creation of xgboost trees for each variable needs to be earlier and more clear as well contextualised by its motivation.
-Creating XGBoosted trees for each variable allowed the use of importance to show how strongly variables were associated with each other. The importance of predictor variables to economic variables was illustrated through the use of 
-Sankey diagrams constructed % FIXME: More needs to be said on this. More needs to be talked about regarding the chord diagrams as well. There is no thorough explanation of how the diagrams work and what you have done with them to fully explain them!
-using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Other variable's interconnectedness was demonstrated through the use of a chord diagram also created using Holoviews. % FIXME: The above comment about sankey diagrams applies to chord diagrams. These need fuller descriptions.
+The loss functions used for this analysis were the root-mean-square function for continuous variables. The logistic loss function for binary class variables. And, the soft max function for Multiclass variables. All objective functions are defined within the SKlearn library \citep{sklearn_api}, which was utilised via an API to the XGBoost library \citep{chenXGBoostScalableTree2016}.
 \par
-% FIXME: More info is needed regarding the validation and how it was performed. This section can be expaned on as different validation and scoring is used due to the differencein objective functions. This is a rather critical section and very little is said about it.
-% 
-Each variable utilised 80\% of the data to train the XGBoost ensemble, with 20\% reserved for testing and validation. Testing was done through the iterative minimisation of the respective objective function for the variables type. For continuous variables 20\% was used as testing data, minimising the root-mean-square function. The final model was validated using repeated k-fold cross validation for 10 folds, repeated 10 times. $R^2$ scores were used to determine the best regression models during validation.
-For binary and multiclass variables data was split into 80\% training, 10\% testing and 10\% validation data. 
-Due to class disparity in multiclass variables (most prominently in region) data was stratified % FIXME: What does it means to stratify the data and why is this done?
-into each subset at the same ratio of class occurrence. Validation was summarised through the accuracy, the proportion of true negatives and positives.
+\subsection{Variable Importance}\label{sec:importance}
+
+Due to XGBoost creating a large amount of decision trees, the interpretability of these models is obfuscated by the intricate relationships within complicated ensembles. A measure of variable importance was the technique used to highlight a variables influence within the ensemble. Variable importance can be measured in multiple ways; we used the frequency of a variable appearing as a node within the ensemble as a measure of its importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function. The measure of a variable's importance within this study can then be interpreted as how often a variable was the optimal choice in reducing the loss function of the ensemble. Importantly, multiclass variables being one-hot-encoded are given an importance score for each individual class; for example, each specific region will have its own importance score.
 \par
-% FIXME: rewrite the below paragraph in the active voice.
-The use of the XGBoost library incorporates regularisation techniques built into the software to mitigate over-fitting and enhance model generalisation. The further use of cross validated grid search functions allowed for the selection of better performing hyperparameters when selecting the final model. The performance measure for model selection was root-mean-square error for continuous variables. The receiver operator characteristic's area under the curve was used for category variables \citep{hanley1982meaning}. Multiclass variables utilised the one verse one approach to minimise sensitivity to class disparity \citep{ferriExperimentalComparisonPerformance2009,handSimpleGeneralisationArea2001}.
-% FIXME: What is the output?
+Creating XGBoosted trees for each variable allowed the use of importance to show how strongly variables were associated with each other. The importance of variables to one another was illustrated through the use of Sankey and Chord diagrams. These diagrams were constructed using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Both Chord and Sankey diagrams illustrated variable importance through the size of the bands between two variables. The number at the end of a connection in a Sankey diagram indicated a variable's importance, or the number of times it appeared within the ensemble. Sankey and Chord  diagrams were presented together; with Sankey diagrams showing the connection of a variable to its 10 most important predictor variables. Chord diagrams were used alongside a Sankey diagram to show the interconnectedness of the ten most prominent variables within its associated Sankey diagram. Chord diagrams formed circles, with variables being connected through their relative importance. The importance values for the Chord diagrams were taking from the models of those individual variables, with the diagram being simplified to just the ten variables in the associated Sankey diagram, for readability's sake.
+\subsection{Validation}
+As there were multiple different loss functions, multiple different forms of validation were used. In each case the data was split into training data, which constituted 80\% of the original data. The remaining 20\% was used in testing and validation. Data was stratified when splitting the data into these subsets to conserve the same proportion of class occurrences between training, testing and validation data. For continuous variables 20\% was used as testing data, minimising the root-mean-square function. The final model was validated using repeated k-fold cross validation for 10 folds, repeated 10 times. $R^2$ scores were used to determine the best regression models during validation.
+For binary and multiclass variables, data was split into 80\% training, 10\% testing and 10\% validation data. For class variables, validation was summarised through the accuracy, the proportion of true negatives and positives.
+\par
+The XGBoost library incorporates regularisation techniques built into the software to mitigate over-fitting and enhance model generalisation. This allowed us to utilise cross validated grid search functions when selecting for better performing hyperparameters. The performance measure for model selection was root-mean-square error for continuous variables. The receiver operator characteristic's area under the curve was used for category variables \citep{hanley1982meaning}. Multiclass variables utilised the one verse one approach to minimise sensitivity to class disparity \citep{ferriExperimentalComparisonPerformance2009,handSimpleGeneralisationArea2001}.
 
+\subsection{Surrogate Models}
 
-% FIXME: What is interrelated importance? add a section for this!
-
-% FIXME: Explain how some variables are one-hot-encoded and how this relates to variable importance. This is a significant resulti n the xgboost tree for the huntervalley
-
-\subsection{Classification and Regression Trees} % FIXME: perhaps this should be renamed surrogate models
-% FIXME: It is not clear what you are trying to achieve with these models. No where do you give a definition of what a surrogate model is and why you are using it!
-% Be specific about the purpose of what these models are being used for! Justify why you have not simply shown one of the ensembles trees as well! The use of these algorithms means that the tree is more general than any one of the ensembles manifestations.
-Classification and Regression Trees were created for region, year, profit and operating cost. These models describe the partitions that are useful in predicting these variables; giving insight into the trees that make up the ensembles created by XGBoost. These trees were created using the rparts and caret packages \citep{kuhnBuildingPredictiveModels2008,terrytherneauRpartRecursivePartitioning2022} in the R statistical programming language \citep{rcoreteamLanguageEnvironmentStatistical2021}.
+The creation of more interpretable models such as linear regression in parallel to AI systems has been used to explain variable's relationships within black box algorithms \citep{molnarInterpretableMachineLearning2022}. As XGBoost create an ensemble of decision trees, here we use classification and regression trees to gain insight into intricacies of the ensembles derived through XGBoost. Decision Trees were created for operating costs, revenue and region. These models describe the partitions that are useful in predicting these variables; giving insight into the trees that make up the ensembles created by XGBoost. These trees were created using the rparts and caret packages \citep{kuhnBuildingPredictiveModels2008,terrytherneauRpartRecursivePartitioning2022} in the R statistical programming language \citep{rcoreteamLanguageEnvironmentStatistical2021}.
 \par
 Decision trees were validated using K-fold cross validation. Each model was validated using 10 folds, utilising a random selection of different samples ten separate times to validate each of the decision trees. The same measure of accuracy as the XGBoosted trees was used for comparison.
-
-% FIXME: Another section that needs to be added is one that describes what the sankey and chord diagrams are and what they represent. The reader needs to be prepped for this before the results. They need to be able to properly interpret them.
-
-% FIXME: Adde a section for CV.
-
 \section{Results}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -326,32 +297,6 @@ Decision trees were validated using K-fold cross validation. Each model was vali
 
 % FIXME: The irritating placement of the figures is due to the way latex uses the /ref function to determine where a figure should be. Have a google of this to overcome it as the figure placement is all over the shop.
 
-\subsection{Region}
-% FIXME: there are artifacts from the previous paper. Although the previous paper is pertinant to some of this (quite critically so) it is no longer the primary focus. On top of this some of these terms such as 'Region Classification' are not well defined. This is because previously a great deal of effort was put into defining them and describing the potential regions. However this has been removed.
-% FIXME: This section is much more of a: 'isn't it weird?' That region is not as significant in some areas but not others. That is can be used to predict things like yield but no profit etc. This phrasing shows why it goes after other sections. if you are writting by significance then it is not a significant find but it is something that is worth noting - unlike year which was just oh dear we dont know what is going on.
-Region classification performed % FIXME: what does this mean - see the above comment.
-% Note that it is not about the implications but getting in the definition of these terms. These things should be prepared for the reader well before the results. There should be no new terms here, we should just be refering to the outcomes that were established in the methods, and they should already have their motivations and contexts estabished (there is more that Kate has written if you are confused this is my translation after our meeting).
-at 32.34\% (3.67\% standard deviation) and 56.82\% accuracy (50.58\% validation accuracy), for the classification tree and XGBoosted ensemble respectively. The most prominent feature used to classify regions with the classification tree was water source (see Figure \ref{fig:region_tree}). This differed from the variables that illustrated the greatest importance for the XGBoosted ensemble (see Figure (\ref{fig:region_sankey}), with predictor variables being highly interrelated in importance. 
-Area, water, fuel and yield were more determining factors when predicting region using XGBoost. % FIXME: Is this perhaps your primary test? The fact that Kate was asking this means that the tools you are using do not have a well defined purpose in this analysis. I believe this stems from the lack of contextual motivation behind these tools. What is it that you are testing? Why are these important? This problem is throughout the paper and cannot simply be fixed here.
-Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
-\par
-
-Many of the regions had significantly lower reporting rates, resulting in much poorer classification performance. The regions with the most samples performed the best. Bordering regions were routinely grouped together and misclassified as the same region. Two areas that suffered the most from this, specifically with the classification tree were the Limestone Coast (cool coastal areas in South Australia) and the warmer inland regions along the Murray Darling. The classification tree likely had more difficulty discerning vineyards closer to the river using only water sources due to the greater access to river water in these areas.
-%, for example the two closest regions to Coonawarra, Padthaway and Wrattonbulley, were misclassified as Coonawarra even though they had 147 and 137 samples respectively. The same case was found for the Murray Darling, with 143 samples, it was misclassified as the Riverland. These misclassifications are likely due to the incredibly similar regional properties and close proximity these regions have with one another. Other misclassifications were most likely due to lower reporting rates with many regions being under represented.
-
-\begin{figure}
- \resizebox{\textwidth}{!}{
- \includegraphics{region.pdf}}
- \caption{Decision tree predicting Region. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:region_tree}
-\end{figure}
-
-\begin{figure}
- \resizebox{\textwidth}{!}{
- \includegraphics{region.png}}
-% FIXME: What are the #'s? What do the sizes mean? What are the colours? What is interrelated importance?
-% FIXME: Mark one Panel A and the other B
- \caption{The left-hand side depicts the 10 most important variables in predicting Region using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:region_sankey}
-\end{figure}
 
 \subsection{Operating Costs}
 
@@ -382,7 +327,7 @@ Electricity in particular is used predominantly for irrigation and so is related
  \caption{The left-hand side depicts the 10 most important variables in predicting Operating Costs using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:operating_costs_sankey}
 \end{figure}
 
-\subsection{Profit}
+\subsection{Revenue}
 
 Predictions of profit performed poorly compared to operating costs with the regression tree having an $R^2$ of 0.1873 (with a standard deviation of 0.0522) and the XGBoosted ensemble achieving an $R^2$ of 0.2535 (with a standard deviation of 0.3126). The high standard deviation in the XGBoosted tree was a bias in more accurately predicting vineyards that made profit compared to those that lost money.
 % FIXME: Kate pointed out that it is unclear what this implies (the below sentance).
@@ -433,9 +378,35 @@ Interestingly the important variables when attempting to determine profit were s
 %%%%%%%%%%%%%%%%%%%%%
 % Points to address
 % 
-\section{Discussion}
 
-% FIXME: Mardi again asked about whether yield was per hectare. This is areally interesting consideration - we do not look at predicting yield specifically in this though. perhaps we should be very wary about these analysis with this respect.
+\subsection{Region}
+% FIXME: there are artifacts from the previous paper. Although the previous paper is pertinant to some of this (quite critically so) it is no longer the primary focus. On top of this some of these terms such as 'Region Classification' are not well defined. This is because previously a great deal of effort was put into defining them and describing the potential regions. However this has been removed.
+% FIXME: This section is much more of a: 'isn't it weird?' That region is not as significant in some areas but not others. That is can be used to predict things like yield but no profit etc. This phrasing shows why it goes after other sections. if you are writting by significance then it is not a significant find but it is something that is worth noting - unlike year which was just oh dear we dont know what is going on.
+Region classification performed % FIXME: what does this mean - see the above comment.
+% Note that it is not about the implications but getting in the definition of these terms. These things should be prepared for the reader well before the results. There should be no new terms here, we should just be refering to the outcomes that were established in the methods, and they should already have their motivations and contexts estabished (there is more that Kate has written if you are confused this is my translation after our meeting).
+at 32.34\% (3.67\% standard deviation) and 56.82\% accuracy (50.58\% validation accuracy), for the classification tree and XGBoosted ensemble respectively. The most prominent feature used to classify regions with the classification tree was water source (see Figure \ref{fig:region_tree}). This differed from the variables that illustrated the greatest importance for the XGBoosted ensemble (see Figure (\ref{fig:region_sankey}), with predictor variables being highly interrelated in importance. 
+Area, water, fuel and yield were more determining factors when predicting region using XGBoost. % FIXME: Is this perhaps your primary test? The fact that Kate was asking this means that the tools you are using do not have a well defined purpose in this analysis. I believe this stems from the lack of contextual motivation behind these tools. What is it that you are testing? Why are these important? This problem is throughout the paper and cannot simply be fixed here.
+Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
+\par
+
+Many of the regions had significantly lower reporting rates, resulting in much poorer classification performance. The regions with the most samples performed the best. Bordering regions were routinely grouped together and misclassified as the same region. Two areas that suffered the most from this, specifically with the classification tree were the Limestone Coast (cool coastal areas in South Australia) and the warmer inland regions along the Murray Darling. The classification tree likely had more difficulty discerning vineyards closer to the river using only water sources due to the greater access to river water in these areas.
+%, for example the two closest regions to Coonawarra, Padthaway and Wrattonbulley, were misclassified as Coonawarra even though they had 147 and 137 samples respectively. The same case was found for the Murray Darling, with 143 samples, it was misclassified as the Riverland. These misclassifications are likely due to the incredibly similar regional properties and close proximity these regions have with one another. Other misclassifications were most likely due to lower reporting rates with many regions being under represented.
+
+\begin{figure}
+ \resizebox{\textwidth}{!}{
+ \includegraphics{region.pdf}}
+ \caption{Decision tree predicting Region. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:region_tree}
+\end{figure}
+
+\begin{figure}
+ \resizebox{\textwidth}{!}{
+ \includegraphics{region.png}}
+% FIXME: What are the #'s? What do the sizes mean? What are the colours? What is interrelated importance?
+% FIXME: Mark one Panel A and the other B
+ \caption{The left-hand side depicts the 10 most important variables in predicting Region using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:region_sankey}
+\end{figure}
+
+\section{Discussion}
 
 % FIXME: Moved here from results. Find a place for this lost puppy!
 %
