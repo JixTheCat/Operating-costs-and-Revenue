@@ -162,7 +162,7 @@ What we add is that agricultural economics maybe complex systems that are obfusc
 
 Historically strong demands for Australian wine have helped to create a thriving industry, however recent pressures brought on by a loss of tourism and labour due to the COVID-19 pandemic, the global freight crisis, war in Europe, tariffs and rising inflation has negatively effected the industry's outlook \citep{wineaustraliaNationalVintageReport2021,wineaustraliaAustralianWineProduction2021}. The 2021-2022 financial year alone saw a decline of 19\% in exports solely due to tariffs \citep{wineaustraliaNationalVintageReport2022}. A greater understanding of the different underlying conditions leading to improved performance in agricultural productivity and sustainability at scale are key to  introducing stronger policy and information to aid in increasing a nations agricultural sustainability \citep{oecdInnovationProductivitySustainability2019}. Specifically within the Australian Wine and vine industry there is a need to further understand the driving relationships between resource use and economic output. Where these relationships can lead to determining better and efficient methods and develop benchmarks with local growers. \citep{lukemanciniUnderstandingAustralianWine2020}
 \newline
-An unprecedented amount of data regarding the Australian winegrowing industry has been collected through Sustainable Winegrowing Australia, offering new insights into the driving economic forces of the Australian wine industry. This dataset allowed insights into the economic outcome of vineyards through the incorporation of operating costs and grape revenue within the data. We use this data to study these economic outcomes and their statistical relationships to vineyards' utilisation of the resources. Answering what the driving factors are behind vineyard economic outcomes, and linking these outcomes to predictor importance. This is done through analysing a new comprehensive nationwide data set using XGBoosted models. We further compare the relationships between different resources to address the extensive collinearity found within the data FIXME: This needs references||. XGBoosted models were used because they are able to overcome multicollinearity as well as highlight the level of importance that predictor variables have on response variables; with importance being able to be statistically defined through multiple methods.
+An unprecedented amount of data regarding the Australian winegrowing industry has been collected through Sustainable Winegrowing Australia, offering new insights into the driving economic forces of the Australian wine industry. This dataset allowed insights into the economic outcome of vineyards through the incorporation of operating costs and grape revenue from grape sales within the data. We use this data to study these economic outcomes and their statistical relationships to vineyards' utilisation of the resources. Answering what the driving factors are behind vineyard economic outcomes, and linking these outcomes to predictor importance. This is done through analysing a new comprehensive nationwide data set using XGBoosted models. We further compare the relationships between different resources to address the extensive collinearity found within the data FIXME: This needs references||. XGBoosted models were used because they are able to overcome multicollinearity as well as highlight the level of importance that predictor variables have on response variables; with importance being able to be statistically defined through multiple methods.
 
 \section{Methods}
 % TODO:
@@ -240,7 +240,7 @@ The variable region represented one of the 65 Geographical Indicator Regions (GI
 \par
 
 \subsection{XGBoosted Trees}
-XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. XGBoosted trees are a boosted tree ensemble method that can be used to classify classes, or predict continuous response variables. They were chosen for this analysis as the data contained a mixture of class and continuous variables. And, XGBoosted trees are unaffected by multicollinearity, as well as offer high predictive performance for a wide variety of purposes \citep{chenXGBoostScalableTree2016}. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (operating cost and revenue), which were only included within their own trees as response variables. This meant that every variable would have a measure of its importance to other variables (see Section \ref{sec:importance}), which was used to show the highly interrelated nature of variables within vineyards. The complicated interaction between bariables was illustrated using Sankey and Chord diagrams; with variable importance measures being used to show the strength of connection between any two variables (see section \ref{sec:importance}).
+XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. XGBoosted trees are a boosted tree ensemble method that can be used to classify classes, or predict continuous response variables. They were chosen for this analysis as the data contained a mixture of class and continuous variables. And, XGBoosted trees are unaffected by multicollinearity, as well as offer high predictive performance for a wide variety of purposes \citep{chenXGBoostScalableTree2016}. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (operating cost and revenue from grape sales), which were only included within their own trees as response variables. This meant that every variable would have a measure of its importance to other variables (see Section \ref{sec:importance}), which was used to show the highly interrelated nature of variables within vineyards. The complicated interaction between bariables was illustrated using Sankey and Chord diagrams; with variable importance measures being used to show the strength of connection between any two variables (see section \ref{sec:importance}).
 \par
 Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. Each of $f_k$ functions is a classification or regression tree, such that all functions are in the set of all decision trees, given by $\mathcal{F}$, is defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where each function corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given by:
 \begin{equation}
@@ -277,7 +277,9 @@ The loss functions used for this analysis were the root-mean-square function for
 Due to XGBoost creating a large amount of decision trees, the interpretability of these models is obfuscated by the intricate relationships within complicated ensembles. A measure of variable importance was the technique used to highlight a variables influence within the ensemble. Variable importance can be measured in multiple ways; we used the frequency of a variable appearing as a node within the ensemble as a measure of its importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function. The measure of a variable's importance within this study can then be interpreted as how often a variable was the optimal choice in reducing the loss function of the ensemble. Importantly, multiclass variables being one-hot-encoded are given an importance score for each individual class; for example, each specific region will have its own importance score.
 \par
 Creating XGBoosted trees for each variable allowed the use of importance to show how strongly variables were associated with each other. The importance of variables to one another was illustrated through the use of Sankey and Chord diagrams. These diagrams were constructed using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Both Chord and Sankey diagrams illustrated variable importance through the size of the bands between two variables. The number at the end of a connection in a Sankey diagram indicated a variable's importance, or the number of times it appeared within the ensemble. Sankey and Chord  diagrams were presented together; with Sankey diagrams showing the connection of a variable to its 10 most important predictor variables. Chord diagrams were used alongside a Sankey diagram to show the interconnectedness of the ten most prominent variables within its associated Sankey diagram. Chord diagrams formed circles, with variables being connected through their relative importance. The importance values for the Chord diagrams were taking from the models of those individual variables, with the diagram being simplified to just the ten variables in the associated Sankey diagram, for readability's sake.
+
 \subsection{Validation}
+
 As there were multiple different loss functions, multiple different forms of validation were used. In each case the data was split into training data, which constituted 80\% of the original data. The remaining 20\% was used in testing and validation. Data was stratified when splitting the data into these subsets to conserve the same proportion of class occurrences between training, testing and validation data. For continuous variables 20\% was used as testing data, minimising the root-mean-square function. The final model was validated using repeated k-fold cross validation for 10 folds, repeated 10 times. $R^2$ scores were used to determine the best regression models during validation.
 For binary and multiclass variables, data was split into 80\% training, 10\% testing and 10\% validation data. For class variables, validation was summarised through the accuracy, the proportion of true negatives and positives.
 \par
@@ -288,6 +290,7 @@ The XGBoost library incorporates regularisation techniques built into the softwa
 The creation of more interpretable models such as linear regression in parallel to AI systems has been used to explain variable's relationships within black box algorithms \citep{molnarInterpretableMachineLearning2022}. As XGBoost create an ensemble of decision trees, here we use classification and regression trees to gain insight into intricacies of the ensembles derived through XGBoost. Decision Trees were created for operating costs, revenue and region. These models describe the partitions that are useful in predicting these variables; giving insight into the trees that make up the ensembles created by XGBoost. These trees were created using the rparts and caret packages \citep{kuhnBuildingPredictiveModels2008,terrytherneauRpartRecursivePartitioning2022} in the R statistical programming language \citep{rcoreteamLanguageEnvironmentStatistical2021}.
 \par
 Decision trees were validated using K-fold cross validation. Each model was validated using 10 folds, utilising a random selection of different samples ten separate times to validate each of the decision trees. The same measure of accuracy as the XGBoosted trees was used for comparison.
+
 \section{Results}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -297,136 +300,89 @@ Decision trees were validated using K-fold cross validation. Each model was vali
 
 % FIXME: The irritating placement of the figures is due to the way latex uses the /ref function to determine where a figure should be. Have a google of this to overcome it as the figure placement is all over the shop.
 
+\subsection{Revenue}
+
+\begin{figure} 
+  \resizebox{\textwidth}{!}{
+  \includegraphics{profit.pdf}}
+  \caption{Decision tree predicting Profit. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:revenue_tree}
+ \end{figure}
+ 
+ \begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{profit.png}}
+  % FIXME: Mark one Panel A and the other B
+  \caption{The left-hand side depicts the 10 most important variables in predicting Profit using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:revenue_sankey}
+ \end{figure}
+
+We investigated the link between revenue to other variables in the SWA data by predicting it, and then linking each variable to revenue through variable importance. The prediction of revenue performed similarly to operating cost achieving an $R^2$ of 0.7716 (with a standard deviation of 0.1525). A regression tree was used as a surrogate model to present an example of the typical type of decision tree present within the XGBoost Ensemble, however the surrogate model only achieved an $R^2$ of 0.0961 (with a standard deviation of 0.0181) and the XGBoosted ensemble.
+\par
+The important variables when attempting to determine revenue were size, yield, fuel and water (see \ref{fig:revenue_sankey}). Due to regions being recorded separately for importance none appeared as the most important variables, overall regions contributed to 234 nodes in the ensemble making them collectively the third most important variable. Although performing poorly, the surrogate model highlights the importance of size in determining profits. Area also appearing as a variable of higher importance is show to be highly interrelated with other variables. The relation to area is likely to primarily be the effect of economies of scale, shown through its strong relations to other variables in figure \ref{fig:revenue_sankey}. Area harvested is likely also an indicator of other variables such as slashing passes its strongest connection presented.
 
 \subsection{Operating Costs}
 
-% FIXME: Try to follow the same format for each of the section in the results. It will help to include a leading sentance about why the metrics are different everytime.
-
-Operating cost 
-
-There was a pronounced difference in accuracy between the regression tree and the XGBoost model when predicting Operating costs. With the regression tree achieving an $R^2$ of 0.0931 (with a standard deviation of 0.0197) in its cross validation. The XGBoosted regression ensemble achieved an $R^2$ of 0.8025 (with a standard deviation of 0.1033).
-\par
-Within the XGBoost ensemble's nodes for operating costs (see figure \ref{fig:operating_costs_sankey}) fuel, water, area and yield occurred the most, similarly to region. Both diesel and petrol were of more relative importance (being ranked higher) in operating costs than water was compared with region. It is surprising that electricity, slashing and spraying passes was not more prominent in operating costs. 
-% FIXME: Me and Kate talked about this. The diagrams, their context and justification go into the methods. How to interpret them needs to be better outlined here. You need to affirm peoples intition of them and the significance of more ribbons going out than in as well as why we are only using 10 variables.
-However, Figure \ref{fig:year_sankey} shows that electricity, slashing and spraying are important variables in determining area and yield.
-
-Electricity in particular is used predominantly for irrigation and so is related largely to the size of a vineyard. However, slashing and spraying are measured in discrete tractor passes and show a surprising connection to the overall size of a vineyard, despite not being scaled to any measure of size. This would mean that, although measured as the same increment, a slashing or spraying pass in a larger vineyard would consume more fuel and wages than in a smaller vineyard. % FIXME: May need to maintain bigger vineyards are more likely to have more staff verse small owner operators. Those extra staff may be trying to keep employers busy be sending them slashing (this comment was from Mardi and very hard to validate in the literature.)
-
-%
-% Is there any point in including this if its so bad?
-%
-% \begin{figure}
-%  \resizebox{\textwidth}{!}{
-%  \includegraphics{operating_costs.pdf}}
-%  \caption{Decision tree predicting Operating Costs. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:operating_costs_tree}
-% \end{figure}
+\begin{figure} 
+  \resizebox{\textwidth}{!}{
+  \includegraphics{operating_costs.pdf}}
+  \caption{A surrogate model decision tree predicting operating costs. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:operating_tree}
+ \end{figure}
 
 \begin{figure}
- \resizebox{\textwidth}{!}{
- \includegraphics{operating_costs.png}}
- % FIXME: Mark one Panel A and the other B This still needs to be done in the actual pictures
- \caption{The left-hand side, A,  depicts the 10 most important variables in predicting Operating Costs using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The number at the end of each band in the diagram is that variable's importance. The right-hand side, B, depicts the importance of the 10 variables in Sankey diagram relative to one another.}\label{fig:operating_costs_sankey}
-\end{figure}
-
-\subsection{Revenue}
-
-Predictions of profit performed poorly compared to operating costs with the regression tree having an $R^2$ of 0.1873 (with a standard deviation of 0.0522) and the XGBoosted ensemble achieving an $R^2$ of 0.2535 (with a standard deviation of 0.3126). The high standard deviation in the XGBoosted tree was a bias in more accurately predicting vineyards that made profit compared to those that lost money.
-% FIXME: Kate pointed out that it is unclear what this implies (the below sentance).
-% The following paragraph goes into it though, it would be better to meld these together. Talking more about the fact that it was easier to predict those who made a profit than those who did not.
-% FIXME: It is wise to run a model purely on gross margin as well. It might have better insights than just profit! And it might over come this disparity.
-With much higher $R^2$ values being achieved in k-folds containing only those that made profits (recording a maximum of 0.7634).
-% profit summary stats
-% max 3345000
-% min -3937878
-% std 396027.633119089
-% range 7282878
+  \resizebox{\textwidth}{!}{
+  \includegraphics{operating_costs.png}}
+  % FIXME: Mark one Panel A and the other B This still needs to be done in the actual pictures
+  \caption{The left-hand side, A,  depicts the 10 most important variables in predicting Operating Costs using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The number at the end of each band in the diagram is that variable's importance. The right-hand side, B, depicts the importance of the 10 variables in Sankey diagram relative to one another.}\label{fig:operating_costs_sankey}
+ \end{figure}
+ 
+The relationships to operating cost through variable importance were found to be similar to that of revenue. With fuel, water, area and yield occurring the most (see figure \ref{fig:operating_costs_sankey}). A surprising difference is that the most important operational consideration for operating cost is the use of fungicide, compared to revenue where slashing is the most important (comparing Figure \ref{fig:region_sankey} and \ref{fig:operating_costs_sankey}). The variables that feed into these decisions are also very differing with diesel being the most informative to slashing and area being the most informative to the need for fungicide.
 \par
-There was a disparity of 66.63\% of vineyards recording a profit than those that did not. When predicting if a vineyard would be profitable or not the classification tree and XGBoosted ensemble did not perform considerably differently from this proportion. With the regression tree achieving an accuracy of 68.66\% (and a standard deviation of 0.01\%) and the XGBoost ensemble achieving 71.97\% accuracy (with a validation accuracy of 70.59\%).
+Again, region played a determining factor overall but not as much individually with region contributing to 334 nodes within the ensemble making it the most important variable when considering all regions together. It was surprising that electricity, slashing and spraying passes were not more prominent in operating costs due to the intrinsic nature as an agricultural expense.
 \par
-It was surprising that operating costs performed substantially better in $R^2$ compared to profit. % Is there a better way to phrase this? Look at the papers that use the same analysis techniques for phrases to use when soething is good, bad predictor.
+Comparatively to revenue, operating cost performed better The XGBoosted regression ensemble achieved an $R^2$ of 0.8025 (with a standard deviation of 0.1033). Again the surrogate model did not perform well achieving an $R^2$ of 0.0931 (with a standard deviation of 0.0197) but showed similarly to revenue an importance placed on fungicide spraying and size (see figure \ref{fig:operating_tree}).
 
-Interestingly the important variables when attempting to determine profit were similar to those used to classify region (see Figure \ref{fig:profit_sankey}), with the exception of water used. Both the regression tree and the XGBoosted ensemble used region, specifically the Hunter Valley. The regression tree also used Tasmania when determining profit. Both the Hunter valley and Tasmania are known for the production of high quality grapes used in export wines \citep{wineaustraliaNationalVintageReport2022}. A major difference between region and profit was the importance given to water use, with water use being a more important variable in predicting region than profit. 
-
-\begin{figure} % FIXME: Interesting these 2 regions probably have the highest price of grapes/tonne. They are also 2 extreme climates (Hunter = lots of grazing, season rainfall = of tractor passes. Tasmania = V.Cool weather = lots of tractor passes.)
- \resizebox{\textwidth}{!}{
- \includegraphics{profit.pdf}}
- \caption{Decision tree predicting Profit. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:profit_tree}
-\end{figure}
-
-\begin{figure}
- \resizebox{\textwidth}{!}{
- \includegraphics{profit.png}}
- % FIXME: What are the #'s? What do the sizes mean? What are the colours? What is interrelated importance?
- % FIXME: Mark one Panel A and the other B
- \caption{The left-hand side depicts the 10 most important variables in predicting Profit using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:profit_sankey}
-\end{figure}
-
-% \begin{table}[]
-%  \caption{Validation and training accuracies of each multiclass variable.}
-%  \begin{tabular}{@{}ccc@{}}
-%  \toprule
-%  \textbf{Variable} & \textbf{Validation} & \textbf{Training} \\ \midrule
-%  \textbf{cover crops} & 0.364086 & 0.396418 \\
-%  \textbf{water type} & 0.742097 & 0.928905 \\
-%  \textbf{profitable} & 0.705882 & 0.719737 \\
-%  \textbf{irrigation type} & 0.841845 & 0.847554 \\
-%  \textbf{giregion} & 0.505824 & 0.568242 \\
-%  \textbf{irrigation energy} & 0.746293 & 0.836405 \\
-%  \textbf{data year id} & 0.422003 & 0.518059 \\ \bottomrule
-%  \end{tabular}
-%  \end{table}
-
-%%%%%%%%%%%%%%%%%%%%%
-% Points to address
-% 
 
 \subsection{Region}
 
-overall relative importance to revenue was 234 (making it arguably the third most important variable)
+\begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{region.pdf}}
+  \caption{Decision tree predicting Region. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:region_tree}
+ \end{figure}
+ 
+ \begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{region.png}}
+ % FIXME: Mark one Panel A and the other B
+  \caption{The left-hand side, A,  depicts the 10 most important variables in predicting Region using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The number at the end of each band in the diagram is that variable's importance. The right-hand side, B, depicts the importance of the 10 variables in Sankey diagram relative to one another.}\label{fig:region_sankey}
+ \end{figure}
 
-"" to operating costs was 334 (making it arguably the most important variable)
-
-
-% FIXME: there are artifacts from the previous paper. Although the previous paper is pertinant to some of this (quite critically so) it is no longer the primary focus. On top of this some of these terms such as 'Region Classification' are not well defined. This is because previously a great deal of effort was put into defining them and describing the potential regions. However this has been removed.
-% FIXME: This section is much more of a: 'isn't it weird?' That region is not as significant in some areas but not others. That is can be used to predict things like yield but no profit etc. This phrasing shows why it goes after other sections. if you are writting by significance then it is not a significant find but it is something that is worth noting - unlike year which was just oh dear we dont know what is going on.
-Region classification performed % FIXME: what does this mean - see the above comment.
-% Note that it is not about the implications but getting in the definition of these terms. These things should be prepared for the reader well before the results. There should be no new terms here, we should just be refering to the outcomes that were established in the methods, and they should already have their motivations and contexts estabished (there is more that Kate has written if you are confused this is my translation after our meeting).
-at 32.34\% (3.67\% standard deviation) and 56.82\% accuracy (50.58\% validation accuracy), for the classification tree and XGBoosted ensemble respectively. The most prominent feature used to classify regions with the classification tree was water source (see Figure \ref{fig:region_tree}). This differed from the variables that illustrated the greatest importance for the XGBoosted ensemble (see Figure (\ref{fig:region_sankey}), with predictor variables being highly interrelated in importance. 
-Area, water, fuel and yield were more determining factors when predicting region using XGBoost. % FIXME: Is this perhaps your primary test? The fact that Kate was asking this means that the tools you are using do not have a well defined purpose in this analysis. I believe this stems from the lack of contextual motivation behind these tools. What is it that you are testing? Why are these important? This problem is throughout the paper and cannot simply be fixed here.
-Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
+When considered overall, Region was a highly informative variable through measure of importance to both operating cost and revenue. Notably the overall importance of region to revenue was 234 (making it the third most important variable when considerng all regions together). The Barossa Valley region and Tasmania were the two most important regions in relation to revenue; these two regions are considered to be some of the highest revenue per hectare regions in Australia \citep{wineaustraliaNationalVintageReport2022}. These two regions are also relative opposites in winegrowing climates with the Barossa being warm and dry climate focussing on Shiraz grapes and Tasmania being a cool wet climate that grows Pinot. 
 \par
-
+When considering all regions together, it had the most node contributions to determining operating costs with an importance of 334. Of all the regions, again Tasmania was the most important, followed by the Adelaide Hills. In contrast to revenue, both climates are considered cool and wet, and warmer drier regions such as the Barossa and Hunter Valley only contributed roughly half the same number of nodes to the ensemble. When looking at \ref{fig:region_sankey} the inclusion of slashing and fungicide spraying is the likely reason; with fungal and weed pressure being greater in cooler wetter regions.
+\par
+Both diesel and petrol were of more relative importance in operating costs than water was compared with region. similar to those used to classify region (see Figure \ref{fig:region_sankey}, except water used. The surrogate model relied heavily on the use of water source to classify regions, which is reflective of regional access to resources being a deciding factor in vineyard management (see Figure \ref{fig:region_tree}). A major difference between region and profit was the importance given to water use, with water use being a relatively more important variable in predicting region than profit (considering its rank in importance to other variables). 
+\par
+The surrogate model for region performed better than other surrogate models with 32.34\% (3.67\% standard deviation). The prominence of types and use of water resources was in classifying region is reflective of difference of availability of water resources is when comparing different regions (see Figure \ref{fig:region_tree}). The XGBoost ensemble, did not perform as well as operating costs or revenue with 56.82\% accuracy (50.58\% validation accuracy). The difference in accuracy is in part due to the large number of classes (being 58). The ensemble did not differ greately from the surrogate model, with a continuing emphasis on Area, water, fuel and yield as determining factors (see Figure (\ref{fig:region_sankey}). 
+% Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
+\par
 Many of the regions had significantly lower reporting rates, resulting in much poorer classification performance. The regions with the most samples performed the best. Bordering regions were routinely grouped together and misclassified as the same region. Two areas that suffered the most from this, specifically with the classification tree were the Limestone Coast (cool coastal areas in South Australia) and the warmer inland regions along the Murray Darling. The classification tree likely had more difficulty discerning vineyards closer to the river using only water sources due to the greater access to river water in these areas.
-%, for example the two closest regions to Coonawarra, Padthaway and Wrattonbulley, were misclassified as Coonawarra even though they had 147 and 137 samples respectively. The same case was found for the Murray Darling, with 143 samples, it was misclassified as the Riverland. These misclassifications are likely due to the incredibly similar regional properties and close proximity these regions have with one another. Other misclassifications were most likely due to lower reporting rates with many regions being under represented.
 
-\begin{figure}
- \resizebox{\textwidth}{!}{
- \includegraphics{region.pdf}}
- \caption{Decision tree predicting Region. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:region_tree}
-\end{figure}
-
-\begin{figure}
- \resizebox{\textwidth}{!}{
- \includegraphics{region.png}}
-% FIXME: What are the #'s? What do the sizes mean? What are the colours? What is interrelated importance?
-% FIXME: Mark one Panel A and the other B
- \caption{The left-hand side depicts the 10 most important variables in predicting Region using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:region_sankey}
-\end{figure}
 
 \section{Discussion}
 
-% FIXME: Moved here from results. Find a place for this lost puppy!
-%
-% It is reasonable that regions, being subjected to different rainfalls and temperatures, would require different amounts of water, and would have access to different water sources. The relation of area harvested and fuel (particularly petrol) is prominent with other predictors. Due to the wide variety of uses of petrol and diesel, it is likely that they are representative of 
-% other activities within the vineyard, such as pruning and harvesting. FIXME: This is new infor tht doesnt have any context (e.g no discussion yet about what fuel may be used for)
-% With predictors such as yield and area being highly interconnected as they likely operate as proxy variables to other factors, possibly other present variables.
+Regional pressures such as disease and resource access have an incredible influence in determining a vineyard's revenue and operating cost. 
+
+The explored relationships between vineyard resource use, operations and geographical properties to revenue and operating costs highlight how discerning regional pressures such as disease, 
+
 
 Several physical parameters such as climate, geography and soil are predetermined by a vineyard's location; making it a widely considered key determinant of grape yield and quality \citep{abbalDecisionSupportSystem2016,agostaRegionalClimateVariability2012,fragaMultivariateClusteringViticultural2017}. 
-The association between yield and region is demonstrated by its position as fourth most occurring variable within the nodes of the XGBoosted ensemble which determined region (see Figure \ref{fig:region_sankey}). % FIXME: Clunky phrasing
-
-The association with area and region is likely a connection to the change in land costs, with inland Australian areas (particularly of lower rainfall) being substantially cheaper to buy than coastal regions, allowing larger areas to be purchased \citep{willchancellorMeasuringAustralianBroadacre2019} % FIXME: Maybe but not sure this assumption holds. It may be an artefact of the members being corporate in larger holdings. The larger percentage of blocks in the riverland are small.
+The association between yield and region is demonstrated by its rank of fourth-highest variable importance when  determining region (see Figure \ref{fig:region_sankey}). 
+% The association with area and region is likely a connection to the change in land costs, with inland Australian areas (particularly of lower rainfall) being substantially cheaper to buy than coastal regions, allowing larger areas to be purchased \citep{willchancellorMeasuringAustralianBroadacre2019} % TODO: This section is commented out due to Mardi's take:
+%  Maybe but not sure this assumption holds. It may be an artefact of the members being corporate in larger holdings. The larger percentage of blocks in the riverland are small.
 \par
-Regions with lower land costs are also warmer \citep{willchancellorMeasuringAustralianBroadacre2019}, which is known to be beneficial in hastening the ripening process of winegrapes \citep{webbObservedTrendsWinegrape2011}. Warmer regions are also associated with lower quality grapes, caused largely due to this hastened ripening \citep{botting1996canopy}. In general if irrigated warmer regions have been associated with lower yields due to their generally lower rainfall, which can be mitigated through applying more water \citep{campsGrapeHarvestYield2012}. % FIXME: Rework this sentance
+Warmer regions 
+% generally have lower land costs \citep{willchancellorMeasuringAustralianBroadacre2019}, 
+are known to be beneficial in hastening the ripening process of winegrapes \citep{webbObservedTrendsWinegrape2011}. Warmer regions are also associated with lower quality grapes, caused largely due to this hastened ripening \citep{botting1996canopy}. In general if irrigated warmer regions have been associated with lower yields due to their generally lower rainfall, which can be mitigated through applying more water \citep{campsGrapeHarvestYield2012}. % FIXME: Rework this sentance
 It is likely that the combination of larger vineyards with higher water use is a determining factor in classifying regions which favour larger production of lower quality grapes; reflected through the variables' importance of water use in the XGBoost ensemble. % FIXME: Need to link lower quality to profitability.
 % FIXME: Warm inland regions are close to a major source of irrigation water which means that they have always taken advantage of this to grow higher crops. Which are also extremely important to our sector.)
 % FIXME: May need to explain that growers are paid @ a $ value / tonne and that the $ value varies in region.
@@ -444,6 +400,11 @@ Decisions made on the ground have far-reaching effects and are difficult to comp
 \par
 Although less important in the XGBoost ensembles for profit, the variables: cover crops, and number of fungicide spraying and slashing passes are likely linked to broad environmental properties of regions (see Figure \ref{fig:region_sankey} and \ref{fig:profit_sankey}). Rainfall being related to vine fungal growth, disease and weed pressure. With cover crops being an effective and sustainable method to alleviate these issues \citep{delpuechAdaptingCoverCrop2018}. % FIXME: Re-structure this sentance.
 It is difficult to extrapolate findings to these methods and the reason for their use due to the broad and varying definition of the regions. Utilising the Geographical Indicator regions defined by Wine Australia \citep{wineaustraliaWineAustraliaOpenData2021} is a limitation, as it is too broad to fully capture a vineyards location and its influence on more granular variables. The reasoning for using approaches such as cover crops can be widely varying. Where, a cover crop may be employed to help increase soil water retention, reduce erosion, increase biodiversity and reduce weeds \citep{capelloEffectsTractorPasses2019,capelloPermanentCoverSoil2020,delpuechAdaptingCoverCrop2018}. However, cover crops can introduce competition with grapevines and may reduce yield depending upon the plants used and the density of the cover crop \citep{goslingLongtermChangesSoil2005,monteiroInfluenceCoverCrop2007}. A more granular definition of region may help to better discern the differences in practices, and the reason for employing them. More sophisticated models, specifically those that utilise expert opinion, may also help to capture and address the decision making process. An example is the optimisation of fungicide sprays using Bayesian models that forecast disease risk \citep{luDiseaseRiskForecasting2020}. 
+
+
+Electricity in particular is used predominantly for irrigation and so is related largely to the size of a vineyard. However, slashing and spraying are measured in discrete tractor passes and show a surprising connection to the overall size of a vineyard, despite not being scaled to any measure of size. This would mean that, although measured as the same increment, a slashing or spraying pass in a larger vineyard would consume more fuel and wages than in a smaller vineyard. % FIXME: May need to maintain bigger vineyards are more likely to have more staff verse small owner operators. Those extra staff may be trying to keep employers busy be sending them slashing (this comment was from Mardi and very hard to validate in the literature.)
+
+It is reasonable that regions, being subjected to different rainfalls and temperatures, would require different amounts of water, and would have access to different water sources. The relation of area harvested and fuel (particularly petrol) is prominent with other predictors. Due to the wide variety of uses of petrol and diesel. It is likely that fuel use is representative of other activities within the vineyard, such as pruning and harvesting. Predictors such as yield and area being highly interconnected to fuel are likely reflective of fuel required to  as they likely operate as proxy variables to other factors, possibly other present variables.
 
 % In particular There is the potential that the types of herbicides used also have a long term effect on crops, reducing the presence of microorganisms and soil health, making the area more prone to disease in the long run, becoming dependent on these sprays (Coll et al., 2011; Gosling and Shepherd, 2005).
 
@@ -622,19 +583,12 @@ The disparity in accuracy between profit and operational costs is reflective of 
 
 \section{Conclusion}
 
-
-%%%%%%%%%%%%%%%
-% Future work %
-%%%%%%%%%%%%%%%
-
-% What remains unresolved?
-% 
-% You may or may not have a lot to say here.  Some of it may be useful in your discussion.
-The causal reasoning behind these variables behaviours. The untangling the multicollinearity of these variables.
+The causal reasoning behind Revenue and operational costs. The untangling the multicollinearity of these variables.
 
 It maybe better to pursue more causal models and create decision support systems than to model factors directly. It is difficult to untangle the predictive and correlative nature of the variable compared to the causal reasons.
 
-This study has provided valuable insights into the multifaceted dynamics governing operational costs, different yearly effects and vineyard regions highlighting the complex interrelatedness of variables within a vineyard. The paper underscores how factors such as water and fuel intersect to impact operational costs and How different seasonal events affect these operations and the significance of context-specific decision-making. While this investigation utilised a broad regional classification, the potential benefits of adopting a more nuanced approach and incorporating expert knowledge have been highlighted. By delving deeper into the complex interplay of variables, further advancements can be made in optimising vineyard management strategies for lowering operational costs and enhancing sustainability.
+This study has provided valuable insights into the multifaceted dynamics governing operational costs and revenue. 
+The impact of different regions highlighted the complex interrelatedness of variables within a vineyard. The paper underscores how factors such as water and fuel intersect to impact operational costs and How different seasonal events affect these operations and the significance of context-specific decision-making. While this investigation utilised a broad regional classification, the potential benefits of adopting a more nuanced approach and incorporating expert knowledge have been highlighted. By delving deeper into the complex interplay of variables, further advancements can be made in optimising vineyard management strategies for lowering operational costs and enhancing sustainability.
 
 % The intricate relationships between water resources, and management practices have been examined through advanced techniques like XGBoost ensembles, shedding light on their roles in shaping production outcomes.
 
