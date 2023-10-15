@@ -3,6 +3,8 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: article.aux
 The style file: elsarticle-harv.bst
 Database file #1: references.bib
+Warning--I didn't find a database entry for "oecdInnovationProductivitySustainability2019"
+Warning--I didn't find a database entry for "lukemanciniUnderstandingAustralianWine2020"
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty journal in botting1996canopy
 Warning--empty journal in capelloPermanentCoverSoil2020
@@ -10,45 +12,45 @@ Warning--empty journal in mgmccarthyEffectCropLoad1986
 Warning--empty journal in wineaustraliaNationalVintageReport2020
 Warning--empty journal in wineaustraliaNationalVintageReport2021
 Warning--empty journal in wineaustraliaNationalVintageReport2022
-You've used 39 entries,
+You've used 32 entries,
             2990 wiz_defined-function locations,
-            906 strings with 15472 characters,
-and the built_in function-call counts, 25146 in all, are:
-= -- 1845
-> -- 1134
-< -- 25
-+ -- 444
-- -- 396
-* -- 2749
-:= -- 3746
-add.period$ -- 120
-call.type$ -- 39
-change.case$ -- 326
-chr.to.int$ -- 38
-cite$ -- 45
-duplicate$ -- 1874
-empty$ -- 1742
-format.name$ -- 505
-if$ -- 4588
+            856 strings with 13571 characters,
+and the built_in function-call counts, 20752 in all, are:
+= -- 1502
+> -- 960
+< -- 20
++ -- 377
+- -- 336
+* -- 2258
+:= -- 3103
+add.period$ -- 96
+call.type$ -- 32
+change.case$ -- 271
+chr.to.int$ -- 31
+cite$ -- 38
+duplicate$ -- 1538
+empty$ -- 1435
+format.name$ -- 416
+if$ -- 3782
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 365
-newline$ -- 213
-num.names$ -- 156
-pop$ -- 733
+missing$ -- 301
+newline$ -- 175
+num.names$ -- 128
+pop$ -- 610
 preamble$ -- 1
-purify$ -- 288
+purify$ -- 240
 quote$ -- 0
-skip$ -- 558
+skip$ -- 466
 stack$ -- 0
-substring$ -- 833
-swap$ -- 1320
-text.length$ -- 3
+substring$ -- 687
+swap$ -- 1081
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 345
+type$ -- 282
 warning$ -- 6
-while$ -- 152
+while$ -- 125
 width$ -- 0
-write$ -- 554
-(There were 6 warnings)
+write$ -- 450
+(There were 8 warnings)

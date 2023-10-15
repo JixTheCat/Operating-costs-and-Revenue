@@ -1,4 +1,4 @@
-\begin{thebibliography}{39}
+\begin{thebibliography}{32}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -23,10 +23,6 @@
 \newblock \bibinfo{journal}{Journal of agricultural, biological, and
   environmental statistics} \bibinfo{volume}{21}, \bibinfo{pages}{131--151}.
 \newblock \DOIprefix\doi{10.1007/s13253-015-0233-2}.
-%Type = Misc
-\bibitem[{AGDEE(2021)}]{agdeeNationalGreenhouseAccounts2021}
-\bibinfo{author}{AGDEE, A.G.D.o.t.E.a.E.}, \bibinfo{year}{2021}.
-\newblock \bibinfo{title}{National {{Greenhouse Accounts Factors}}: 2021}.
 %Type = Article
 \bibitem[{Agosta et~al.(2012)Agosta, Canziani and
   Cavagnaro}]{agostaRegionalClimateVariability2012}
@@ -50,15 +46,6 @@
 \bibitem[{Australia(2021b)}]{wineaustraliaWineAustraliaOpenData2021}
 \bibinfo{author}{Australia, W.}, \bibinfo{year}{2021}b.
 \newblock \bibinfo{title}{Wine {{Australia-Open Data}}}.
-%Type = Book
-\bibitem[{{BG Coombe} and {P Iland}(2004)}]{bgcoombeGrapeBerryDevelopment2004}
-\bibinfo{author}{{BG Coombe}}, \bibinfo{author}{{P Iland}},
-  \bibinfo{year}{2004}.
-\newblock \bibinfo{title}{Grape Berry Development and Winegrape Quality.
-  {{In}}: {{Viticulture}} \textendash{} {{Resources}}.}.
-  volume~\bibinfo{volume}{1}.
-\newblock \bibinfo{edition}{2} ed., \bibinfo{publisher}{{Winetitles}},
-  \bibinfo{address}{{Adelaide, South Australia.}}
 %Type = Article
 \bibitem[{Botting et~al.(1996)Botting, Dry and Iland}]{botting1996canopy}
 \bibinfo{author}{Botting, D.}, \bibinfo{author}{Dry, P.},
@@ -120,15 +107,6 @@
   \bibinfo{pages}{785--794}.
 \newblock \DOIprefix\doi{10.1145/2939672.2939785}.
 %Type = Article
-\bibitem[{Delpuech and Metay(2018)}]{delpuechAdaptingCoverCrop2018}
-\bibinfo{author}{Delpuech, X.}, \bibinfo{author}{Metay, A.},
-  \bibinfo{year}{2018}.
-\newblock \bibinfo{title}{Adapting cover crop soil coverage to soil depth to
-  limit competition for water in a {{Mediterranean}} vineyard}.
-\newblock \bibinfo{journal}{European Journal of Agronomy} \bibinfo{volume}{97},
-  \bibinfo{pages}{60--69}.
-\newblock \DOIprefix\doi{10.1016/j.eja.2018.04.013}.
-%Type = Article
 \bibitem[{Ferri et~al.(2009)Ferri, {Hern{\'a}ndez-Orallo} and
   Modroiu}]{ferriExperimentalComparisonPerformance2009}
 \bibinfo{author}{Ferri, C.}, \bibinfo{author}{{Hern{\'a}ndez-Orallo}, J.},
@@ -160,16 +138,6 @@
   {{Advances}} in vineyard irrigation.}
 \newblock \bibinfo{journal}{Australian and New Zealand Wine Industry Journal}
   \bibinfo{volume}{7}.
-%Type = Article
-\bibitem[{Gosling and Shepherd(2005)}]{goslingLongtermChangesSoil2005}
-\bibinfo{author}{Gosling, P.}, \bibinfo{author}{Shepherd, M.},
-  \bibinfo{year}{2005}.
-\newblock \bibinfo{title}{Long-term changes in soil fertility in organic arable
-  farming systems in {{England}}, with particular reference to phosphorus and
-  potassium}.
-\newblock \bibinfo{journal}{Agriculture, Ecosystems \& Environment}
-  \bibinfo{volume}{105}, \bibinfo{pages}{425--432}.
-\newblock \DOIprefix\doi{10.1016/j.agee.2004.03.007}.
 %Type = Book
 \bibitem[{Halliday(2009)}]{hallidayAustralianWineEncyclopedia2009}
 \bibinfo{author}{Halliday, J.C.J.C.}, \bibinfo{year}{2009}.
@@ -219,27 +187,12 @@
   \bibinfo{author}{{DG Furkaliev}}, \bibinfo{year}{1986}.
 \newblock \bibinfo{title}{The effect of crop load and vegetative growth control
   on wine quality.} .
-%Type = Article
-\bibitem[{{Montalvo-Falc{\'o}n} et~al.(2023){Montalvo-Falc{\'o}n},
-  {S{\'a}nchez-Garc{\'i}a}, {Marco-Lajara} and
-  {Mart{\'i}nez-Falc{\'o}}}]{montalvo-falconSustainabilityResearchWine2023}
-\bibinfo{author}{{Montalvo-Falc{\'o}n}, J.V.},
-  \bibinfo{author}{{S{\'a}nchez-Garc{\'i}a}, E.},
-  \bibinfo{author}{{Marco-Lajara}, B.},
-  \bibinfo{author}{{Mart{\'i}nez-Falc{\'o}}, J.}, \bibinfo{year}{2023}.
-\newblock \bibinfo{title}{Sustainability {{Research}} in the {{Wine Industry}}:
-  {{A Bibliometric Approach}}}.
-\newblock \bibinfo{journal}{Agronomy} \bibinfo{volume}{13}.
-\newblock \DOIprefix\doi{10.3390/agronomy13030871}.
-%Type = Article
-\bibitem[{Monteiro and Lopes(2007)}]{monteiroInfluenceCoverCrop2007}
-\bibinfo{author}{Monteiro, A.}, \bibinfo{author}{Lopes, C.M.},
-  \bibinfo{year}{2007}.
-\newblock \bibinfo{title}{Influence of cover crop on water use and performance
-  of vineyard in {{Mediterranean Portugal}}}.
-\newblock \bibinfo{journal}{Agriculture, Ecosystems \& Environment}
-  \bibinfo{volume}{121}, \bibinfo{pages}{336--342}.
-\newblock \DOIprefix\doi{10.1016/j.agee.2006.11.016}.
+%Type = Book
+\bibitem[{Molnar(2022)}]{molnarInterpretableMachineLearning2022}
+\bibinfo{author}{Molnar, C.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Interpretable {{Machine Learning}}: {{A Guide}} for
+  {{Making Black Box Models Explainable}}}.
+\newblock \bibinfo{edition}{2} ed.
 %Type = Article
 \bibitem[{Oliver et~al.(2013)Oliver, Bramley, Riches, Porter and
   Edwards}]{oliverReviewSoilPhysical2013}
@@ -251,15 +204,6 @@
 \newblock \bibinfo{journal}{Australian Journal of Grape and Wine Research}
   \bibinfo{volume}{19}, \bibinfo{pages}{129--139}.
 \newblock \DOIprefix\doi{10.1111/ajgw.12016}.
-%Type = Article
-\bibitem[{Ouvrard et~al.(2020)Ouvrard, Jasimuddin and
-  Spiga}]{ouvrardDoesSustainabilityPush2020}
-\bibinfo{author}{Ouvrard, S.}, \bibinfo{author}{Jasimuddin, S.M.},
-  \bibinfo{author}{Spiga, A.}, \bibinfo{year}{2020}.
-\newblock \bibinfo{title}{Does {{Sustainability Push}} to {{Reshape Business
-  Models}}? {{Evidence}} from the {{European Wine Industry}}}.
-\newblock \bibinfo{journal}{Sustainability} \bibinfo{volume}{12}.
-\newblock \DOIprefix\doi{10.3390/su12062561}.
 %Type = Misc
 \bibitem[{{R Core Team}(2021)}]{rcoreteamLanguageEnvironmentStatistical2021}
 \bibinfo{author}{{R Core Team}}, \bibinfo{year}{2021}.
@@ -323,15 +267,6 @@
 \newblock \bibinfo{journal}{Global change biology} \bibinfo{volume}{17},
   \bibinfo{pages}{2707--2719}.
 \newblock \DOIprefix\doi{10.1111/j.1365-2486.2011.02434.x}.
-%Type = Misc
-\bibitem[{{Will Chancellor} et~al.(2019){Will Chancellor}, {Shiji Zhao}, {Lucy
-  Randall}, {Kenton Lawson} and {Khanh
-  Hoang}}]{willchancellorMeasuringAustralianBroadacre2019}
-\bibinfo{author}{{Will Chancellor}}, \bibinfo{author}{{Shiji Zhao}},
-  \bibinfo{author}{{Lucy Randall}}, \bibinfo{author}{{Kenton Lawson}},
-  \bibinfo{author}{{Khanh Hoang}}, \bibinfo{year}{2019}.
-\newblock \bibinfo{title}{Measuring {{Australian}} broadacre farmland value:
-  {{Phase}} 1 - {{Statistical}} infrastructure}.
 %Type = Article
 \bibitem[{{Wine Australia}(2020)}]{wineaustraliaNationalVintageReport2020}
 \bibinfo{author}{{Wine Australia}}, \bibinfo{year}{2020}.
