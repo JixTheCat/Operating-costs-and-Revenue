@@ -304,19 +304,19 @@ Decision trees were validated using K-fold cross validation. Each model was vali
 
 \begin{figure} 
   \resizebox{\textwidth}{!}{
-  \includegraphics{profit.pdf}}
-  \caption{Decision tree predicting Profit. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:revenue_tree}
+  \includegraphics{revenue.pdf}}
+  \caption{Decision tree predicting revenue. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:revenue_tree}
  \end{figure}
  
  \begin{figure}
   \resizebox{\textwidth}{!}{
-  \includegraphics{profit.png}}
-  \caption{The left-hand side depicts the 10 most important variables in predicting Profit using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:revenue_sankey}
+  \includegraphics{revenue.png}}
+  \caption{The left-hand side depicts the 10 most important variables in predicting revenue using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:revenue_sankey}
  \end{figure}
 
 We investigated the link between revenue to other variables in the SWA data by predicting it, and then linking each variable to revenue through variable importance. The prediction of revenue performed similarly to operating cost achieving an $R^2$ of 0.7716 (with a standard deviation of 0.1525). A regression tree was used as a surrogate model to present an example of the typical type of decision tree present within the XGBoost Ensemble, however the surrogate model only achieved an $R^2$ of 0.0961 (with a standard deviation of 0.0181) and the XGBoosted ensemble.
 \par
-The important variables when attempting to determine revenue were size, yield, fuel and water (see \ref{fig:revenue_sankey}). Due to regions being recorded separately for importance none appeared as the most important variables, overall regions contributed to 234 nodes in the ensemble making them collectively the third most important variable. Although performing poorly, the surrogate model highlights the importance of size in determining profits. Area also appearing as a variable of higher importance is show to be highly interrelated with other variables. The relation to area is likely to primarily be the effect of economies of scale, shown through its strong relations to other variables in figure \ref{fig:revenue_sankey}. Area harvested is likely also an indicator of other variables such as slashing passes its strongest connection presented.
+The important variables when attempting to determine revenue were size, yield, fuel and water (see \ref{fig:revenue_sankey}). Due to regions being recorded separately for importance none appeared as the most important variables, overall regions contributed to 234 nodes in the ensemble making them collectively the third most important variable. Although performing poorly, the surrogate model highlights the importance of size in determining revenue. Area also appearing as a variable of higher importance is show to be highly interrelated with other variables. The relation to area is likely to primarily be the effect of economies of scale, shown through its strong relations to other variables in figure \ref{fig:revenue_sankey}. Area harvested is likely also an indicator of other variables such as slashing passes its strongest connection presented.
 
 \subsection{Operating Costs}
 
@@ -357,7 +357,7 @@ When considered overall, Region was a highly informative variable through measur
 \par
 When considering all regions together, it had the most node contributions to determining operating costs with an importance of 334. Of all the regions, again Tasmania was the most important, followed by the Adelaide Hills. In contrast to revenue, both climates are considered cool and wet, and warmer drier regions such as the Barossa and Hunter Valley only contributed roughly half the same number of nodes to the ensemble. When looking at \ref{fig:region_sankey} the inclusion of slashing and fungicide spraying is the likely reason; with fungal and weed pressure being greater in cooler wetter regions.
 \par
-Both diesel and petrol were of more relative importance in operating costs than water was compared with region. similar to those used to classify region (see Figure \ref{fig:region_sankey}, except water used. The surrogate model relied heavily on the use of water source to classify regions, which is reflective of regional access to resources being a deciding factor in vineyard management (see Figure \ref{fig:region_tree}). A major difference between region and profit was the importance given to water use, with water use being a relatively more important variable in predicting region than profit (considering its rank in importance to other variables). 
+Both diesel and petrol were of more relative importance in operating costs than water was compared with region. similar to those used to classify region (see Figure \ref{fig:region_sankey}, except water used. The surrogate model relied heavily on the use of water source to classify regions, which is reflective of regional access to resources being a deciding factor in vineyard management (see Figure \ref{fig:region_tree}). A major difference between region and revenue was the importance given to water use, with water use being a relatively more important variable in predicting region than revenue (considering its rank in importance to other variables). 
 \par
 The surrogate model for region performed better than other surrogate models with 32.34\% (3.67\% standard deviation). The prominence of types and use of water resources was in classifying region is reflective of difference of availability of water resources is when comparing different regions (see Figure \ref{fig:region_tree}). The XGBoost ensemble, did not perform as well as operating costs or revenue with 56.82\% accuracy (50.58\% validation accuracy). The difference in accuracy is in part due to the large number of classes (being 58). The ensemble did not differ greately from the surrogate model, with a continuing emphasis on Area, water, fuel and yield as determining factors (see Figure (\ref{fig:region_sankey}). 
 % Although water and diesel were two of the three most frequently occurring variables in predicting region, they were not as connected to the other predictor variables as Yield and area harvested were.
