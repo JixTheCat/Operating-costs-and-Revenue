@@ -610,7 +610,22 @@ This study has provided valuable insights into the multifaceted dynamics governi
   \includegraphics{year.png}}
   \caption{The left-hand side depicts the 10 most important variables in predicting Year using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:year_sankey}
  \end{figure}
+
+ \subsection{Profit}
+
+\begin{figure} 
+  \resizebox{\textwidth}{!}{
+  \includegraphics{profit.pdf}}
+  \caption{Decision tree predicting revenue. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:revenue_tree}
+ \end{figure}
  
+ \begin{figure}
+  \resizebox{\textwidth}{!}{
+  \includegraphics{profit.png}}
+  \caption{The left-hand side depicts the 10 most important variables in predicting revenue using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:revenue_sankey}
+ \end{figure}
+
+Predictions of profit perfomed poorly compared to operating cost and revenue with an average $R^2$ of 0.2535 and standard deviation of 0.3126. With the large standard deviation being indicative of how unstable the models created were.
 
 \end{linenumbers}
  \end{document}
