@@ -169,3 +169,35 @@ sink("operating_costs.txt")
 print(model_tree)
 sink()
 ########################
+
+######################
+#       Revenue      #
+######################
+
+model_tree <- train(Revenue ~ .
+    , data = df[, colnames(df)[
+        !(colnames(df) %in% c(
+            "Profitable",
+            "Profit",
+            "Operating.Costs"))]]
+    , method = "rpart"
+    , trControl = trControl
+    , na.action = na.omit
+    , tuneLength = 10
+)
+
+# Each node shows
+# - the predicted value (the average value of the response).
+# Note that each terminating node is a regression model
+# - the percentage of observations in the node
+
+pdf("revenue.pdf")
+rpart.plot(model_tree$finalModel
+    , legend.x = -100
+    , box.palette = "auto"
+)
+dev.off()
+
+sink("revenue.txt")
+print(model_tree)
+sink()
