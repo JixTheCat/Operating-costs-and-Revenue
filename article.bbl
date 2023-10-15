@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{34}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -180,6 +180,11 @@
 \newblock \bibinfo{journal}{Agronomy (Basel)} \bibinfo{volume}{10},
   \bibinfo{pages}{622}.
 \newblock \DOIprefix\doi{10.3390/agronomy10050622}.
+%Type = Misc
+\bibitem[{{Luke Mancini}(2020)}]{lukemanciniUnderstandingAustralianWine2020}
+\bibinfo{author}{{Luke Mancini}}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Understanding the {{Australian Wine Industry}}: A
+  growers guide to the background and participants of the wine grape industry}.
 %Type = Article
 \bibitem[{{MG McCarthy} et~al.(1986){MG McCarthy}, {RM Cirami} and {DG
   Furkaliev}}]{mgmccarthyEffectCropLoad1986}
@@ -193,6 +198,11 @@
 \newblock \bibinfo{title}{Interpretable {{Machine Learning}}: {{A Guide}} for
   {{Making Black Box Models Explainable}}}.
 \newblock \bibinfo{edition}{2} ed.
+%Type = Book
+\bibitem[{OECD(2019)}]{oecdInnovationProductivitySustainability2019}
+\bibinfo{author}{OECD}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Innovation, {{Productivity}} and {{Sustainability}}
+  in {{Food}} and {{Agriculture}}}.
 %Type = Article
 \bibitem[{Oliver et~al.(2013)Oliver, Bramley, Riches, Porter and
   Edwards}]{oliverReviewSoilPhysical2013}
