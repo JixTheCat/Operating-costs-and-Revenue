@@ -302,6 +302,8 @@ Decision trees were validated using K-fold cross validation. Each model was vali
 
 % FIXME: Try to follow the same format for each of the section in the results. It will help to include a leading sentance about why the metrics are different everytime.
 
+Operating cost 
+
 There was a pronounced difference in accuracy between the regression tree and the XGBoost model when predicting Operating costs. With the regression tree achieving an $R^2$ of 0.0931 (with a standard deviation of 0.0197) in its cross validation. The XGBoosted regression ensemble achieved an $R^2$ of 0.8025 (with a standard deviation of 0.1033).
 \par
 Within the XGBoost ensemble's nodes for operating costs (see figure \ref{fig:operating_costs_sankey}) fuel, water, area and yield occurred the most, similarly to region. Both diesel and petrol were of more relative importance (being ranked higher) in operating costs than water was compared with region. It is surprising that electricity, slashing and spraying passes was not more prominent in operating costs. 
@@ -322,9 +324,8 @@ Electricity in particular is used predominantly for irrigation and so is related
 \begin{figure}
  \resizebox{\textwidth}{!}{
  \includegraphics{operating_costs.png}}
- % FIXME: What are the #'s? What do the sizes mean? What are the colours? What is interrelated importance?
- % FIXME: Mark one Panel A and the other B
- \caption{The left-hand side depicts the 10 most important variables in predicting Operating Costs using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:operating_costs_sankey}
+ % FIXME: Mark one Panel A and the other B This still needs to be done in the actual pictures
+ \caption{The left-hand side, A,  depicts the 10 most important variables in predicting Operating Costs using XGBoosted trees as a measure of node occurrence, using a Sankey diagram. The number at the end of each band in the diagram is that variable's importance. The right-hand side, B, depicts the importance of the 10 variables in Sankey diagram relative to one another.}\label{fig:operating_costs_sankey}
 \end{figure}
 
 \subsection{Revenue}
