@@ -160,27 +160,6 @@ An unprecedented amount of data regarding the Australian winegrowing industry ha
 % # 
 % # Importantly this cubic root relationship exists between operational costs and gross margin, which is worth noting. However we want to know what tips it either side of them being equal as that shows that a vineyard is profitable!!
 
-% FIXME:
-% While overall this methods section seems technically correct, more work is needed on justification, motivation, and context.
-% Through the methods, motivate each decision youve made with context from the particular problem/data/question. Why is the basic standard procedure not adequate? This helps to slow it down and help the reader understand complex methods.
-%
-% As kate put it in person you are currently writting like ||||| fact fact fact. You need to be more |...||...|| with context etc inbetween each fact so that people can digest it.
-
-% As with the previous paper, put the models up front it is very unclear what you have created - and less clear to understand it if there is no way to reference to it.
-
-% FIXME: The methods needs to be restructured. Try the following order:
-%     - Why do it?
-%     - What does it do? (at a high level)
-%     - How did you do it?
-% 
-% You should also include subsections. I think subsections are a good crutch because they can always be removed if the flow is done well.
-% 
-% Avoid following a narrative. Do not do the who/what/when/where/how/why and the big reveal.
-% An aside comment might be that you can attempt to follow the narrative writing paradigm across the paper as a whole but limit your methods section to the why, what then how. And use the results as your reveal.
-% Or maybe dont do that - it might just be that you need to write it like a narrative as a first draft then butcher it into the necessary sections. That writing style is incredibly ingrained at this point.
-
-% FIXME: the motivation is missing from methods.
-
 \subsection{Data}
 % 6091 samples - total
 % 58 regions
@@ -189,7 +168,7 @@ An unprecedented amount of data regarding the Australian winegrowing industry ha
 % 853 with reported profits
 % 46 regions
 % reported since 2018
-Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program. The program aims to facilitate grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by SWA is entered manually by winegrowers using a web based interface tool. A total of 6091 observations were collected from 2012/2013 to 2021/2022 financial years. 23 variables were used for each observation reflecting a vineyards state for the given year (see Table \ref{tab:vars}). 
+Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program. The program aims to support grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by SWA are entered manually by winegrowers using a web based interface tool. A total of 6091 observations were collected from 2012/2013 to 2021/2022 financial years, with each observation comprising 23 variables reflecting a vineyard's state for the given year (see Table \ref{tab:vars}). 
 \par
 \begin{table}[] 
  \label{tab:vars}
@@ -222,50 +201,32 @@ Data used in this analysis were obtained from Sustainable Winegrowing Australia.
   Operating Costs & AUD & 853 & & \\ \bottomrule
   \end{tabular}
 \end{table}
-
+% FIXME: Add supplementary tables of all classes and another table of the summary statistics of continuous variables. Refer to this table to help with the paragraphs about one-hot encoding. A quick definition of one-hot encoding will also help!
 The data originally contained only two multiclass variables: year and region. Variables that measured the same metric from different sources (such as water collected from rivers versus water from dams) were converted into multiclass variables representing the source through one-hot-encoding. Changing each variable class into a binary value, with one indicating the presence of the class and zero indicating its absence. Occurrences of multiple sources were defined as their own separate classes. Where a class variable had a recorded amount the total amount used from these variables was retained as a separate variable; for example water used (in Mega Litres ) was also included alongside water source.
 \par
 The variable region represented one of the 65 Geographical Indicator Regions (GI Region) used to describe different unique localised traits of vineyards across Australia \citep{hallidayAustralianWineEncyclopedia2009,oliverReviewSoilPhysical2013,soarClimateDriversRed2008}. Each region is explicitly defined under the Wine Australia Corporation Act of 1980 \citep{attorney-generalsdepartmentWineAustraliaCorporation2010}.
 \par
 
 \subsection{XGBoosted Trees}
-XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. XGBoosted trees are a boosted tree ensemble method that can be used to classify classes, or predict continuous response variables. They were chosen for this analysis as the data contained a mixture of class and continuous variables. And, XGBoosted trees are unaffected by multicollinearity, as well as offer high predictive performance for a wide variety of purposes \citep{chenXGBoostScalableTree2016}. An XGBoosted tree was created for each variable to show how they interacted. Each tree included all but the economic variables (operating cost and revenue from grape sales), which were only included within their own trees as response variables. Separately profit (the difference between revenue and operational costs) was looked at in prior analyses (see appendix) but the results were not included due to low average loss values and model stability. This meant that every variable would have a measure of its importance to other variables (see Section \ref{sec:importance}), which was used to show the highly interrelated nature of variables within vineyards. The complicated interaction between bariables was illustrated using Sankey and Chord diagrams; with variable importance measures being used to show the strength of connection between any two variables (see section \ref{sec:importance}).
+XGBoosted (eXtreme Gradient Boosting) trees were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. XGBoosted trees are a boosted tree ensemble method that can be used to classify classes, or predict continuous response variables. They were chosen for this analysis as the data contained a mixture of class and continuous variables. Moreover, XGBoosted trees are unaffected by multicollinearity, and offer high predictive performance for a wide variety of purposes \citep{chenXGBoostScalableTree2016}.
 \par
-Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. Each of $f_k$ functions is a classification or regression tree, such that all functions are in the set of all decision trees, given by $\mathcal{F}$, is defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where each function corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given by:
-\begin{equation}
- \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{k}(x_{i})}, \space f_{K}\in \mathcal{F},
-\end{equation}
-
-The set of functions, $\mathcal{F}$, used by the tree is determined by minimising a regularised objective function, $\mathcal{L}$ given by:
-
-\begin{equation}\label{eqn:objective}
- \mathcal{L}(\phi)=\sum_i l(\hat{y_i}, y_i^{t-1} + f_t(x_i)) + \sum_k \Omega (f_K).
-\end{equation}, where
-\begin{equation}
-  \Omega(f) = \gamma T + {{1}\over{2}}\lambda ||\omega||^2
-\end{equation}
-
-As predictions are made using additive tree functions, XGboosted trees can be used for classification or regression. The difference between a prediction, $\phi(x_i)$, and actual variable, $f_{k}(x_i)$, is a differentiable convex loss function $l$. These properties of $l$ allow the function to be versatile in which objective we choose to optimise for, which is also important in being able to process both continuous and categorical variables. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration.
-\subsection{Loss functions}
-
-The functions included as parameters in equation \ref{eqn:objective} mean that traditional opimisation methods for Euclidean space cannot be used. Chen and Guestrin \citep{chenXGBoostScalableTree2016} illustrate, using Taylor expansions, that for a fixed structure $q(x)$ the optimal weight $\omega^*_j$ for a leaf $j$ can be derived. Importantly a loss function can be used to fit a model iteratively to data. For this analysis several loss functions were used, as variables took the form of continuous, binary and multi-call data. The loss function for making a split within the tree structure is given by:
-
-\begin{equation} \label{eqn:enumerate}
-\mathcal{L}_{split} = {{1}\over{2}} \left[ 
- {{(\sum_{i\in I_L}g_i)^{2}}\over{\sum_{i\in I_L} h_i + \lambda}} +
- {{(\sum_{i\in I_R}g_i)^{2}}\over{\sum_{i\in I_R} h_i + \lambda}} -
- {{(\sum_{i\in I}{g_i})^{2}}\over{\sum_{i \in I} h_i + \lambda}} \right] - \gamma.
-\end{equation}
-
-The tree structure being defined using left $I_L$ and right $I_R$ instance sets of nodes, with $I = I_L \cup I_R$. Instead of enumerating all possible tree structures, a greedy algorithm iteratively adds branches to the tree minimising $ \mathcal{L}_{split} $ in (\ref{eqn:enumerate}). The frequency of a variable's occurrence within a tree is directly attributed to the minimisation of the loss function through the minimisation of $ \mathcal{L}_{split} $.
+% FIXME: Make it clearer why you did this "Because the purpose of the analysis was to identify relationships between variables and since there was no single outcome variable of interest an XGBoosted tree was created for each variable using the other variables as predictors
+% FIXME: forward reference here "XGBoosted trees, described in more detail below...
+% FIXME: I found this a bit confusing as a 'new reader'. How about describing this process as a set of analyses:
+% Step 1: Separate analyses of operating cost and revenue: XGBoosted models were constructed for each of these variables, with the variable as the response and all other variables (with the exception of operating cost and revenue) as predictors.
+% Step 2: For each of the operating cost and revenue models, an analysis of the inter-relationships between the ten most important predictors based on the XGBoosted model.
+% Set 3: Analysis of profit (difference between...): etc
+% Then say that the results of the analyses in Set 3 were not considered further due to how crap they were.
+An XGBoosted tree was created for each variable to show how they interacted. Each tree included all variables except the economic variables (operating cost and revenue from grape sales), which were only included within their own trees as response variables. Separately profit (the difference between revenue and operational costs) was looked at in prior analyses (see appendix) but the results were not included due to low average loss values and model stability. This meant that every variable would have a measure of its importance to other variables (see Section \ref{sec:importance}), which was used to show the highly interrelated nature of variables within vineyards. The interaction between variables was illustrated using Sankey and Chord diagrams; with variable importance measures being used to show the strength of connection between the respective predictor variable and the response (see section \ref{sec:importance}).
 \par
-The loss functions used for this analysis were the root-mean-square function for continuous variables. The logistic loss function for binary class variables. And, the soft max function for Multiclass variables. All objective functions are defined within the SKlearn library \citep{sklearn_api}, which was utilised via an API to the XGBoost library \citep{chenXGBoostScalableTree2016}.
-\par
+% FIXME: We need a digestable description of XGBoost for readers of this article.
 \subsection{Variable Importance}\label{sec:importance}
-
-Due to XGBoost creating a large amount of decision trees, the interpretability of these models is obfuscated by the intricate relationships within complicated ensembles. A measure of variable importance was the technique used to highlight a variables influence within the ensemble. Variable importance can be measured in multiple ways; we used the frequency of a variable appearing as a node within the ensemble as a measure of its importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function. The measure of a variable's importance within this study can then be interpreted as how often a variable was the optimal choice in reducing the loss function of the ensemble. Importantly, multiclass variables being one-hot-encoded are given an importance score for each individual class; for example, each specific region will have its own importance score.
+% FIXME: this section can be tightende/shortened a lot - moving some of the material into the supplementary section
+Due to XGBoost creating a large amount of decision trees, the interpretability of these models is obfuscated by the intricate relationships within complicated ensembles. A measure of variable importance was the technique used to highlight a variables influence within the ensemble. Variable importance can be measured in multiple ways; we used the frequency of a variable appearing as a node within the ensemble as a measure of its importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function. The measure of a variable's importance within this study can then be interpreted as how often a variable was the optimal choice in reducing the loss function of the ensemble. Importantly, multiclass variables being one-hot-encoded
+% FIXME: make sure one-hot-encoding is well defined and rephrase this so it makes more sense (possibly define it earlier as suggested in the data section.)
+are given an importance score for each individual class; for example, each specific region will have its own importance score.
 \par
-Creating XGBoosted trees for each variable allowed the use of importance to show how strongly variables were associated with each other. The importance of variables to one another was illustrated through the use of Sankey and Chord diagrams. These diagrams were constructed using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Both Chord and Sankey diagrams illustrated variable importance through the size of the bands between two variables. The number at the end of a connection in a Sankey diagram indicated a variable's importance, or the number of times it appeared within the ensemble. Sankey and Chord  diagrams were presented together; with Sankey diagrams showing the connection of a variable to its 10 most important predictor variables. Chord diagrams were used alongside a Sankey diagram to show the interconnectedness of the ten most prominent variables within its associated Sankey diagram. Chord diagrams formed circles, with variables being connected through their relative importance. The importance values for the Chord diagrams were taking from the models of those individual variables, with the diagram being simplified to just the ten variables in the associated Sankey diagram, for readability's sake.
+The Sankey and Chord diagrams were constructed using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Both Chord and Sankey diagrams illustrated variable importance through the size of the bands between two variables. The number at the end of a connection in a Sankey diagram indicates a variable's importance, or the number of times it appeared within the ensemble. Sankey and Chord  diagrams are presented together; with Sankey diagrams showing the connection of a variable to its ten most important predictor variables. Chord diagrams were used alongside a Sankey diagram to show the interconnectedness of the ten most prominent variables within its associated Sankey diagram. Chord diagrams formed circles, with variables being connected through their relative importance. The importance values for the Chord diagrams were taking from the models of those individual variables, with the diagram being simplified to just the ten variables in the associated Sankey diagram, for readability's sake.
 
 \subsection{Validation}
 
@@ -581,7 +542,37 @@ This study has provided valuable insights into the multifaceted dynamics governi
 %% appendix sections are then done as normal sections
  \appendix
 
+\section{XGBoost}
+Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. Each of $f_k$ functions is a classification or regression tree, such that all functions are in the set of all decision trees, given by $\mathcal{F}$, is defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where each function corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given by:
+\begin{equation}
+ \hat{y_i}=\phi(x_i)=\sum_{k=1}^{K}{f_{k}(x_{i})}, \space f_{K}\in \mathcal{F},
+\end{equation}
 
+The set of functions, $\mathcal{F}$, used by the tree is determined by minimising a regularised objective function, $\mathcal{L}$ given by:
+
+\begin{equation}\label{eqn:objective}
+ \mathcal{L}(\phi)=\sum_i l(\hat{y_i}, y_i^{t-1} + f_t(x_i)) + \sum_k \Omega (f_K).
+\end{equation}, where
+\begin{equation}
+  \Omega(f) = \gamma T + {{1}\over{2}}\lambda ||\omega||^2
+\end{equation}
+
+As predictions are made using additive tree functions, XGboosted trees can be used for classification or regression. The difference between a prediction, $\phi(x_i)$, and actual variable, $f_{k}(x_i)$, is a differentiable convex loss function $l$. These properties of $l$ allow the function to be versatile in which objective we choose to optimise for, which is also important in being able to process both continuous and categorical variables. To optimise $l$, the difference is calculated for the i-th instance at the t-th iteration.
+\subsection{Loss functions}
+
+The functions included as parameters in equation \ref{eqn:objective} mean that traditional opimisation methods for Euclidean space cannot be used. Chen and Guestrin \citep{chenXGBoostScalableTree2016} illustrate, using Taylor expansions, that for a fixed structure $q(x)$ the optimal weight $\omega^*_j$ for a leaf $j$ can be derived. Importantly a loss function can be used to fit a model iteratively to data. For this analysis several loss functions were used, as variables took the form of continuous, binary and multi-call data. The loss function for making a split within the tree structure is given by:
+
+\begin{equation} \label{eqn:enumerate}
+\mathcal{L}_{split} = {{1}\over{2}} \left[ 
+ {{(\sum_{i\in I_L}g_i)^{2}}\over{\sum_{i\in I_L} h_i + \lambda}} +
+ {{(\sum_{i\in I_R}g_i)^{2}}\over{\sum_{i\in I_R} h_i + \lambda}} -
+ {{(\sum_{i\in I}{g_i})^{2}}\over{\sum_{i \in I} h_i + \lambda}} \right] - \gamma.
+\end{equation}
+
+The tree structure being defined using left $I_L$ and right $I_R$ instance sets of nodes, with $I = I_L \cup I_R$. Instead of enumerating all possible tree structures, a greedy algorithm iteratively adds branches to the tree minimising $ \mathcal{L}_{split} $ in (\ref{eqn:enumerate}). The frequency of a variable's occurrence within a tree is directly attributed to the minimisation of the loss function through the minimisation of $ \mathcal{L}_{split} $.
+\par
+The loss functions used for this analysis were the root-mean-square function for continuous variables, the logistic loss function for binary class variables, and the soft max function for Multiclass variables. All objective functions are defined within the SKlearn library \citep{sklearn_api}, which was utilised via an API to the XGBoost library \citep{chenXGBoostScalableTree2016}.
+\par
  \subsection{Year}
 
  The classification tree and XGBoosted ensemble performed similarly for classifying year with 35.20\% (6.28\% standard deviation) and 51.81\% (42.20\% validation accuracy) respectively. Electricity and the type of irrigation were highly influential within the classification tree. Similarly, electricity was the most frequently occurring node in the XGBoost ensemble. Other variables such as slashing passes, and fungicide and herbicide spraying were more prevalent than in the classification tree. Weed and disease outbreaks are likely an influential factor when classifying different years, making the decisions to spray and slash unique factors that differ year to year. Climatic differences between years are likely tied to the influence of yield and water use.
