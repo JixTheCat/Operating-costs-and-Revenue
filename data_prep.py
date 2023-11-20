@@ -4,6 +4,15 @@ import numpy as np
 
 df = pd.read_feather("df.feather")
 
+#  We disallow errors in the dataset:
+# The first is tractor passes as fractions (the field is meant to be integer only)
+df.loc[df["herbicide_spraying_number_of_times_passes_per_year"]<1, "herbicide_spraying_number_of_times_passes_per_year"] = 0
+df.loc[df["insecticide_spraying_number_of_times_passes_per_year"]<1, "insecticide_spraying_number_of_times_passes_per_year"] = 0
+df.loc[df["herbicide_spraying_number_of_times_passes_per_year"]<1, "herbicide_spraying_number_of_times_passes_per_year"] = 0
+for col in df.loc[:, df.dtypes == np.float64].columns:
+    df.loc[df[col]<0, col] = np.nan
+df[df.loc[:, df.dtypes == np.float64].columns].min()
+
 # we get the indices of those that made profit
 indices = df[
     (df["total_operating_costs"]>0) & (df["total_operating_costs"]>0)].index
