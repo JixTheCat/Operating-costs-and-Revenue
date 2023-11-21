@@ -15,6 +15,7 @@
 \usepackage{adjustbox}
 \usepackage{tabulary, ragged2e}
 \usepackage{booktabs}
+\usepackage{longtable}
 
 % Below is Elseviers requirements - they are similar to most articles and a good point of reference when writting scientific articles or analyses in general.
 %1.Full Length Article A full-length article should be a substantial and in-depth research study regarding a particular state of issue through several techniques or approaches. 
@@ -241,11 +242,11 @@ The XGBoost library incorporates regularisation techniques built into the softwa
 
 \subsection{Revenue}
 
-\begin{figure} 
-  \resizebox{\textwidth}{!}{
-  \includegraphics{revenue.pdf}}
-  \caption{Decision tree predicting revenue. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:revenue_tree}
- \end{figure}
+% \begin{figure} 
+%   \resizebox{\textwidth}{!}{
+%   \includegraphics{revenue.pdf}}
+%   \caption{Decision tree predicting revenue. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:revenue_tree}
+%  \end{figure}
  
  \begin{figure}
   \resizebox{\textwidth}{!}{
@@ -260,11 +261,11 @@ In order of importance, predictors of revenue were fuel use(petrol 307 and diese
 
 \subsection{Operating Costs}
 
-\begin{figure} 
-  \resizebox{\textwidth}{!}{
-  \includegraphics{operating_costs.pdf}}
-  \caption{A surrogate model decision tree predicting operating costs. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:operating_tree}
- \end{figure}
+% \begin{figure} 
+%   \resizebox{\textwidth}{!}{
+%   \includegraphics{operating_costs.pdf}}
+%   \caption{A surrogate model decision tree predicting operating costs. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:operating_tree}
+%  \end{figure}
 
 \begin{figure}
   \resizebox{\textwidth}{!}{
@@ -281,11 +282,11 @@ Again, region played a determining factor overall, contributing to 334 nodes wit
 
 \subsection{Region}
 
-\begin{figure}
-  \resizebox{\textwidth}{!}{
-  \includegraphics{region.pdf}}
-  \caption{Decision tree predicting Region. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:region_tree}
- \end{figure}
+% \begin{figure}
+%   \resizebox{\textwidth}{!}{
+%   \includegraphics{region.pdf}}
+%   \caption{Decision tree predicting Region. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:region_tree}
+%  \end{figure}
  
  \begin{figure}
   \resizebox{\textwidth}{!}{
@@ -305,19 +306,7 @@ Many of the regions had significantly lower reporting rates, resulting in much p
 
 \section{Discussion}
 
-This study has explored the relationships between vineyard resource use, operations and geographical properties to revenue and operating costs
-
-geographical regions with respect to a vineyards revenue and operating costs. The analysis was based on a large national study of XXX
-
-Three main findings were identified. First, the most important predicted of revenue were XXX
-
-With YYY showing the relationships among the corresponding set of predictor variables
-
-Second XXX for operating cost
-
-Third for regions...
-
-highlight how decisive regional influences can be determining a vineyard's economic outcomes. 
+This study explored the relationships between vineyard resource use, operations and geographical properties to revenue and operating costs. The analysis was based on a large national study of 6049 samples collected over ten years. Three main findings were identified. First, the most important predictors of revenue and operating costs were fuel, yield and area. Secondly, area and fuel were highly interrelated to other variables (see Figure \ref{fig:operating_costs_sankey} and Figure \ref{fig:revenue_sankey}). Finally, the relative importance of predictor variables for region, differed from Revenue and operating costs, with water use being more prominent than yield. Region was also more prominent than illustrated in the Sankey diagrams due to the relative importance for operating cost and revenue being calculated for individual regions and not all regions together. In its entirety region contributed third most prominently in relative importance to revenue, and was of the most relative importance in determining operating costs.
 \par
 Several physical parameters such as climate, geography and soil are predetermined by a vineyard's location; making it a widely considered key determinant of grape yield and quality \citep{abbalDecisionSupportSystem2016,agostaRegionalClimateVariability2012,fragaMultivariateClusteringViticultural2017}.
 The association between yield and region is demonstrated by its rank of fourth-highest variable importance when determining region (see Figure \ref{fig:region_sankey}).
@@ -326,7 +315,7 @@ The association between yield and region is demonstrated by its rank of fourth-h
 \par
 Warmer regions are known to be beneficial in hastening the ripening process of winegrapes \citep{webbObservedTrendsWinegrape2011}. Warmer regions are also associated with lower quality grapes, caused largely due to this hastened ripening \citep{botting1996canopy}. In general warmer regions are not associated with higher yields, but if a vineyard in a warmer region is sufficiently irrigated much higher yields can be achieved than in cooler regions \citep{campsGrapeHarvestYield2012}. It is likely that the combination of larger vineyards with higher water use is a determining factor in classifying regions which favour larger production of grapes; reflected through region using water use so prominently in the XGBoost ensemble. The link to water resources in defining regions is also an important consideration, as vineyards can leverage higher irrigation rates given more accessible water resources. A further consideration in the link between revenue and region is that grape prices are set at a regional level by buyers \citep{wineaustraliaNationalVintageReport2022}. It is also important to consider that some regions carry particular fame regarding the quality of their produce such as Tasmania, the Hunter Valley and Barossa Valley \citep{hallidayAustralianWineEncyclopedia2009}. This classification can be contrasted with other warmer regions of higher rainfall that use the warmer climate to concentrate their grapes, increasing the flavour profile (and thus quality) \citep{goodwinijeriepRegulatedDeficitIrrigation1992,mgmccarthyEffectCropLoad1986}.
 \par
-In part some winegrowing strategies are restricted simply through access to water resources, being reflected through the region classification tree (see Figure \ref{fig:region_tree}). Regions are likely to have varying access to different water sources, such as those along the River Murray being able to utilise river water for crops, unlike most coastal regions which may be drawing from surface or underground water sources. Similarly, the connection between region and fuel use is likely an indicator of the level of infrastructure within the region because vineyards in regions without pressurised water will need to use more fuel to pressurise their irrigation systems.
+In part some winegrowing strategies are restricted simply through access to water resources. Regions are likely to have varying access to different water sources, such as those along the River Murray being able to utilise river water for crops, unlike most coastal regions which may be drawing from surface or underground water sources. Similarly, the connection between region and fuel use is likely an indicator of the level of infrastructure within the region because vineyards in regions without pressurised water will need to use more fuel to pressurise their irrigation systems.
 \par
 Operational costs showed similar importance across fuel, water and tractor use. The dominating factor of area likely played a large part in determining how costly a tractor pass would be, or in defining the ratio of water applied to the amount of vines. The node frequency was high for area but much lower in general across the other variables, which could indicate the need to be specific when attempting to determine the cause of a operational cost. Although it was attempted to capture the complexity between how variables interacted when determining operational costs (see Figure \ref{fig:operating_costs_sankey}), it is likely yet more complicated. An example of how interrelated operational costs can be, is 
 the optimisation of tractor passes to achieve multiple goals in a pass, being shown to reduce energy use in vineyards, decreasing running costs, as well as reducing soil compaction \citep{capelloEffectsTractorPasses2019}. 
@@ -543,11 +532,12 @@ This study has provided valuable insights into the multifaceted dynamics governi
 
  \section{Continuous variables}
 
-The Table below shows the ranges of each of the continuous variables:
+Table \ref{tab:cont_vars} below shows the ranges of each of the continuous variables:
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[]
-  \begin{tabular}{@{}lllllllll@{}}
+  \caption{Summary statistics of continuous variables used in XGBoosted models.}\label{tab:cont_vars}
+  \resizebox{\textwidth}{!}{\begin{tabular}{@{}lllllllll@{}}
   \toprule
    & count & mean & std & min & 0.25 & 0.5 & 0.75 & max \\ \midrule
   Vineyard Solar & 622 & 22916.89 & 104808 & 1 & 1170.75 & 5500 & 14866.25 & 2300000 \\
@@ -566,100 +556,133 @@ The Table below shows the ranges of each of the continuous variables:
   Area Harvested & 6049 & 66.52604 & 133.4525 & 2.220446E-16 & 10.13 & 24.5 & 66.8 & 2436.15 \\
   Grape Revenue & 875 & 377972 & 606286.8 & 1 & 76000 & 172964 & 386747 & 5700000 \\
   Operating Costs & 853 & 314187.1 & 511522.6 & 1 & 57315 & 140000 & 327408 & 4482828 \\ \bottomrule
-  \end{tabular}
+  \end{tabular}}
   \end{table}
+\clearpage
 
-  \section{Categorical variables}\ref{app: cat_var}
+  \section{Categorical Variables}
   The tables below describe each possible class a multiclass variable could have taken and the frequency that it occured.
-  \subsection{water types}
+  \subsection{Water Source Types}
+  Table \ref{tab:water_type} below shows the different class types for water sources used by vineyards and their frequency of occurrences.
   % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
-\begin{table}[]
-  \begin{tabular}{@{}ll@{}}
-  \toprule
-  water types & frequency \\ \midrule
-  river water & 1578 \\
-  groundwater & 1433 \\
-  surface water dam & 617 \\
-  recycled water from other source & 386 \\
-  groundwater and surface water dam & 256 \\
-  not listed & 235 \\
-  mains water & 170 \\
-  river water and groundwater & 147 \\
-  groundwater and recycled water from other source & 145 \\
-  other water & 101 \\
-  river water and surface water dam & 92 \\
-  groundwater and water applied for frost control & 90 \\
-  groundwater and mains water & 76 \\
-  river water and groundwater and  surface water dam & 70 \\
-  recycled water from other source and mains water & 63 \\
-  groundwater and recycled water from other source and mains water & 60 \\
-  river water and mains water & 57 \\
-  surface water dam and mains water & 56 \\
-  groundwater and other water & 33 \\
-  river water and groundwater and mains water & 30 \\
-  groundwater and surface water dam and recycled water from other source & 27 \\
-  river water and water applied for frost control & 27 \\
-  groundwater and surface water dam and mains water & 22 \\
-  surface water dam and recycled water from other source & 21 \\
-  river water and recycled water from other source & 19 \\
-  river water and other water & 19 \\
-  river water and surface water dam and mains water & 18 \\
-  river water and groundwater and surface water dam and mains water & 18 \\
-  mains water and other water & 16 \\
-  groundwater and surface water dam and water applied for frost control & 12 \\
-  surface water dam and other water & 12 \\
-  groundwater and recycled water from other source and other water & 11 \\
-  groundwater and surface water dam and recycled water from other source and mains water & 8 \\
-  recycled water from other source and mains water and other water & 8 \\
-  river water and recycled water from other source and mains water & 8 \\
-  river water and surface water dam and recycled water from other source & 8 \\
-  surface water dam and mains water and other water & 7 \\
-  recycled water from other source and other water & 7 \\
-  river water and groundwater and recycled water from other source & 6 \\
-  groundwater and mains water and other water & 5 \\
-  groundwater and surface water dam and other water & 5 \\
-  groundwater and surface water dam and mains water and other water & 5 \\
-  river water and groundwater and recycled water from other source and mains water & 5 \\
-  river water and groundwater and water applied for frost control & 5 \\
-  river water and surface water dam and water applied for frost control & 4 \\
-  surface water dam and water applied for frost control & 4 \\
-  river water and groundwater and surface water dam and recycled water from other source and mains water and other water & 4 \\
-  river water and groundwater and recycled water from other source and other water & 3 \\
-  groundwater and surface water dam and recycled water from other source and water applied for frost control & 3 \\
-  river water and groundwater and surface water dam and recycled water from other source & 3 \\
-  river water and recycled water from other source and other water & 3 \\
-  surface water dam and recycled water from other source and mains water & 2 \\
-  river water and recycled water from other source and mains water and water applied for frost control & 2 \\
-  groundwater and surface water dam and recycled water from other source and mains water and other water & 2 \\
-  river water and groundwater and mains water and other water & 2 \\
-  river water and groundwater and surface water dam and other water & 2 \\
-  river water and surface water dam and other water & 2 \\
-  river water and mains water and water applied for frost control & 2 \\
-  river water and groundwater and surface water dam and recycled water from other source and mains water & 2 \\
-  river water and mains water and other water & 2 \\
-  river water and surface water dam and mains water and other water & 2 \\
-  river water and groundwater and mains water and water applied for frost control & 1 \\
-  surface water dam and other water and water applied for frost control & 1 \\
-  water applied for frost control & 1 \\
-  groundwater and other water and water applied for frost control & 1 \\
-  other water and water applied for frost control & 1 \\
-  groundwater and surface water dam and recycled water from other source and other water and water applied for frost control & 1 \\
-  mains water and water applied for frost control & 1 \\
-  groundwater and surface water dam and recycled water from other source and other water & 1 \\
-  groundwater and mains water and water applied for frost control & 1 \\
-  river water and groundwater and surface water dam and mains water and other water & 1 \\
-  river water and surface water dam and recycled water from other source and mains water & 1 \\ \bottomrule
-  \end{tabular}
-  \end{table}
 
-\subsection{cover crop types}
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[]
-  \begin{tabular}{@{}ll@{}}
-  \toprule
-  Cover crop types & frequency \\ \midrule
+\begin{center}
+  \begin{longtable}{p{0.5\linewidth} p{.35\linewidth}}
+    \caption{Frequency and class types of water types used by vineyards.}\label{tab:water_type} \\
+  
+  \hline \textbf{Water types} & \textbf{frequency}\\ \hline 
+  \endfirsthead
+  
+  \multicolumn{2}{c}%
+  {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+  \hline \textbf{Water types} & \textbf{frequency} \\ \hline 
+  \endhead
+  
+  \hline \multicolumn{2}{|r|}{{Continued on next page}} \\ \hline
+  \endfoot
+  
+  \hline \hline
+  \endlastfoot
+    river water & 1578 \\
+    groundwater & 1433 \\
+    surface water dam & 617 \\
+    recycled water from other source & 386 \\
+    groundwater and surface water dam & 256 \\
+    not listed & 235 \\
+    mains water & 170 \\
+    river water and groundwater & 147 \\
+    groundwater and recycled water from other source & 145 \\
+    other water & 101 \\
+    river water and surface water dam & 92 \\
+    groundwater and water applied for frost control & 90 \\
+    groundwater and mains water & 76 \\
+    river water and groundwater and  surface water dam & 70 \\
+    recycled water from other source and mains water & 63 \\
+    groundwater and recycled water from other source and mains water & 60 \\
+    river water and mains water & 57 \\
+    surface water dam and mains water & 56 \\
+    groundwater and other water & 33 \\
+    river water and groundwater and mains water & 30 \\
+    groundwater and surface water dam and recycled water from other source & 27 \\
+    river water and water applied for frost control & 27 \\
+    groundwater and surface water dam and mains water & 22 \\
+    surface water dam and recycled water from other source & 21 \\
+    river water and recycled water from other source & 19 \\
+    river water and other water & 19 \\
+    river water and surface water dam and mains water & 18 \\
+    river water and groundwater and surface water dam and mains water & 18 \\
+    mains water and other water & 16 \\
+    groundwater and surface water dam and water applied for frost control & 12 \\
+    surface water dam and other water & 12 \\
+    groundwater and recycled water from other source and other water & 11 \\
+    groundwater and surface water dam and recycled water from other source and mains water & 8 \\
+    recycled water from other source and mains water and other water & 8 \\
+    river water and recycled water from other source and mains water & 8 \\
+    river water and surface water dam and recycled water from other source & 8 \\
+    surface water dam and mains water and other water & 7 \\
+    recycled water from other source and other water & 7 \\
+    river water and groundwater and recycled water from other source & 6 \\
+    groundwater and mains water and other water & 5 \\
+    groundwater and surface water dam and other water & 5 \\
+    groundwater and surface water dam and mains water and other water & 5 \\
+    river water and groundwater and recycled water from other source and mains water & 5 \\
+    river water and groundwater and water applied for frost control & 5 \\
+    river water and surface water dam and water applied for frost control & 4 \\
+    surface water dam and water applied for frost control & 4 \\
+    river water and groundwater and surface water dam and recycled water from other source and mains water and other water & 4 \\
+    river water and groundwater and recycled water from other source and other water & 3 \\
+    groundwater and surface water dam and recycled water from other source and water applied for frost control & 3 \\
+    river water and groundwater and surface water dam and recycled water from other source & 3 \\
+    river water and recycled water from other source and other water & 3 \\
+    surface water dam and recycled water from other source and mains water & 2 \\
+    river water and recycled water from other source and mains water and water applied for frost control & 2 \\
+    groundwater and surface water dam and recycled water from other source and mains water and other water & 2 \\
+    river water and groundwater and mains water and other water & 2 \\
+    river water and groundwater and surface water dam and other water & 2 \\
+    river water and surface water dam and other water & 2 \\
+    river water and mains water and water applied for frost control & 2 \\
+    river water and groundwater and surface water dam and recycled water from other source and mains water & 2 \\
+    river water and mains water and other water & 2 \\
+    river water and surface water dam and mains water and other water & 2 \\
+    river water and groundwater and mains water and water applied for frost control & 1 \\
+    surface water dam and other water and water applied for frost control & 1 \\
+    water applied for frost control & 1 \\
+    groundwater and other water and water applied for frost control & 1 \\
+    other water and water applied for frost control & 1 \\
+    groundwater and surface water dam and recycled water from other source and other water and water applied for frost control & 1 \\
+    mains water and water applied for frost control & 1 \\
+    groundwater and surface water dam and recycled water from other source and other water & 1 \\
+    groundwater and mains water and water applied for frost control & 1 \\
+    river water and groundwater and surface water dam and mains water and other water & 1 \\
+    river water and surface water dam and recycled water from other source and mains water & 1 \\
+
+  \end{longtable}
+  \end{center}
+  
+  \clearpage
+\subsection{Cover Crop Types}
+Table \ref{tab:cover_crop} below shows the different cover crop types used together and their frequency.
+
+\begin{center}
+  \begin{longtable}{p{0.5\linewidth} p{.35\linewidth}}
+    \caption{Frequency and class types of cover crop types used by vineyards.}\label{tab:cover_crop} \\
+  
+  \hline \textbf{Cover crop types} & \textbf{frequency}\\ \hline 
+  \endfirsthead
+  
+  \multicolumn{2}{c}%
+  {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+  \hline \textbf{Cover crop types} & \textbf{frequency} \\ \hline 
+  \endhead
+  
+  \hline \multicolumn{2}{|r|}{{Continued on next page}} \\ \hline
+  \endfoot
+  
+  \hline \hline
+  \endlastfoot
+
+  Cover crop types & frequency \\
   permanent cover crop volunteer sward & 1822 \\
   permanent cover crop non native & 936 \\
   permanent cover crop native & 490 \\
@@ -691,18 +714,33 @@ The Table below shows the ranges of each of the continuous variables:
   bare soil and permanent cover crop native and permanent cover crop non native & 7 \\
   bare soil and permanent cover crop native and permanent cover crop volunteer sward & 6 \\
   bare soil and permanent cover crop native and permanent cover crop non native and permanent cover crop volunteer sward & 4 \\
-  bare soil and annual cover crop and permanent cover crop native and permanent cover crop volunteer sward and & 2 \\ \bottomrule
-  \end{tabular}
-  \end{table}
+  bare soil and annual cover crop and permanent cover crop native and permanent cover crop volunteer sward and & 2 \\
+  \end{longtable}
+  \end{center}
+  \clearpage
 
-\subsection{irrigation type}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[]
-  \begin{tabular}{@{}ll@{}}
-  \toprule
-  Irrigation type & frequency \\ \midrule
+\subsection{Irrigation Types}
+Below in Table \ref{tab:irig_types} are the frequency and different irrigation types.
+
+\begin{center}
+  \begin{longtable}{p{0.5\linewidth} p{.35\linewidth}}
+    \caption{Frequency and class types of irrigation types used by vineyards.}\label{tab:irig_types} \\
+  
+  \hline \textbf{Irrigation types} & \textbf{frequency}\\ \hline 
+  \endfirsthead
+  
+  \multicolumn{2}{c}%
+  {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+  \hline \textbf{Irrigation types} & \textbf{frequency} \\ \hline 
+  \endhead
+  
+  \hline \multicolumn{2}{|r|}{{Continued on next page}} \\ \hline
+  \endfoot
+  
+  \hline \hline
+  \endlastfoot
+  Irrigation type & frequency \\
   dripper & 4800 \\
   dripper and non irrigated & 342 \\
   Not listed & 319 \\
@@ -722,18 +760,34 @@ The Table below shows the ranges of each of the continuous variables:
   non irrigated and undervine sprinkler & 2 \\
   dripper and flood and non irrigated & 1 \\
   dripper and non irrigated and overhead sprinkler and undervine sprinkler & 1 \\
-  flood and & 1 \\ \bottomrule
-  \end{tabular}
-  \end{table}
+  flood and & 1 \\
+\end{longtable}
+\end{center}
 
-  \subsection{irrigation energy type}
+  \clearpage
 
-  % Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[]
-  \begin{tabular}{@{}ll@{}}
-  \toprule
-  Irrigation energy type & frequency \\ \midrule
+  \subsection{Irrigation Energy Type}
+Below, Table \ref{irig_energy} shows the different types of energy used to power vineyards and their frequency.
+
+\begin{center}
+  \begin{longtable}{p{0.5\linewidth} p{.35\linewidth}}
+    \caption{Frequency and class types of irrigation energy types used by vineyards.}\label{tab:irig_energy}  \\
+  
+  \hline \textbf{Irrigation Energy types} & \textbf{frequency}\\ \hline 
+  \endfirsthead
+  
+  \multicolumn{2}{c}%
+  {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+  \hline \textbf{Irrigation Energy types} & \textbf{frequency} \\ \hline 
+  \endhead
+  
+  \hline \multicolumn{2}{|r|}{{Continued on next page}} \\ \hline
+  \endfoot
+  
+  \hline \hline
+  \endlastfoot
+
+  Irrigation energy type & frequency \\
   electricity & 2162 \\
   not listed & 2053 \\
   pressure & 586 \\
@@ -750,17 +804,33 @@ The Table below shows the ranges of each of the continuous variables:
   pressure and solar & 9 \\
   diesel and solar & 4 \\
   diesel and pressure and solar and & 1 \\ \bottomrule
-  \end{tabular}
-  \end{table}
+\end{longtable}
+\end{center}
 
+  \clearpage
 
-  \subsection{year}
-  % Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[]
-  \begin{tabular}{@{}ll@{}}
-  \toprule
-  data year id & frequency \\ \midrule
+  \subsection{Year}
+Below in Table \ref{tab:year} is the list of years and the number of sample collected in each.
+
+    \begin{center}
+      \begin{longtable}{p{0.5\linewidth} p{.35\linewidth}}
+        \caption{Frequency and class types of year}\label{tab:year}  \\
+      
+      \hline \textbf{Year } & \textbf{frequency}\\ \hline 
+      \endfirsthead
+      
+      \multicolumn{2}{c}%
+      {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+      \hline \textbf{Year} & \textbf{frequency} \\ \hline 
+      \endhead
+      
+      \hline \multicolumn{2}{|r|}{{Continued on next page}} \\ \hline
+      \endfoot
+      
+      \hline \hline
+      \endlastfoot
+    
+  Year & frequency \\
   2021/2022 & 954 \\
   2020/2021 & 860 \\
   2019/2020 & 599 \\
@@ -770,17 +840,34 @@ The Table below shows the ranges of each of the continuous variables:
   2014/2015 & 505 \\
   2017/2018 & 493 \\
   2016/2017 & 485 \\
-  2018/2019 & 466 \\ \bottomrule
-  \end{tabular}
-  \end{table}
+  2018/2019 & 466 \\
 
-\subsection{giregion}
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[]
-  \begin{tabular}{@{}ll@{}}
-  \toprule
-  giregion & frequency \\ \midrule
+\end{longtable}
+\end{center}
+
+\clearpage
+
+\subsection{Region}
+Below in Table \ref{tab:region} are the number of collected samples for each region.
+\begin{center}
+  \begin{longtable}{p{0.5\linewidth} p{.35\linewidth}}
+    \caption{Frequency and class types of regions.}\label{tab:region}  \\
+  
+  \hline \textbf{Regions} & \textbf{frequency}\\ \hline 
+  \endfirsthead
+  
+  \multicolumn{2}{c}%
+  {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+  \hline \textbf{Regions} & \textbf{frequency} \\ \hline 
+  \endhead
+  
+  \hline \multicolumn{2}{|r|}{{Continued on next page}} \\ \hline
+  \endfoot
+  
+  \hline \hline
+  \endlastfoot
+
+  giregion & frequency \\
   McLaren Vale & 1195 \\
   Barossa Valley & 584 \\
   Murray Darling & 521 \\
@@ -839,9 +926,9 @@ The Table below shows the ranges of each of the continuous variables:
   Macedon Ranges & 2 \\
   Pyrenees & 2 \\
   Sunbury & 1 \\ \bottomrule
-  \end{tabular}
-  \end{table}
-
+\end{longtable}
+\end{center}
+\clearpage
 
 \section{XGBoost}
 Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. Each of $f_k$ functions is a classification or regression tree, such that all functions are in the set of all decision trees, given by $\mathcal{F}$, is defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where each function corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given by:
