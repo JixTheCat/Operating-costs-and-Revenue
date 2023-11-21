@@ -161,14 +161,14 @@ An unprecedented amount of data regarding the Australian winegrowing industry ha
 % # Importantly this cubic root relationship exists between operational costs and gross margin, which is worth noting. However we want to know what tips it either side of them being equal as that shows that a vineyard is profitable!!
 
 \subsection{Data}
-% 6091 samples - total
+% 6049 samples - total
 % 58 regions
 % 10 years
 % 
 % 853 with reported profits
 % 46 regions
 % reported since 2018
-Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program. The program aims to support grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by SWA are entered manually by winegrowers using a web based interface tool. A total of 6091 observations were collected from 2012/2013 to 2021/2022 financial years, with each observation comprising 23 variables reflecting a vineyard's state for the given year (see Table \ref{tab:vars}). 
+Data used in this analysis were obtained from Sustainable Winegrowing Australia. Australia's national wine industry sustainability program. The program aims to support grape-growers and winemakers in demonstrating and improving their sustainability \citep{swaSustainableWingrowingAustralia2022}. Data recorded by SWA are entered manually by winegrowers using a web based interface tool. A total of 6049 observations were collected from 2012/2013 to 2021/2022 financial years, with each observation comprising 23 variables reflecting a vineyard's state for the given year (see Table \ref{tab:vars}). 
 \par
 \begin{table}[] 
  \label{tab:vars}
@@ -181,22 +181,22 @@ Data used in this analysis were obtained from Sustainable Winegrowing Australia.
   Biodiesel & Litres & 25 & & \\
   LPG & Litres & 958 & & \\
   Herbicide Spray & Times per year & 2026 & & \\
-  Year & Class & 6091 & 10 & \\
-  Disease & Class & 6091 & 2 & \\
-  Region & Class & 6091 & 58 & \\
+  Year & Class & 6049 & 10 & \\
+  Disease & Class & 6049 & 2 & \\
+  Region & Class & 6049 & 58 & \\
   Solar & Kilowatt Hours & 622 & & \\
-  Irrigation Type & Class & 6091 & 20 & \\
+  Irrigation Type & Class & 6049 & 20 & \\
   Petrol & Litres & 4309 & & \\
   Slashing & Times per year & 2290 & & \\
   Yield & Tonnes & 5935 & & \\
-  Irrigation Energy & Class & 6091 & 16 & \\
-  Area Harvested & Hectares & 6091 & & \\
-  Electricity & Kilowatt Hours & 1015 & & \\
+  Irrigation Energy & Class & 6049 & 16 & \\
+  Area Harvested & Hectares & 6049 & & \\
+  Electricity & Kilowatt Hours & 1014 & & \\
   Insecticide Spray & Times per year & 1092 & & \\
   Fertiliser & \begin{tabular}[c]{@{}c@{}}Kilograms \\ of Nitrogen\end{tabular} & 795 & & \\
   Fungicide Spray & Times per year & 2260 & & \\
-  Cover Crop & Class & 6091 & 32 & \\
-  Water Type & Class & 6091 & 39 & \\
+  Cover Crop & Class & 6049 & 32 & \\
+  Water Type & Class & 6049 & 39 & \\
   Grape Revenue & AUD & 853 & & \\
   Operating Costs & AUD & 853 & & \\ \bottomrule
   \end{tabular}
@@ -556,6 +556,306 @@ This study has provided valuable insights into the multifaceted dynamics governi
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
  \appendix
+
+ \section{Variable summaries}
+
+The Table \ref{cont_summary} below shows the ranges of each of the continuous variables:
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+  \begin{tabular}{@{}lllllllll@{}}
+  \toprule
+   & count & mean & std & min & 0.25 & 0.5 & 0.75 & max \\ \midrule
+  Vineyard Solar & 622 & 22916.89 & 104808 & 1 & 1170.75 & 5500 & 14866.25 & 2300000 \\
+  Biodiesel & 25 & 6635.932 & 11768.832104 & 1 & 200 & 500 & 10000 & 37216 \\
+  Fungicide Spray & 2260 & 7.724801 & 3.279794 & 1 & 6 & 7 & 9 & 68 \\
+  LPG & 958 & 327.831399 & 861.538804 & 1 & 40 & 95.835 & 240 & 11950 \\
+  Petrol & 4309 & 825.276809 & 1556.621119 & 1 & 135 & 306.66 & 903 & 38568 \\
+  Insecticide Spray & 1092 & 1.707189 & 1.316042 & 0 & 1 & 1 & 2 & 12 \\
+  Water Used & 5846 & 7301838 & 558206600 & 0.0007 & 13.2655 & 43 & 146.875 & 42680000000 \\
+  Fertiliser & 795 & 91149.89 & 483913.4 & 1 & 560 & 4759.5 & 45148.5 & 11358000 \\
+  Diesel & 5585 & 11677.070183 & 24380.588742 & 0.1267 & 1240 & 3850 & 12500 & 591000 \\
+  Yield & 5935 & 772.902449 & 2175.113895 & 0.03 & 68 & 192.3 & 601.8795 & 72305 \\
+  Herbicide Spray & 2026 & 2.646199 & 2.598899 & 0 & 2 & 2 & 3 & 103 \\
+  Slashing & 2290 & 3.311485 & 1.826788 & 1 & 2 & 3 & 4 & 26 \\
+  Electricity & 1014 & 58223.07 & 177626.3 & 0.019 & 2160 & 9637 & 36498.25 & 3000000 \\
+  Area Harvested & 6049 & 66.52604 & 133.4525 & 2.220446E-16 & 10.13 & 24.5 & 66.8 & 2436.15 \\
+  Grape Revenue & 875 & 377972 & 606286.8 & 1 & 76000 & 172964 & 386747 & 5700000 \\
+  Operating Costs & 853 & 314187.1 & 511522.6 & 1 & 57315 & 140000 & 327408 & 4482828 \\ \bottomrule
+  \end{tabular}
+  \end{table}
+
+  \section{water types}
+  % Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+  \begin{tabular}{@{}ll@{}}
+  \toprule
+  water types & frequency \\ \midrule
+  river water & 1578 \\
+  groundwater & 1433 \\
+  surface water dam & 617 \\
+  recycled water from other source & 386 \\
+  groundwater and surface water dam & 256 \\
+  not listed & 235 \\
+  mains water & 170 \\
+  river water and groundwater & 147 \\
+  groundwater and recycled water from other source & 145 \\
+  other water & 101 \\
+  river water and surface water dam & 92 \\
+  groundwater and water applied for frost control & 90 \\
+  groundwater and mains water & 76 \\
+  river water and groundwater and  surface water dam & 70 \\
+  recycled water from other source and mains water & 63 \\
+  groundwater and recycled water from other source and mains water & 60 \\
+  river water and mains water & 57 \\
+  surface water dam and mains water & 56 \\
+  groundwater and other water & 33 \\
+  river water and groundwater and mains water & 30 \\
+  groundwater and surface water dam and recycled water from other source & 27 \\
+  river water and water applied for frost control & 27 \\
+  groundwater and surface water dam and mains water & 22 \\
+  surface water dam and recycled water from other source & 21 \\
+  river water and recycled water from other source & 19 \\
+  river water and other water & 19 \\
+  river water and surface water dam and mains water & 18 \\
+  river water and groundwater and surface water dam and mains water & 18 \\
+  mains water and other water & 16 \\
+  groundwater and surface water dam and water applied for frost control & 12 \\
+  surface water dam and other water & 12 \\
+  groundwater and recycled water from other source and other water & 11 \\
+  groundwater and surface water dam and recycled water from other source and mains water & 8 \\
+  recycled water from other source and mains water and other water & 8 \\
+  river water and recycled water from other source and mains water & 8 \\
+  river water and surface water dam and recycled water from other source & 8 \\
+  surface water dam and mains water and other water & 7 \\
+  recycled water from other source and other water & 7 \\
+  river water and groundwater and recycled water from other source & 6 \\
+  groundwater and mains water and other water & 5 \\
+  groundwater and surface water dam and other water & 5 \\
+  groundwater and surface water dam and mains water and other water & 5 \\
+  river water and groundwater and recycled water from other source and mains water & 5 \\
+  river water and groundwater and water applied for frost control & 5 \\
+  river water and surface water dam and water applied for frost control & 4 \\
+  surface water dam and water applied for frost control & 4 \\
+  river water and groundwater and surface water dam and recycled water from other source and mains water and other water & 4 \\
+  river water and groundwater and recycled water from other source and other water & 3 \\
+  groundwater and surface water dam and recycled water from other source and water applied for frost control & 3 \\
+  river water and groundwater and surface water dam and recycled water from other source & 3 \\
+  river water and recycled water from other source and other water & 3 \\
+  surface water dam and recycled water from other source and mains water & 2 \\
+  river water and recycled water from other source and mains water and water applied for frost control & 2 \\
+  groundwater and surface water dam and recycled water from other source and mains water and other water & 2 \\
+  river water and groundwater and mains water and other water & 2 \\
+  river water and groundwater and surface water dam and other water & 2 \\
+  river water and surface water dam and other water & 2 \\
+  river water and mains water and water applied for frost control & 2 \\
+  river water and groundwater and surface water dam and recycled water from other source and mains water & 2 \\
+  river water and mains water and other water & 2 \\
+  river water and surface water dam and mains water and other water & 2 \\
+  river water and groundwater and mains water and water applied for frost control & 1 \\
+  surface water dam and other water and water applied for frost control & 1 \\
+  water applied for frost control & 1 \\
+  groundwater and other water and water applied for frost control & 1 \\
+  other water and water applied for frost control & 1 \\
+  groundwater and surface water dam and recycled water from other source and other water and water applied for frost control & 1 \\
+  mains water and water applied for frost control & 1 \\
+  groundwater and surface water dam and recycled water from other source and other water & 1 \\
+  groundwater and mains water and water applied for frost control & 1 \\
+  river water and groundwater and surface water dam and mains water and other water & 1 \\
+  river water and surface water dam and recycled water from other source and mains water & 1 \\ \bottomrule
+  \end{tabular}
+  \end{table}
+
+\section{cover crop types}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+  \begin{tabular}{@{}ll@{}}
+  \toprule
+  Cover crop types & frequency \\ \midrule
+  permanent_cover_crop_volunteer_sward & 1822 \\
+  permanent_cover_crop_non_native & 936 \\
+  permanent_cover_crop_native & 490 \\
+  annual_cover_crop & 479 \\
+  groundwater and surface water dam & 406 \\
+  annual_cover_crop and permanent_cover_crop_volunteer_sward & 309 \\
+  bare_soil & 225 \\
+  permanent_cover_crop_non_native and permanent_cover_crop_volunteer_sward & 214 \\
+  annual_cover_crop and permanent_cover_crop_non_native & 169 \\
+  bare_soil and permanent_cover_crop_volunteer_sward & 129 \\
+  bare_soil and permanent_cover_crop_non_native & 115 \\
+  annual_cover_crop and permanent_cover_crop_non_native and permanent_cover_crop_volunteer_sward & 101 \\
+  bare_soil and annual_cover_crop & 93 \\
+  permanent_cover_crop_native and permanent_cover_crop_volunteer_sward & 80 \\
+  bare_soil and permanent_cover_crop_native & 78 \\
+  annual_cover_crop and permanent_cover_crop_native & 78 \\
+  permanent_cover_crop_native and permanent_cover_crop_non_native & 68 \\
+  permanent_cover_crop_native and permanent_cover_crop_non_native and permanent_cover_crop_volunteer_sward & 44 \\
+  annual_cover_crop and permanent_cover_crop_native and permanent_cover_crop_non_native and permanent_cover_crop_volunteer_sward & 44 \\
+  bare_soil and annual_cover_crop and permanent_cover_crop_volunteer_sward & 33 \\
+  bare_soil and permanent_cover_crop_non_native and permanent_cover_crop_volunteer_sward & 26 \\
+  annual_cover_crop and permanent_cover_crop_native and permanent_cover_crop_volunteer_sward & 17 \\
+  bare_soil and annual_cover_crop and permanent_cover_crop_native & 15 \\
+  annual_cover_crop and permanent_cover_crop_native and permanent_cover_crop_non_native & 15 \\
+  bare_soil and annual_cover_crop and permanent_cover_crop_non_native & 13 \\
+  bare_soil and annual_cover_crop and permanent_cover_crop_native and permanent_cover_crop_non_native and permanent_cover_crop_volunteer_sward & 12 \\
+  bare_soil and annual_cover_crop and permanent_cover_crop_non_native and permanent_cover_crop_volunteer_sward & 11 \\
+  bare_soil and annual_cover_crop and permanent_cover_crop_native and permanent_cover_crop_non_native & 8 \\
+  bare_soil and permanent_cover_crop_native and permanent_cover_crop_non_native & 7 \\
+  bare_soil and permanent_cover_crop_native and permanent_cover_crop_volunteer_sward & 6 \\
+  bare_soil and permanent_cover_crop_native and permanent_cover_crop_non_native and permanent_cover_crop_volunteer_sward & 4 \\
+  bare_soil and annual_cover_crop and permanent_cover_crop_native and permanent_cover_crop_volunteer_sward and & 2 \\ \bottomrule
+  \end{tabular}
+  \end{table}
+
+\section{irrigation type}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+  \begin{tabular}{@{}ll@{}}
+  \toprule
+  Irrigation type & frequency \\ \midrule
+  dripper & 4800 \\
+  dripper and non_irrigated & 342 \\
+  Not listed & 319 \\
+  dripper and overhead_sprinkler & 201 \\
+  dripper and undervine_sprinkler & 91 \\
+  non_irrigated & 65 \\
+  undervine_sprinkler & 53 \\
+  dripper and flood & 53 \\
+  overhead_sprinkler & 46 \\
+  dripper and overhead_sprinkler and undervine_sprinkler & 28 \\
+  overhead_sprinkler and undervine_sprinkler & 12 \\
+  dripper and non_irrigated and overhead_sprinkler & 11 \\
+  flood and undervine_sprinkler & 10 \\
+  dripper and flood and undervine_sprinkler & 7 \\
+  dripper and flood and non_irrigated and overhead_sprinkler and undervine_sprinkler & 3 \\
+  dripper and flood and overhead_sprinkler & 3 \\
+  non_irrigated and undervine_sprinkler & 2 \\
+  dripper and flood and non_irrigated & 1 \\
+  dripper and non_irrigated and overhead_sprinkler and undervine_sprinkler & 1 \\
+  flood and & 1 \\ \bottomrule
+  \end{tabular}
+  \end{table}
+
+  \section{irrigation energy type}
+
+  % Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+  \begin{tabular}{@{}ll@{}}
+  \toprule
+  Irrigation energy type & frequency \\ \midrule
+  electricity & 2162 \\
+  not listed & 2053 \\
+  pressure & 586 \\
+  electricity and pressure & 396 \\
+  diesel & 254 \\
+  diesel and electricity & 227 \\
+  electricity and solar & 96 \\
+  diesel and electricity and pressure & 90 \\
+  diesel and pressure & 74 \\
+  solar & 50 \\
+  electricity and pressure and solar & 23 \\
+  diesel and electricity and solar & 14 \\
+  diesel and electricity and pressure and solar & 10 \\
+  pressure and solar & 9 \\
+  diesel and solar & 4 \\
+  diesel and pressure and solar and & 1 \\ \bottomrule
+  \end{tabular}
+  \end{table}
+
+
+  \section{year}
+  % Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+  \begin{tabular}{@{}ll@{}}
+  \toprule
+  data_year_id & frequency \\ \midrule
+  2021/2022 & 954 \\
+  2020/2021 & 860 \\
+  2019/2020 & 599 \\
+  2012/2013 & 590 \\
+  2013/2014 & 549 \\
+  2015/2016 & 548 \\
+  2014/2015 & 505 \\
+  2017/2018 & 493 \\
+  2016/2017 & 485 \\
+  2018/2019 & 466 \\ \bottomrule
+  \end{tabular}
+  \end{table}
+
+\section{giregion}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+  \begin{tabular}{@{}ll@{}}
+  \toprule
+  giregion & frequency \\ \midrule
+  McLaren Vale & 1195 \\
+  Barossa Valley & 584 \\
+  Murray Darling & 521 \\
+  Riverland & 472 \\
+  Adelaide Hills & 454 \\
+  Langhorne Creek & 347 \\
+  Margaret River & 344 \\
+  Coonawarra & 284 \\
+  Padthaway & 202 \\
+  Wrattonbully & 195 \\
+  Clare Valley & 149 \\
+  Yarra Valley & 122 \\
+  Eden Valley & 92 \\
+  Tasmania & 89 \\
+  Swan Hill & 83 \\
+  Grampians & 73 \\
+  Orange & 72 \\
+  Hunter Valley & 70 \\
+  Bendigo & 53 \\
+  Great Southern & 51 \\
+  Rutherglen & 41 \\
+  Robe & 36 \\
+  Tumbarumba & 35 \\
+  Mornington Peninsula & 32 \\
+  King Valley & 32 \\
+  Southern Fleurieu & 30 \\
+  Heathcote & 29 \\
+  Adelaide Plains & 25 \\
+  Currency Creek & 24 \\
+   & 23 \\
+  Henty & 22 \\
+  Canberra District & 21 \\
+  Southern Flinders Ranges & 20 \\
+  Upper Goulburn & 20 \\
+  Mudgee & 20 \\
+  Mount Benson & 20 \\
+  Other & 19 \\
+  Riverina & 18 \\
+  Alpine Valleys & 15 \\
+  Barossa Zone & 14 \\
+  Pemberton & 12 \\
+  Mount Gambier & 11 \\
+  Blackwood Valley & 10 \\
+  Kangaroo Island & 10 \\
+  Big Rivers Zone Other & 9 \\
+  Geographe & 7 \\
+  Cowra & 6 \\
+  Gundagai & 5 \\
+  Strathbogie Ranges & 5 \\
+  Glenrowan & 4 \\
+  Geelong & 4 \\
+  Swan District & 4 \\
+  Goulburn Valley & 3 \\
+  Beechworth & 3 \\
+  Southern Highlands & 3 \\
+  Macedon Ranges & 2 \\
+  Pyrenees & 2 \\
+  Sunbury & 1 \\ \bottomrule
+  \end{tabular}
+  \end{table}
+
 
 \section{XGBoost}
 Following Chen and Guestrin \citep{chenXGBoostScalableTree2016}, XGboosted trees predict a value $y_i$ from the input $x_i$. The method of prediction is achieved through a tree ensemble model, using $K$ additive functions to predict the output. Each of $f_k$ functions is a classification or regression tree, such that all functions are in the set of all decision trees, given by $\mathcal{F}$, is defined by ${f(x) = \omega_{q(x)}}(q : \mathbb{R}^m \rightarrow T, \omega \in \mathbb{R}^T)$. Where each function corresponds to an independent tree structure $q$ of $\omega$ weights. Each tree has $T$ leaves, which contain a continuous score, represented by $\omega_i$ for the i-th leaf. The final prediction is determined by the sum of the score of the corresponding leaves, given by:
