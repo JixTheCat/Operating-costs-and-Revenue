@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.6.20)  21 NOV 2023 19:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.6.20)  22 NOV 2023 09:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -226,11 +226,7 @@ Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \c@LT@tables=\count286
 \c@LT@chunks=\count287
 \LT@p@ftn=\toks24
-) (./article.aux
-
-LaTeX Warning: Label `fig:revenue_sankey' multiply defined.
-
-)
+) (./article.aux)
 \openout1 = `article.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -266,11 +262,11 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 126.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 130.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 126.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 130.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -281,88 +277,78 @@ Overfull \hbox (2.61108pt too wide) has occurred while \output is active
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 174.
+               Default added (so using `tbp') on input line 178.
 
-[2] [3] [4] [5] [6] [7]
-<revenue.png, id=35, 1437.37pt x 637.38126pt>
+[3] [4] [5] [6] [7] [8]
+<revenue.png, id=38, 1437.37pt x 637.38126pt>
 File: revenue.png Graphic file (type png)
 <use revenue.png>
-Package pdftex.def Info: revenue.png  used on input line 253.
+Package pdftex.def Info: revenue.png  used on input line 263.
 (pdftex.def)             Requested size: 1437.3665pt x 637.3797pt.
- [8 <./revenue.png>]
-<operating_costs.png, id=41, 1426.32875pt x 647.41875pt>
+ [9]
+<operating_costs.png, id=43, 1426.32875pt x 647.41875pt>
 File: operating_costs.png Graphic file (type png)
 <use operating_costs.png>
-Package pdftex.def Info: operating_costs.png  used on input line 272.
+Package pdftex.def Info: operating_costs.png  used on input line 283.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
- [9 <./operating_costs.png>]
-<region.png, id=46, 1426.32875pt x 647.41875pt>
+ [10 <./revenue.png>] [11 <./operating_costs.png>]
+<region.png, id=52, 1426.32875pt x 647.41875pt>
 File: region.png Graphic file (type png)
 <use region.png>
-Package pdftex.def Info: region.png  used on input line 293.
+Package pdftex.def Info: region.png  used on input line 309.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
- [10] [11 <./region.png>] [12] [13] [14] [15] [16] (./article.bbl [17] [18] [19]
+ [12] [13 <./region.png>] [14] [15] [16] (./article.bbl [17] [18] [19] [20]
 Underfull \hbox (badness 10000) in paragraph at lines 239--245
 []\OT1/cmr/m/n/12 SWA, S.W.A., 2022.  Sus-tain-able Wingrow-ing Aus-tralia.
  []
 
-[20])
+)
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 538.
+               Default added (so using `tbp') on input line 543.
 
 [21] [22]
-Underfull \hbox (badness 3354) in paragraph at lines 606--606
+Underfull \hbox (badness 3354) in paragraph at lines 611--611
 []|\OT1/cmr/m/n/12 river wa-ter and ground-wa-ter and
  []
 
 
-Underfull \hbox (badness 1354) in paragraph at lines 626--626
+Underfull \hbox (badness 1354) in paragraph at lines 631--631
 []|\OT1/cmr/m/n/12 groundwater and mains wa-ter and
  []
 
 
-Underfull \hbox (badness 3354) in paragraph at lines 641--641
+Underfull \hbox (badness 3354) in paragraph at lines 646--646
 []|\OT1/cmr/m/n/12 river wa-ter and ground-wa-ter and
  []
 
 
-Underfull \hbox (badness 3354) in paragraph at lines 648--648
+Underfull \hbox (badness 3354) in paragraph at lines 653--653
 []|\OT1/cmr/m/n/12 river wa-ter and ground-wa-ter and
  []
 
 [23
 
 ] [24] [25] [26] [27] [28] [29] [30]
-Underfull \hbox (badness 2418) in paragraph at lines 691--691
+Underfull \hbox (badness 2418) in paragraph at lines 696--696
 []|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
  []
 
 
-Underfull \hbox (badness 2418) in paragraph at lines 694--694
+Underfull \hbox (badness 2418) in paragraph at lines 699--699
 []|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
  []
 
 
-Underfull \hbox (badness 2418) in paragraph at lines 697--697
+Underfull \hbox (badness 2418) in paragraph at lines 702--702
 []|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
  []
 
 
-Underfull \hbox (badness 2418) in paragraph at lines 701--701
-[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
- []
-
-
-Underfull \hbox (badness 2418) in paragraph at lines 704--704
-[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
- []
-
-
-Underfull \hbox (badness 2418) in paragraph at lines 707--707
+Underfull \hbox (badness 2418) in paragraph at lines 706--706
 []|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
  []
 
@@ -371,10 +357,20 @@ Underfull \hbox (badness 2418) in paragraph at lines 709--709
 []|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
  []
 
+
+Underfull \hbox (badness 2418) in paragraph at lines 712--712
+[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 714--714
+[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
+ []
+
 [31
 
 ] [32] [33] [34]
-Underfull \hbox (badness 6461) in paragraph at lines 754--754
+Underfull \hbox (badness 6461) in paragraph at lines 759--759
 []|\OT1/cmr/m/n/12 overhead sprin-kler and un-der-vine
  []
 
@@ -382,7 +378,7 @@ Underfull \hbox (badness 6461) in paragraph at lines 754--754
 
 ] [36]
 
-LaTeX Warning: Reference `irig_energy' on page 37 undefined on input line 770.
+LaTeX Warning: Reference `irig_energy' on page 37 undefined on input line 775.
 
 [37
 
@@ -396,41 +392,38 @@ LaTeX Warning: Reference `irig_energy' on page 37 undefined on input line 770.
 <year.pdf, id=165, 505.89pt x 505.89pt>
 File: year.pdf Graphic file (type pdf)
 <use year.pdf>
-Package pdftex.def Info: year.pdf  used on input line 972.
+Package pdftex.def Info: year.pdf  used on input line 977.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
 <year.png, id=166, 1426.32875pt x 647.41875pt>
 File: year.png Graphic file (type png)
 <use year.png>
-Package pdftex.def Info: year.png  used on input line 978.
+Package pdftex.def Info: year.png  used on input line 983.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
 <profit.pdf, id=167, 505.89pt x 505.89pt>
 File: profit.pdf Graphic file (type pdf)
 <use profit.pdf>
-Package pdftex.def Info: profit.pdf  used on input line 986.
+Package pdftex.def Info: profit.pdf  used on input line 991.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
 <profit.png, id=168, 1426.32875pt x 647.41875pt>
 File: profit.png Graphic file (type png)
 <use profit.png>
-Package pdftex.def Info: profit.png  used on input line 992.
+Package pdftex.def Info: profit.png  used on input line 997.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
  [45] [46 <./year.pdf>] [47 <./year.png>] [48 <./profit.pdf>] [49 <./profit.png>] (./article.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 4897 strings out of 478287
- 79821 string characters out of 5849289
- 399842 words of memory out of 5000000
- 23026 multiletter control sequences out of 15000+600000
+ 4898 strings out of 478287
+ 79833 string characters out of 5849289
+ 399815 words of memory out of 5000000
+ 23027 multiletter control sequences out of 15000+600000
  477359 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,10n,76p,2219b,383s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,10n,76p,2219b,377s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on article.pdf (49 pages, 1874994 bytes).
+Output written on article.pdf (49 pages, 1876122 bytes).
 PDF statistics:
  271 PDF objects out of 1000 (max. 8388607)
  172 compressed objects within 2 object streams

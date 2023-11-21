@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex article"] 1700559065 "article.aux" "article.bbl" "article" 1700559066
+["bibtex article"] 1700610363 "article.aux" "article.bbl" "article" 1700610364
   "./elsarticle-harv.bst" 1691036286 30002 8c0c5833f37bea3ec214cf315a72975d ""
-  "article.aux" 1700559066 13017 68c7ab9ad4d36f955abd6dbe2d2f86cd "pdflatex"
+  "article.aux" 1700610364 13014 92cf5ce3c820593fa736f09cff716561 "pdflatex"
   "references.bib" 1700454960 338901 a0f11ae1242b34b2cd4355db4b57675e ""
   (generated)
   "article.bbl"
   "article.blg"
-["pdflatex"] 1700559065 "/home/bryce/repositories/Grape-Quality-and-its-Link-to-Regional-Differences-in-the-Australian-Winegrowing-Industry/article.tex" "article.pdf" "article" 1700559066
+["pdflatex"] 1700610363 "/home/bryce/repositories/Grape-Quality-and-its-Link-to-Regional-Differences-in-the-Australian-Winegrowing-Industry/article.tex" "article.pdf" "article" 1700610364
   "/etc/texmf/web2c/texmf.cnf" 1680131742 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/bryce/repositories/Grape-Quality-and-its-Link-to-Regional-Differences-in-the-Australian-Winegrowing-Industry/article.tex" 1700559063 85807 48de9e656e16ccdba093b26f5fee58ee ""
+  "/home/bryce/repositories/Grape-Quality-and-its-Link-to-Regional-Differences-in-the-Australian-Winegrowing-Industry/article.tex" 1700610358 87257 9b912444c78ebc30c3ed7875c4165a40 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -90,10 +90,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1687229105 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1687229118 2799603 f7b038dc3e1cee64208f9cba5af2b0d2 ""
-  "article.aux" 1700559066 13017 68c7ab9ad4d36f955abd6dbe2d2f86cd "pdflatex"
-  "article.bbl" 1700559065 14018 4161fb0aee7ce02ad55f719a69833a32 "bibtex article"
-  "article.spl" 1700559065 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "article.tex" 1700559063 85807 48de9e656e16ccdba093b26f5fee58ee ""
+  "article.aux" 1700610364 13014 92cf5ce3c820593fa736f09cff716561 "pdflatex"
+  "article.bbl" 1700610363 14018 4161fb0aee7ce02ad55f719a69833a32 "bibtex article"
+  "article.spl" 1700610363 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "article.tex" 1700610358 87257 9b912444c78ebc30c3ed7875c4165a40 ""
   "elsarticle.cls" 1691036286 44541 9d3456c17502e6602b2ecf2b8f0736e0 ""
   "operating_costs.png" 1697368802 339084 fa6bd3cb4f29e2725dee44a4c84727df ""
   "profit.pdf" 1693441343 6523 5f102864fbc8f7cd37446975877e338a ""
