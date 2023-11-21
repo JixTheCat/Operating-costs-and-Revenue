@@ -13,6 +13,9 @@ for col in df.loc[:, df.dtypes == np.float64].columns:
     df.loc[df[col]<0, col] = np.nan
 df[df.loc[:, df.dtypes == np.float64].columns].min()
 
+#  We drop vineyards with incorrect area:
+df = df.drop(df[df["area_harvested"].isnull()].index)
+
 # we get the indices of those that made profit
 indices = df[
     (df["total_operating_costs"]>0) & (df["total_operating_costs"]>0)].index
