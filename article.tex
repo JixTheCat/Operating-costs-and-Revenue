@@ -160,7 +160,7 @@ An unprecedented amount of data regarding the Australian winegrowing industry ha
 % # 
 % # Importantly this cubic root relationship exists between operational costs and gross margin, which is worth noting. However we want to know what tips it either side of them being equal as that shows that a vineyard is profitable!!
 
-\subsection{Data}
+\subsection{Data}\label{Data}
 % 6049 samples - total
 % 58 regions
 % 10 years
@@ -201,14 +201,13 @@ Data used in this analysis were obtained from Sustainable Winegrowing Australia.
   Operating Costs & AUD & 853 & & \\ \bottomrule
   \end{tabular}
 \end{table}
-% FIXME: Add supplementary tables of all classes and another table of the summary statistics of continuous variables. Refer to this table to help with the paragraphs about one-hot encoding. A quick definition of one-hot encoding will also help!
-The data originally contained only two multiclass variables: year and region. Variables that measured the same metric from different sources (such as water collected from rivers versus water from dams) were converted into multiclass variables representing the source through one-hot-encoding. Changing each variable class into a binary value, with one indicating the presence of the class and zero indicating its absence. Occurrences of multiple sources were defined as their own separate classes. Where a class variable had a recorded amount the total amount used from these variables was retained as a separate variable; for example water used (in Mega Litres ) was also included alongside water source.
+The data originally contained only two multiclass variables: year and region. Related binary variables, such as the use of river water and the use of dam water, were combined to create a single multiclass variable. This was done by first converting each combination that occurred into a unique category (such as river and damn water used, as opposed to the two separate categories prior). These variables were then one-hot-encoded, changing each variable class into a binary value, with one indicating the presence of the class and zero indicating its absence. Further details about classes and their frequency is available in the appendices.
 \par
 The variable region represented one of the 65 Geographical Indicator Regions (GI Region) used to describe different unique localised traits of vineyards across Australia \citep{hallidayAustralianWineEncyclopedia2009,oliverReviewSoilPhysical2013,soarClimateDriversRed2008}. Each region is explicitly defined under the Wine Australia Corporation Act of 1980 \citep{attorney-generalsdepartmentWineAustraliaCorporation2010}.
 \par
 
 \subsection{XGBoosted Trees}
-XGBoosted (eXtreme Gradient Boosting) trees, described in more detail below,  were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. XGBoosted trees are a boosted tree ensemble method that can be used to classify classes, or predict continuous response variables. They were chosen for this analysis as the data contained a mixture of class and continuous variables. Moreover, XGBoosted trees are unaffected by multicollinearity, and offer high predictive performance for a wide variety of purposes \citep{chenXGBoostScalableTree2016}.
+XGBoosted (eXtreme Gradient Boosting) trees, described in more detail below (and further in the appendix), were created using the XGBoost library \citep{chenXGBoostScalableTree2016} in the Python Programming language \citep{g.vanrossumPythonTutorialTechnical1995}. XGBoosted trees are a boosted tree ensemble method that can be used to classify classes, or predict continuous response variables. They were chosen for this analysis as the data contained a mixture of class and continuous variables. Moreover, XGBoosted trees are unaffected by multicollinearity, and offer high predictive performance for a wide variety of purposes \citep{chenXGBoostScalableTree2016}.
 \par
 % FIXME: Make it clearer why you did this "Because the purpose of the analysis was to identify relationships between variables and since there was no single outcome variable of interest an XGBoosted tree was created for each variable using the other variables as predictors
 % FIXME: forward reference here "XGBoosted trees, described in more detail below...
@@ -217,14 +216,11 @@ XGBoosted (eXtreme Gradient Boosting) trees, described in more detail below,  we
 % Step 2: For each of the operating cost and revenue models, an analysis of the inter-relationships between the ten most important predictors based on the XGBoosted model.
 % Set 3: Analysis of profit (difference between...): etc
 % Then say that the results of the analyses in Set 3 were not considered further due to how crap they were.
-An XGBoosted tree was created for each variable to show how they interacted. Each tree included all variables except the economic variables (operating cost and revenue from grape sales), which were only included within their own trees as response variables. Separately profit (the difference between revenue and operational costs) was looked at in prior analyses (see appendix) but the results were not included due to low average loss values and model stability. This meant that every variable would have a measure of its importance to other variables (see Section \ref{sec:importance}), which was used to show the highly interrelated nature of variables within vineyards. The interaction between variables was illustrated using Sankey and Chord diagrams; with variable importance measures being used to show the strength of connection between the respective predictor variable and the response (see section \ref{sec:importance}).
+As the purpose of the analysis was to identify relationships between variables and to show how they interact, an XGBoosted tree was created for every variable. Each tree included all variables except the economic variables (operating cost and revenue from grape sales), which were only included within their own trees as response variables. Separately profit (the difference between revenue and operational costs) was looked at in prior analyses (see appendix) but the results were not included due to low average loss values and model stability. This meant that every variable would have a measure of its importance to other variables (see Section \ref{sec:importance}), which was used to show the highly interrelated nature of variables within vineyards. The interaction between variables was illustrated using Sankey and Chord diagrams; with variable importance measures being used to show the strength of connection between the respective predictor variable and the response (see section \ref{sec:importance}).
 \par
 % FIXME: We need a digestable description of XGBoost for readers of this article.
 \subsection{Variable Importance}\label{sec:importance}
-% FIXME: this section can be tightende/shortened a lot - moving some of the material into the supplementary section
-Due to XGBoost creating a large amount of decision trees, the interpretability of these models is obfuscated by the intricate relationships within complicated ensembles. A measure of variable importance was the technique used to highlight a variables influence within the ensemble. Variable importance can be measured in multiple ways; we used the frequency of a variable appearing as a node within the ensemble as a measure of its importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function. The measure of a variable's importance within this study can then be interpreted as how often a variable was the optimal choice in reducing the loss function of the ensemble. Importantly, multiclass variables being one-hot-encoded
-% FIXME: make sure one-hot-encoding is well defined and rephrase this so it makes more sense (possibly define it earlier as suggested in the data section.)
-are given an importance score for each individual class; for example, each specific region will have its own importance score.
+Due to XGBoost creating a large amount of decision trees, the interpretability of these models is obfuscated by the intricate relationships within complicated ensembles. A measure of variable importance was the technique used to highlight a variables influence within the ensemble. Variable importance can be measured in multiple ways; we used the frequency of a variable appearing as a node within the ensemble as a measure of its importance. This measure was chosen as it connected a variable to the minimisation of its associated objective function. The measure of a variable's importance within this study can then be interpreted as how often a variable was the optimal choice in reducing the loss function of the ensemble. Importantly, multiclass variables being one-hot-encoded (see Section \ref{Data}) are given an importance score for each individual class; for example, each specific region will have its own importance score.
 \par
 The Sankey and Chord diagrams were constructed using the Holoviews python library \citep{philipp_rudiger_2020_3904606}. Both Chord and Sankey diagrams illustrated variable importance through the size of the bands between two variables. The number at the end of a connection in a Sankey diagram indicates a variable's importance, or the number of times it appeared within the ensemble. Sankey and Chord  diagrams are presented together; with Sankey diagrams showing the connection of a variable to its ten most important predictor variables. Chord diagrams were used alongside a Sankey diagram to show the interconnectedness of the ten most prominent variables within its associated Sankey diagram. Chord diagrams formed circles, with variables being connected through their relative importance. The importance values for the Chord diagrams were taking from the models of those individual variables, with the diagram being simplified to just the ten variables in the associated Sankey diagram, for readability's sake.
 
@@ -245,9 +241,6 @@ The XGBoost library incorporates regularisation techniques built into the softwa
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The Australian wine-growing industry is a rich and diverse landscape that is separated into multiple Geographical Indicator Regions. Each region describing unique reputations, qualities and varietals of wine produced there. While a great deal has been done regarding individual regional properties and traits, there has been little statistical insight into broader regional comparisons; due to a lack of cross-regional and in-depth data sources \citep{keithjonesAustralianWineIndustry2002,knightFirmResourcesDevelopment2019}. In this study we use Classification Trees to compare regional differences and how these differences relate to sustainable practices. 
 % \newline
-% FIXME: The first result should be in the langauge of the question. In the original document the first result presented was region, implying that the question is: 'are regions different?' which is not the forefocus of the article. The results need to be rearranged to show grossmargin and operating costs as more significant variables as they are the curious factors that we do not understand.
-
-% FIXME: The irritating placement of the figures is due to the way latex uses the /ref function to determine where a figure should be. Have a google of this to overcome it as the figure placement is all over the shop.
 
 \subsection{Revenue}
 
@@ -334,8 +327,7 @@ The association between yield and region is demonstrated by its rank of fourth-h
 % The association with area and region is likely a connection to the change in land costs, with inland Australian areas (particularly of lower rainfall) being substantially cheaper to buy than coastal regions, allowing larger areas to be purchased \citep{willchancellorMeasuringAustralianBroadacre2019} % TODO: This section is commented out due to Mardi's take:
 %  Maybe but not sure this assumption holds. It may be an artefact of the members being corporate in larger holdings. The larger percentage of blocks in the riverland are small.
 \par
-Warmer regions are known to be beneficial in hastening the ripening process of winegrapes \citep{webbObservedTrendsWinegrape2011}. Warmer regions are also associated with lower quality grapes, caused largely due to this hastened ripening \citep{botting1996canopy}. In general warmer regions are not associated with higher yields, but if a vineyard in a warmer region is sufficiently irrigated much higher yields can be achieved than in cooler regions \citep{campsGrapeHarvestYield2012}. It is likely that the combination of larger vineyards with higher water use is a determining factor in classifying regions which favour larger production of grapes; reflected through region using water use so prominently in the XGBoost ensemble. The link to water resources in defining regions is also an important consideration, as vineyards can leverage higher irrigation rates given more accessible water resources. A further consideration in the link between revenue and region is that grape prices are set at a regional level by buyers \citep{wineaustraliaNationalVintageReport2022}. It is also important to consider that some regions carry particular fame regarding the quality of their produce such as Tasmania, the Hunter Valley and Barossa Valley \citep{hallidayAustralianWineEncyclopedia2009}. This classification can be contrasted with other warmer regions of higher rainfall that use the warmer climate to concentrate their grapes, increasing the flavour profile (and thus quality) \citep{goodwinijeriepRegulatedDeficitIrrigation1992,mgmccarthyEffectCropLoad1986}. 
-% This is possibly the connection between the presence of the Hunter Valley within the XGBoost ensemble that determined profit (see Figure \ref{fig:profit_sankey}). With this connection reflecting the restriction of possible strategies employable by winegrowers between different regions. % FIXME:  No this is because the hunter valley/tasmania get paid more / tonne.
+Warmer regions are known to be beneficial in hastening the ripening process of winegrapes \citep{webbObservedTrendsWinegrape2011}. Warmer regions are also associated with lower quality grapes, caused largely due to this hastened ripening \citep{botting1996canopy}. In general warmer regions are not associated with higher yields, but if a vineyard in a warmer region is sufficiently irrigated much higher yields can be achieved than in cooler regions \citep{campsGrapeHarvestYield2012}. It is likely that the combination of larger vineyards with higher water use is a determining factor in classifying regions which favour larger production of grapes; reflected through region using water use so prominently in the XGBoost ensemble. The link to water resources in defining regions is also an important consideration, as vineyards can leverage higher irrigation rates given more accessible water resources. A further consideration in the link between revenue and region is that grape prices are set at a regional level by buyers \citep{wineaustraliaNationalVintageReport2022}. It is also important to consider that some regions carry particular fame regarding the quality of their produce such as Tasmania, the Hunter Valley and Barossa Valley \citep{hallidayAustralianWineEncyclopedia2009}. This classification can be contrasted with other warmer regions of higher rainfall that use the warmer climate to concentrate their grapes, increasing the flavour profile (and thus quality) \citep{goodwinijeriepRegulatedDeficitIrrigation1992,mgmccarthyEffectCropLoad1986}.
 \par
 In part some winegrowing strategies are restricted simply through access to water resources, being reflected through the region classification tree (see Figure \ref{fig:region_tree}). Regions are likely to have varying access to different water sources, such as those along the River Murray being able to utilise river water for crops, unlike most coastal regions which may be drawing from surface or underground water sources. Similarly, the connection between region and fuel use is likely an indicator of the level of infrastructure within the region because vineyards in regions without pressurised water will need to use more fuel to pressurise their irrigation systems.
 \par
@@ -353,11 +345,6 @@ The reasoning for any particular decision can be widely varying.
 % A more granular definition of region may help to better discern the differences in practices, and the reason for employing them. 
 More sophisticated models, specifically those that utilise expert opinion, may also help to capture and address the decision-making process. An example is the optimisation of fungicide sprays using Bayesian models that forecast disease risk \citep{luDiseaseRiskForecasting2020}. 
 \par
-% Although less important in the XGBoost ensembles for profit, the variables: cover crops, and number of fungicide spraying and slashing passes are likely linked to broad environmental properties of regions (see Figure \ref{fig:region_sankey} and \ref{fig:profit_sankey}). Rainfall being related to vine fungal growth, disease and weed pressure. With cover crops being an effective and sustainable method to alleviate these issues \citep{delpuechAdaptingCoverCrop2018}. % FIXME: Re-structure this sentance.
-
-
-
-
 % It is reasonable that regions, being subjected to different rainfalls and temperatures, would require different amounts of water, and would have access to different water sources. The relation of area harvested and fuel (particularly petrol) is prominent with other predictors. Due to the wide variety of uses of petrol and diesel. It is likely that fuel use is representative of other activities within the vineyard, such as pruning and harvesting. Predictors such as yield and area being highly interconnected to fuel are likely reflective of fuel required to  as they likely operate as proxy variables to other factors, possibly other present variables.
 
 % In particular There is the potential that the types of herbicides used also have a long term effect on crops, reducing the presence of microorganisms and soil health, making the area more prone to disease in the long run, becoming dependent on these sprays (Coll et al., 2011; Gosling and Shepherd, 2005).
@@ -557,9 +544,9 @@ This study has provided valuable insights into the multifaceted dynamics governi
 %% appendix sections are then done as normal sections
  \appendix
 
- \section{Variable summaries}
+ \section{Continuous variables}
 
-The Table \ref{cont_summary} below shows the ranges of each of the continuous variables:
+The Table below shows the ranges of each of the continuous variables:
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[]
@@ -585,7 +572,9 @@ The Table \ref{cont_summary} below shows the ranges of each of the continuous va
   \end{tabular}
   \end{table}
 
-  \section{water types}
+  \section{Categorical variables}\ref{app: cat_var}
+  The tables below describe each possible class a multiclass variable could have taken and the frequency that it occured.
+  \subsection{water types}
   % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[]
@@ -667,7 +656,7 @@ The Table \ref{cont_summary} below shows the ranges of each of the continuous va
   \end{tabular}
   \end{table}
 
-\section{cover crop types}
+\subsection{cover crop types}
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[]
@@ -709,7 +698,7 @@ The Table \ref{cont_summary} below shows the ranges of each of the continuous va
   \end{tabular}
   \end{table}
 
-\section{irrigation type}
+\subsection{irrigation type}
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
@@ -740,7 +729,7 @@ The Table \ref{cont_summary} below shows the ranges of each of the continuous va
   \end{tabular}
   \end{table}
 
-  \section{irrigation energy type}
+  \subsection{irrigation energy type}
 
   % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
@@ -768,7 +757,7 @@ The Table \ref{cont_summary} below shows the ranges of each of the continuous va
   \end{table}
 
 
-  \section{year}
+  \subsection{year}
   % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[]
@@ -788,7 +777,7 @@ The Table \ref{cont_summary} below shows the ranges of each of the continuous va
   \end{tabular}
   \end{table}
 
-\section{giregion}
+\subsection{giregion}
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[]
