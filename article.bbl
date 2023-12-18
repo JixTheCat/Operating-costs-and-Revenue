@@ -1,4 +1,4 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{29}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -68,16 +68,6 @@
   Experiences from the scikit-learn project}, in: \bibinfo{booktitle}{{{ECML
   PKDD}} Workshop: {{Languages}} for Data Mining and Machine Learning}, pp.
   \bibinfo{pages}{108--122}.
-%Type = Article
-\bibitem[{Camps and Ramos(2012)}]{campsGrapeHarvestYield2012}
-\bibinfo{author}{Camps, J.O.}, \bibinfo{author}{Ramos, M.C.},
-  \bibinfo{year}{2012}.
-\newblock \bibinfo{title}{Grape harvest and yield responses to inter-annual
-  changes in temperature and precipitation in an area of north-east {{Spain}}
-  with a {{Mediterranean}} climate}.
-\newblock \bibinfo{journal}{International Journal of Biometeorology}
-  \bibinfo{volume}{56}, \bibinfo{pages}{853--64}.
-\newblock \DOIprefix\doi{10.1007/s00484-011-0489-3}.
 %Type = Article
 \bibitem[{Capello et~al.(2020)Capello, Biddoccu and
   Cavallo}]{capelloPermanentCoverSoil2020}
