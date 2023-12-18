@@ -177,38 +177,41 @@ Data used in this analysis were obtained from Sustainable Winegrowing Australia 
 \par
 \begin{table}[] 
  \label{tab:vars}
- \caption{Summary of variables used in the analysis. The recorded column indicate the number of values that were either greater than zero or that were not missing.}\label{tab:summary}
+ \caption{Summary of variables used in the analysis. The recorded column indicate the number of values that were either greater than zero or that were not missing (see Appendix for more information).}\label{tab:summary}
  \small
- \begin{tabular}{@{}ccccl@{}}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+  \begin{tabular}{@{}lccc@{}}
   \toprule
-  \textbf{Variable} & \textbf{Units} & \textbf{Recorded} & \textbf{Number of Classes} & \\ \midrule
-  Water Used & Mega Litres & 5846 & & \\
-  Diesel & Litres & 5585 & & \\
-  Biodiesel & Litres & 25 & & \\
-  LPG & Litres & 958 & & \\
-  Herbicide Spray & Times per year & 2026 & & \\
-  Year & Class & 6049 & 10 & \\
-  Disease & Class & 6049 & 2 & \\
-  Region & Class & 6049 & 58 & \\
-  Solar & Kilowatt Hours & 622 & & \\
-  Irrigation Type & Class & 6049 & 20 & \\
-  Petrol & Litres & 4309 & & \\
-  Slashing & Times per year & 2290 & & \\
-  Yield & Tonnes & 5935 & & \\
-  Irrigation Energy & Class & 6049 & 16 & \\
-  Area Harvested & Hectares & 6049 & & \\
-  Electricity & Kilowatt Hours & 1014 & & \\
-  Insecticide Spray & Times per year & 1092 & & \\
-  Fertiliser & KGs of Nitrogen & 795 & & \\
-  Fungicide Spray & Times per year & 2260 & & \\
-  Cover Crop & Class & 6049 & 32 & \\
-  Water Type & Class & 6049 & 39 & \\
-  Grape Revenue & AUD & 853 & & \\
-  Operating Costs & AUD & 853 & & \\ \bottomrule
+  \textbf{Variable} & \textbf{Units} & \textbf{Number of Classes} & \textbf{No. Records} \\ \midrule
+  Water Used & Mega Litres &  & 5846 \\
+  Diesel & Litres &  & 5585 \\
+  Biodiesel & Litres &  & 25 \\
+  LPG & Litres &  & 958 \\
+  Herbicide Spray & No. Times per year &  & 2026 \\
+  Year & Class & 10 & 6049 \\
+  Disease & Class & 2 & 6049 \\
+  Region & Class & 58 & 6049 \\
+  Solar & Kilowatt Hours &  & 622 \\
+  Irrigation Type & Class & 20 & 6049 \\
+  Petrol & Litres &  & 4309 \\
+  Slashing & No. Times per year &  & 2290 \\
+  Yield & Tonnes &  & 5935 \\
+  Irrigation Energy & Class & 16 & 6049 \\
+  Area Harvested & Hectares &  & 6049 \\
+  Electricity & Kilowatt Hours &  & 1014 \\
+  Insecticide Spray & No. Times per year &  & 1092 \\
+  Fertiliser & KGs of Nitrogen &  & 795 \\
+  Fungicide Spray & Times per year &  & 2260 \\
+  Cover Crop & Class & 32 & 6049 \\
+  Water Type/Source & Class & 39 & 6049 \\
+  Grape Revenue & AUD &  & 853 \\
+  Operating Costs & AUD &  & 853 \\ \bottomrule
   \end{tabular}
-\end{table}
+  \end{table}
 \normalsize
-The data originally contained only two multiclass variables: year and region. For this case study, related binary variables, such as the use of river water and the use of dam water, were combined to create multiclass variables such as water source. Further details about these variables, their classes and their frequency is available in the Appendix.
+The data originally contained only two multiclass variables: year and region. For this case study, related binary variables, such as the use of river water and the use of dam water, were combined to create multiclass variables such as water source/type. Further details about these variables, their classes and their frequency is available in the Appendix.
 \par
 The variable Region represented one of the 65 Geographical Indicator Regions (GI Region) used to describe unique localised traits of vineyards across Australia \citep{hallidayAustralianWineEncyclopedia2009,oliverReviewSoilPhysical2013,soarClimateDriversRed2008}. Each region is explicitly defined under the Wine Australia Corporation Act of 1980 \citep{attorney-generalsdepartmentWineAustraliaCorporation2010}.
 \par
@@ -281,7 +284,7 @@ Again, Region played a determining factor overall, contributing to 334 nodes wit
 \begin{figure}[htb]
   \resizebox{\textwidth}{!}{
   \includegraphics{operating_costs.png}}
-  \caption{The left-hand side, A,  depicts the 10 most important variables in predicting Operating Costs using XGBoost as a measure of node occurrence, using a Sankey diagram. The number at the end of each band in the diagram is that variable's importance. The right-hand side, B, depicts the importance of the 10 variables in Sankey diagram relative to one another.}\label{fig:operating_costs_sankey}
+  \caption{The left-hand side, A,  depicts the 10 most relative  important variables in predicting Operating Costs using XGBoost as a measure of node occurrence, using a Sankey diagram. The number at the end of each band in the diagram is that variable's importance. The right-hand side, B, depicts the importance of the 10 variables in Sankey diagram relative to one another.}\label{fig:operating_costs_sankey}
  \end{figure}
 
 
@@ -307,7 +310,7 @@ A number of regions had lower reporting rates, resulting in much poorer classifi
 \begin{figure}[htb]
   \resizebox{\textwidth}{!}{
   \includegraphics{region.png}}
-  \caption{The left-hand side, A,  depicts the 10 most important variables in predicting Region using XGBoost as a measure of node occurrence, using a Sankey diagram. The number at the end of each band in the diagram is that variable's importance. The right-hand side, B, depicts the importance of the 10 variables in Sankey diagram relative to one another.}\label{fig:region_sankey}
+  \caption{The left-hand side, A,  depicts the 10 most relative important variables in predicting Region using XGBoost as a measure of node occurrence, using a Sankey diagram. The number at the end of each band in the diagram is that variable's importance. The right-hand side, B, depicts the importance of the 10 variables in Sankey diagram relative to one another.}\label{fig:region_sankey}
  \end{figure}
 \section{Discussion}
 
@@ -980,7 +983,7 @@ The loss functions used for this analysis were the root-mean-square function for
  \begin{figure}
   \resizebox{\textwidth}{!}{
   \includegraphics{year.png}}
-  \caption{The left-hand side depicts the 10 most important variables in predicting Year using XGBoost as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:year_sankey}
+  \caption{The left-hand side depicts the 10 most relative important variables in predicting Year using XGBoost as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:year_sankey}
  \end{figure}
 
  \subsection{Profit}
@@ -994,7 +997,7 @@ The loss functions used for this analysis were the root-mean-square function for
  \begin{figure}
   \resizebox{\textwidth}{!}{
   \includegraphics{profit.png}}
-  \caption{The left-hand side depicts the 10 most important variables in predicting revenue using XGBoost as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:profit}
+  \caption{The left-hand side depicts the 10 most relative important variables in predicting revenue using XGBoost as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:profit}
  \end{figure}
 
 Predictions of profit perfomed poorly compared to operating cost and revenue with an average $R^2$ of 0.2535 and standard deviation of 0.3126. With the large standard deviation being indicative of how unstable the models created were.
