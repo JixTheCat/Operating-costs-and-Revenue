@@ -1,6 +1,17 @@
 
 \documentclass[review,12pt,authoryear]{elsarticle}
 
+\let\today\relax
+\makeatletter
+\def\ps@pprintTitle{%
+    \let\@oddhead\@empty
+    \let\@evenhead\@empty
+    \def\@oddfoot{\footnotesize\itshape
+         {Submitted preprint to Journal of Agricultural and Food Research} \hfill\today}%
+    \let\@evenfoot\@oddfoot
+    }
+\makeatother
+
 %% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
 %% The amsthm package provides extended theorem environments
@@ -26,7 +37,6 @@
 \begin{document}
 \begin{linenumbers}
 \begin{frontmatter}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%       Start Matter      %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,8 +107,8 @@
 % postcode={},
 % state={Vic},
 % country={}}
-\author[label1,label2,label3]{Author}
-\date{02/08/2023}
+% \author[label1,label2,label3]{Author}
+% \date{02/08/2023}
 
 \begin{abstract}
 
@@ -127,6 +137,7 @@
 %  \item Highlight 3
 %  \item Highlight 4
 % \end{highlights}
+% \fntext[fn1]{This is the first author footnote.}
 \end{frontmatter}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -541,7 +552,7 @@ This study has provided valuable insights into the multifaceted dynamics governi
 Table \ref{tab:cont_vars} below shows the ranges of each of the continuous variables:
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
-\begin{table}[]
+\begin{table}[htb]
   \caption{Summary statistics of continuous variables used in XGBoost models.}\label{tab:cont_vars}
   \resizebox{\textwidth}{!}{\begin{tabular}{@{}lllllllll@{}}
   \toprule
@@ -973,13 +984,13 @@ The loss functions used for this analysis were the root-mean-square function for
  \par
  Over half of the interrelated importance of the predictor variables is dominated by area harvested, yield and slashing passes. Although all the predictor variables are highly connected, their relative importance is not as prominent as the three major variables. It is of particular note of the relative importance of slashing passes to area, fuel and yield; as these are not directly related activities. The connection between the number of slashing and spraying passes is that those who do a set number of spraying or slashing passes tended to do that many passes for all slashing and spraying activities.
  
- \begin{figure}
+ \begin{figure}[htb]
   \resizebox{\textwidth}{!}{
   \includegraphics{year.pdf}}
   \caption{Decision tree predicting Year. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:year_tree}
  \end{figure}
  
- \begin{figure}
+\begin{figure}[htb]
   \resizebox{\textwidth}{!}{
   \includegraphics{year.png}}
   \caption{The left-hand side depicts the 10 most relative important variables in predicting Year using XGBoost as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:year_sankey}
@@ -987,19 +998,19 @@ The loss functions used for this analysis were the root-mean-square function for
 
  \subsection{Profit}
 
-\begin{figure} 
+ \begin{figure}[htb]
   \resizebox{\textwidth}{!}{
   \includegraphics{profit.pdf}}
   \caption{Decision tree predicting revenue. Each node indicates the class predicted, and the proportion of elements agreeing with nodes partitioning, with the left direction indicating a yes to the nodes rule.}\label{fig:revenue_tree}
  \end{figure}
  
- \begin{figure}
+\begin{figure}[htb]
   \resizebox{\textwidth}{!}{
   \includegraphics{profit.png}}
   \caption{The left-hand side depicts the 10 most relative important variables in predicting revenue using XGBoost as a measure of node occurrence, using a Sankey diagram. The right-hand side depicts the interrelated importance of the ten predictor variables using a chord diagram.}\label{fig:profit}
  \end{figure}
 
-Predictions of profit perfomed poorly compared to operating cost and revenue with an average $R^2$ of 0.2535 and standard deviation of 0.3126. With the large standard deviation being indicative of how unstable the models created were.
+Predictions of profit performed poorly compared to operating cost and revenue with an average $R^2$ of 0.2535 and standard deviation of 0.3126. With the large standard deviation being indicative of how unstable the models created were.
 
 \end{linenumbers}
  \end{document}

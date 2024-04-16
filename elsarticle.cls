@@ -28,8 +28,8 @@
  \def\RCSversion{3.3}%
  \def\RCSdate{2020/11/20}%
  \def\@shortjnl{\relax}
- \def\@journal{Elsevier Ltd}
- \def\@company{Elsevier Ltd}
+ \def\@journal{Economic Geogrpahy}
+ \def\@company{Economic Geogrpahy}
  \def\@issn{000-0000}
  \def\@shortjid{elsarticle}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
