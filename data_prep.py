@@ -6,9 +6,9 @@ df = pd.read_feather("df.feather")
 
 #  We disallow errors in the dataset:
 # The first is tractor passes as fractions (the field is meant to be integer only)
-df.loc[df["herbicide_spraying_number_of_times_passes_per_year"]<1, "herbicide_spraying_number_of_times_passes_per_year"] = 0
-df.loc[df["insecticide_spraying_number_of_times_passes_per_year"]<1, "insecticide_spraying_number_of_times_passes_per_year"] = 0
-df.loc[df["herbicide_spraying_number_of_times_passes_per_year"]<1, "herbicide_spraying_number_of_times_passes_per_year"] = 0
+df.drop(df[df["herbicide_spraying_number_of_times_passes_per_year"]<1].index)
+df.drop(df[df["insecticide_spraying_number_of_times_passes_per_year"]<1].index)
+df.drop(df[df["herbicide_spraying_number_of_times_passes_per_year"]<1].index)
 for col in df.loc[:, df.dtypes == np.float64].columns:
     df.loc[df[col]<0, col] = np.nan
 df[df.loc[:, df.dtypes == np.float64].columns].min()
