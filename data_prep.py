@@ -1,6 +1,13 @@
-from data import centre_scale, bin_col, mean_sale_price
+from data import bin_col, mean_sale_price
 import pandas as pd
 import numpy as np
+
+def add_regional_data(df):
+    """We add regional data regarding climate and elevation using a lookuptable in csv format."""
+    lookup_df = pd.read_csv('region_lookup.csv')
+    lookup_df = lookup_df.drop(['GI name', 'State'], axis=1)
+
+    return df.merge(lookup_df, on='giregion', how='left')
 
 df = pd.read_feather("df.feather")
 
@@ -106,11 +113,16 @@ df_int = df.select_dtypes(int)
 #df_floats = df_floats.apply(np.log)
 df_floats = df_floats.replace({np.inf: np.nan, -np.inf: np.nan})
 
+# We clear df.
+# df = None
+
 # We do not want to scale and centre things as we are using classification techniques. In particular these are partition techniques, and so the raw data is important.
 #df_floats = centre_scale(df_floats)
 
 # original df
-pd.concat([df_floats, df_o, df_int], axis=1).to_csv("df.csv")
+add_regional_data(
+    pd.concat([df_floats, df_o, df_int], axis=1)
+).to_csv("df.csv")
 
 # as a proportion
 cols_to_transform = [
@@ -147,25 +159,34 @@ df_floats["insecticide_spraying_number_of_times_passes_per_year"] = df["insectic
 
 # for col in cols_to_transform:
 #     df_floats[col] = df[col].div(df["area_harvested"], axis=0)*10000
-
-pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfp.csv")
+add_regional_data(
+    pd.concat([df_floats, df_o, df_int], axis=1)
+).to_csv("dfp.csv")
 
 # as binary flags
+dfb_floats = df_floats.copy()
 for col in cols_to_transform:
-    df_floats[col] = bin_col(df[col])
+    dfb_floats[col] = bin_col(df[col])
 
 # df_floats["total_tractor_passes"] = bin_col(df["total_tractor_passes"])
 # df_floats["slashing_number_of_times_passes_per_year"] = bin_col(df["slashing_number_of_times_passes_per_year"])
 # df_floats["fungicide_spraying_number_of_times_passes_per_year"] = bin_col(df["fungicide_spraying_number_of_times_passes_per_year"])
 # df_floats["herbicide_spraying_number_of_times_passes_per_year"] = bin_col(df["herbicide_spraying_number_of_times_passes_per_year"])
 # df_floats["insecticide_spraying_number_of_times_passes_per_year"] = bin_col(df["insecticide_spraying_number_of_times_passes_per_year"])
-
-pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfb.csv")
+add_regional_data(
+    pd.concat([df_floats, df_o, df_int], axis=1)
+    ).to_csv("dfb.csv")
 
 # We also create a set of data that is a ratio to area:
+for col in df_floats.columns:
+    print("{}: {}".format(col, df_floats[col].dtype))
+    
 
 area = df_floats["area_harvested"]
-df_floats = df_floats.div(df_floats["area_harvested"]*10000, axis=0)/10000
+# we multiply by 1000 to stop fractions when dividing.
+df_floats = df_floats.div(df_floats["area_harvested"], axis=0)/1000
 df_floats["area_harvested"] = area
 df_floats = df_floats.replace({np.inf: np.nan, -np.inf: np.nan})
-pd.concat([df_floats, df_o, df_int], axis=1).to_csv("dfa.csv")
+add_regional_data(
+    pd.concat([df_floats, df_o, df_int], axis=1)
+).to_csv("dfa.csv")
