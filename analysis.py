@@ -321,7 +321,7 @@ def train_model_multi(df: pd.DataFrame, y_name: str):
 
 ################################################################################
 # Setup
-df = pd.read_csv("dfb.csv")
+df = pd.read_csv("dfa.csv")
 
 cols = ["tonnes_grapes_harvested"
     , "area_harvested"
@@ -487,6 +487,19 @@ cat_cols = [ # These are binary
     , "giregion"
 ]
 
+# We can remove the region data if we want to - this was mostly for looking at predicting region...
+region_cols = [
+    "elev_Median"
+    , "elev_Max"
+    , "elev_Min ‡"
+    , "elev_Range"
+    , "rainfall_mean"
+    , "temperature_mean"
+    , "extreme_cold"
+    , "extreme_heat"
+    , "aridity"
+]
+
 # We comment out these unless we really need to redo every single variable. As they are not compared to the target variables at the end!
 # 
 # cols += cat_cols
@@ -516,8 +529,11 @@ cat_cols = [ # These are binary
 # train_model_reg(df[df["profit"].notnull()][cols+["profit"]]
 #         , "profit")
 
-train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"]]
-                , "total_operating_costs")
+# train_model_reg(df[df["total_operating_costs"]!=0][cols+["total_operating_costs"]]
+#                 , "total_operating_costs")
 
-train_model_reg(df[df["total_grape_revenue"]!=0][cols+["total_grape_revenue"]]
-                , "total_grape_revenue")
+# train_model_reg(df[df["total_grape_revenue"]!=0][cols+["total_grape_revenue"]]
+#                 , "total_grape_revenue")
+
+train_model_multi(df[cols].drop(columns=region_cols)
+                , "giregion")

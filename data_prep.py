@@ -16,12 +16,17 @@ df = pd.read_feather("df.feather")
 df.drop(df[df["herbicide_spraying_number_of_times_passes_per_year"]<1].index)
 df.drop(df[df["insecticide_spraying_number_of_times_passes_per_year"]<1].index)
 df.drop(df[df["herbicide_spraying_number_of_times_passes_per_year"]<1].index)
+#  We drop vineyards with no area >100m2:
+df = df.drop(df[df["area_harvested"] <= 0.01].index)
+df = df.drop(df[df["vineyard_area"] <= 0.01].index)
+
 for col in df.loc[:, df.dtypes == np.float64].columns:
     df.loc[df[col]<0, col] = np.nan
 df[df.loc[:, df.dtypes == np.float64].columns].min()
 
-#  We drop vineyards with incorrect area:
+# Some floats are so small we drop them if they are null just in case
 df = df.drop(df[df["area_harvested"].isnull()].index)
+
 
 # we get the indices of those that made profit
 indices = df[
@@ -184,7 +189,7 @@ for col in df_floats.columns:
 
 area = df_floats["area_harvested"]
 # we multiply by 1000 to stop fractions when dividing.
-df_floats = df_floats.div(df_floats["area_harvested"], axis=0)/1000
+df_floats = df_floats.div(df_floats["area_harvested"], axis=0)
 df_floats["area_harvested"] = area
 df_floats = df_floats.replace({np.inf: np.nan, -np.inf: np.nan})
 add_regional_data(
