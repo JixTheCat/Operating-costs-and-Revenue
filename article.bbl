@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{46}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -11,6 +11,18 @@
 \providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Abad et~al.(2021)Abad, {Hermoso de Mendoza}, Mar{\'i}n, Orcaray and
+  Santesteban}]{abadCoverCropsViticulture2021}
+\bibinfo{author}{Abad, J.}, \bibinfo{author}{{Hermoso de Mendoza}, I.},
+  \bibinfo{author}{Mar{\'i}n, D.}, \bibinfo{author}{Orcaray, L.},
+  \bibinfo{author}{Santesteban, L.G.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Cover {{Crops}} in {{Viticulture}}. {{A Systematic
+  Review}} (1): {$<$}br{$>$}{{Implications}} on {{Soil Characteristics}} and
+  {{Biodiversity}} in {{Vineyard}}}.
+\newblock \bibinfo{journal}{OENO One} \bibinfo{volume}{55},
+  \bibinfo{pages}{295--312}.
+\newblock \DOIprefix\doi{10.20870/oeno-one.2021.55.1.3599}.
 %Type = Article
 \bibitem[{Abbal et~al.(2016)Abbal, Sablayrolles, {Matzner-Lober}, Boursiquot,
   Baudrit and Carbonneau}]{abbalDecisionSupportSystem2016}
@@ -28,54 +40,51 @@
   Cavagnaro}]{agostaRegionalClimateVariability2012}
 \bibinfo{author}{Agosta, E.}, \bibinfo{author}{Canziani, P.},
   \bibinfo{author}{Cavagnaro, M.}, \bibinfo{year}{2012}.
-\newblock \bibinfo{title}{Regional climate variability impacts on the annual
-  grape yield in {{Mendoza}}, {{Argentina}}}.
+\newblock \bibinfo{title}{Regional {{Climate Variability Impacts}} on the
+  {{Annual Grape Yield}} in {{Mendoza}}, {{Argentina}}}.
 \newblock \bibinfo{journal}{Journal of Applied Meteorology and Climatology}
   \bibinfo{volume}{51}, \bibinfo{pages}{993--1009}.
+%Type = Misc
+\bibitem[{AIP(2019)}]{aipFactsPricesRegional2019}
+\bibinfo{author}{AIP}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Facts {{About Prices}} in {{Regional}} and {{Country
+  Areas}}}.
 %Type = Misc
 \bibitem[{{Attorney-General's
   Department}(2010)}]{attorney-generalsdepartmentWineAustraliaCorporation2010}
 \bibinfo{author}{{Attorney-General's Department}}, \bibinfo{year}{2010}.
 \newblock \bibinfo{title}{Wine {{Australia Corporation Act}} 1980}.
 %Type = Misc
-\bibitem[{Australia(2021a)}]{wineaustraliaAustralianWineProduction2021}
+\bibitem[{Australia(2021a)}]{australiaAustralianWineProduction2021}
 \bibinfo{author}{Australia, W.}, \bibinfo{year}{2021}a.
 \newblock \bibinfo{title}{Australian {{Wine}}: {{Production}}, {{Sales}} and
-  {{Inventory}} 2019\textendash 20}.
+  {{Inventory}} 2019-- 20}.
 %Type = Misc
-\bibitem[{Australia(2021b)}]{wineaustraliaWineAustraliaOpenData2021}
+\bibitem[{Australia(2021b)}]{australiaWineAustraliaOpenData2021}
 \bibinfo{author}{Australia, W.}, \bibinfo{year}{2021}b.
 \newblock \bibinfo{title}{Wine {{Australia-Open Data}}}.
 %Type = Article
-\bibitem[{Botting et~al.(1996)Botting, Dry and Iland}]{botting1996canopy}
+\bibitem[{Baiano(2021)}]{baianoOverviewSustainabilityWine2021}
+\bibinfo{author}{Baiano, A.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{An {{Overview}} on {{Sustainability}} in the {{Wine
+  Production Chain}}}.
+\newblock \bibinfo{journal}{Beverages} \bibinfo{volume}{7}.
+\newblock \DOIprefix\doi{10.3390/beverages7010015}.
+%Type = Article
+\bibitem[{Botting et~al.(1996)Botting, Dry and
+  Iland}]{bottingCanopyArchitectureImplicationsShiraz1996}
 \bibinfo{author}{Botting, D.}, \bibinfo{author}{Dry, P.},
   \bibinfo{author}{Iland, P.}, \bibinfo{year}{1996}.
-\newblock \bibinfo{title}{Canopy architecture-implications for {{Shiraz}} grown
-  in a hot, arid climate} .
-%Type = Inproceedings
-\bibitem[{Buitinck et~al.(2013)Buitinck, Louppe, Blondel, Pedregosa, Mueller,
-  Grisel, Niculae, Prettenhofer, Gramfort, Grobler, Layton, VanderPlas, Joly,
-  Holt and Varoquaux}]{sklearn_api}
-\bibinfo{author}{Buitinck, L.}, \bibinfo{author}{Louppe, G.},
-  \bibinfo{author}{Blondel, M.}, \bibinfo{author}{Pedregosa, F.},
-  \bibinfo{author}{Mueller, A.}, \bibinfo{author}{Grisel, O.},
-  \bibinfo{author}{Niculae, V.}, \bibinfo{author}{Prettenhofer, P.},
-  \bibinfo{author}{Gramfort, A.}, \bibinfo{author}{Grobler, J.},
-  \bibinfo{author}{Layton, R.}, \bibinfo{author}{VanderPlas, J.},
-  \bibinfo{author}{Joly, A.}, \bibinfo{author}{Holt, B.},
-  \bibinfo{author}{Varoquaux, G.}, \bibinfo{year}{2013}.
-\newblock \bibinfo{title}{{{API}} design for machine learning software:
-  Experiences from the scikit-learn project}, in: \bibinfo{booktitle}{{{ECML
-  PKDD}} Workshop: {{Languages}} for Data Mining and Machine Learning}, pp.
-  \bibinfo{pages}{108--122}.
+\newblock \bibinfo{title}{Canopy {{Architecture-Implications}} for {{Shiraz
+  Grown}} in a {{Hot}}, {{Arid Climate}}} .
 %Type = Article
 \bibitem[{Capello et~al.(2020)Capello, Biddoccu and
   Cavallo}]{capelloPermanentCoverSoil2020}
 \bibinfo{author}{Capello, G.}, \bibinfo{author}{Biddoccu, M.},
   \bibinfo{author}{Cavallo, E.}, \bibinfo{year}{2020}.
-\newblock \bibinfo{title}{Permanent cover for soil and water conservation in
-  mechanized vineyards: {{A}} study case in {{Piedmont}}, {{NW Italy}}}
-  \bibinfo{volume}{15}.
+\newblock \bibinfo{title}{Permanent {{Cover}} for {{Soil}} and {{Water
+  Conservation}} in {{Mechanized Vineyards}}: {{A Study Case}} in {{Piedmont}},
+  {{NW Italy}}} \bibinfo{volume}{15}.
 %Type = Article
 \bibitem[{Capello et~al.(2019)Capello, Biddoccu, Ferraris and
   Cavallo}]{capelloEffectsTractorPasses2019}
@@ -93,16 +102,40 @@
 \newblock \bibinfo{title}{{{XGBoost}}: {{A Scalable Tree Boosting System}}},
   in: \bibinfo{booktitle}{Proceedings of the 22nd {{ACM SIGKDD International
   Conference}} on {{Knowledge Discovery}} and {{Data Mining}}},
-  \bibinfo{publisher}{{ACM}}, \bibinfo{address}{{New York, NY, USA}}. pp.
+  \bibinfo{publisher}{ACM}, \bibinfo{address}{New York, NY, USA}. pp.
   \bibinfo{pages}{785--794}.
 \newblock \DOIprefix\doi{10.1145/2939672.2939785}.
+%Type = Inproceedings
+\bibitem[{Cortez et~al.(2009)Cortez, Teixeira, Cerdeira, Almeida, Matos and
+  Reis}]{cortezUsingDataMining2009}
+\bibinfo{author}{Cortez, P.}, \bibinfo{author}{Teixeira, J.},
+  \bibinfo{author}{Cerdeira, A.}, \bibinfo{author}{Almeida, F.},
+  \bibinfo{author}{Matos, T.}, \bibinfo{author}{Reis, J.},
+  \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Using {{Data Mining}} for {{Wine Quality
+  Assessment}}}, in: \bibinfo{booktitle}{Discovery {{Science}}: 12th
+  {{International Conference}}, {{DS}} 2009, {{Porto}}, {{Portugal}},
+  {{October}} 3-5, 2009 12}, \bibinfo{publisher}{Springer}. pp.
+  \bibinfo{pages}{66--79}.
+%Type = Inproceedings
+\bibitem[{{D. Mariadass} et~al.(2022){D. Mariadass}, {E. G. Moung}, {M. M.
+  Sufian} and {A. Farzamnia}}]{d.mariadassExtremeGradientBoosting2022}
+\bibinfo{author}{{D. Mariadass}}, \bibinfo{author}{{E. G. Moung}},
+  \bibinfo{author}{{M. M. Sufian}}, \bibinfo{author}{{A. Farzamnia}},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Extreme {{Gradient Boosting}} ({{XGBoost}})
+  {{Regressor}} and {{Shapley Additive Explanation}} for {{Crop Yield
+  Prediction}} in {{Agriculture}}}, in: \bibinfo{booktitle}{2022 12th
+  {{International Conference}} on {{Computer}} and {{Knowledge Engineering}}
+  ({{ICCKE}})}, pp. \bibinfo{pages}{219--224}.
+\newblock \DOIprefix\doi{10.1109/ICCKE57176.2022.9960069}.
 %Type = Article
 \bibitem[{Ferri et~al.(2009)Ferri, {Hern{\'a}ndez-Orallo} and
   Modroiu}]{ferriExperimentalComparisonPerformance2009}
 \bibinfo{author}{Ferri, C.}, \bibinfo{author}{{Hern{\'a}ndez-Orallo}, J.},
   \bibinfo{author}{Modroiu, R.}, \bibinfo{year}{2009}.
-\newblock \bibinfo{title}{An experimental comparison of performance measures
-  for classification}.
+\newblock \bibinfo{title}{An {{Experimental Comparison}} of {{Performance
+  Measures}} for {{Classification}}}.
 \newblock \bibinfo{journal}{Pattern Recognition Letters} \bibinfo{volume}{30},
   \bibinfo{pages}{27--38}.
 \newblock \DOIprefix\doi{10.1016/j.patrec.2008.08.010}.
@@ -111,28 +144,38 @@
   Santos}]{fragaMultivariateClusteringViticultural2017}
 \bibinfo{author}{Fraga, H.}, \bibinfo{author}{Costa, R.},
   \bibinfo{author}{Santos, J.A.}, \bibinfo{year}{2017}.
-\newblock \bibinfo{title}{Multivariate clustering of viticultural terroirs in
-  the {{Douro}} winemaking region}.
-\newblock \bibinfo{journal}{Ci\^encia T\'ec. Vitiv.} \bibinfo{volume}{32},
+\newblock \bibinfo{title}{Multivariate {{Clustering}} of {{Viticultural
+  Terroirs}} in the {{Douro Winemaking Region}}}.
+\newblock \bibinfo{journal}{Ci{\^e}ncia T{\'e}c. Vitiv.} \bibinfo{volume}{32},
   \bibinfo{pages}{142--153}.
 %Type = Misc
 \bibitem[{{G. van Rossum}(1995)}]{g.vanrossumPythonTutorialTechnical1995}
 \bibinfo{author}{{G. van Rossum}}, \bibinfo{year}{1995}.
-\newblock \bibinfo{title}{Python tutorial, {{Technical Report CS-R9526}}}.
-\newblock \bibinfo{howpublished}{Centrum voor Wiskunde en Informatica (CWI),}.
+\newblock \bibinfo{title}{Python {{Tutorial}}, {{Technical Report CS-R9526}}}.
 %Type = Article
 \bibitem[{{Goodwin I, Jerie
   P}(1992)}]{goodwinijeriepRegulatedDeficitIrrigation1992}
 \bibinfo{author}{{Goodwin I, Jerie P}}, \bibinfo{year}{1992}.
-\newblock \bibinfo{title}{Regulated deficit irrigation: Concept to practice.
-  {{Advances}} in vineyard irrigation.}
+\newblock \bibinfo{title}{Regulated {{Deficit Irrigation}}: {{Concept}} to
+  {{Practice}}. {{Advances}} in {{Vineyard Irrigation}}.}
 \newblock \bibinfo{journal}{Australian and New Zealand Wine Industry Journal}
   \bibinfo{volume}{7}.
+%Type = Article
+\bibitem[{Hall et~al.(2011)Hall, Lamb, Holzapfel and
+  Louis}]{hallSeasonTemporalVariation2011}
+\bibinfo{author}{Hall, A.}, \bibinfo{author}{Lamb, D.W.},
+  \bibinfo{author}{Holzapfel, B.P.}, \bibinfo{author}{Louis, J.P.},
+  \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Within-{{Season Temporal Variation}} in
+  {{Correlations}} between {{Vineyard Canopy}} and {{Winegrape Composition}}
+  and {{Yield}}}.
+\newblock \bibinfo{journal}{Precision Agriculture} \bibinfo{volume}{12},
+  \bibinfo{pages}{103--117}.
 %Type = Book
 \bibitem[{Halliday(2009)}]{hallidayAustralianWineEncyclopedia2009}
 \bibinfo{author}{Halliday, J.C.J.C.}, \bibinfo{year}{2009}.
 \newblock \bibinfo{title}{Australian {{Wine Encyclopedia}}.}
-\newblock \bibinfo{publisher}{{Hardie Grant Books}}, \bibinfo{address}{{VIC}}.
+\newblock \bibinfo{publisher}{Hardie Grant Books}, \bibinfo{address}{VIC}.
 %Type = Article
 \bibitem[{Hand and Till(2001)}]{handSimpleGeneralisationArea2001}
 \bibinfo{author}{Hand, D.J.}, \bibinfo{author}{Till, R.J.},
@@ -143,13 +186,72 @@
   \bibinfo{pages}{171--186}.
 \newblock \DOIprefix\doi{10.1023/A:1010920819831}.
 %Type = Article
-\bibitem[{Hanley and McNeil(1982)}]{hanley1982meaning}
+\bibitem[{Hanley and McNeil(1982)}]{hanleyMeaningUseArea1982}
 \bibinfo{author}{Hanley, J.A.}, \bibinfo{author}{McNeil, B.J.},
   \bibinfo{year}{1982}.
-\newblock \bibinfo{title}{The meaning and use of the area under a receiver
-  operating characteristic ({{ROC}}) curve.}
+\newblock \bibinfo{title}{The {{Meaning}} and {{Use}} of the {{Area}} under a
+  {{Receiver Operating Characteristic}} ({{ROC}}) {{Curve}}.}
 \newblock \bibinfo{journal}{Radiology} \bibinfo{volume}{143},
   \bibinfo{pages}{29--36}.
+%Type = Article
+\bibitem[{He et~al.(2022)He, Fang, Zhao, Wu, Fu, Li, Majeed and
+  Dhupia}]{heFruitYieldPrediction2022}
+\bibinfo{author}{He, L.}, \bibinfo{author}{Fang, W.}, \bibinfo{author}{Zhao,
+  G.}, \bibinfo{author}{Wu, Z.}, \bibinfo{author}{Fu, L.}, \bibinfo{author}{Li,
+  R.}, \bibinfo{author}{Majeed, Y.}, \bibinfo{author}{Dhupia, J.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Fruit {{Yield Prediction}} and {{Estimation}} in
+  {{Orchards}}: {{A State-of-the-Art Comprehensive Review}} for {{Both Direct}}
+  and {{Indirect Methods}}}.
+\newblock \bibinfo{journal}{Computers and Electronics in Agriculture}
+  \bibinfo{volume}{195}, \bibinfo{pages}{106812}.
+\newblock \DOIprefix\doi{10.1016/j.compag.2022.106812}.
+%Type = Article
+\bibitem[{Kasimati et~al.(2022)Kasimati, {Espejo-Garc{\'i}a}, Darra and
+  Fountas}]{kasimatiPredictingGrapeSugar2022}
+\bibinfo{author}{Kasimati, A.}, \bibinfo{author}{{Espejo-Garc{\'i}a}, B.},
+  \bibinfo{author}{Darra, N.}, \bibinfo{author}{Fountas, S.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Predicting {{Grape Sugar Content}} under {{Quality
+  Attributes Using Normalized Difference Vegetation Index Data}} and
+  {{Automated Machine Learning}}}.
+\newblock \bibinfo{journal}{Sensors} \bibinfo{volume}{22}.
+\newblock \DOIprefix\doi{10.3390/s22093249}.
+%Type = Article
+\bibitem[{Kisten et~al.(2024)Kisten, Ezugwu and
+  Olusanya}]{kistenExplainableArtificialIntelligence2024}
+\bibinfo{author}{Kisten, M.}, \bibinfo{author}{Ezugwu, A.},
+  \bibinfo{author}{Olusanya, M.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Explainable artificial intelligence model for
+  predictive maintenance in smart agricultural facilities}.
+\newblock \bibinfo{journal}{IEEE access : practical innovations, open
+  solutions} \bibinfo{volume}{12}, \bibinfo{pages}{1--20}.
+\newblock \DOIprefix\doi{10.1109/ACCESS.2024.3365586}.
+%Type = Article
+\bibitem[{Laurent et~al.(2021)Laurent, Oger, Taylor, Scholasch, Metay and
+  Tisseyre}]{laurentReviewIssuesMethods2021}
+\bibinfo{author}{Laurent, C.}, \bibinfo{author}{Oger, B.},
+  \bibinfo{author}{Taylor, J.A.}, \bibinfo{author}{Scholasch, T.},
+  \bibinfo{author}{Metay, A.}, \bibinfo{author}{Tisseyre, B.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{A {{Review}} of the {{Issues}}, {{Methods}} and
+  {{Perspectives}} for {{Yield Estimation}}, {{Prediction}} and {{Forecasting}}
+  in {{Viticulture}}}.
+\newblock \bibinfo{journal}{European Journal of Agronomy}
+  \bibinfo{volume}{130}, \bibinfo{pages}{126339}.
+\newblock \DOIprefix\doi{10.1016/j.eja.2021.126339}.
+%Type = Article
+\bibitem[{Li et~al.(2024)Li, Zeng, Zhang, Wu and
+  Qin}]{liGlobalDetrendingSignificantly2024}
+\bibinfo{author}{Li, Y.}, \bibinfo{author}{Zeng, H.}, \bibinfo{author}{Zhang,
+  M.}, \bibinfo{author}{Wu, B.}, \bibinfo{author}{Qin, X.},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Global de-trending significantly improves the
+  accuracy of {{XGBoost-based}} county-level maize and soybean yield prediction
+  in the {{Midwestern United States}}}.
+\newblock \bibinfo{journal}{GIScience \& Remote Sensing} \bibinfo{volume}{61},
+  \bibinfo{pages}{2349341}.
+\newblock \DOIprefix\doi{10.1080/15481603.2024.2349341}.
 %Type = Article
 \bibitem[{Lu et~al.(2020)Lu, Newlands, Carisse, Atkinson and
   Cannon}]{luDiseaseRiskForecasting2020}
@@ -157,26 +259,47 @@
   \bibinfo{author}{Carisse, O.}, \bibinfo{author}{Atkinson, D.E.},
   \bibinfo{author}{Cannon, A.J.}, \bibinfo{year}{2020}.
 \newblock \bibinfo{title}{Disease {{Risk Forecasting}} with {{Bayesian Learning
-  Networks}}: {{Application}} to {{Grape Powdery Mildew}} ({{Erysiphe}}
-  necator) in {{Vineyards}}}.
+  Networks}}: {{Application}} to {{Grape Powdery Mildew}} ({{Erysiphe
+  Necator}}) in {{Vineyards}}}.
 \newblock \bibinfo{journal}{Agronomy (Basel)} \bibinfo{volume}{10},
   \bibinfo{pages}{622}.
 \newblock \DOIprefix\doi{10.3390/agronomy10050622}.
 %Type = Misc
 \bibitem[{{Luke Mancini}(2020)}]{lukemanciniUnderstandingAustralianWine2020}
 \bibinfo{author}{{Luke Mancini}}, \bibinfo{year}{2020}.
-\newblock \bibinfo{title}{Understanding the {{Australian Wine Industry}}: A
-  growers guide to the background and participants of the wine grape industry}.
+\newblock \bibinfo{title}{Understanding the {{Australian Wine Industry}}: {{A
+  Growers Guide}} to the {{Background}} and {{Participants}} of the {{Wine
+  Grape Industry}}}.
+%Type = Article
+\bibitem[{Mariani and Vastola(2015)}]{marianiSustainableWinegrowingCurrent2015}
+\bibinfo{author}{Mariani, A.}, \bibinfo{author}{Vastola, A.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Sustainable {{Winegrowing}}: {{Current
+  Perspectives}}}.
+\newblock \bibinfo{journal}{International Journal of Wine Research}
+  \bibinfo{volume}{7}, \bibinfo{pages}{37--48}.
 %Type = Article
 \bibitem[{{MG McCarthy} et~al.(1986){MG McCarthy}, {RM Cirami} and {DG
   Furkaliev}}]{mgmccarthyEffectCropLoad1986}
 \bibinfo{author}{{MG McCarthy}}, \bibinfo{author}{{RM Cirami}},
   \bibinfo{author}{{DG Furkaliev}}, \bibinfo{year}{1986}.
-\newblock \bibinfo{title}{The effect of crop load and vegetative growth control
-  on wine quality.} .
+\newblock \bibinfo{title}{The {{Effect}} of {{Crop Load}} and {{Vegetative
+  Growth Control}} on {{Wine Quality}}.} .
+%Type = Article
+\bibitem[{{Montalvo-Falc{\'o}n} et~al.(2023){Montalvo-Falc{\'o}n},
+  {S{\'a}nchez-Garc{\'i}a}, {Marco-Lajara} and
+  {Mart{\'i}nez-Falc{\'o}}}]{montalvo-falconSustainabilityResearchWine2023}
+\bibinfo{author}{{Montalvo-Falc{\'o}n}, J.V.},
+  \bibinfo{author}{{S{\'a}nchez-Garc{\'i}a}, E.},
+  \bibinfo{author}{{Marco-Lajara}, B.},
+  \bibinfo{author}{{Mart{\'i}nez-Falc{\'o}}, J.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Sustainability {{Research}} in the {{Wine Industry}}:
+  {{A Bibliometric Approach}}}.
+\newblock \bibinfo{journal}{Agronomy} \bibinfo{volume}{13}.
+\newblock \DOIprefix\doi{10.3390/agronomy13030871}.
 %Type = Book
-\bibitem[{OECD(2019)}]{oecdInnovationProductivitySustainability2019}
-\bibinfo{author}{OECD}, \bibinfo{year}{2019}.
+\bibitem[{{OECD}(2019)}]{oecdInnovationProductivitySustainability2019}
+\bibinfo{author}{{OECD}}, \bibinfo{year}{2019}.
 \newblock \bibinfo{title}{Innovation, {{Productivity}} and {{Sustainability}}
   in {{Food}} and {{Agriculture}}}.
 %Type = Article
@@ -185,17 +308,25 @@
 \bibinfo{author}{Oliver, D.}, \bibinfo{author}{Bramley, R.},
   \bibinfo{author}{Riches, D.}, \bibinfo{author}{Porter, I.},
   \bibinfo{author}{Edwards, J.}, \bibinfo{year}{2013}.
-\newblock \bibinfo{title}{Review: Soil physical and chemical properties as
-  indicators of soil quality in {{Australian}} viticulture}.
+\newblock \bibinfo{title}{Review: {{Soil Physical}} and {{Chemical Properties}}
+  as {{Indicators}} of {{Soil Quality}} in {{Australian Viticulture}}}.
 \newblock \bibinfo{journal}{Australian Journal of Grape and Wine Research}
   \bibinfo{volume}{19}, \bibinfo{pages}{129--139}.
 \newblock \DOIprefix\doi{10.1111/ajgw.12016}.
+%Type = Article
+\bibitem[{Ravi and Baranidharan(2020)}]{raviCropYieldPrediction2020}
+\bibinfo{author}{Ravi, R.}, \bibinfo{author}{Baranidharan, D.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Crop yield prediction using {{XG}} boost algorithm}.
+\newblock \bibinfo{journal}{International Journal of Recent Technology and
+  Engineering (IJRTE)} \bibinfo{volume}{8}, \bibinfo{pages}{3516--3520}.
+\newblock \DOIprefix\doi{10.35940/ijrte.D9547.018520}.
 %Type = Misc
 \bibitem[{Rudiger et~al.(2020)Rudiger, Stevens, Bednar, Nijholt, {Andrew}, B,
   Randelhoff, Mease, Tenner, {maxalbert}, Kaiser, {ea42gh}, Samuels,
   {stonebig}, LB, Tolmie, Stephan, Lowe, Bampton, {henriqueribeiro}, Lustig,
   Signell, Bois, Talirz, Barth, Liquet, Rachum, Langer, {arabidopsis} and
-  {kbowen}}]{philipp_rudiger_2020_3904606}
+  {kbowen}}]{rudigerHolovizHoloviewsVersion2020}
 \bibinfo{author}{Rudiger, P.}, \bibinfo{author}{Stevens, J.L.},
   \bibinfo{author}{Bednar, J.A.}, \bibinfo{author}{Nijholt, B.},
   \bibinfo{author}{{Andrew}}, \bibinfo{author}{B, C.},
@@ -212,30 +343,36 @@
   \bibinfo{author}{Rachum, R.}, \bibinfo{author}{Langer, Y.},
   \bibinfo{author}{{arabidopsis}}, \bibinfo{author}{{kbowen}},
   \bibinfo{year}{2020}.
-\newblock \bibinfo{title}{Holoviz/holoviews: {{Version}} 1.13.3}.
-\newblock \bibinfo{howpublished}{Zenodo}.
+\newblock \bibinfo{title}{Holoviz/{{Holoviews}}: {{Version}} 1.13.3}.
 \newblock \DOIprefix\doi{10.5281/zenodo.3904606}.
 %Type = Article
 \bibitem[{SOAR et~al.(2008)SOAR, SADRAS and PETRIE}]{soarClimateDriversRed2008}
 \bibinfo{author}{SOAR, C.}, \bibinfo{author}{SADRAS, V.},
   \bibinfo{author}{PETRIE, P.}, \bibinfo{year}{2008}.
-\newblock \bibinfo{title}{Climate drivers of red wine quality in four
-  contrasting {{Australian}} wine regions}.
+\newblock \bibinfo{title}{Climate {{Drivers}} of {{Red Wine Quality}} in {{Four
+  Contrasting Australian Wine Regions}}}.
 \newblock \bibinfo{journal}{Australian journal of grape and wine research}
   \bibinfo{volume}{14}, \bibinfo{pages}{78--90}.
 \newblock \DOIprefix\doi{10.1111/j.1755-0238.2008.00011.x}.
+%Type = Article
+\bibitem[{Srivastava and
+  Sadistap(2018)}]{srivastavaNonDestructiveSensingMethods2018}
+\bibinfo{author}{Srivastava, S.}, \bibinfo{author}{Sadistap, S.},
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Non-{{Destructive Sensing Methods}} for {{Quality
+  Assessment}} of on-{{Tree Fruits}}: {{A Review}}}.
+\newblock \bibinfo{journal}{Journal of Food Measurement and Characterization}
+  \bibinfo{volume}{12}, \bibinfo{pages}{497--526}.
 %Type = Misc
 \bibitem[{SWA(2022)}]{swaSustainableWingrowingAustralia2022}
 \bibinfo{author}{SWA, S.W.A.}, \bibinfo{year}{2022}.
 \newblock \bibinfo{title}{Sustainable {{Wingrowing Australia}}}.
-\newblock
-  \bibinfo{howpublished}{https://sustainablewinegrowing.com.au/case-studies/}.
 %Type = Article
 \bibitem[{Webb et~al.(2011)Webb, Whetton and
   Barlow}]{webbObservedTrendsWinegrape2011}
 \bibinfo{author}{Webb, L.B.}, \bibinfo{author}{Whetton, P.H.},
   \bibinfo{author}{Barlow, E.W.R.}, \bibinfo{year}{2011}.
-\newblock \bibinfo{title}{Observed trends in winegrape maturity in
+\newblock \bibinfo{title}{Observed {{Trends}} in {{Winegrape Maturity}} in
   {{Australia}}}.
 \newblock \bibinfo{journal}{Global change biology} \bibinfo{volume}{17},
   \bibinfo{pages}{2707--2719}.
@@ -252,5 +389,35 @@
 \bibitem[{{Wine Australia}(2022)}]{wineaustraliaNationalVintageReport2022}
 \bibinfo{author}{{Wine Australia}}, \bibinfo{year}{2022}.
 \newblock \bibinfo{title}{National {{Vintage Report}} 2022} .
+%Type = Article
+\bibitem[{Yu and Silva(2017)}]{7536189}
+\bibinfo{author}{Yu, B.}, \bibinfo{author}{Silva, C.T.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{{{VisFlow}} - web-based visualization framework for
+  tabular data with a subset flow model}.
+\newblock \bibinfo{journal}{IEEE Transactions on Visualization and Computer
+  Graphics} \bibinfo{volume}{23}, \bibinfo{pages}{251--260}.
+\newblock \DOIprefix\doi{10.1109/TVCG.2016.2598497}.
+%Type = Article
+\bibitem[{Yuanchao~Li and Qin(2024)}]{doi:10.1080/15481603.2024.2349341}
+\bibinfo{author}{Yuanchao~Li, Hongwei~Zeng, M.Z.}, \bibinfo{author}{Qin, X.},
+  \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Global de-trending significantly improves the
+  accuracy of {{XGBoost-based}} county-level maize and soybean yield prediction
+  in the {{Midwestern United States}}}.
+\newblock \bibinfo{journal}{GIScience \& Remote Sensing} \bibinfo{volume}{61},
+  \bibinfo{pages}{2349341}.
+\newblock \DOIprefix\doi{10.1080/15481603.2024.2349341},
+  \href{http://arxiv.org/abs/https://doi.org/10.1080/15481603.2024.2349341}{{\tt
+  arXiv:https://doi.org/10.1080/15481603.2024.2349341}}.
+%Type = Article
+\bibitem[{Zhang et~al.(2023)Zhang, Zhu, Wu, Wu, Zhang and Hu}]{ZHANG2023104045}
+\bibinfo{author}{Zhang, T.}, \bibinfo{author}{Zhu, W.}, \bibinfo{author}{Wu,
+  Y.}, \bibinfo{author}{Wu, Z.}, \bibinfo{author}{Zhang, C.},
+  \bibinfo{author}{Hu, X.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{An explainable financial risk early warning model
+  based on the {{DS-XGBoost}} model}.
+\newblock \bibinfo{journal}{Finance Research Letters} \bibinfo{volume}{56},
+  \bibinfo{pages}{104045}.
+\newblock \DOIprefix\doi{10.1016/j.frl.2023.104045}.
 
 \end{thebibliography}
