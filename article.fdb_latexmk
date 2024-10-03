@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex article"] 1727845745.29189 "article.aux" "article.bbl" "article" 1727846443.52029 0
+["bibtex article"] 1727929859.16047 "article.aux" "article.bbl" "article" 1727929863.57327 0
   "./elsarticle-harv.bst" 1724652393 31600 8c0c5833f37bea3ec214cf315a72975d ""
   "./references.bib" 1727823209 346388 715706b2bb8b0d95a64f3ec4099bf8ac ""
-  "article.aux" 1727846442 15985 2cde80837b4ef3643ceaa062b4d3abb4 "pdflatex"
+  "article.aux" 1727929862 18400 d02463bbd3f6c429ab27dfa12d6e7853 "pdflatex"
   (generated)
   "article.bbl"
   "article.blg"
   (rewritten before read)
-["pdflatex"] 1727846441.46235 "c:/Users/bryce/repositories/Operating-costs-and-Revenue/article.tex" "article.pdf" "article" 1727846443.5208 0
-  "C:/Users/bryce/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1725246698 82507 a9eef8696c92627b87e9975edea03b2a ""
+["pdflatex"] 1727929859.97536 "c:/Users/bryce/repositories/Operating-costs-and-Revenue/article.tex" "article.pdf" "article" 1727929863.57401 0
+  "C:/Users/bryce/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1727928479 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/bryce/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725235909 24265373 2cb3e9f9aba68d8de1bbe0959379423c ""
   "C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -91,17 +91,19 @@
   "C:/Users/bryce/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty" 1718356376 15033 652f156c2f139501300900190cae68c4 ""
   "C:/Users/bryce/AppData/Local/Programs/MiKTeX/tex/latex/varwidth/varwidth.sty" 1238469540 10894 d359a13923460b2a73d4312d613554c8 ""
   "C:/Users/bryce/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "article.aux" 1727846442 15985 2cde80837b4ef3643ceaa062b4d3abb4 "pdflatex"
-  "article.bbl" 1727845745 22823 b0e70a9e3ca3a62fdef800135e487ea2 "bibtex article"
-  "article.spl" 1727846441 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "article.tex" 1727846438 66868 c45f33f8c46665f320c9787f4d7a9c7d ""
-  "c:/Users/bryce/repositories/Operating-costs-and-Revenue/article.tex" 1727846438 66868 c45f33f8c46665f320c9787f4d7a9c7d ""
+  "article.aux" 1727929862 18400 d02463bbd3f6c429ab27dfa12d6e7853 "pdflatex"
+  "article.bbl" 1727929859 24371 ea68eade5a0a1ebb8ed52cb3ac1248b2 "bibtex article"
+  "article.spl" 1727929860 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "article.tex" 1727929849 69156 2a1539798363fe2e42d31fea8a130f0c ""
+  "c:/Users/bryce/repositories/Operating-costs-and-Revenue/article.tex" 1727929849 69156 2a1539798363fe2e42d31fea8a130f0c ""
   "elsarticle.cls" 1724652393 45932 c45eb9ed27076026ba6bea863de046a8 ""
   "operating_costs.png" 1724652393 339084 decdeb27e06eb0781167879835db5a3a ""
+  "operating_costs_extra.png" 1727921656 310901 bc19845155d11ffcef4962bd7f062522 ""
   "profit.pdf" 1724652393 6523 5f102864fbc8f7cd37446975877e338a ""
   "profit.png" 1724652393 357293 0ab5aaf59e60ad0a5666fb24de762cbe ""
   "region.png" 1724652393 292867 cd30504f100bae825e9eafb4a8241d65 ""
   "revenue.png" 1724652393 422092 077dbeab976771b618af5d9992cefd3f ""
+  "revenue_extra.png" 1727921868 337621 708c43ab53d6d4b4c04a81355f1cb5bc ""
   "year.pdf" 1724652393 9838 556c78579fe31ccdf6b924c320c3e061 ""
   "year.png" 1724652393 331535 0eaeba31edc1615a1b12012d1e75b735 ""
   (generated)

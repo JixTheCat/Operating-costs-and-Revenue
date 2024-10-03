@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.2)  2 OCT 2024 14:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.2)  3 OCT 2024 14:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -289,29 +289,26 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [3]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 58.
+               Default added (so using `tbp') on input line 59.
 
 
-Overfull \hbox (7.18791pt too wide) in paragraph at lines 61--88
+Overfull \hbox (7.18791pt too wide) in paragraph at lines 62--89
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 10.86168pt on input line 88.
+LaTeX Warning: Float too large for page by 10.86168pt on input line 89.
 
 
 
 [4]
 
 [5]
-Overfull \hbox (13.79997pt too wide) in paragraph at lines 97--101
-\OT1/cmr/m/n/12 https://onlinelibrary.wiley.com/doi/full/10.1111/j.1755-0238.2010.00100.x And
- []
+
+Package natbib Warning: Citation `remenyiAustraliasWineFuture2019' on page 6 undefined on input line 99.
 
 
-Overfull \hbox (40.30664pt too wide) in paragraph at lines 97--101
-\OT1/cmr/m/n/12 https://www.wineaustralia.com/growing-making/environment-and-climate/climate-
- []
+Package natbib Warning: Citation `hallSpatialAnalysisClimate2010' on page 6 undefined on input line 99.
 
 
 
@@ -326,36 +323,46 @@ Overfull \hbox (40.30664pt too wide) in paragraph at lines 97--101
 [10]
 
 [11]
-<revenue.png, id=46, 1437.37pt x 637.38126pt>
-File: revenue.png Graphic file (type png)
-<use revenue.png>
-Package pdftex.def Info: revenue.png  used on input line 141.
-(pdftex.def)             Requested size: 1437.3665pt x 637.3797pt.
+<operating_costs.png, id=46, 1426.32875pt x 647.41875pt>
+File: operating_costs.png Graphic file (type png)
+<use operating_costs.png>
+Package pdftex.def Info: operating_costs.png  used on input line 149.
+(pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
+<operating_costs_extra.png, id=48, 1279.78125pt x 590.205pt>
+File: operating_costs_extra.png Graphic file (type png)
+<use operating_costs_extra.png>
+Package pdftex.def Info: operating_costs_extra.png  used on input line 155.
+(pdftex.def)             Requested size: 1279.77814pt x 590.20355pt.
 
 
 [12]
 
-[13 <./revenue.png>]
-<operating_costs.png, id=56, 1426.32875pt x 647.41875pt>
-File: operating_costs.png Graphic file (type png)
-<use operating_costs.png>
-Package pdftex.def Info: operating_costs.png  used on input line 165.
-(pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
+[13 <./operating_costs.png>]
+
+[14 <./operating_costs_extra.png>]
+<revenue.png, id=60, 1437.37pt x 637.38126pt>
+File: revenue.png Graphic file (type png)
+<use revenue.png>
+Package pdftex.def Info: revenue.png  used on input line 169.
+(pdftex.def)             Requested size: 1437.3665pt x 637.3797pt.
+<revenue_extra.png, id=61, 1154.06157pt x 539.01375pt>
+File: revenue_extra.png Graphic file (type png)
+<use revenue_extra.png>
+Package pdftex.def Info: revenue_extra.png  used on input line 175.
+(pdftex.def)             Requested size: 1154.05875pt x 539.01242pt.
 
 
-[14]
+[15 <./revenue.png>]
 
-[15 <./operating_costs.png>]
-<region.png, id=64, 1426.32875pt x 647.41875pt>
+[16 <./revenue_extra.png>]
+<region.png, id=69, 1426.32875pt x 647.41875pt>
 File: region.png Graphic file (type png)
 <use region.png>
-Package pdftex.def Info: region.png  used on input line 181.
+Package pdftex.def Info: region.png  used on input line 191.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
 
 
-[16 <./region.png>]
-
-[17]
+[17 <./region.png>]
 
 [18]
 
@@ -367,11 +374,11 @@ Package pdftex.def Info: region.png  used on input line 181.
 
 [22]
 
-[23] (article.bbl
+[23]
 
 [24]
 
-[25]
+[25] (article.bbl
 
 [26]
 
@@ -379,61 +386,40 @@ Package pdftex.def Info: region.png  used on input line 181.
 
 [28]
 
-[29])
+[29]
 
 [30]
 
-[31]
-Underfull \hbox (badness 3354) in paragraph at lines 293--293
+[31])
+
+[32]
+
+[33]
+Underfull \hbox (badness 3354) in paragraph at lines 308--308
 []|\OT1/cmr/m/n/12 river wa-ter and ground-wa-ter and
  []
 
 
-Underfull \hbox (badness 1354) in paragraph at lines 313--313
+Underfull \hbox (badness 1354) in paragraph at lines 328--328
 []|\OT1/cmr/m/n/12 groundwater and mains wa-ter and
  []
 
 
-Underfull \hbox (badness 3354) in paragraph at lines 328--328
+Underfull \hbox (badness 3354) in paragraph at lines 343--343
 []|\OT1/cmr/m/n/12 river wa-ter and ground-wa-ter and
  []
 
 
-Underfull \hbox (badness 3354) in paragraph at lines 335--335
+Underfull \hbox (badness 3354) in paragraph at lines 350--350
 []|\OT1/cmr/m/n/12 river wa-ter and ground-wa-ter and
  []
 
-[32
+[34
 
-] [33] [34] [35] [36] [37] [38]
+] [35] [36] [37] [38] [39] [40]
 
-[39]
-Underfull \hbox (badness 2418) in paragraph at lines 378--378
-[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
- []
-
-
-Underfull \hbox (badness 2418) in paragraph at lines 381--381
-[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
- []
-
-
-Underfull \hbox (badness 2418) in paragraph at lines 384--384
-[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
- []
-
-
-Underfull \hbox (badness 2418) in paragraph at lines 388--388
-[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
- []
-
-
-Underfull \hbox (badness 2418) in paragraph at lines 391--391
-[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
- []
-
-
-Underfull \hbox (badness 2418) in paragraph at lines 394--394
+[41]
+Underfull \hbox (badness 2418) in paragraph at lines 393--393
 []|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
  []
 
@@ -442,61 +428,86 @@ Underfull \hbox (badness 2418) in paragraph at lines 396--396
 []|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
  []
 
-[40
 
-] [41] [42]
+Underfull \hbox (badness 2418) in paragraph at lines 399--399
+[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
+ []
 
-[43]
-Underfull \hbox (badness 6461) in paragraph at lines 441--441
+
+Underfull \hbox (badness 2418) in paragraph at lines 403--403
+[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 406--406
+[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 409--409
+[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 411--411
+[]|\OT1/cmr/m/n/12 annual cover crop and per-ma-nent
+ []
+
+[42
+
+] [43] [44]
+
+[45]
+Underfull \hbox (badness 6461) in paragraph at lines 456--456
 []|\OT1/cmr/m/n/12 overhead sprin-kler and un-der-vine
  []
 
-[44
+[46
 
 ]
 
-[45] [46
+[47] [48
 
 ]
 
-[47]
+[49]
 
-[48
+[50
 
-] [49
+] [51
 
-] [50]
-
-[51]
-
-[52
-
-]
-
-Package natbib Warning: Citation `sklearn_api' on page 53 undefined on input line 649.
-
-
+] [52]
 
 [53]
-<year.pdf, id=193, 505.89pt x 505.89pt>
+
+[54
+
+]
+
+Package natbib Warning: Citation `sklearn_api' on page 55 undefined on input line 664.
+
+
+
+[55]
+<year.pdf, id=202, 505.89pt x 505.89pt>
 File: year.pdf Graphic file (type pdf)
 <use year.pdf>
-Package pdftex.def Info: year.pdf  used on input line 659.
+Package pdftex.def Info: year.pdf  used on input line 674.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
-<year.png, id=194, 1426.32875pt x 647.41875pt>
+<year.png, id=203, 1426.32875pt x 647.41875pt>
 File: year.png Graphic file (type png)
 <use year.png>
-Package pdftex.def Info: year.png  used on input line 665.
+Package pdftex.def Info: year.png  used on input line 680.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
-<profit.pdf, id=195, 505.89pt x 505.89pt>
+<profit.pdf, id=204, 505.89pt x 505.89pt>
 File: profit.pdf Graphic file (type pdf)
 <use profit.pdf>
-Package pdftex.def Info: profit.pdf  used on input line 673.
+Package pdftex.def Info: profit.pdf  used on input line 688.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
-<profit.png, id=196, 1426.32875pt x 647.41875pt>
+<profit.png, id=205, 1426.32875pt x 647.41875pt>
 File: profit.png Graphic file (type png)
 <use profit.png>
-Package pdftex.def Info: profit.png  used on input line 679.
+Package pdftex.def Info: profit.png  used on input line 694.
 (pdftex.def)             Requested size: 1426.32529pt x 647.41716pt.
 
 
@@ -504,32 +515,32 @@ Package natbib Warning: There were undefined citations.
 
 
 
-[54]
+[56]
 
-[55 <./year.pdf>]
+[57 <./year.pdf>]
 
-[56 <./year.png>]
+[58 <./year.png>]
 
-[57 <./profit.pdf>]
+[59 <./profit.pdf>]
 
-[58 <./profit.png>] (article.aux)
+[60 <./profit.png>] (article.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5385 strings out of 473898
- 90404 string characters out of 5726480
+ 5410 strings out of 473898
+ 91193 string characters out of 5726480
  1967960 words of memory out of 5000000
- 28182 multiletter control sequences out of 15000+600000
+ 28207 multiletter control sequences out of 15000+600000
  566338 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,10n,79p,2325b,443s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,10n,79p,3423b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/bryce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on article.pdf (58 pages, 1930962 bytes).
+Output written on article.pdf (60 pages, 2571677 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
+ 309 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
